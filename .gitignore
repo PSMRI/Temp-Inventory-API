@@ -28,4 +28,10 @@ config.service.ts
 config.json
 ./bin
 
-
+# Additional files to ignore
+mvnw.cmd
+.mvn
+.sts4-cache
+.tern-project
+debug.log
+mvnw
