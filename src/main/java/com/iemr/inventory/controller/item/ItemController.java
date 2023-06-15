@@ -40,9 +40,6 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// M_ItemCategory item = InputMapper.gson().fromJson(itemCategory,
-			// M_ItemCategory.class);
-
 			List<M_ItemForm> saveData= itemService.getItemFormProviderServiceMapID(providerservicemapID);
 			
 
@@ -67,9 +64,6 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// M_ItemCategory item = InputMapper.gson().fromJson(itemCategory,
-			// M_ItemCategory.class);
-
 			List<M_Route> saveData= itemService.getItemRouteProviderServiceMapID(providerservicemapID);
 			
 			response.setResponse(saveData.toString());
@@ -93,9 +87,6 @@ public class ItemController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-
-			// M_ItemCategory item = InputMapper.gson().fromJson(itemCategory,
-			// M_ItemCategory.class);
 
 			List<M_ItemCategory> saveData;
 			if (bool == 0) {
@@ -125,9 +116,6 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-
 			List<ItemMaster> itemList = Arrays.asList(item);
 			List<ItemMaster> saveData = itemService.addAllItemMaster(itemList);
 
@@ -151,12 +139,6 @@ public class ItemController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-
-			// TODO: bool case(0): Show All case(1): Show Non Blocked item
-			// case(2): Show Non Blocked and Non Discontinued item
-
-			// M_ItemCategory item = InputMapper.gson().fromJson(itemCategory,
-			// M_ItemCategory.class);
 
 			List<ItemMaster> saveData = itemService.getItemMaster(providerServicemapID);
 
@@ -258,9 +240,6 @@ public class ItemController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-
 			ItemMaster saveData = itemService.getItemMasterByID(item.getItemID());
 			saveData.setItemDesc(item.getItemDesc());
 			saveData.setModifiedBy(item.getModifiedBy());
@@ -285,9 +264,6 @@ public class ItemController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
 
 			List<M_ItemCategory> itemList = Arrays.asList(itemIssue);
 			Integer saveData = itemService.updateItemIssueConfig(itemList);

@@ -34,8 +34,6 @@ public class StockAdjustmentController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
 			String saveData = "Invalid Store Type";
 
 
@@ -65,17 +63,9 @@ public class StockAdjustmentController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
-
-
-			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
 				
 			List<StockAdjustmentDraft> saveData = stockAdjustmentServiceImpl.getStockAjustmentDraftTransaction(itemStockinput);
-//			
-//
+
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -96,18 +86,9 @@ public class StockAdjustmentController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
-
-
 			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
 			StockAdjustmentDraft saveData = stockAdjustmentServiceImpl.getforeditStockAjustmentDraftTransaction(itemStockinput.getStockAdjustmentDraftID());
-//			
-//
+
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -129,14 +110,8 @@ public class StockAdjustmentController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
 			String saveData = "Invalid Store Type";
 
-
-			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
 			saveData = stockAdjustmentServiceImpl.savetransaction(StockAdjustment).toString();
 			
 
@@ -160,18 +135,9 @@ public class StockAdjustmentController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
-
-
-			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
+		
 			List<StockAdjustment> saveData = stockAdjustmentServiceImpl.getStockAjustmentTransaction(itemStockinput);
-//			
-//
+
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
@@ -193,17 +159,9 @@ public class StockAdjustmentController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
-
 
 			
-//			StockAdjustmentDraft stockAdjustmentDraft = InputMapper.gson().fromJson(store, StockAdjustmentDraft.class);
-				
 			StockAdjustment saveData = stockAdjustmentServiceImpl.getforeditStockAjustmentTransaction(itemStockinput.getStockAdjustmentID());
-//			
-//
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {

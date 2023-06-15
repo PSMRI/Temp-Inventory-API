@@ -36,12 +36,8 @@ public class StoreController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
 			String saveData = "Invalid Store Type";
 
-
-			
 				M_Facility[] mainStore = InputMapper.gson().fromJson(store, M_Facility[].class);
 				List<M_Facility> addMainStore= Arrays.asList(mainStore);
 
@@ -69,8 +65,6 @@ public class StoreController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
 			String saveData = "Invalid Store Type";
 
 
@@ -105,10 +99,6 @@ public class StoreController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
-
 			List<M_Facility> saveData=storeService.getAllMainStore(providerServiceMapID);
 			response.setResponse(saveData.toString());
 
@@ -131,9 +121,6 @@ public class StoreController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
 
 			List<M_Facility> saveData=storeService.getAllActiveStore(providerServiceMapID);
 			response.setResponse(saveData.toString());
@@ -156,8 +143,6 @@ public class StoreController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-
-
 
 				M_Facility mainStore = InputMapper.gson().fromJson(getMainFacility, M_Facility.class);
 				ArrayList<M_Facility> mainStoreUpdate = storeService.getMainFacility(mainStore.getProviderServiceMapID(),mainStore.getIsMainFacility());
@@ -185,9 +170,6 @@ public class StoreController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-			
 
 
 				M_Facility mainStore = InputMapper.gson().fromJson(getMainFacility, M_Facility.class);
@@ -215,12 +197,7 @@ public class StoreController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-			
 
-
-				
 				M_Facility mainStoreUpdate = storeService.deleteStore(facility);
 			
 
@@ -229,7 +206,6 @@ public class StoreController {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setResponse(e.toString());
-//			response.set (e);
 
 		}
 		/**
@@ -245,12 +221,6 @@ public class StoreController {
 
 		OutputResponse response = new OutputResponse();
 		try {
-
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-			
-
-
 				
 				M_Facility mainStoreUpdate = storeService.getStoreByID(facility.getFacilityID());
 			
@@ -260,7 +230,6 @@ public class StoreController {
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			response.setResponse(e.toString());
-//			response.set (e);
 
 		}
 		/**
@@ -277,9 +246,6 @@ public class StoreController {
 		OutputResponse response = new OutputResponse();
 		try {
 
-			// ItemMaster item = InputMapper.gson().fromJson(itemMaster,
-			// ItemMaster.class);
-//			String saveData = "Invalid Store Type";
 
 			M_Van saveData=storeService.getVanByStoreID(storeID);
 			if(saveData!=null){

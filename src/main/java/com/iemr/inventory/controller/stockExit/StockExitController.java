@@ -43,10 +43,8 @@ public class StockExitController {
 			if (value == 1) {
 				output.setResponse("Successfully Created");
 			} else {
-				//output.setResponse("Error in Quantity");
 				throw new Exception("Error occured while saving the request");
 			}
-			// output.setResponse("");
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			output.setError(e);
@@ -67,40 +65,14 @@ public class StockExitController {
 			if (value == 1) {
 				output.setResponse("Successfully Created");
 			} else {
-				//output.setResponse("Error in Quantity");
 				throw new Exception("Error occured while saving the request");
 			}
-			// output.setResponse("");
 		} catch (Exception e) {
 			logger.error(e.getMessage());
 			output.setError(e);
 		}
 		return output.toString();
 	}
-
-//	@CrossOrigin()
-//	@ApiOperation(value = "Store Self Consumption", consumes = "application/json", produces = "application/json")
-//	@RequestMapping(value = "/getstoreSelfConsumption", headers = "Authorization", method = { RequestMethod.POST })
-//	public String getstoreSelfConsumption(@RequestBody StoreSelfConsumption storeSelfConsumption) {
-//
-//		OutputResponse output = new OutputResponse();
-//
-//		try {
-//
-//			Integer value = stockExitService.storeSelfConsumption(storeSelfConsumption);
-//			if (value == 1) {
-//				output.setResponse("Successfully Created");
-//			} else {
-//				//output.setResponse("Error in Quantity");
-//				throw new Exception("Error occured while saving the request");
-//			}
-//			// output.setResponse("");
-//		} catch (Exception e) {
-//
-//			output.setError(e);
-//		}
-//		return output.toString();
-//	}
 
 	@CrossOrigin()
 	@ApiOperation(value = "Store Transfer", consumes = "application/json", produces = "application/json")
@@ -134,7 +106,6 @@ public class StockExitController {
 		OutputResponse response = new OutputResponse();
 
 		try {
-//			ItemStockEntryinput itemStockinput = InputMapper.gson().fromJson(input, ItemStockEntryinput.class);
 			List<T_PatientIssue> getData = stockExitService.getpatientIssue(itemStockinput);
 
 			response.setResponse(getData.toString());
@@ -158,7 +129,6 @@ public class StockExitController {
 		OutputResponse response = new OutputResponse();
 
 		try {
-//			ItemStockEntryinput itemStockinput = InputMapper.gson().fromJson(input, ItemStockEntryinput.class);
 
 			List<StoreSelfConsumption> getData = stockExitService.getstoreSelfConsumption(itemStockinput);
 
@@ -183,7 +153,6 @@ public class StockExitController {
 		OutputResponse response = new OutputResponse();
 
 		try {
-//			ItemStockEntryinput itemStockinput = InputMapper.gson().fromJson(input, ItemStockEntryinput.class);
 			List<T_StockTransfer> getData = stockExitService.getStoreTransfer(itemStockinput);
 
 			response.setResponse(getData.toString());

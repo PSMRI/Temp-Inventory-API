@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-//import com.iemr.inventory.data.employeemaster.M_UserServiceRoleMapping2;
+
 import com.iemr.inventory.data.supplier.M_Supplier;
 import com.iemr.inventory.data.supplier.M_Supplieraddress;
 import com.iemr.inventory.service.supplier.SupplierInter;
@@ -31,8 +31,8 @@ public class SupplierMaster_Controller {
 	@CrossOrigin()
 	@RequestMapping(value =  "/createSupplier" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String createSupplier(@RequestBody String createSupplier) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
-		
+
+
 		OutputResponse response = new OutputResponse();
 
 		try {
@@ -67,13 +67,6 @@ public class SupplierMaster_Controller {
 			}
 			x++;
 			ArrayList<M_Supplieraddress> storedData=supplierInter.createAddress(resList1);
-			//editData.setDeleted(Manufacturer.getDeleted());
-			
-			
-			//M_Manufacturer saveData=manufacturerInter.saveEditedData(editData);
-			
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(createdData.toString());
 
@@ -90,14 +83,9 @@ public class SupplierMaster_Controller {
 	}
 
 	
-	
-	
-	
-	
 	@CrossOrigin()
 	@RequestMapping(value =  "/getSupplier" ,headers = "Authorization", method = { RequestMethod.POST }, produces = {"application/json" })
 	public String getSupplier(@RequestBody String getSupplier) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
 		
 		OutputResponse response = new OutputResponse();
 
@@ -105,17 +93,8 @@ public class SupplierMaster_Controller {
 
 			M_Supplier Supplier = InputMapper.gson().fromJson(getSupplier,
 					M_Supplier.class);
-		     //List<M_Supplier> SupplierData = Arrays.asList(Supplier);
-			
+		    
 			ArrayList<M_Supplier> getData=supplierInter.getSupplier(Supplier.getProviderServiceMapID());
-			
-			//editData.setDeleted(Manufacturer.getDeleted());
-			
-			
-			//M_Manufacturer saveData=manufacturerInter.saveEditedData(editData);
-			
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(getData.toString());
 
@@ -137,7 +116,6 @@ public class SupplierMaster_Controller {
 	@CrossOrigin()
 	@RequestMapping(value =  "/editSupplier" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String editSupplier(@RequestBody String editSupplier) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
 		
 		OutputResponse response = new OutputResponse();
 
@@ -145,10 +123,8 @@ public class SupplierMaster_Controller {
 
 			M_Supplier Supplier = InputMapper.gson().fromJson(editSupplier,
 					M_Supplier.class);
-		     //List<M_Supplier> SupplierData = Arrays.asList(Supplier);
-			
+		     
 			M_Supplier editData=supplierInter.editSupplier(Supplier.getSupplierID());
-			//M_Supplieraddress getDataBySupplierID=supplierInter.getaddData(Supp);
 			editData.setSupplierName(Supplier.getSupplierName());
 			editData.setSupplierDesc(Supplier.getSupplierDesc());
 			editData.setSupplierCode(Supplier.getSupplierCode());
@@ -163,12 +139,6 @@ public class SupplierMaster_Controller {
 			editData.setModifiedBy(Supplier.getModifiedBy());
 			
 			M_Supplier editedData=supplierInter.saveEditedData(editData);
-			
-			
-			//M_Manufacturer saveData=manufacturerInter.saveEditedData(editData);
-			
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(editedData.toString());
 
@@ -193,7 +163,6 @@ public class SupplierMaster_Controller {
 	@CrossOrigin()
 	@RequestMapping(value =  "/deleteSupplier" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String deleteSupplier(@RequestBody String deleteSupplier) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
 		
 		OutputResponse response = new OutputResponse();
 
@@ -201,19 +170,12 @@ public class SupplierMaster_Controller {
 
 			M_Supplier Supplier = InputMapper.gson().fromJson(deleteSupplier,
 					M_Supplier.class);
-		     //List<M_Supplier> SupplierData = Arrays.asList(Supplier);
-			
+		     
 			M_Supplier editData=supplierInter.editSupplier(Supplier.getSupplierID());
 			
 			editData.setDeleted(Supplier.getDeleted());
 			
 			M_Supplier deletedData=supplierInter.saveEditedData(editData);
-			
-			
-			//M_Manufacturer saveData=manufacturerInter.saveEditedData(editData);
-			
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(deletedData.toString());
 

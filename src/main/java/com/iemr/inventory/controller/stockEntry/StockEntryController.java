@@ -184,7 +184,7 @@ public class StockEntryController {
 		OutputResponse response = new OutputResponse();
 
 		try {
-//String getData="";
+
 			List<ItemStockEntry> getData = stockEntryService.getPhysicalStockEntryItems(getItem.getPhyEntryID());
 
 			response.setResponse(getData.toString());

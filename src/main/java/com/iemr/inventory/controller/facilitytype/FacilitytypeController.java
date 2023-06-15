@@ -13,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-//import com.iemr.inventory.data.blocking.M_Providerservicemapping_Blocking;
 import com.iemr.inventory.data.facilitytype.M_facilitytype;
 import com.iemr.inventory.service.facilitytype.M_facilitytypeInter;
-//import com.iemr.inventory.to.blocking.BlockingTO;
+
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
@@ -95,7 +94,6 @@ public class FacilitytypeController {
 
 		M_facilitytype facilityDetails = InputMapper.gson().fromJson(editFacility,
 				M_facilitytype.class);
-		//List<M_facilitytype> addfacilityDetails = Arrays.asList(facilityDetails);
 		
 	  M_facilitytype allFacilityData=m_facilitytypeInter.editAllFicilityData(facilityDetails.getFacilityTypeID());
 	  
@@ -133,7 +131,6 @@ public class FacilitytypeController {
 
 		M_facilitytype facilityDetails = InputMapper.gson().fromJson(deleteFacility,
 				M_facilitytype.class);
-		//List<M_facilitytype> addfacilityDetails = Arrays.asList(facilityDetails);
 		
 	  M_facilitytype allFacilityData=m_facilitytypeInter.editAllFicilityData(facilityDetails.getFacilityTypeID());
 	  allFacilityData.setDeleted(facilityDetails.getDeleted());

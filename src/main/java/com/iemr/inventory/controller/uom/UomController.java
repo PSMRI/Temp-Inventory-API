@@ -30,7 +30,6 @@ public class UomController {
 	@CrossOrigin()
 	@RequestMapping(value =  "/createUom" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String createUom(@RequestBody String createUom) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
 		
 		OutputResponse response = new OutputResponse();
 
@@ -43,7 +42,6 @@ public class UomController {
 			ArrayList<M_Uom> saveData=uomInter.createDrugtypeData(saveUomData);
 			
 			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(saveData.toString());
 
@@ -64,7 +62,6 @@ public class UomController {
 	@CrossOrigin()
 	@RequestMapping(value =  "/getUom" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String getUom(@RequestBody String getUom) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
 		
 		OutputResponse response = new OutputResponse();
 
@@ -72,12 +69,10 @@ public class UomController {
 
 			M_Uom UomData = InputMapper.gson().fromJson(getUom,
 					M_Uom.class);
-		     // List<M_Uom> saveUomData = Arrays.asList(UomData);
 			
 			ArrayList<M_Uom> getData=uomInter.createDrugtypeData(UomData.getProviderServiceMapID());
 			
 			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(getData.toString());
 
@@ -99,7 +94,6 @@ public class UomController {
 	@CrossOrigin()
 	@RequestMapping(value =  "/editUom" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String editUom(@RequestBody String editUom) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
 		
 		OutputResponse response = new OutputResponse();
 
@@ -107,7 +101,6 @@ public class UomController {
 
 			M_Uom UomData = InputMapper.gson().fromJson(editUom,
 					M_Uom.class);
-		     // List<M_Uom> saveUomData = Arrays.asList(UomData);
 			
 			M_Uom geteditedData=uomInter.editDrugtypeData(UomData.getuOMID());
 			geteditedData.setuOMName(UomData.getuOMName());
@@ -120,7 +113,6 @@ public class UomController {
 			
 			
 			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(editedData.toString());
 
@@ -141,7 +133,6 @@ public class UomController {
 	@CrossOrigin()
 	@RequestMapping(value =  "/deleteUom" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String deleteUom(@RequestBody String editUom) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
 		
 		OutputResponse response = new OutputResponse();
 
@@ -149,7 +140,6 @@ public class UomController {
 
 			M_Uom UomData = InputMapper.gson().fromJson(editUom,
 					M_Uom.class);
-		     // List<M_Uom> saveUomData = Arrays.asList(UomData);
 			
 			M_Uom geteditedData=uomInter.editDrugtypeData(UomData.getuOMID());
 			geteditedData.setDeleted(UomData.getDeleted());
@@ -158,7 +148,6 @@ public class UomController {
 			
 			
 			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(deletedData.toString());
 

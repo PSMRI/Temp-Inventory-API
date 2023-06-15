@@ -29,8 +29,7 @@ public class ManufacturerController {
 	@CrossOrigin()
 	@RequestMapping(value =  "/createManufacturer" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String createManufacturer(@RequestBody String createManufacturer) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
-		
+	
 		OutputResponse response = new OutputResponse();
 
 		try {
@@ -41,8 +40,6 @@ public class ManufacturerController {
 			
 			ArrayList<M_Manufacturer> saveData=manufacturerInter.createManufacturer(ManufacturerData);
 			
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(saveData.toString());
 
@@ -62,7 +59,6 @@ public class ManufacturerController {
 	@CrossOrigin()
 	@RequestMapping(value =  "/getManufacturer" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String getManufacturer(@RequestBody String getManufacturer) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
 		
 		OutputResponse response = new OutputResponse();
 
@@ -70,12 +66,10 @@ public class ManufacturerController {
 
 			M_Manufacturer Manufacturer = InputMapper.gson().fromJson(getManufacturer,
 					M_Manufacturer.class);
-		     // List<M_Manufacturer> ManufacturerData = Arrays.asList(Manufacturer);
-			
+		    
 			ArrayList<M_Manufacturer> getData=manufacturerInter.createManufacturer(Manufacturer.getProviderServiceMapID());
 			
 			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(getData.toString());
 
@@ -98,7 +92,6 @@ public class ManufacturerController {
 	@CrossOrigin()
 	@RequestMapping(value =  "/editManufacturer" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String editManufacturer(@RequestBody String editManufacturer) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
 		
 		OutputResponse response = new OutputResponse();
 
@@ -106,8 +99,7 @@ public class ManufacturerController {
 
 			M_Manufacturer Manufacturer = InputMapper.gson().fromJson(editManufacturer,
 					M_Manufacturer.class);
-		     // List<M_Manufacturer> ManufacturerData = Arrays.asList(Manufacturer);
-			
+		    
 			M_Manufacturer editData=manufacturerInter.editManufacturer(Manufacturer.getManufacturerID());
 			
 			editData.setManufacturerName(Manufacturer.getManufacturerName());
@@ -120,8 +112,6 @@ public class ManufacturerController {
 			
 			M_Manufacturer saveData=manufacturerInter.saveEditedData(editData);
 			
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
 			
 			response.setResponse(saveData.toString());
 
@@ -144,16 +134,14 @@ public class ManufacturerController {
 	@CrossOrigin()
 	@RequestMapping(value =  "/deleteManufacturer" ,headers = "Authorization", method = { RequestMethod.POST }, produces = { "application/json" })
 	public String deleteManufacturer(@RequestBody String deleteManufacturer) {
-		//JSONObject requestOBJ = new JSONObject(providerBlocking);
-		
+
 		OutputResponse response = new OutputResponse();
 
 		try {
 
 			M_Manufacturer Manufacturer = InputMapper.gson().fromJson(deleteManufacturer,
 					M_Manufacturer.class);
-		     // List<M_Manufacturer> ManufacturerData = Arrays.asList(Manufacturer);
-			
+		   
 			M_Manufacturer editData=manufacturerInter.editManufacturer(Manufacturer.getManufacturerID());
 			
 			editData.setDeleted(Manufacturer.getDeleted());
@@ -161,9 +149,7 @@ public class ManufacturerController {
 			
 			M_Manufacturer saveData=manufacturerInter.saveEditedData(editData);
 			
-			
-			//ArrayList<V_Showproviderservicemapping> getProviderStatus1=blockingInter.getProviderStatus1(Pharmacologicalcategory.getServiceProviderID());
-			
+	
 			response.setResponse(saveData.toString());
 
 		} catch (Exception e) {
