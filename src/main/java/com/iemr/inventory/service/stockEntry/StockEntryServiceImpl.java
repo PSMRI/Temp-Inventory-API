@@ -78,9 +78,7 @@ public class StockEntryServiceImpl implements StockEntryService {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
 	public PhysicalStockEntry savePhysicalStockEntry(PhysicalStockEntry physicalStockEntry) throws Exception {
-		// TODO Auto-generated method stub
 		physicalStockEntry.setSyncFacilityID(physicalStockEntry.getFacilityID());
-//		PhysicalStockEntry physicalStockEntryinput = physicalStockEntryRepo.save(physicalStockEntry);
 		physicalStockEntryRepo.save(physicalStockEntry);
 		physicalStockEntry.getItemStockEntry().forEach(stock -> {
 			stock.setEntryTypeID(physicalStockEntry.getPhyEntryID());
@@ -102,17 +100,12 @@ public class StockEntryServiceImpl implements StockEntryService {
 
 	@Override
 	public List<ItemStockEntry> getItemBatchForStoreID(ItemStockEntry itemStockEntry) {
-		// TODO Auto-generated method stub
-		// Integer facilityID,Integer itemID,Integer quantityInHand,Boolean
-		// deleted);
 		return itemStockEntryRepo.findByFacilityIDAndItemIDAndQuantityInHandGreaterThanAndDeletedAndExpiryDateAfter(
 				itemStockEntry.getFacilityID(), itemStockEntry.getItemID(), 0, false, new Date());
 	}
 
 	public List<Object[]> getAllItemBatchForStoreID(Integer storeID, Long[] itemStockID) {
-		// TODO Auto-generated method stub
-		// Integer facilityID,Integer itemID,Integer quantityInHand,Boolean
-		// deleted);
+
 		return itemStockEntryRepo.getQuantityOfStock(itemStockID, storeID);
 	}
 
@@ -130,7 +123,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 	@Override
 	public List<ItemStockEntry> getItemStockForStoreIDOrderByEntryDateAsc(Integer facilityID, Integer itemID,
 			Date nowdate) {
-		// TODO Auto-generated method stub
 		return itemStockEntryRepo
 				.findByFacilityIDAndItemIDAndDeletedAndQuantityInHandGreaterThanAndExpiryDateAfterOrderByCreatedByAsc(
 						facilityID, itemID, false, 0, nowdate);
@@ -139,7 +131,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 	@Override
 	public List<ItemStockEntry> getItemStockForStoreIDOrderByEntryDateDesc(Integer facilityID, Integer itemID,
 			Date nowdate) {
-		// TODO Auto-generated method stub
 		return itemStockEntryRepo
 				.findByFacilityIDAndItemIDAndDeletedAndQuantityInHandGreaterThanAndExpiryDateAfterOrderByCreatedByDesc(
 						facilityID, itemID, false, 0, nowdate);
@@ -148,7 +139,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 	@Override
 	public List<ItemStockEntry> getItemStockForStoreIDOrderByExpiryDateAsc(Integer facilityID, Integer itemID,
 			Date nowdate) {
-		// TODO Auto-generated method stub
 		return itemStockEntryRepo
 				.findByFacilityIDAndItemIDAndDeletedAndQuantityInHandGreaterThanAndExpiryDateAfterOrderByExpiryDateAsc(
 						facilityID, itemID, false, 0, nowdate);
@@ -160,7 +150,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 		List<AllocateItemMap> allocateItemMapList = new ArrayList<AllocateItemMap>();
 
 		for (ItemStockExit itemStockExit : itemStockExitList) {
-			// TODO : get category
 			AllocateItemMap allocateItemMap = new AllocateItemMap();
 			List<ItemStockEntry> itemStockList = new ArrayList<ItemStockEntry>();
 
@@ -175,9 +164,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 			Integer itemID = itemStockExit.getItemID();
 			Date nowdate = new Date();
 
-			// new logic need to incorporate on "nowdate" for against
-			// prescription for duration and
-			// duration unit [nowdate = nowdate + duration time ]
 			if (itemStockExit.getDuration() != null && itemStockExit.getDuration() > 0
 					&& itemStockExit.getDurationUnit() != null) {
 				switch (itemStockExit.getDurationUnit()) {
@@ -222,12 +208,7 @@ public class StockEntryServiceImpl implements StockEntryService {
 			if (totalQty < itemStockExit.getQuantity()) {
 				throw new InventoryException(
 						"Insufficent Qty for '" + item.getItemName() + "'. Available Qty is : " + totalQty);
-				// ItemStockEntry shortageStock = new ItemStockEntry();
-				// shortageStock.setItemID(itemID);
-				// shortageStock.setFacilityID(facilityID);
-				// shortageStock.setQuantity(itemStockExit.getQuantity() -
-				// totalQty);
-				// itemStockList.add(shortageStock);
+
 			}
 
 			List<ItemBatchList> stockBatch = itemBatchListMap.getItemStockExitMapList(itemStockList);
@@ -257,7 +238,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 	@Override
 	public List<ItemStockEntry> saveItemStockFromStockTransfer(List<ItemStockExit> itemStockExit, Long insertID,
 			String insertType, Integer facilityFromID, Integer facilityToID, Long toVanID) {
-		// TODO Auto-generated method stub
 		Map<Long, ItemStockExit> result = itemStockExit.stream()
 				.collect(Collectors.toMap(ItemStockExit::getItemStockEntryID, Function.identity()));
 
@@ -268,8 +248,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 		Integer cnt = 0;
 		ItemStockExit itemStockExitsingle = new ItemStockExit();
 		List<ItemStockEntry> itemStockEntryupList = new ArrayList<>();
-		// List<ItemStockEntry> stockInHandupdate=new
-		// ArrayList<ItemStockEntry>();
 		for (ItemStockEntry itemStockEntry : stockInHand) {
 			itemStockExitsingle = result.get(itemStockEntry.getItemStockEntryID());
 			ItemStockEntry itemStockEntryup = new ItemStockEntry();
@@ -334,7 +312,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 					itemID[i] = (Integer) objects[0];
 				}
 
-				// logger.debug("for getting state " + resultSet);
 			}
 
 			itemForsubStore = itemStockEntryRepo.findByItemIDInAndQuantityInHandGreaterThanAndFacilityID(itemID, 0,
@@ -362,7 +339,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 		if (resultSet.size() > 0) {
 			Integer[] itemID = new Integer[resultSet.size()];
 			Object[] objects;
-			// for (Object[] objects : resultSet)
 			for (int i = 0; i < resultSet.size(); i++) {
 				objects = resultSet.get(i);
 				if (objects != null && objects.length >= 2) {
@@ -370,7 +346,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 					itemID[i] = (Integer) objects[0];
 				}
 
-				// logger.debug("for getting state " + resultSet);
 			}
 			Date now = new Date();
 			List<Object[]> itemForsubStoreObj = itemStockEntryRepo
@@ -394,7 +369,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 		if (resultSet.size() > 0) {
 			Integer[] itemID = new Integer[resultSet.size()];
 			Object[] objects;
-			// for (Object[] objects : resultSet)
 			for (int i = 0; i < resultSet.size(); i++) {
 				objects = resultSet.get(i);
 				if (objects != null && objects.length >= 2) {
@@ -402,7 +376,6 @@ public class StockEntryServiceImpl implements StockEntryService {
 					itemID[i] = (Integer) objects[0];
 				}
 
-				// logger.debug("for getting state " + resultSet);
 			}
 
 			itemForsubStore = itemStockEntryRepo.findByItemIDInAndFacilityIDOrderByItemStockEntryIDDesc(itemID,

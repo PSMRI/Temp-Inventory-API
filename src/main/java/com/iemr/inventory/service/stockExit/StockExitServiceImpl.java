@@ -60,7 +60,7 @@ public class StockExitServiceImpl implements StockExitService {
 
 	@Autowired
 	ItemStockExitRepo itemStockExitRepo;
-	
+
 	@Autowired
 	ItemStockEntryRepo itemStockEntryRepo;
 
@@ -83,9 +83,7 @@ public class StockExitServiceImpl implements StockExitService {
 	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = SQLException.class)
 	@Override
 	public Integer issuePatientDrugs(T_PatientIssue patientIssue) throws InventoryException {
-		// TODO Auto-generated method stub
 		Integer returnvalue = 0;
-		// if (patientIssue.getIssueType().equalsIgnoreCase("Manual")) {
 		logger.info("starting patient issue" + patientIssue.toString());
 		if (patientIssue.getItemStockExit() == null || patientIssue.getItemStockExit().size() == 0) {
 			if (patientIssue.getPrescriptionID() != null) {
@@ -111,19 +109,16 @@ public class StockExitServiceImpl implements StockExitService {
 			List<ItemStockExit> itemissueListUpdated = getItemStockAndValidate(itemissueList,
 					patientIssue.getFacilityID(), patientIssue.getCreatedBy(), patientIssue.getVanID(),
 					patientIssue.getParkingPlaceID());
-			// This is for save prescription
 			logger.info(itemissueList.size() + " saving ItemStockExit lhs rhs should be same "
 					+ itemissueListUpdated.size());
 			logger.info("itemissueList " + itemissueList.toString());
 			logger.info("itemissueListUpdated " + itemissueListUpdated.toString());
 			if (itemissueList.size() == itemissueListUpdated.size()) {
-//				T_PatientIssue updatedPatientIssue =
 				patientIssue.setSyncFacilityID(patientIssue.getFacilityID());
 				patientIssueRepo.save(patientIssue);
 				patientIssueRepo.updateVanSerialNo();
 
-				returnvalue = saveItemExit(itemissueListUpdated, patientIssue.getPatientIssueID(),
-						"T_PatientIssue");
+				returnvalue = saveItemExit(itemissueListUpdated, patientIssue.getPatientIssueID(), "T_PatientIssue");
 				if (returnvalue == 1) {
 					if (patientIssue != null && patientIssue.getBenRegID() != null
 							&& patientIssue.getVisitCode() != null) {
@@ -177,7 +172,6 @@ public class StockExitServiceImpl implements StockExitService {
 
 		List<ItemStockExit> itemissueListUpdated = new ArrayList<ItemStockExit>();
 
-		// Validating stock in hand matches required count
 		for (Object[] action : stockInHand) {
 			ItemStockExit itemIssueUpdating = result.get(action[1]);
 			itemIssueUpdating.setItemStockEntryID(((Long) action[4]));
@@ -199,20 +193,17 @@ public class StockExitServiceImpl implements StockExitService {
 	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
 	@Override
 	public Integer storeSelfConsumption(StoreSelfConsumption storeSelfConsumption) {
-		// TODO Auto-generated method stub
 		Integer returnvalue = 0;
-		// if (patientIssue.getIssueType().equalsIgnoreCase("Manual")) {
 		if (true) {
 			List<ItemStockExit> itemissueList = storeSelfConsumption.getItemStockExit();
 
 			List<ItemStockExit> itemissueListUpdated = getItemStockAndValidate(itemissueList,
 					storeSelfConsumption.getFacilityID(), storeSelfConsumption.getCreatedBy(),
 					storeSelfConsumption.getVanID(), storeSelfConsumption.getParkingPlaceID());
-			// This is for save prescription
 			if (itemissueList.size() == itemissueListUpdated.size()) {
 				storeSelfConsumption.setSyncFacilityID(storeSelfConsumption.getFacilityID());
-				 storeSelfConsumptionRepo.save(storeSelfConsumption);
-				 storeSelfConsumptionRepo.updateVanSerialNo();
+				storeSelfConsumptionRepo.save(storeSelfConsumption);
+				storeSelfConsumptionRepo.updateVanSerialNo();
 
 				returnvalue = saveItemExit(itemissueListUpdated, storeSelfConsumption.getConsumptionID(),
 						"StoreSelfConsumption");
@@ -226,9 +217,7 @@ public class StockExitServiceImpl implements StockExitService {
 	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class)
 	@Override
 	public Integer storeTransfer(T_StockTransfer stockTransfer) {
-		// TODO Auto-generated method stub
 		Integer returnvalue = 0;
-		// if (patientIssue.getIssueType().equalsIgnoreCase("Manual")) {
 		Long toVanID = stockTransferRepo.findVanIDByFacID(stockTransfer.getTransferToFacilityID());
 		stockTransfer.setToVanID(toVanID);
 		List<ItemStockExit> itemissueList = stockTransfer.getItemStockExit();
@@ -236,19 +225,17 @@ public class StockExitServiceImpl implements StockExitService {
 		List<ItemStockExit> itemissueListUpdated = getItemStockAndValidate(itemissueList,
 				stockTransfer.getTransferFromFacilityID(), stockTransfer.getCreatedBy(), stockTransfer.getVanID(),
 				null);
-		// This is for save prescription
 
 		if (itemissueList.size() == itemissueListUpdated.size()) {
 			stockTransfer.setSyncFacilityID(stockTransfer.getTransferFromFacilityID());
 			stockTransferRepo.save(stockTransfer);
 			stockTransferRepo.updateVanSerialNo();
 
-			// returnvalue =
 			saveItemExit(itemissueListUpdated, stockTransfer.getStockTransferID(), "T_StockTransfer");
 
-			stockEntryService.saveItemStockFromStockTransfer(itemissueListUpdated,
-					stockTransfer.getStockTransferID(), "T_StockTransfer",
-					stockTransfer.getTransferFromFacilityID(), stockTransfer.getTransferToFacilityID(),toVanID);
+			stockEntryService.saveItemStockFromStockTransfer(itemissueListUpdated, stockTransfer.getStockTransferID(),
+					"T_StockTransfer", stockTransfer.getTransferFromFacilityID(),
+					stockTransfer.getTransferToFacilityID(), toVanID);
 			returnvalue = 1;
 		}
 
@@ -338,39 +325,37 @@ public class StockExitServiceImpl implements StockExitService {
 
 	@Override
 	public List<ItemStockExitMap> getstoreSelfConsumptionItemList(ItemStockEntryinput itemStockinput) {
-		// TODO Auto-generated method stub
-		StoreSelfConsumption ss= storeSelfConsumptionRepo.findOne(itemStockinput.getConsumptionID());
-		return itemStockExitMapper.getItemStockExitMapList(itemStockExitRepo
-				.findByExitTypeIDAndSyncFacilityIDAndExitType(ss.getVanSerialNo(),ss.getSyncFacilityID(), "StoreSelfConsumption"));
+		StoreSelfConsumption ss = storeSelfConsumptionRepo.findOne(itemStockinput.getConsumptionID());
+		return itemStockExitMapper.getItemStockExitMapList(
+				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(ss.getVanSerialNo(),
+						ss.getSyncFacilityID(), "StoreSelfConsumption"));
 	}
 
 	@Override
 	public List<ItemStockExitMap> getpatientIssueItemLIst(ItemStockEntryinput itemStockinput) {
-		// TODO Auto-generated method stub
 		T_PatientIssue patissue = patientIssueRepo.findOne(itemStockinput.getPatientIssueID());
-		
+
 		return itemStockExitMapper.getItemStockExitMapList(
-				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(patissue.getVanSerialNo(),patissue.getSyncFacilityID(), "T_PatientIssue"));
+				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(patissue.getVanSerialNo(),
+						patissue.getSyncFacilityID(), "T_PatientIssue"));
 	}
 
 	@Override
 	public List<ItemStockExitMap> getStoreTransferItemEntry(ItemStockEntryinput itemStockinput) {
-		// TODO Auto-generated method stub
 		T_StockTransfer tstock = stockTransferRepo.findOne(itemStockinput.getStockTransferID());
-		
-//		return itemStockExitMapper.getItemStockExitMapList(
-//				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(tstock.getVanSerialNo(),tstock.getSyncFacilityID(), "T_StockTransfer"));
+
 		return itemStockExitMapper.getItemStockEntryMapList(
-				itemStockEntryRepo.findByEntryTypeIDAndSyncFacilityIDAndEntryType(tstock.getVanSerialNo(),tstock.getSyncFacilityID(), "T_StockTransfer"));
+				itemStockEntryRepo.findByEntryTypeIDAndSyncFacilityIDAndEntryType(tstock.getVanSerialNo(),
+						tstock.getSyncFacilityID(), "T_StockTransfer"));
 	}
 
 	@Override
 	public T_PatientIssue getPatientissueAllDetail(Long patientissueID) {
-		// TODO Auto-generated method stub
 		T_PatientIssue patissue = patientIssueRepo.findOne(patientissueID);
 
 		patissue.setItemStockExitMap(itemStockExitMapper.getItemStockExitMapList(
-				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(patissue.getVanSerialNo(),patissue.getSyncFacilityID(), "T_PatientIssue")));
+				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(patissue.getVanSerialNo(),
+						patissue.getSyncFacilityID(), "T_PatientIssue")));
 		return patissue;
 	}
 }
