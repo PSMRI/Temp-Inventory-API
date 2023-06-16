@@ -171,6 +171,9 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 		List<Objects[]> reports = null;
 
+		reports = itemStockReportRepo.getDailyStockDetailReportByFacilityID(todaysDate, todaysDate,
+				entryReport.getFacilityID());
+
 		Long slNo = 1L;
 		for (Object[] objects : reports) {
 			if (objects != null && objects.length > 0) {
@@ -256,6 +259,8 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 		List<Objects[]> reports = null;
 
+		reports = itemStockReportRepo.getDailyStockSummaryReportByFacilityID(todaysDate, todaysDate,
+				entryReport.getFacilityID());
 		Long slNo = 1L;
 		for (Object[] objects : reports) {
 			if (objects != null && objects.length > 0) {
@@ -344,6 +349,8 @@ public class CRMReportServiceImpl implements CRMReportService {
 		List<MonthlyReport> list = new ArrayList<MonthlyReport>();
 
 		List<Objects[]> reports = null;
+		reports = itemStockReportRepo.getDailyStockDetailReportByFacilityID(startDate, endDate,
+				entryReport.getFacilityID());
 
 		Long slNo = 1L;
 		for (Object[] objects : reports) {
@@ -443,6 +450,8 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 		List<Objects[]> reports = null;
 
+		reports = itemStockReportRepo.getDailyStockDetailReportByFacilityID(startDate, endDate,
+				entryReport.getFacilityID());
 		Long slNo = 1L;
 		for (Object[] objects : reports) {
 			if (objects != null && objects.length > 0) {
@@ -584,6 +593,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 			}
 
 		}
+
 		return list.toString();
 	}
 
