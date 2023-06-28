@@ -24,7 +24,7 @@
 		<org.mapstruct.version>1.2.0.Final</org.mapstruct.version>
 		<org.projectlombok.version>1.16.18</org.projectlombok.version>
 		<final-name>inventory-api-0.0.1</final-name>
-		<!--<environment>dev</environment>-->
+		<environment>${ENV_VAR}</environment>
 		<target-properties>target/classes/application.properties</target-properties>
 		<source-properties>src/main/environment/common_${environment}.properties</source-properties>
 		<hostname-test>10.208.122.38</hostname-test>
