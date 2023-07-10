@@ -44,7 +44,7 @@ public class DispenseAgainstRX {
 	private DispenseAgainstRXimpl dispenseAgainstRXimpl;
 
 	@CrossOrigin()
-	@ApiOperation(value = "get prescribed medicine list by doctor", consumes = "application/json", produces = "application/json")
+	@ApiOperation(value = "Get prescribed medicines", consumes = "application/json", produces = "application/json")
 	@RequestMapping(value = "getPrescribedMedicines", method = RequestMethod.POST)
 	public String getPrescribedMedicinesToDispense(@RequestBody String requestOBJ) {
 		OutputResponse response = new OutputResponse();
