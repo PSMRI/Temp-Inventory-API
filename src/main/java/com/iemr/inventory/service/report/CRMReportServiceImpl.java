@@ -215,18 +215,24 @@ public class CRMReportServiceImpl implements CRMReportService {
 				if (objects[18] != null) {
 					adjustedQuantity_ToDate_Issue = ((Number) objects[18]).longValue();
 				}
+				Long ClosingStock = 0L;
+				if (objects[19] != null) {
+					ClosingStock = ((Number) objects[19]).longValue();
+				}
+				
 
-				Long actualOpening = openingStock + adjustedQuantity_FromDate;
+//				Long actualOpening = openingStock + adjustedQuantity_FromDate;
+				Long actualOpening = openingStock;
 				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
-				Long actualClosing = 0L;
-				if (actualOpening == 0 || actualOpening == null) {
-					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
-				}
-
-				else {
-					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
-					totalQuantityReceived = 0L;
-				}
+				Long actualClosing = ClosingStock;
+//				if (actualOpening == 0 || actualOpening == null) {
+//					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
+//				}
+//
+//				else {
+//					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
+//					totalQuantityReceived = 0L;
+//				}
 
 				Timestamp itemEnteredDate = null;
 				if(objects[9]!=null) {
@@ -304,15 +310,21 @@ public class CRMReportServiceImpl implements CRMReportService {
 				if (objects[11] != null) {
 					adjustedQuantity_ToDate_Issue = ((Number) objects[11]).longValue();
 				}
-				Long actualOpening = openingStock + adjustedQuantity_FromDate;
-				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
-				Long actualClosing = 0L;
-				if (actualOpening == 0 || actualOpening == null) {
-					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
-				} else {
-					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
-					totalQuantityReceived = 0L;
+				
+				Long ClosingStock = 0L;
+				if (objects[12] != null) {
+					ClosingStock = ((Number) objects[12]).longValue();
 				}
+//				Long actualOpening = openingStock + adjustedQuantity_FromDate;
+				Long actualOpening = openingStock;
+				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
+				Long actualClosing = ClosingStock;
+//				if (actualOpening == 0 || actualOpening == null) {
+//					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
+//				} else {
+//					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
+//					totalQuantityReceived = 0L;
+//				}
 
 				DailyStockSummary stockDetail = new DailyStockSummary();
 				stockDetail.setSlNo(slNo++);
@@ -401,7 +413,12 @@ public class CRMReportServiceImpl implements CRMReportService {
 				if (objects[18] != null) {
 					adjustedQuantity_ToDate_Issue = ((Number) objects[18]).longValue();
 				}
-				Long actualOpening = openingStock + adjustedQuantity_FromDate;
+				Long ClosingStock = 0L;
+				if (objects[19] != null) {
+					ClosingStock = ((Number) objects[19]).longValue();
+				}
+//				Long actualOpening = openingStock + adjustedQuantity_FromDate;
+				Long actualOpening = openingStock;
 				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
 				Long actualClosing = 0L;
 				if (actualOpening == 0 || actualOpening == null) {
@@ -509,15 +526,20 @@ public class CRMReportServiceImpl implements CRMReportService {
 				if (objects[18] != null) {
 					adjustedQuantity_ToDate_Issue = ((Number) objects[18]).longValue();
 				}
-				Long actualOpening = openingStock + adjustedQuantity_FromDate;
-				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
-				Long actualClosing = 0L;
-				if (actualOpening == 0 || actualOpening == null) {
-					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
-				} else {
-					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
-					totalQuantityReceived = 0L;
+				Long ClosingStock = 0L;
+				if (objects[19] != null) {
+					ClosingStock = ((Number) objects[19]).longValue();
 				}
+//				Long actualOpening = openingStock + adjustedQuantity_FromDate;
+				Long actualOpening = openingStock;
+				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
+				Long actualClosing = ClosingStock;
+//				if (actualOpening == 0 || actualOpening == null) {
+//					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
+//				} else {
+//					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
+//					totalQuantityReceived = 0L;
+//				}
 
 				YearlyReport stockDetail = new YearlyReport();
 				stockDetail.setSlNo(slNo++);
