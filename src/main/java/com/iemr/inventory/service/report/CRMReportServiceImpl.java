@@ -420,13 +420,14 @@ public class CRMReportServiceImpl implements CRMReportService {
 //				Long actualOpening = openingStock + adjustedQuantity_FromDate;
 				Long actualOpening = openingStock;
 				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
-				Long actualClosing = 0L;
-				if (actualOpening == 0 || actualOpening == null) {
-					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
-				} else {
-					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
-					totalQuantityReceived = 0L;
-				}
+				Long actualClosing = ClosingStock;
+//				Long actualClosing = 0L;
+//				if (actualOpening == 0 || actualOpening == null) {
+//					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
+//				} else {
+//					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
+//					totalQuantityReceived = 0L;
+//				}
 
 				Timestamp itemEnteredDate = null;
 				if(objects[9]!=null) {
