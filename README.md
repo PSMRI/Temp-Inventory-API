@@ -18,17 +18,16 @@ This microservice is built on Java, Spring boot framework and MySQL DB.
 * MySQL
 * Springboot V2
 
-Maven
-$ ./mvn clean install
-
 ## Installation
 To install the inventory module, follow these steps:
 
 1. Clone the repository to your local machine.
-2. Install the dependencies.
-npm install
-3. Run the development server.
-npm start
+2. Install the dependencies `mvn clean install`
+
+### Creating a build configuration and running the application
+
+1. You can copy `common_example.properties` to `common_local.properties` and edit the file accordingly. The file is under `src/main/environment` folder.
+2. Run the spring server with local configuration `mvn spring-boot:run -DENV_VAR=local`
 
 Open the application in your browser. The inventory module will be accessible at http://localhost:3000/inventory.
 
