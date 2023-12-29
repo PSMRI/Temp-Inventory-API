@@ -35,3 +35,4 @@ mvnw.cmd
 .tern-project
 debug.log
 mvnw
+src/main/environment/common_local.properties
