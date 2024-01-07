@@ -34,6 +34,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -47,7 +48,7 @@ public class HttpUtils {
 	private String server;
 	private RestTemplate rest;
 	private HttpHeaders headers;
-	private HttpStatus status;
+	private HttpStatusCode status;
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
@@ -154,11 +155,11 @@ public class HttpUtils {
 		return body;
 	}
 
-	public HttpStatus getStatus() {
+	public HttpStatusCode getStatus() {
 		return status;
 	}
 
-	public void setStatus(HttpStatus status) {
-		this.status = status;
+	public void setStatus(HttpStatusCode httpStatusCode) {
+		this.status = httpStatusCode;
 	}
 }

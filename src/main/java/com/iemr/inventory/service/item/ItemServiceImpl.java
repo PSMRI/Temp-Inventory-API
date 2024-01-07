@@ -117,7 +117,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public List<ItemMaster> addAllItemMaster(List<ItemMaster> itemMaster) {
 		// TODO Auto-generated method stub
-		return (List<ItemMaster>) itemRepo.save(itemMaster);
+		return (List<ItemMaster>) itemRepo.saveAll(itemMaster);
 	}
 
 	@Override

@@ -39,4 +39,8 @@ public interface IndentRepo extends CrudRepository<Indent, Long>{
 	@Modifying
 	@Query("UPDATE Indent set vanSerialNo = :indentID where indentID = :indentID and fromFacilityID = :fromFacilityID")
 	public int updateVanSerialNo(@Param("indentID") Long indentID ,@Param("fromFacilityID") Integer fromFacilityID);
+
+	public Indent findOne(Object indentID);
+
+	public void updateVanSerialNo(Object indentID, Integer fromFacilityID);
 }

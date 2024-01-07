@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.transaction.Transactional;
+//import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -33,6 +33,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import com.iemr.inventory.data.stockentry.ItemStockEntry;
 
@@ -52,7 +53,7 @@ public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long>
 	List<ItemStockEntry> findByFacilityIDAndItemIDAndQuantityInHandGreaterThanAndDeleted(Integer facilityID,
 			Integer itemID, Integer quantityInHand, Boolean deleted);
 
-	@Transactional
+	@TransactionalEventListener
 	@Modifying
 	@Query("UPDATE ItemStockEntry c SET c.quantityInHand = c.quantityInHand - :dispQuant "
 			+ " WHERE c.vanSerialNo = :itemStockEntryId and c.facilityID = :facilityID")
@@ -89,12 +90,12 @@ public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long>
 
 	List<ItemStockEntry> findByItemIDInAndFacilityIDOrderByItemStockEntryIDDesc(Integer[] itemID, Integer facilityID);
 
-	@Transactional
+	@TransactionalEventListener
 	@Modifying
 	@Query("UPDATE ItemStockEntry c SET c.quantityInHand = c.quantityInHand + :quant WHERE c.itemStockEntryID = :id")
 	Integer addStock(@Param("id") Long id, @Param("quant") Integer quant);
 
-	@Transactional
+	@TransactionalEventListener
 	@Modifying
 	@Query("UPDATE ItemStockEntry c SET c.quantityInHand = c.quantityInHand - :quant WHERE c.itemStockEntryID = :id")
 	Integer subtractStock(@Param("id") Long id, @Param("quant") Integer quant);
@@ -108,9 +109,11 @@ public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long>
 	List<ItemStockEntry> findByEntryTypeIDAndSyncFacilityIDAndEntryType(Long vanSerialNo, Integer syncFacilityID,
 			String string);
 
-	@Transactional
+	@TransactionalEventListener
 	@Modifying
 	@Query("update ItemStockEntry p set p.vanSerialNo=p.itemStockEntryID where p.vanSerialNo is null and p.itemStockEntryID>0")
 	Integer updateItemStockEntryVanSerialNo();
+
+	void saveAll(Object itemStockEntry);
 
 }

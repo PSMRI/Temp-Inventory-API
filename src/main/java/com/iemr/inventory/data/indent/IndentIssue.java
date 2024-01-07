@@ -165,4 +165,19 @@ public class IndentIssue {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
+
+	public Object getIndentID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getRejectedReason() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getAction() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

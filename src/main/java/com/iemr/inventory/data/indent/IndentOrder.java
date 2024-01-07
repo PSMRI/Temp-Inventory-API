@@ -201,5 +201,10 @@ public class IndentOrder {
 		this.parkingPlaceID=parkingPlaceID;
 		this.indentIssueID=indentIssueID;
 	}
+
+	public Object getIndentID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

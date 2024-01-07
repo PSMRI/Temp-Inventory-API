@@ -61,6 +61,8 @@ public interface MainStoreRepo extends CrudRepository<M_Facility, Integer>{
 	
 	
 	List<M_Facility> findByProviderServiceMapIDAndDeleted(Integer pp,Boolean delete);
+
+	M_Facility findOne(Integer mainStoreID);
 	
 //	@Transactional
 //	@Modifying

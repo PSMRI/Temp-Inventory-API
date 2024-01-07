@@ -57,7 +57,7 @@ public class M_itemfacilitymappingImpl implements M_itemfacilitymappingInter {
 	@Override
 	public ArrayList<M_itemfacilitymapping> mapItemtoStore(List<M_itemfacilitymapping> resList) {
 		ArrayList<M_itemfacilitymapping> data = (ArrayList<M_itemfacilitymapping>) m_itemfacilitymappingRepo
-				.save(resList);
+				.saveAll(resList);
 		return data;
 	}
 

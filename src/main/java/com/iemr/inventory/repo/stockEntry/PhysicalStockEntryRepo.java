@@ -52,4 +52,7 @@ public interface PhysicalStockEntryRepo  extends CrudRepository<PhysicalStockEnt
 	@Modifying
 	@Query("update PhysicalStockEntry p set p.vanSerialNo=p.phyEntryID where p.vanSerialNo is null and p.phyEntryID>0")
 	Integer updatePhysicalStockEntryVanSerialNo();
+
+
+	PhysicalStockEntry findOne(Long phySEID);
 }

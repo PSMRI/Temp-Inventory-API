@@ -49,4 +49,7 @@ public interface StockAdjustmentItemDraftRepo extends CrudRepository<StockAdjust
 	@Query("UPDATE StockAdjustmentItemDraft c SET c.deleted = true WHERE c.stockAdjustmentDraftID = :id")
 	Integer updateDeleted(@Param("id")Long stockAdjustmentDraftID);
 
+
+	StockAdjustmentItemDraft findOne(Object saDraftItemMapID);
+
 }

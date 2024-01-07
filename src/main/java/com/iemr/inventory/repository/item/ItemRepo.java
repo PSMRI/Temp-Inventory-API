@@ -64,6 +64,8 @@ public interface ItemRepo extends CrudRepository<ItemMaster, Integer> {
 	List<ItemMaster> findByItemNameContainingAndItemIDIn(String itemname,Integer[] itemids);
 	
 	List<ItemMaster> findByItemIDIn(Integer[] itemids);
+
+	ItemMaster findOne(Integer itemMasterID);
 	
 	
 }

@@ -80,7 +80,7 @@ public class StockEntryServiceImpl implements StockEntryService {
 	public PhysicalStockEntry savePhysicalStockEntry(PhysicalStockEntry physicalStockEntry) throws Exception {
 		physicalStockEntry.setSyncFacilityID(physicalStockEntry.getFacilityID());
 		physicalStockEntryRepo.save(physicalStockEntry);
-		physicalStockEntry.getItemStockEntry().forEach(stock -> {
+		((Iterable<ItemStockEntry>) physicalStockEntry.getItemStockEntry()).forEach(stock -> {
 			stock.setEntryTypeID(physicalStockEntry.getPhyEntryID());
 			stock.setEntryType("physicalStockEntry");
 			stock.setQuantityInHand(stock.getQuantity());
@@ -90,7 +90,7 @@ public class StockEntryServiceImpl implements StockEntryService {
 			stock.setSyncFacilityID(physicalStockEntry.getFacilityID());
 		});
 
-		itemStockEntryRepo.save(physicalStockEntry.getItemStockEntry());
+		itemStockEntryRepo.saveAll(physicalStockEntry.getItemStockEntry());
 
 		physicalStockEntryRepo.updatePhysicalStockEntryVanSerialNo();
 		itemStockEntryRepo.updateItemStockEntryVanSerialNo();
@@ -281,7 +281,7 @@ public class StockEntryServiceImpl implements StockEntryService {
 			itemStockEntryup.setVanID(toVanID);
 			itemStockEntryupList.add(itemStockEntryup);
 		}
-		itemStockEntryRepo.save(itemStockEntryupList);
+		itemStockEntryRepo.saveAll(itemStockEntryupList);
 		itemStockEntryRepo.updateItemStockEntryVanSerialNo();
 		return (List<ItemStockEntry>) itemStockEntryupList;
 	}

@@ -1,6 +1,4 @@
-/*
-* AMRIT – Accessible Medical Records via Integrated Technology 
-* Integrated EHR (Electronic Health Records) Solution 
+/* Integrated EHR (Electronic Health Records) Solution 
 *
 * Copyright (C) "Piramal Swasthya Management and Research Institute" 
 *
@@ -19,16 +17,36 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see https://www.gnu.org/licenses/.
 */
-package com.iemr.inventory;
+
+/* package com.iemr.inventory;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 public class ServletInitializer extends SpringBootServletInitializer {
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(RoleMasterApplication.class);
-	}
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(RoleMasterApplication.class);
+    }
+} */
 
+package com.iemr.inventory;
+
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+
+public class ServletInitializer extends SpringBootServletInitializer {
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(RoleMasterApplication.class);
+    }
+
+    public void onStartup(ServletContext servletContext) throws ServletException {
+        // Your initialization code here
+    }
 }

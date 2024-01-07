@@ -58,6 +58,21 @@ public class ItemStockEntryinput {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
+
+	public Object getConsumptionID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getPatientIssueID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getStockTransferID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 	
 

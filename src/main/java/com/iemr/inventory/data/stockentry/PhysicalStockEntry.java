@@ -117,5 +117,20 @@ public class PhysicalStockEntry {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public Object getItemStockEntry() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getFacilityID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setSyncFacilityID(Object facilityID2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

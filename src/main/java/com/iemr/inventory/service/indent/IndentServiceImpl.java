@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -128,7 +129,7 @@ public class IndentServiceImpl implements IndentService{
 		indent.setProcessed("N");
 		Indent indentCreated = indentRepo.save(indent);
 		indentRepo.updateVanSerialNo(indentCreated.getIndentID(), indentCreated.getFromFacilityID());
-		indent.getIndentOrder().parallelStream().forEach(indentOrder -> {
+		((Collection<ItemfacilitymappingIndent>) indent.getIndentOrder()).parallelStream().forEach(indentOrder -> {
 			
 			indentOrder.setSyncFacilityID(indent.getSyncFacilityID());
 			indentOrder.setIndentID(indentCreated.getIndentID());
@@ -142,7 +143,7 @@ public class IndentServiceImpl implements IndentService{
 			indentOrder.setFromFacilityID(indentCreated.getFromFacilityID());
 		});
 		
-		indentCreated.setIndentOrder((List<IndentOrder>) indentOrderRepo.save(indent.getIndentOrder()));
+		indentCreated.setIndentOrder((List<IndentOrder>) indentOrderRepo.saveAll(indent.getIndentOrder()));
 		
 		indentOrderRepo.updateVanSerialNo();
 		
@@ -214,8 +215,9 @@ public class IndentServiceImpl implements IndentService{
 		
 		Indent indent=indentRepo.findOne(indentOrder.getIndentID());
 		
-		List<IndentOrder> list = indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(), indent.getSyncFacilityID());
-		
+		//List<IndentOrder> list = indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(), indent.getSyncFacilityID());
+		List<IndentOrder> list = (List<IndentOrder>) indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(), indent.getSyncFacilityID());
+
 		logger.info("getIndentOrderWorklist- End");
 		return list.toString();
 	}
@@ -310,7 +312,7 @@ public class IndentServiceImpl implements IndentService{
 				itemStockList.add(stockEntry);
 			}
 		}
-		itemStockEntryRepo.save(itemStockList);
+		itemStockEntryRepo.saveAll(itemStockList);
 		itemStockEntryRepo.updateItemStockEntryVanSerialNo();
 		logger.info("receiveIndent - End");
 		return "Received successfully";
@@ -323,7 +325,7 @@ public class IndentServiceImpl implements IndentService{
 		indent.setSyncFacilityID(indent.getFromFacilityID());
 		Indent indentCreated = indentRepo.save(indent);
 //		indentRepo.updateVanSerialNo();
-		indent.getIndentOrder().parallelStream().forEach(indentOrder -> {
+		((Collection<ItemfacilitymappingIndent>) indent.getIndentOrder()).parallelStream().forEach(indentOrder -> {
 			
 			if(indentOrder.getIndentOrderID()==null)
 			{
@@ -345,7 +347,7 @@ public class IndentServiceImpl implements IndentService{
 			}
 		});
 		
-		indentCreated.setIndentOrder((List<IndentOrder>) indentOrderRepo.save(indent.getIndentOrder()));
+		indentCreated.setIndentOrder((List<IndentOrder>) indentOrderRepo.saveAll(indent.getIndentOrder()));
 		
 		logger.info("Updating Indent - End");
 		return "Updated successfully";

@@ -140,4 +140,14 @@ public class ItemStockExit {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
+
+	public Integer getFacilityID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setExitTypeID(Object indentID) {
+		// TODO Auto-generated method stub
+		
+	}
 }
