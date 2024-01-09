@@ -40,4 +40,6 @@ public interface M_facilitytypeRepo extends CrudRepository<M_facilitytype, Integ
 	@Query("SELECT u FROM M_facilitytype u WHERE u.providerServiceMapID=:providerServiceMapID")
 	ArrayList<M_facilitytype> getAllFicilityData(@Param("providerServiceMapID") Integer providerServiceMapID);
 
+	M_facilitytype findOne(Integer facilityTypeID);
+
 }

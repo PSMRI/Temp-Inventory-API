@@ -23,6 +23,7 @@ package com.iemr.inventory.data.indent;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -157,6 +158,61 @@ public class ItemfacilitymappingIndent {
 	@Override
 	public String toString() {
 		return outputMapper.gson().toJson(this);
+	}
+
+	public void setSyncFacilityID(Object syncFacilityID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setIndentID(Object indentID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setVanID(Object vanID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCreatedDate(Timestamp timestamp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setParkingPlaceID(Object parkingPlaceID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setProcessed(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setFromFacilityID(Integer fromFacilityID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object getIndentOrderID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setStatus(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setProviderServiceMapID(Object providerServiceMapID2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCreatedBy(Object createdBy2) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

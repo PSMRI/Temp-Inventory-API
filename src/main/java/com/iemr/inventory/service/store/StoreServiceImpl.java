@@ -61,7 +61,7 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 
 	public List<M_Facility> addAllMainStore(List<M_Facility> maniStore) {
-		return (List<M_Facility>) mainStoreRepo.save(maniStore);
+		return (List<M_Facility>) mainStoreRepo.saveAll(maniStore);
 	}
 
 	@Override

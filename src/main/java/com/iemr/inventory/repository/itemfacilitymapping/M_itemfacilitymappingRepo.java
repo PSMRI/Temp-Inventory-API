@@ -71,6 +71,8 @@ public interface M_itemfacilitymappingRepo extends CrudRepository<M_itemfacility
 			  + " JOIN mi.itemMasterforFacilityMapping imfm  "
 			  + " WHERE mi.facilityID=:facilityID AND mi.deleted=0 AND imfm.discontinued=0 AND imfm.deleted=0 AND (imfm.itemName Like %:itemName% OR imfm.itemCode Like %:itemName%)  ORDER BY imfm.itemName ")
 	ArrayList<Object[]> getItemforStorePartialSearch(@Param("facilityID") Integer facilityID,@Param("itemName") String itemName);
+
+	M_itemfacilitymapping findOne(Integer itemStoreMapID);
 	
 	
 }

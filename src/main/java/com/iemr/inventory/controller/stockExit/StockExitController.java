@@ -192,7 +192,7 @@ public class StockExitController {
 
 		try {
 
-			T_PatientIssue getData = stockExitService.getPatientissueAllDetail(itemStockinput.getPatientIssueID());
+			T_PatientIssue getData = stockExitService.getPatientissueAllDetail((Long) itemStockinput.getPatientIssueID());
 
 			response.setResponse(getData.toString());
 

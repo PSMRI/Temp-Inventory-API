@@ -152,7 +152,7 @@ public class StockExitServiceImpl implements StockExitService {
 			action.setExitType(issueType);
 			action.setExitTypeID(issueID);
 		}
-		itemStockExitRepo.save(itemissueListUpdated);
+		itemStockExitRepo.saveAll(itemissueListUpdated);
 		itemStockExitRepo.updateVanSerialNo();
 		stockEntryService.updateStocks(itemissueListUpdated);
 		i = 1;
@@ -333,7 +333,7 @@ public class StockExitServiceImpl implements StockExitService {
 
 	@Override
 	public List<ItemStockExitMap> getpatientIssueItemLIst(ItemStockEntryinput itemStockinput) {
-		T_PatientIssue patissue = patientIssueRepo.findOne(itemStockinput.getPatientIssueID());
+		T_PatientIssue patissue = patientIssueRepo.findOne((Long) itemStockinput.getPatientIssueID());
 
 		return itemStockExitMapper.getItemStockExitMapList(
 				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(patissue.getVanSerialNo(),

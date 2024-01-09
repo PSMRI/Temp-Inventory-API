@@ -126,7 +126,7 @@ public class PatientReturnServiceImpl implements PatientReturnService{
 			
 			returnList.add(itemReturnEntry);
 		}
-		itemReturnEntryRepo.save(returnList);
+		itemReturnEntryRepo.saveAll(returnList);
 		logger.info("updateQuantityReturned - End");
 		return "Quantity updated successfully";
 	}

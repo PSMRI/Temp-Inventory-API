@@ -32,6 +32,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import com.iemr.inventory.data.stockadjustment.StockAdjustmentDraft;
 
@@ -49,15 +50,17 @@ public interface StockAdjustmentDraftRepo extends CrudRepository<StockAdjustment
 			  + " WHERE sad.stockAdjustmentDraftID = :id and sadi.deleted=false")
 	StockAdjustmentDraft getforedit(@Param("id")Long stockAdjustmentDraftID);
 
-	@Transactional
+	@TransactionalEventListener
 	@Modifying
 	@Query("UPDATE StockAdjustmentDraft c SET c.draftDesc = :draftDesc, c.modifiedBy = :modifiedBy,c.refNo=:refNo,c.draftName=:draftName WHERE c.stockAdjustmentDraftID = :id")
 	Integer updateStock(@Param("id") Long id, @Param("draftDesc") String draftDesc,@Param("draftName") String draftName,
 			@Param("refNo") String refNo,@Param("modifiedBy") String modifiedBy);
 
-	@Transactional
+	@TransactionalEventListener
 	@Modifying
 	@Query("UPDATE StockAdjustmentDraft c SET c.isCompleted = :isCompleted WHERE c.stockAdjustmentDraftID = :id")
 	Integer updatecompleted(@Param("id")Long stockAdjustmentDraftID,@Param("isCompleted") boolean b);
+
+	StockAdjustmentDraft findOne(Object stockAdjustmentDraftID);
 
 }

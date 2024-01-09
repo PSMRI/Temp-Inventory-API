@@ -43,7 +43,7 @@ public class SupplierServiceImpl implements SupplierInter{
 
 	@Override
 	public ArrayList<M_Supplier> createSupplier(List<M_Supplier> supplierData) {
-		ArrayList<M_Supplier>  savedData=(ArrayList<M_Supplier>) supplierRepo.save(supplierData);
+		ArrayList<M_Supplier>  savedData=(ArrayList<M_Supplier>) supplierRepo.saveAll(supplierData);
 		if(savedData.size()>0)
 			return savedData;
 		else
@@ -74,7 +74,7 @@ public class SupplierServiceImpl implements SupplierInter{
 
 	@Override
 	public ArrayList<M_Supplieraddress> createAddress(List<M_Supplieraddress> resList1) {
-		ArrayList<M_Supplieraddress>  data=(ArrayList<M_Supplieraddress>) m_SupplieraddressRepo.save(resList1);
+		ArrayList<M_Supplieraddress>  data=(ArrayList<M_Supplieraddress>) m_SupplieraddressRepo.saveAll(resList1);
 		return data;
 	}
 

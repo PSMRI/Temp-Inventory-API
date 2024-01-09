@@ -125,4 +125,55 @@ public class StockAdjustmentDraft {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
+
+	public Long getStockAdjustmentDraftID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public String getCreatedBy1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getCreatedBy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getRefNo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setIsCompleted(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public List<StockAdjustmentItemDraft> getStockAdjustmentItemDraft() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setStockAdjustmentItemDraft(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getDraftName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getDraftDesc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setStockAdjustmentItemDraftEdit(List<StockAdjustmentItemDraftEdit> s) {
+		// TODO Auto-generated method stub
+		
+	}
 }
