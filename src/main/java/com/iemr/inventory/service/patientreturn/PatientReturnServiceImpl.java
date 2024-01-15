@@ -46,10 +46,10 @@ public class PatientReturnServiceImpl implements PatientReturnService{
 
 	private static final Logger logger = LoggerFactory.getLogger(PatientReturnServiceImpl.class);
 	
-	@Autowired
+	@Autowired(required=false)
 	PatientReturnRepo patientReturnRepo;
 	
-	@Autowired
+	@Autowired(required=false)
 	ItemReturnEntryRepo itemReturnEntryRepo;
 	
 	@Override

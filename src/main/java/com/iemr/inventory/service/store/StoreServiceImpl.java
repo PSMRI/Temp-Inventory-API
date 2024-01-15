@@ -36,10 +36,10 @@ import com.iemr.inventory.utils.exception.IEMRException;
 @Service
 public class StoreServiceImpl implements StoreService {
 
-	@Autowired
+	@Autowired(required=false)
 	private MainStoreRepo mainStoreRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	private VanMasterRepository vanMasterRepository;
 
 	@Override

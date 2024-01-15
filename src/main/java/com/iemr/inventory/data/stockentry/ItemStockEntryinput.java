@@ -23,7 +23,7 @@ package com.iemr.inventory.data.stockentry;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Transient;
+import jakarta.persistence.Transient;
 
 import com.iemr.inventory.utils.mapper.OutputMapper;
 

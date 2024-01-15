@@ -21,10 +21,12 @@
 */
 package com.iemr.inventory.service.report;
 
+import org.springframework.stereotype.Service;
 import com.iemr.inventory.data.report.ItemStockEntryReport;
 import com.iemr.inventory.data.report.ItemStockExitReport;
 import com.iemr.inventory.data.report.PatientIssueExitReport;
 
+@Service
 public interface CRMReportService {
 
 	String getInwardStockReport(ItemStockEntryReport itemStockEntryReport);

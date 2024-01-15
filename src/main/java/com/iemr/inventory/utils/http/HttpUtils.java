@@ -26,7 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 
-import javax.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.MediaType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -130,8 +130,7 @@ public class HttpUtils {
 			try {
 				multiPart = new FormDataMultiPart();
 				is = new FileInputStream(data);
-				FormDataBodyPart filePart = new FormDataBodyPart("content", is,
-						MediaType.APPLICATION_OCTET_STREAM_TYPE);
+				FormDataBodyPart filePart = new FormDataBodyPart();
 				multiPart.bodyPart(filePart);
 				multiPart.field("docPath", data);
 				headers.add("Content-Type", MediaType.APPLICATION_JSON);

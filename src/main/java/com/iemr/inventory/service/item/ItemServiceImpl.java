@@ -40,19 +40,19 @@ import com.iemr.inventory.repository.itemfacilitymapping.M_itemfacilitymappingRe
 @Service
 public class ItemServiceImpl implements ItemService {
 
-	@Autowired
+	@Autowired(required=false)
 	private ItemRepo itemRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	private ItemCategoryRepo itemCategoryRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	private RouteRepo routeRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	private ItemFormRepo itemFormRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	M_itemfacilitymappingRepo itemfacilitymappingRepo;
 
 	@Override

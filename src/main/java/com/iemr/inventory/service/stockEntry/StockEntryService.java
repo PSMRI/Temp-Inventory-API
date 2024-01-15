@@ -24,6 +24,8 @@ package com.iemr.inventory.service.stockEntry;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.iemr.inventory.data.stockExit.ItemStockExit;
 import com.iemr.inventory.data.stockentry.AllocateItemMap;
 import com.iemr.inventory.data.stockentry.ItemMasterWithQuantityMap;
@@ -31,6 +33,7 @@ import com.iemr.inventory.data.stockentry.ItemStockEntry;
 import com.iemr.inventory.data.stockentry.PhysicalStockEntry;
 import com.iemr.inventory.utils.exception.InventoryException;
 
+@Service
 public interface StockEntryService {
 
 	PhysicalStockEntry savePhysicalStockEntry(PhysicalStockEntry physicalStockEntry) throws Exception;

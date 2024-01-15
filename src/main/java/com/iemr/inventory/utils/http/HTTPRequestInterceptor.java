@@ -32,9 +32,9 @@ import com.iemr.inventory.utils.response.OutputResponse;
 import com.iemr.inventory.utils.sessionobject.SessionObject;
 import com.iemr.inventory.utils.validator.Validator;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.ws.rs.core.MediaType;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.ws.rs.core.MediaType;
 import java.io.OutputStream;
 import java.io.PrintStream;
 

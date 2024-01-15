@@ -37,7 +37,8 @@ import com.iemr.inventory.utils.mapper.InputMapper;
 
 @Service
 public class DispenseAgainstRXimpl implements DispenseAgainstRX {
-	@Autowired
+	
+	@Autowired(required=false)
 	private PrescribedDrugDetailsRepo prescribedDrugDetailsRepo;
 
 	public String getPrescribedMedicines(String requestOBJ) {

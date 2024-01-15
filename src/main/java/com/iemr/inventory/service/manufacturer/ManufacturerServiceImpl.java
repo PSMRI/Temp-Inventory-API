@@ -33,7 +33,7 @@ import com.iemr.inventory.repo.manufacturer.ManufacturerRepo;
 @Service
 public class ManufacturerServiceImpl implements ManufacturerInter {
 	
-	@Autowired
+	@Autowired(required=false)
 	private ManufacturerRepo manufacturerRepo;
 
 	@Override

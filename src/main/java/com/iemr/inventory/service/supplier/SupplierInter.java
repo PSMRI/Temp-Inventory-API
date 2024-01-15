@@ -24,9 +24,12 @@ package com.iemr.inventory.service.supplier;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.iemr.inventory.data.supplier.M_Supplier;
 import com.iemr.inventory.data.supplier.M_Supplieraddress;
 
+@Service
 public interface SupplierInter {
 
 	ArrayList<M_Supplier> createSupplier(List<M_Supplier> supplierData);

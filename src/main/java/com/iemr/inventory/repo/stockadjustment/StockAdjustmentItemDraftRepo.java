@@ -21,7 +21,7 @@
 */
 package com.iemr.inventory.repo.stockadjustment;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

@@ -23,12 +23,12 @@ package com.iemr.inventory.data.visit;
 
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.utils.mapper.OutputMapper;
@@ -172,5 +172,22 @@ public class BenVisitDetail {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
+
+	public Object getBeneficiaryID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setBeneficiaryID(Object beneficiaryID2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Integer getProviderServiceMapID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 
 }

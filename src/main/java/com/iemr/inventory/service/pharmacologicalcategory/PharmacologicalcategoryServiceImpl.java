@@ -33,7 +33,7 @@ import com.iemr.inventory.repo.pharmacologicalcategory.PharmacologicalcategoryRe
 @Service
 public class PharmacologicalcategoryServiceImpl implements PharmacologicalcategoryInter {
 	
-	@Autowired
+	@Autowired(required=false)
 	private PharmacologicalcategoryRepo pharmacologicalcategoryRepo;
 
 	@Override

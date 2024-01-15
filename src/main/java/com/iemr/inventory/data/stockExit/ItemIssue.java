@@ -21,7 +21,7 @@
 */
 package com.iemr.inventory.data.stockExit;
 
-import javax.persistence.Transient;
+import jakarta.persistence.Transient;
 
 import com.iemr.inventory.utils.mapper.OutputMapper;
 

@@ -21,7 +21,7 @@
 */
 package com.iemr.inventory.data.stockExit;
 
-import javax.persistence.Transient;
+import jakarta.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.data.store.M_Facility;
@@ -52,5 +52,20 @@ public class StockTransferItem {
 	@Override
 	public String toString() {
 		return outputMapper.gson().toJson(this);
+	}
+
+	public String getItemName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Integer getTransferFromFacilityID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Integer getTransferToFacilityID() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

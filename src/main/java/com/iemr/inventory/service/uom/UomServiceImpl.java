@@ -33,7 +33,7 @@ import com.iemr.inventory.repo.uom.UomRepo;
 @Service
 public class UomServiceImpl implements UomInter {
 	
-	@Autowired
+	@Autowired(required=false)
 	private UomRepo uomRepo;
 
 	@Override

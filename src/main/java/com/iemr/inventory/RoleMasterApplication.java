@@ -22,14 +22,21 @@
 package com.iemr.inventory;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import com.iemr.inventory.utils.IEMRApplBeans;
 import com.iemr.inventory.utils.config.ConfigProperties;
 
+@Configuration
+@EnableAutoConfiguration
+@ComponentScan
 @SpringBootApplication
 @EnableCaching(proxyTargetClass = true)
 public class RoleMasterApplication {
@@ -53,4 +60,6 @@ public class RoleMasterApplication {
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		return builder.sources(new Class[] { RoleMasterApplication.class });
 	}
+	
+	
 }

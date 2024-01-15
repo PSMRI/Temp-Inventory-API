@@ -23,9 +23,12 @@ package com.iemr.inventory.service.visit;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.iemr.inventory.data.visit.BeneficiaryModel;
 import com.iemr.inventory.utils.exception.IEMRException;
 
+@Service
 public interface VisitService {
 	
 	BeneficiaryModel getVisitDetail(String BenregID,Integer providerservicemapID,String auth) throws Exception;

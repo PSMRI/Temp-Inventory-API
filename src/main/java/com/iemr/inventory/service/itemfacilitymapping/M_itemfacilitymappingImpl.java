@@ -42,16 +42,16 @@ import com.iemr.inventory.repository.itemfacilitymapping.V_fetchItemFacilityMapR
 @Service
 public class M_itemfacilitymappingImpl implements M_itemfacilitymappingInter {
 
-	@Autowired
+	@Autowired(required=false)
 	private V_fetchItemFacilityMapRepo v_fetchItemFacilityMapRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	private M_itemfacilitymappingRepo m_itemfacilitymappingRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	ItemStockEntryRepo itemStockEntryRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	ItemRepo itemRepo;
 
 	@Override

@@ -24,7 +24,7 @@ package com.iemr.inventory.data.visit;
 import java.sql.Timestamp;
 import java.util.List;
 
-import javax.persistence.Transient;
+import jakarta.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.gson.annotations.Expose;

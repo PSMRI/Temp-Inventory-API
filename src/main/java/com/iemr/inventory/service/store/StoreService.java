@@ -24,10 +24,14 @@ package com.iemr.inventory.service.store;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.iemr.inventory.data.store.M_Facility;
 import com.iemr.inventory.data.store.M_Van;
 import com.iemr.inventory.utils.exception.IEMRException;
 
+
+@Service
 public interface StoreService {
 
 	M_Facility createMainStore(M_Facility mainStoreFacility);

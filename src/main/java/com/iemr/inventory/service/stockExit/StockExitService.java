@@ -23,6 +23,8 @@ package com.iemr.inventory.service.stockExit;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.iemr.inventory.data.stockExit.ItemStockExit;
 import com.iemr.inventory.data.stockExit.ItemStockExitMap;
 import com.iemr.inventory.data.stockExit.StoreSelfConsumption;
@@ -31,6 +33,7 @@ import com.iemr.inventory.data.stockExit.T_StockTransfer;
 import com.iemr.inventory.data.stockentry.ItemStockEntryinput;
 import com.iemr.inventory.utils.exception.InventoryException;
 
+@Service
 public interface StockExitService {
 
 	Integer issuePatientDrugs(T_PatientIssue patientIssue) throws InventoryException;

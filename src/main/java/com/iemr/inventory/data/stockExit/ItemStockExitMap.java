@@ -23,7 +23,7 @@ package com.iemr.inventory.data.stockExit;
 
 import java.util.Date;
 
-import javax.persistence.Transient;
+import jakarta.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.utils.mapper.OutputMapper;

@@ -33,7 +33,7 @@ import com.iemr.inventory.repo.drugtype.DrugtypeRepo;
 @Service
 public class DrugtypeServiceImpl implements DrugtypeInter{
 	
-	@Autowired
+	@Autowired(required=false)
 	private DrugtypeRepo drugtypeRepo;
 
 	@Override

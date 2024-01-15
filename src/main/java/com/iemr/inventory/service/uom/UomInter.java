@@ -24,8 +24,11 @@ package com.iemr.inventory.service.uom;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.iemr.inventory.data.uom.M_Uom;
 
+@Service
 public interface UomInter {
 
 	ArrayList<M_Uom> createDrugtypeData(List<M_Uom> saveUomData);

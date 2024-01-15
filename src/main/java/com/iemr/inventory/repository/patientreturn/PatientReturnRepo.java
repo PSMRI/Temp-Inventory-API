@@ -25,7 +25,7 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -36,7 +36,10 @@ import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.stockExit.ItemReturnEntry;
 import com.iemr.inventory.data.stockExit.T_PatientIssue;
+import org.springframework.stereotype.Service;
 
+
+@Service
 @Repository
 @RestResource(exported = false)
 public interface PatientReturnRepo extends CrudRepository<T_PatientIssue, Integer>{ 

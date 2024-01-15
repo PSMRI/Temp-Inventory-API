@@ -55,22 +55,22 @@ import com.iemr.inventory.utils.exception.InventoryException;
 @Service
 public class StockEntryServiceImpl implements StockEntryService {
 
-	@Autowired
+	@Autowired(required=false)
 	PhysicalStockEntryRepo physicalStockEntryRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	ItemStockEntryRepo itemStockEntryRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	ItemService itemService;
 
-	@Autowired
+	@Autowired(required=false)
 	private M_itemfacilitymappingRepo m_itemfacilitymappingRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	ItemMasterWithQuantityMapper itemMasterWithQuantityMapper;
 
-	@Autowired
+	@Autowired(required=false)
 	ItemBatchListMap itemBatchListMap;
 
 	private static final Logger logger = LoggerFactory.getLogger(StockEntryServiceImpl.class);

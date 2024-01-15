@@ -33,7 +33,7 @@ import com.iemr.inventory.repository.facilitytype.M_facilitytypeRepo;
 @Service
 public class M_facilitytypeServiceImpl implements M_facilitytypeInter{
 
-	@Autowired
+	@Autowired(required=false)
 	private M_facilitytypeRepo m_facilitytypeRepo;
 
 	@Override

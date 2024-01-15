@@ -51,22 +51,22 @@ import com.iemr.inventory.utils.exception.InventoryException;
 @Service
 public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 
-	@Autowired
+	@Autowired(required=false)
 	StockAdjustmentDraftRepo stockAdjustmentDraftRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	StockAdjustmentItemDraftRepo stockAdjustmentItemDraftRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	StockAdjustmentRepo stockAdjustmentRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	StockAdjustmentItemRepo stockAdjustmentItemRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	ItemStockEntryRepo itemStockEntryRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	StockAdjustmentItemDraftMapper stockAdjustmentItemDraftMapper;
 
 	@Override

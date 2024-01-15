@@ -21,8 +21,11 @@
 */
 package com.iemr.inventory.service.stockadjustment;
 
+import org.springframework.stereotype.Service;
+
 import com.iemr.inventory.data.stockadjustment.StockAdjustmentDraft;
 
+@Service
 public interface StockAdjustmentService {
 
 	StockAdjustmentDraft saveDraft(StockAdjustmentDraft stockAdjustmentDraft);

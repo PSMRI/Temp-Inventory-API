@@ -47,10 +47,10 @@ import com.iemr.inventory.utils.response.OutputResponse;
 @Service
 public class VisitServiceImpl implements VisitService {
 
-	@Autowired
+	@Autowired(required=false)
 	VisitRepo visitRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	BeneficiaryFlowStatusRepo beneficiaryFlowStatusRepo;
 
 	Logger logger = LoggerFactory.getLogger(this.getClass().getName());

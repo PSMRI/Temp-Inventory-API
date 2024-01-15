@@ -22,27 +22,45 @@
 package com.iemr.inventory.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-//import com.iemr.common.config.BlockingMethodInterceptor;
 import com.iemr.inventory.utils.http.HTTPRequestInterceptor;
+
+//@Repository
+@Component
+@Configuration
+@EnableAutoConfiguration
+public class InterceptorConfig implements WebMvcConfigurer {
+
+    @Autowired(required = false)
+    private HTTPRequestInterceptor requestInterceptor;
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new BlockingMethodInterceptor()).addPathPatterns("/**");
+
+        // Add your HTTPRequestInterceptor if available
+        if (requestInterceptor != null) {
+            registry.addInterceptor(requestInterceptor).addPathPatterns("/**");
+        }
+    }
+}
+
+/* 
 
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
-
-    @Autowired
+    @Autowired(required=false)
     HTTPRequestInterceptor requestInterceptor;
-
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(requestInterceptor);
-//    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new BlockingMethodInterceptor())
                 .addPathPatterns("/**");
     }
-}
+} */

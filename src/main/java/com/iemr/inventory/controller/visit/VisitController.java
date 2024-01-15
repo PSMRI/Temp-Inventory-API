@@ -23,11 +23,12 @@ package com.iemr.inventory.controller.visit;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,6 +42,7 @@ import com.iemr.inventory.utils.response.OutputResponse;
 
 import io.swagger.annotations.ApiOperation;
 
+@Controller
 @RestController
 public class VisitController {
 

@@ -23,16 +23,16 @@ package com.iemr.inventory.data.items;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.data.manufacturer.M_Manufacturer;
@@ -202,5 +202,50 @@ public class ItemMaster {
 		// TODO Auto-generated constructor stub
 		this.itemID=itemID;
 		this.itemName=ItemName;
+	}
+
+	public Integer getItemID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getItemDesc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setItemDesc(Object itemDesc2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object getModifiedBy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setModifiedBy(Object modifiedBy2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Integer getProviderServiceMapID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Integer getItemCategoryID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getItemName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Integer getFacilityID() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

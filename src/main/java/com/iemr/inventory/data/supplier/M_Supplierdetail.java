@@ -23,8 +23,8 @@ package com.iemr.inventory.data.supplier;
 
 import java.sql.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 
 /*@Entity

@@ -35,10 +35,10 @@ import com.iemr.inventory.repo.supplier.SupplierRepo;
 @Service
 public class SupplierServiceImpl implements SupplierInter{
 	
-	@Autowired
+	@Autowired(required=false)
 	private M_SupplieraddressRepo m_SupplieraddressRepo;
 	
-	@Autowired
+	@Autowired(required=false)
 	private SupplierRepo supplierRepo;
 
 	@Override

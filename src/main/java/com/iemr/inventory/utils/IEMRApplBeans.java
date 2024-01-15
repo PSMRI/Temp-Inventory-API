@@ -70,8 +70,8 @@ public class IEMRApplBeans {
 		return new RedisStorage();
 	}
 
-	private @Value("${spring.redis.host}") String redisHost;
-	private @Value("${spring.redis.port}") int redisPort;
+	private @Value("${spring.data.redis.host}") String redisHost;
+	private @Value("${spring.data.redis.port}") int redisPort;
 
 	@Bean
 	public LettuceConnectionFactory connectionFactory() {

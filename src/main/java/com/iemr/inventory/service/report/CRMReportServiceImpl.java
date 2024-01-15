@@ -51,10 +51,10 @@ import java.math.BigDecimal;
 @Service
 public class CRMReportServiceImpl implements CRMReportService {
 
-	@Autowired
+	@Autowired(required=false)
 	ItemStockReportRepo itemStockReportRepo;
 
-	@Autowired
+	@Autowired(required=false)
 	InventoryReportMapper mapper;
 
 	@Override
