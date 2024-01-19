@@ -88,7 +88,7 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 			stockAdjustmentDraftRepo.updateStock(stockAdjustmentDraft.getStockAdjustmentDraftID(),
 					stockAdjustmentDraft.getDraftDesc(), stockAdjustmentDraft.getDraftName(),
 					stockAdjustmentDraft.getRefNo(), stockAdjustmentDraft.getCreatedBy());
-			stockdraft = stockAdjustmentDraftRepo.findOne(stockAdjustmentDraft.getStockAdjustmentDraftID());
+			stockdraft = stockAdjustmentDraftRepo.findById(stockAdjustmentDraft.getStockAdjustmentDraftID()).get();
 			stockAdjustmentItemDraftRepo.updateDeleted(stockAdjustmentDraft.getStockAdjustmentDraftID());
 		}
 
@@ -96,7 +96,7 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 		itemdraft.parallelStream().forEach(action -> {
 			if (action.getSADraftItemMapID() != null) {
 				StockAdjustmentItemDraft stockAdjustmentItemDraft = stockAdjustmentItemDraftRepo
-						.findOne(action.getSADraftItemMapID());
+						.findById(action.getSADraftItemMapID()).get();
 				action.setDeleted(false);
 				action.setModifiedBy(action.getCreatedBy());
 				action.setCreatedDate(stockAdjustmentItemDraft.getCreatedDate());
@@ -197,7 +197,7 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 	}
 
 	public StockAdjustment getforeditStockAjustmentTransaction(Long stockAdjustmentID) {
-		StockAdjustment stock = stockAdjustmentRepo.findOne(stockAdjustmentID);
+		StockAdjustment stock = stockAdjustmentRepo.findById(stockAdjustmentID).get();
 		
 		stock.setStockAdjustmentItem(stockAdjustmentItemRepo.findByStockAdjustmentIDAndSyncFacilityID(stock.getVanSerialNo(),stock.getSyncFacilityID()));
 		

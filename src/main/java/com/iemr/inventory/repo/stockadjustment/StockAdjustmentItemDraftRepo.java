@@ -37,19 +37,20 @@ import com.iemr.inventory.data.stockadjustment.StockAdjustmentItemDraft;
 public interface StockAdjustmentItemDraftRepo extends CrudRepository<StockAdjustmentItemDraft, Long> {
 
 
-	@Query(" SELECT sadi "
+	@Query(value=" SELECT sadi "
 			  + " FROM StockAdjustmentItemDraft sadi  "
 			  + " JOIN sadi.itemStockEntry ise "
-			  + " WHERE sadi.sADraftItemMapID =:id")
+			  + " WHERE sadi.sADraftItemMapID =:id",nativeQuery=true)
 	StockAdjustmentItemDraft getforedit(@Param("id")Long id);
 
 
 	@Transactional
 	@Modifying
-	@Query("UPDATE StockAdjustmentItemDraft c SET c.deleted = true WHERE c.stockAdjustmentDraftID = :id")
+	@Query(value="UPDATE StockAdjustmentItemDraft c SET c.deleted = true WHERE c.stockAdjustmentDraftID = :id",nativeQuery=true)
 	Integer updateDeleted(@Param("id")Long stockAdjustmentDraftID);
 
 
-	StockAdjustmentItemDraft findOne(Object saDraftItemMapID);
+	//StockAdjustmentItemDraft findBySADraftItemMapID(Long saDraftItemMapID);
+
 
 }

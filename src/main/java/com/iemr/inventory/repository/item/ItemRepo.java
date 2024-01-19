@@ -23,6 +23,7 @@ package com.iemr.inventory.repository.item;
 
 import java.util.List;
 
+import jakarta.mail.FetchProfile.Item;
 import jakarta.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -53,7 +54,7 @@ public interface ItemRepo extends CrudRepository<ItemMaster, Integer> {
 	Integer discontinueItemMaster(@Param("itemid")Integer id,@Param("flag")Boolean flag);
    
 	
-	@Query("SELECT u FROM ItemMaster u WHERE u.providerServiceMapID=:providerServiceMapID AND u.itemCategoryID=:itemCategoryID AND deleted=0")
+	@Query(value="SELECT u FROM ItemMaster u WHERE u.providerServiceMapID=:providerServiceMapID AND u.itemCategoryID=:itemCategoryID AND deleted=0",nativeQuery=true)
 	List<ItemMaster> getItemMasters(@Param("providerServiceMapID")Integer providerServiceMapID,@Param("itemCategoryID") Integer itemCategoryID);
 
 	@Query("select u from ItemMaster u  where u.itemID=:itemid")
@@ -65,7 +66,5 @@ public interface ItemRepo extends CrudRepository<ItemMaster, Integer> {
 	
 	List<ItemMaster> findByItemIDIn(Integer[] itemids);
 
-	ItemMaster findOne(Integer itemMasterID);
-	
 	
 }

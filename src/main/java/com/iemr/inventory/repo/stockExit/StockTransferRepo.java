@@ -50,5 +50,6 @@ public interface StockTransferRepo  extends  CrudRepository<T_StockTransfer,Long
 	@Query("update T_StockTransfer p set p.vanSerialNo=p.stockTransferID where p.vanSerialNo is null and p.stockTransferID>0")
 	Integer updateVanSerialNo();
 
-	T_StockTransfer findOne(Object stockTransferID);
+	T_StockTransfer findByStockTransferID(Long stockTransferID);
+
 }

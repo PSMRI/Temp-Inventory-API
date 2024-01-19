@@ -44,5 +44,7 @@ public interface  StoreSelfConsumptionRepo extends  CrudRepository<StoreSelfCons
 	@Query("update StoreSelfConsumption p set p.vanSerialNo=p.consumptionID where p.vanSerialNo is null and p.consumptionID>0")
 	Integer updateVanSerialNo();
 
-	StoreSelfConsumption findOne(Object consumptionID);
+	StoreSelfConsumption findByConsumptionID(Long consumptionID);
+
+
 }

@@ -53,5 +53,4 @@ public interface PatientIssueRepo extends CrudRepository<T_PatientIssue, Long> {
 	@Query("update T_PatientIssue p set p.vanSerialNo=p.patientIssueID where p.vanSerialNo is null and p.patientIssueID>0")
 	Integer updateVanSerialNo();
 
-	T_PatientIssue findOne(Long patientissueID);
 }

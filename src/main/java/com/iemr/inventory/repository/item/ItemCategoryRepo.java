@@ -47,5 +47,4 @@ public interface ItemCategoryRepo extends CrudRepository<M_ItemCategory, Integer
 	@Query("UPDATE M_ItemCategory c SET c.issueType = :issuetype WHERE c.itemCategoryID = :id")
 	Integer updateIssueConfig(@Param("id")Integer id,@Param("issuetype")String issuetype);
 
-	M_ItemCategory findOne(Integer catID);
 }

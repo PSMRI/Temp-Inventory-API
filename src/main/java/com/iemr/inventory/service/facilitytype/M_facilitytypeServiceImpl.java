@@ -50,7 +50,7 @@ public class M_facilitytypeServiceImpl implements M_facilitytypeInter{
 
 	@Override
 	public M_facilitytype editAllFicilityData(Integer facilityTypeID) {
-		M_facilitytype data=m_facilitytypeRepo.findOne(facilityTypeID); 
+		M_facilitytype data=m_facilitytypeRepo.findByFacilityTypeID(facilityTypeID); 
 		return data;
 	}
 

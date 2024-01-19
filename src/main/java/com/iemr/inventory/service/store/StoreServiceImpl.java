@@ -50,7 +50,7 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	public M_Facility getMainStore(Integer mainStoreID) {
-		return mainStoreRepo.findOne(mainStoreID);
+		return mainStoreRepo.findById(mainStoreID).get();
 	}
 
 	@Override
@@ -87,7 +87,8 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public M_Facility deleteStore(M_Facility facility) throws IEMRException {
 
-		M_Facility stores = mainStoreRepo.findOne(facility.getFacilityID());
+		//M_Facility stores = mainStoreRepo.findById(facility.getFacilityID());
+		M_Facility stores = mainStoreRepo.findById(facility.getFacilityID()).get();
 		if (stores != null && facility.getDeleted() != null) {
 			if (facility.getDeleted()) {
 				List<M_Facility> childStore = mainStoreRepo.findByMainFacilityIDAndDeleted(facility.getFacilityID(),

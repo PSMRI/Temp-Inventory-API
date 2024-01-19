@@ -22,6 +22,7 @@
 package com.iemr.inventory.repository.facilitytype;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -40,6 +41,6 @@ public interface M_facilitytypeRepo extends CrudRepository<M_facilitytype, Integ
 	@Query("SELECT u FROM M_facilitytype u WHERE u.providerServiceMapID=:providerServiceMapID")
 	ArrayList<M_facilitytype> getAllFicilityData(@Param("providerServiceMapID") Integer providerServiceMapID);
 
-	M_facilitytype findOne(Integer facilityTypeID);
+	M_facilitytype findByFacilityTypeID(Integer facilityTypeID);
 
 }

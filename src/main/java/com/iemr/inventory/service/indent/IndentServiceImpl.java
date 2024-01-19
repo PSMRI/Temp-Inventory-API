@@ -117,7 +117,6 @@ public class IndentServiceImpl implements IndentService{
 		return itemfacilitymappingIndent;
 	}
 
-	
 	@Override
 	public String createIndentRequest(Indent indent) {
 		logger.info("Creating Indent - Start");
@@ -129,8 +128,7 @@ public class IndentServiceImpl implements IndentService{
 		indent.setProcessed("N");
 		Indent indentCreated = indentRepo.save(indent);
 		indentRepo.updateVanSerialNo(indentCreated.getIndentID(), indentCreated.getFromFacilityID());
-		((Collection<ItemfacilitymappingIndent>) indent.getIndentOrder()).parallelStream().forEach(indentOrder -> {
-			
+		indent.getIndentOrder().parallelStream().forEach(indentOrder -> {		   	
 			indentOrder.setSyncFacilityID(indent.getSyncFacilityID());
 			indentOrder.setIndentID(indentCreated.getIndentID());
 			indentOrder.setVanID(indentCreated.getVanID());
@@ -151,6 +149,8 @@ public class IndentServiceImpl implements IndentService{
 		logger.info("Creating Indent - End");
 		return indentCreated.toString();
 	}
+	
+	
 
 	@Override
 	public String getIndentHistory(Indent indent) {
@@ -166,7 +166,7 @@ public class IndentServiceImpl implements IndentService{
 	public String getOrdersByIndentID(IndentOrder indentOrder) {
 		logger.info("getOrdersByIndentID- Start");
 		
-		Indent indent=indentRepo.findOne(indentOrder.getIndentID());
+		Indent indent=indentRepo.findByIndentID(indentOrder.getIndentID());
 		
 		System.out.println();
 		List<IndentOrder> list = indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(), indent.getSyncFacilityID());
@@ -213,7 +213,7 @@ public class IndentServiceImpl implements IndentService{
 	public String getIndentOrderWorklist(IndentOrder indentOrder) {
 		logger.info("getIndentOrderWorklist- Start");
 		
-		Indent indent=indentRepo.findOne(indentOrder.getIndentID());
+		Indent indent=indentRepo.findByIndentID(indentOrder.getIndentID());
 		
 		//List<IndentOrder> list = indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(), indent.getSyncFacilityID());
 		List<IndentOrder> list = (List<IndentOrder>) indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(), indent.getSyncFacilityID());
@@ -227,8 +227,7 @@ public class IndentServiceImpl implements IndentService{
 		logger.info("issueIndent - Start");
 		List<IndentIssue> list= Arrays.asList(array);
 
-		Indent indent=indentRepo.findOne(list.get(0).getIndentID());
-		
+		Indent indent=indentRepo.findByIndentID(list.get(0).getIndentID());
 		indentOrderRepo.issueIndent(list.get(0).getAction(), indent.getVanSerialNo(), indent.getSyncFacilityID(),list.get(0).getRejectedReason());
 		indentOrderRepo.issueIndentOrder(list.get(0).getAction(), indent.getVanSerialNo(), indent.getSyncFacilityID());
 		
@@ -273,7 +272,7 @@ public class IndentServiceImpl implements IndentService{
 	public String cancelIndentOrder(Indent indent1) {
 		logger.info("cancelIndentOrder - Start");
 		
-		Indent indent=indentRepo.findOne(indent1.getIndentID());
+		Indent indent=indentRepo.findByIndentID(indent1.getIndentID());
 		
 		indentOrderRepo.cancelIndent(indent.getIndentID());
 		indentOrderRepo.cancelIndentOrder(indent.getVanSerialNo(), indent.getSyncFacilityID());
@@ -285,7 +284,7 @@ public class IndentServiceImpl implements IndentService{
 	public String receiveIndent(Indent indent) {
 		logger.info("receiveIndent - Start");
 		
-		Indent idn=indentRepo.findOne(indent.getIndentID());
+		Indent idn=indentRepo.findByIndentID(indent.getIndentID());
 		
 		indentOrderRepo.acceptIndent(indent.getIndentID(), indent.getFromFacilityID());
 		indentOrderRepo.acceptIndentOrder(idn.getVanSerialNo(), idn.getSyncFacilityID());
@@ -324,8 +323,8 @@ public class IndentServiceImpl implements IndentService{
 		
 		indent.setSyncFacilityID(indent.getFromFacilityID());
 		Indent indentCreated = indentRepo.save(indent);
-//		indentRepo.updateVanSerialNo();
-		((Collection<ItemfacilitymappingIndent>) indent.getIndentOrder()).parallelStream().forEach(indentOrder -> {
+		//indentRepo.updateVanSerialNo();
+		indent.getIndentOrder().parallelStream().forEach(indentOrder -> {
 			
 			if(indentOrder.getIndentOrderID()==null)
 			{
@@ -352,4 +351,5 @@ public class IndentServiceImpl implements IndentService{
 		logger.info("Updating Indent - End");
 		return "Updated successfully";
 	}
+
 }

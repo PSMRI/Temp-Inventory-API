@@ -36,3 +36,6 @@ mvnw.cmd
 debug.log
 mvnw
 src/main/environment/common_local.properties
+#local logs
+logs/
+app.log 

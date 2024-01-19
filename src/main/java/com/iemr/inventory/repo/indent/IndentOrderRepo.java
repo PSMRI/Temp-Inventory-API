@@ -31,8 +31,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.event.TransactionalEventListener;
-
 import com.iemr.inventory.data.indent.Indent;
 import com.iemr.inventory.data.indent.IndentIssue;
 import com.iemr.inventory.data.indent.IndentOrder;
@@ -49,38 +47,38 @@ public interface IndentOrderRepo extends CrudRepository<IndentOrder, Long>{
 			+ "where indentOrder.indentID = :indentID and indentOrder.syncFacilityID =:fromFacilityID and indentOrder.deleted =false order by indentOrder.createdDate desc")
 	List<IndentOrder> getOrdersByIndentID(@Param("indentID") Long indentID, @Param("fromFacilityID") Object object);
 	
-	@TransactionalEventListener
+	@Transactional
 	@Modifying
 	@Query("UPDATE Indent set status = :action , processed = 'U', statusReason=:reason where vanSerialNo = :vanSerialNo and syncFacilityID = :fromFacilityID")
 	public int issueIndent(@Param("action") String action, @Param("vanSerialNo") Long vanSerialNo ,@Param("fromFacilityID") Object object,@Param("reason") String reason);
 	
-	@TransactionalEventListener
+	@Transactional
 	@Modifying
 	@Query("UPDATE IndentOrder set status = :action , processed = 'U' where indentID = :indentID and syncFacilityID = :fromFacilityID and deleted =false")
 	public int issueIndentOrder(@Param("action") String action, @Param("indentID") Long indentID ,@Param("fromFacilityID") Object object);
 	
-	@TransactionalEventListener
+	@Transactional
 	@Modifying
 	@Query("UPDATE Indent set status = 'Cancelled' , deleted = true , processed = 'U' where indentID = :indentID")
 	public int cancelIndent(@Param("indentID") Long indentID);
 	
-	@TransactionalEventListener
+	@Transactional
 	@Modifying
 	@Query("UPDATE IndentOrder set status = 'Cancelled' , deleted = true , processed = 'U' where indentID = :indentID and syncFacilityID =:fromFacilityID and deleted =false")
 	public int cancelIndentOrder(@Param("indentID") Long indentID, @Param("fromFacilityID") Object object);
 	
-	@TransactionalEventListener
+	@Transactional
 	@Modifying
 	@Query(value="UPDATE ItemStockEntry itemStockEntry set itemStockEntry.quantityInHand = itemStockEntry.quantityInHand - :issuedQuantity "
 			+ "where itemStockEntry.itemStockEntryID =:itemStockEntryID and itemStockEntry.facilityID =:facilityID")
 	int updateQuantityInStock(@Param("issuedQuantity") Integer issuedQuantity, @Param("itemStockEntryID") Long itemStockEntryID,@Param("facilityID") Integer facilityID);
 	
-	@TransactionalEventListener
+	@Transactional
 	@Modifying
 	@Query("UPDATE Indent set status = 'Closed' where indentID = :indentID and fromFacilityID = :fromFacilityID")
 	public int acceptIndent(@Param("indentID") Long indentID, @Param("fromFacilityID") Integer fromFacilityID);
 	
-	@TransactionalEventListener
+	@Transactional
 	@Modifying
 	@Query("UPDATE IndentOrder set status = 'Closed' where indentOrderID = :indentOrderID and syncFacilityID = :fromFacilityID and deleted =false")
 	public int acceptIndentOrder(@Param("indentOrderID") Long indentOrderID,  @Param("fromFacilityID") Object object);
@@ -89,17 +87,11 @@ public interface IndentOrderRepo extends CrudRepository<IndentOrder, Long>{
 			+ "where indentIssue.indentID = :indentID and indentIssue.syncFacilityID = :fromFacilityID")
 	List<IndentIssue> getIndentIssued(@Param("indentID") Long indentID,@Param("fromFacilityID") Integer fromFacilityID);
 
-	@TransactionalEventListener
+	@Transactional
 	@Modifying
 	@Query("update IndentOrder p set p.vanSerialNo=p.indentOrderID where p.vanSerialNo is null and p.indentOrderID>0")
 	void updateVanSerialNo();
 
-	List<IndentOrder> saveAll(Object indentOrder);
 
-	void cancelIndent(Object indentID);
 
-	void acceptIndent(Object indentID, Integer fromFacilityID);
-	
-	
-	
 }

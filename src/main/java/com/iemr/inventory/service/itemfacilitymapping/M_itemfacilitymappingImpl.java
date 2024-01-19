@@ -63,7 +63,7 @@ public class M_itemfacilitymappingImpl implements M_itemfacilitymappingInter {
 
 	@Override
 	public M_itemfacilitymapping editdata(Integer itemStoreMapID) {
-		M_itemfacilitymapping data = m_itemfacilitymappingRepo.findOne(itemStoreMapID);
+		M_itemfacilitymapping data = m_itemfacilitymappingRepo.findById(itemStoreMapID).get();
 		return data;
 	}
 

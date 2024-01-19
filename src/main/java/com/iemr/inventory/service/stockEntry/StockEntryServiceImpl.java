@@ -340,7 +340,7 @@ public class StockEntryServiceImpl implements StockEntryService {
 
 	public List<ItemStockEntry> getPhysicalStockEntryItems(Long phySEID) {
 
-		PhysicalStockEntry pse = physicalStockEntryRepo.findOne(phySEID);
+		PhysicalStockEntry pse = physicalStockEntryRepo.findById(phySEID).get();
 
 		return itemStockEntryRepo.findByEntryTypeIDAndSyncFacilityIDAndEntryType(pse.getVanSerialNo(),
 				pse.getSyncFacilityID(), "physicalStockEntry");

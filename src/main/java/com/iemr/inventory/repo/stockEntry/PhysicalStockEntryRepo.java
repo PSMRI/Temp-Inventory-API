@@ -54,5 +54,4 @@ public interface PhysicalStockEntryRepo  extends CrudRepository<PhysicalStockEnt
 	Integer updatePhysicalStockEntryVanSerialNo();
 
 
-	PhysicalStockEntry findOne(Long phySEID);
 }

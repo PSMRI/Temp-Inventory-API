@@ -43,15 +43,15 @@ public interface MainStoreRepo extends CrudRepository<M_Facility, Integer>{
 	
 	List<M_Facility> findByProviderServiceMapID(Integer providerServiceMapID);
     
-	@Query("SELECT u FROM M_Facility u WHERE u.providerServiceMapID=:providerServiceMapID AND u.isMainFacility=:isMainFacility AND deleted=0")
+	@Query(value="SELECT u FROM M_Facility u WHERE u.providerServiceMapID=:providerServiceMapID AND u.isMainFacility=:isMainFacility AND deleted=0",nativeQuery=true)
 	ArrayList<M_Facility> getAllMainFacility(@Param("providerServiceMapID")Integer providerServiceMapID,@Param("isMainFacility") Boolean isMainFacility);
 	
 	
-	@Query("SELECT u FROM M_Facility u WHERE u.providerServiceMapID=:providerServiceMapID AND u.isMainFacility=:isMainFacility AND u.mainFacilityID=:mainFacilityID AND deleted=0")
+	@Query(value="SELECT u FROM M_Facility u WHERE u.providerServiceMapID=:providerServiceMapID AND u.isMainFacility=:isMainFacility AND u.mainFacilityID=:mainFacilityID AND deleted=0",nativeQuery=true)
 	ArrayList<M_Facility> getAllMainFacility(@Param("providerServiceMapID")Integer providerServiceMapID,@Param("isMainFacility") Boolean isMainFacility,
 			@Param("mainFacilityID") Integer mainFacilityID);
 
-	@Query("SELECT u FROM M_Facility u WHERE u.providerServiceMapID=:providerServiceMapID AND u.mainFacilityID=:mainFacilityID AND deleted=0")
+	@Query(value="SELECT u FROM M_Facility u WHERE u.providerServiceMapID=:providerServiceMapID AND u.mainFacilityID=:mainFacilityID AND deleted=0",nativeQuery=true)
 	ArrayList<M_Facility> getChildFacility(@Param("providerServiceMapID")Integer providerServiceMapID,@Param("mainFacilityID") Integer mainFacilityID);
 	
 	
@@ -62,7 +62,6 @@ public interface MainStoreRepo extends CrudRepository<M_Facility, Integer>{
 	
 	List<M_Facility> findByProviderServiceMapIDAndDeleted(Integer pp,Boolean delete);
 
-	M_Facility findOne(Integer mainStoreID);
 	
 //	@Transactional
 //	@Modifying

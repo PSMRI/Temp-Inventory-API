@@ -152,54 +152,6 @@ public class Indent implements Serializable {
 		return outputMapper.gson().toJson(this);
 	}
 
-	public void setIndentOrder(List<IndentOrder> save) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Object getIndentOrder() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object getIndentID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getFromFacilityID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object getSyncFacilityID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object getVanID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object getParkingPlaceID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object getProviderServiceMapID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Object getCreatedBy() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Long getVanSerialNo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 }

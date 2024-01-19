@@ -123,7 +123,7 @@ public class ItemServiceImpl implements ItemService {
 	@Override
 	public ItemMaster getItemMasterByID(Integer itemMasterID) {
 
-		return itemRepo.findOne(itemMasterID);
+		return itemRepo.findById(itemMasterID).get();
 	}
 
 	public ItemMaster getItemMasterCatByID(Integer itemMasterID) {
@@ -164,7 +164,7 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public M_ItemCategory getItemCategory(Integer catID) {
-		return itemCategoryRepo.findOne(catID);
+		return itemCategoryRepo.findById(catID).get();
 	}
 
 	@Override

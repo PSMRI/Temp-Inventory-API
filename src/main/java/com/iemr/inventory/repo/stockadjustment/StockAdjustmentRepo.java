@@ -46,5 +46,4 @@ public interface StockAdjustmentRepo extends CrudRepository<StockAdjustment, Lon
 	@Query("update StockAdjustment p set p.vanSerialNo=p.stockAdjustmentID where p.vanSerialNo is null and p.stockAdjustmentID>0")
 	Integer updateVanSerialNo();
 
-	StockAdjustment findOne(Long stockAdjustmentID);
 }

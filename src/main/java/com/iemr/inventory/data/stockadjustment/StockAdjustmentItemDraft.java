@@ -128,7 +128,7 @@ public class StockAdjustmentItemDraft {
 		return outputMapper.gson().toJson(this);
 	}
 
-	public Object getSADraftItemMapID() {
+	public Long getSADraftItemMapID() {
 		// TODO Auto-generated method stub
 		return null;
 	}

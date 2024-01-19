@@ -209,25 +209,16 @@ public class ItemMaster {
 		return null;
 	}
 
-	public Object getItemDesc() {
+	public String getItemDesc() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void setItemDesc(Object itemDesc2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Object getModifiedBy() {
+	public String getModifiedBy() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public void setModifiedBy(Object modifiedBy2) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public Integer getProviderServiceMapID() {
 		// TODO Auto-generated method stub

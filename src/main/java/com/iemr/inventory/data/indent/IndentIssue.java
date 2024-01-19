@@ -166,7 +166,7 @@ public class IndentIssue {
 		return outputMapper.gson().toJson(this);
 	}
 
-	public Object getIndentID() {
+	public Long getIndentID() {
 		// TODO Auto-generated method stub
 		return null;
 	}

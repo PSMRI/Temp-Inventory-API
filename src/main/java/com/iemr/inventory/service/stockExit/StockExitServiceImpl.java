@@ -325,7 +325,7 @@ public class StockExitServiceImpl implements StockExitService {
 
 	@Override
 	public List<ItemStockExitMap> getstoreSelfConsumptionItemList(ItemStockEntryinput itemStockinput) {
-		StoreSelfConsumption ss = storeSelfConsumptionRepo.findOne(itemStockinput.getConsumptionID());
+		StoreSelfConsumption ss = storeSelfConsumptionRepo.findByConsumptionID(itemStockinput.getConsumptionID());
 		return itemStockExitMapper.getItemStockExitMapList(
 				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(ss.getVanSerialNo(),
 						ss.getSyncFacilityID(), "StoreSelfConsumption"));
@@ -333,7 +333,7 @@ public class StockExitServiceImpl implements StockExitService {
 
 	@Override
 	public List<ItemStockExitMap> getpatientIssueItemLIst(ItemStockEntryinput itemStockinput) {
-		T_PatientIssue patissue = patientIssueRepo.findOne((Long) itemStockinput.getPatientIssueID());
+		T_PatientIssue patissue = patientIssueRepo.findById((Long) itemStockinput.getPatientIssueID()).get();
 
 		return itemStockExitMapper.getItemStockExitMapList(
 				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(patissue.getVanSerialNo(),
@@ -342,7 +342,7 @@ public class StockExitServiceImpl implements StockExitService {
 
 	@Override
 	public List<ItemStockExitMap> getStoreTransferItemEntry(ItemStockEntryinput itemStockinput) {
-		T_StockTransfer tstock = stockTransferRepo.findOne(itemStockinput.getStockTransferID());
+		T_StockTransfer tstock = stockTransferRepo.findByStockTransferID(itemStockinput.getStockTransferID());
 
 		return itemStockExitMapper.getItemStockEntryMapList(
 				itemStockEntryRepo.findByEntryTypeIDAndSyncFacilityIDAndEntryType(tstock.getVanSerialNo(),
@@ -351,7 +351,7 @@ public class StockExitServiceImpl implements StockExitService {
 
 	@Override
 	public T_PatientIssue getPatientissueAllDetail(Long patientissueID) {
-		T_PatientIssue patissue = patientIssueRepo.findOne(patientissueID);
+		T_PatientIssue patissue = patientIssueRepo.findById(patientissueID).get();
 
 		patissue.setItemStockExitMap(itemStockExitMapper.getItemStockExitMapList(
 				itemStockExitRepo.findByExitTypeIDAndSyncFacilityIDAndExitType(patissue.getVanSerialNo(),
