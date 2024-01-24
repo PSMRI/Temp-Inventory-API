@@ -121,6 +121,10 @@
 					<groupId>com.vaadin.external.google</groupId>
 					<artifactId>android-json</artifactId>
 				</exclusion>
+				<exclusion>
+					<groupId>com.jayway.jsonpath</groupId>
+					<artifactId>json-path</artifactId>
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<dependency>
@@ -215,11 +219,6 @@
 			<version>3.0.0</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.hateoas</groupId>
-			<artifactId>spring-hateoas</artifactId>
-			<version>${spring-hateoas.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.plugin</groupId>
 			<artifactId>spring-plugin-core</artifactId>
 			<version>3.0.0</version>
@@ -249,11 +248,7 @@
 	<build>
 		<finalName>Inventoryapi-v1.0</finalName>
 		<plugins>
-			 <plugin> <groupId>org.owasp</groupId> <artifactId>dependency-check-maven</artifactId> 
-				<version>9.0.8</version> <configuration> <format>HTML</format> <nvdApiServerId>nvd</nvdApiServerId> 
-				<nvdApiKey>79597933-f3cc-4601-949b-12513434ade3</nvdApiKey> </configuration> 
-				<executions> <execution> <goals> <goal>check</goal> </goals> </execution> 
-				</executions> </plugin>  
+		
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
