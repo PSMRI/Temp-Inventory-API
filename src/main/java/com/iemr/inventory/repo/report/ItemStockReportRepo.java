@@ -29,7 +29,6 @@ import java.util.Objects;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.report.ItemStockEntryReport;
@@ -37,7 +36,6 @@ import com.iemr.inventory.data.report.ItemStockExitReport;
 import com.iemr.inventory.data.report.PatientIssueExitReport;
 
 @Repository
-@RestResource(exported = false)
 public interface ItemStockReportRepo extends CrudRepository<ItemStockEntryReport, Long> {
 
 	@Query("Select entryReport from ItemStockEntryReport entryReport "

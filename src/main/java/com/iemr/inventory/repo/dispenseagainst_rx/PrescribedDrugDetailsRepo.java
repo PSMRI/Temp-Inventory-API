@@ -29,14 +29,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RestResource;
 import com.iemr.inventory.data.dispenseagainst_rx.PrescribedDrugDetails;
 
 @Service
 @Repository
 @Configuration
 @ComponentScan
-@RestResource(exported = false)
 public interface PrescribedDrugDetailsRepo extends CrudRepository<PrescribedDrugDetails, Long> {
 	@Query(" SELECT Distinct beneficiaryRegID, visitCode, prescriptionID, drugID, genericDrugName, drugForm,"
 			+ " drugStrength, dose, route, frequency, "
