@@ -37,11 +37,10 @@ import com.iemr.inventory.utils.validator.Validator;
 
 @Configuration
 public class IEMRApplBeans {
-	@Bean
-	public Validator getVaidator() {
-		Validator validator = new Validator();
-		return validator;
-	}
+	/*
+	 * @Bean public Validator getVaidator() { Validator validator = new Validator();
+	 * return validator; }
+	 */
 
 	@Bean
 	public EmailService getEmailService() {
