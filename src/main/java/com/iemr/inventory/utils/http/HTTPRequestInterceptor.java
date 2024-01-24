@@ -41,13 +41,9 @@ import java.io.PrintStream;
 @Component
 public class HTTPRequestInterceptor implements HandlerInterceptor {
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
-
-    private Validator validator;
-
+    
     @Autowired
-    public void setValidator(Validator validator) {
-        this.validator = validator;
-    }
+    private Validator validator;
 
     private SessionObject sessionObject;
 

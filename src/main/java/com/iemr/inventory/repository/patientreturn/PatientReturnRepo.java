@@ -31,7 +31,6 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.stockExit.ItemReturnEntry;
@@ -41,7 +40,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Repository
-@RestResource(exported = false)
 public interface PatientReturnRepo extends CrudRepository<T_PatientIssue, Integer>{ 
 
 	@Query(value ="SELECT patientIssue.BeneficiaryRegID, patientIssue.FacilityID, item.ItemID, item.ItemName "

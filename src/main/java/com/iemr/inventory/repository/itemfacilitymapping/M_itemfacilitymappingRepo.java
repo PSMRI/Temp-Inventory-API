@@ -26,13 +26,11 @@ import java.util.ArrayList;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.itemfacilitymapping.M_itemfacilitymapping;
 
 @Repository
-@RestResource(exported = false)
 public interface M_itemfacilitymappingRepo extends CrudRepository<M_itemfacilitymapping, Integer>{
 	
 	@Query(value="SELECT distinct mi.itemID,"
