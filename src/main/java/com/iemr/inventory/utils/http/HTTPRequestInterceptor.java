@@ -39,6 +39,7 @@ import java.io.PrintStream;
 
 @Component
 public class HTTPRequestInterceptor implements HandlerInterceptor {
+
 	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 	@Autowired
 	private RedisStorage redisStorage;
