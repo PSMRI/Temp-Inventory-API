@@ -150,11 +150,7 @@ public class ServiceMaster {
 	public void setRoleMapping(StateServiceMapping1 roleMapping) {
 		this.roleMapping = roleMapping;
 	}
-	
-	
-	
-	
-	
+
 	public Boolean getIsNational() {
 		return isNational;
 	}
@@ -164,10 +160,6 @@ public class ServiceMaster {
 		this.isNational = isNational;
 	}
 
-
-
-
-
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
@@ -175,11 +167,5 @@ public class ServiceMaster {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-	
-	
-
-	
-	
-	
 
 }

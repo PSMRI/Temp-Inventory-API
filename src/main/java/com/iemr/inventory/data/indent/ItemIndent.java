@@ -197,15 +197,4 @@ public class ItemIndent {
 		return outputMapper.gson().toJson(this);
 	}
 
-	public String getItemName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getFacilityID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 }

@@ -152,25 +152,5 @@ public class ItemStockEntry implements Serializable{
 		return outputMapper.gson().toJson(this);
 	}
 
-	public void setSyncFacilityID(Object facilityID2) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	public void setEntryTypeID(Object indentID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setEntryType(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setCreatedBy(Object createdBy2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 }

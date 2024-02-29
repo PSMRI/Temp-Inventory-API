@@ -288,12 +288,6 @@ public class Showofficedetails {
 		this.lastModDate = lastModDate;
 	}
 
-
-
-
-
-
-
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
@@ -301,10 +295,5 @@ public class Showofficedetails {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-	
-	
-	
-	
-	
 
 }

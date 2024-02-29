@@ -131,16 +131,5 @@ public class StockAdjustment {
 		return outputMapper.gson().toJson(this);
 	}
 
-	public void setStockAdjustmentItem(List<StockAdjustmentItem> sd) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	public List<StockAdjustmentItem> getStockAdjustmentItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
 }

@@ -113,40 +113,4 @@ public class StoreSelfConsumption {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
-	public List<ItemStockExit> getItemStockExit() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getCreatedBy() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getFacilityID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Long getVanID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Long getParkingPlaceID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setSyncFacilityID(Integer facilityID2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Long getConsumptionID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

@@ -451,13 +451,6 @@ public class V_fetchItemFacilityMap {
 	}
 
 
-
-
-
-
-
-
-
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 

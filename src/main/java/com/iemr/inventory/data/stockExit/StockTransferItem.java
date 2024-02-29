@@ -54,18 +54,4 @@ public class StockTransferItem {
 		return outputMapper.gson().toJson(this);
 	}
 
-	public String getItemName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getTransferFromFacilityID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getTransferToFacilityID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

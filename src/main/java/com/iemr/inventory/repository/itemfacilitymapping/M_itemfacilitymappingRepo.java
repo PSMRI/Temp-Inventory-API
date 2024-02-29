@@ -33,43 +33,43 @@ import com.iemr.inventory.data.itemfacilitymapping.M_itemfacilitymapping;
 @Repository
 public interface M_itemfacilitymappingRepo extends CrudRepository<M_itemfacilitymapping, Integer>{
 	
-	@Query(value="SELECT distinct mi.itemID,"
+	@Query("SELECT distinct mi.itemID,"
 			  + " imfm.itemName as itemName, "
 			  + " imfm.discontinued as discontinued,"
 			  + " imfm.itemCategoryID as itemCategoryID "
 			  + " FROM M_itemfacilitymapping mi "
 			  + " JOIN mi.itemMasterforFacilityMapping imfm  "
-			  + " WHERE mi.providerServiceMapID =:providerServiceMapID AND mi.facilityID=:facilityID AND mi.deleted=0 AND imfm.deleted=0 ORDER BY imfm.itemName ",nativeQuery=true)
+			  + " WHERE mi.providerServiceMapID =:providerServiceMapID AND mi.facilityID=:facilityID AND mi.deleted=false AND imfm.deleted=false ORDER BY imfm.itemName ")
 	ArrayList<Object[]> getItemforSubstore(@Param("providerServiceMapID")Integer providerServiceMapID,@Param("facilityID") Integer facilityID);
 	
-	@Query(value="SELECT distinct mi.itemID,"
+	@Query("SELECT distinct mi.itemID,"
 			  + " imfm.itemName as itemName "
 			  + " FROM M_itemfacilitymapping mi "
 			  + " JOIN mi.itemMasterforFacilityMapping imfm  "
-			  + " WHERE mi.facilityID=:facilityID AND mi.deleted=0 AND imfm.deleted=0 ORDER BY imfm.itemName ",nativeQuery=true)
+			  + " WHERE mi.facilityID=:facilityID AND mi.deleted=false AND imfm.deleted=false ORDER BY imfm.itemName ")
 	ArrayList<Object[]> getItemforStore(@Param("facilityID") Integer facilityID);
 	
 		
-	@Query(value="SELECT distinct mi.itemID,"
+	@Query("SELECT distinct mi.itemID,"
 			  + " imfm.itemName as itemName "
 			  + " FROM M_itemfacilitymapping mi "
 			  + " JOIN mi.itemMasterforFacilityMapping imfm  "
-			  + " WHERE mi.facilityID=:facilityID AND mi.deleted=0 AND imfm.deleted=0 AND (imfm.itemName Like %:itemName% OR imfm.itemCode Like %:itemName%) ORDER BY imfm.itemName ",nativeQuery=true)
+			  + " WHERE mi.facilityID=:facilityID AND mi.deleted=false AND imfm.deleted=false AND (imfm.itemName Like %:itemName% OR imfm.itemCode Like %:itemName%) ORDER BY imfm.itemName ")
 	ArrayList<Object[]> getItemforStoreLikeItemName(@Param("facilityID") Integer facilityID,@Param("itemName")String itemName);
 	
 	
-	@Query(value="SELECT distinct mi.itemID,"
+	@Query("SELECT distinct mi.itemID,"
 			  + " imfm.itemName as itemName "
 			  + " FROM M_itemfacilitymapping mi "
 			  + " JOIN mi.itemMasterforFacilityMapping imfm  "
-			  + " WHERE mi.facilityID=:facilityID AND mi.itemID in (:itemIDs) AND mi.deleted=0 AND imfm.deleted=0 ORDER BY imfm.itemName ",nativeQuery=true)
+			  + " WHERE mi.facilityID=:facilityID AND mi.itemID in (:itemIDs) AND mi.deleted=false AND imfm.deleted=false ORDER BY imfm.itemName ")
 	ArrayList<Object[]> getItemforStoreAndItemID(@Param("facilityID") Integer facilityID,@Param("itemIDs") Integer[] itemIDs);
 
-	@Query(value="SELECT distinct mi.itemID,"
+	@Query("SELECT distinct mi.itemID,"
 			  + " imfm.itemName as itemName "
 			  + " FROM M_itemfacilitymapping mi "
 			  + " JOIN mi.itemMasterforFacilityMapping imfm  "
-			  + " WHERE mi.facilityID=:facilityID AND mi.deleted=0 AND imfm.discontinued=0 AND imfm.deleted=0 AND (imfm.itemName Like %:itemName% OR imfm.itemCode Like %:itemName%)  ORDER BY imfm.itemName ",nativeQuery=true)
+			  + " WHERE mi.facilityID=:facilityID AND mi.deleted=false AND imfm.discontinued=false AND imfm.deleted=false AND (imfm.itemName Like %:itemName% OR imfm.itemCode Like %:itemName%)  ORDER BY imfm.itemName ")
 	ArrayList<Object[]> getItemforStorePartialSearch(@Param("facilityID") Integer facilityID,@Param("itemName") String itemName);
 
 	

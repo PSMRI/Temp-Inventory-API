@@ -204,39 +204,4 @@ public class ItemMaster {
 		this.itemName=ItemName;
 	}
 
-	public Integer getItemID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getItemDesc() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getModifiedBy() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Integer getProviderServiceMapID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getItemCategoryID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getItemName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getFacilityID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
