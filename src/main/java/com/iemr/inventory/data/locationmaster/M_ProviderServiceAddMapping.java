@@ -39,7 +39,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 public class M_ProviderServiceAddMapping {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name="PSAddMapID")
 	private Integer pSAddMapID;

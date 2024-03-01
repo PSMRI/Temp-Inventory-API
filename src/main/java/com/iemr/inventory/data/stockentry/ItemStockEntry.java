@@ -47,10 +47,10 @@ import lombok.Data;
 public class ItemStockEntry implements Serializable{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "ItemStockEntryID")
-	private Long itemStockEntryID;
+	private int itemStockEntryID;
 
 	@Expose
 	@Column(name="VanSerialNo")

@@ -37,7 +37,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 public class V_fetchItemFacilityMap {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "ItemFacilityMapID")
 	private Integer itemFacilityMapID; 

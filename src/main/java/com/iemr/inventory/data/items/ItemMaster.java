@@ -50,7 +50,7 @@ import lombok.Data;
 public class ItemMaster {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name="ItemID")
 	private Integer itemID;

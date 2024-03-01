@@ -157,7 +157,7 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 
 		List<ItemStockEntry> compareobject = itemStockEntryRepo.findByItemStockEntryIDIn(comapreid);
 
-		Map<Long, ItemStockEntry> result = compareobject.stream()
+		Map<Integer, ItemStockEntry> result = compareobject.stream()
 				.collect(Collectors.toMap(ItemStockEntry::getItemStockEntryID, Function.identity()));
 
 		for (StockAdjustmentItem action : sd) {
@@ -165,7 +165,7 @@ public class StockAdjustmentServiceImpl implements StockAdjustmentService {
 			ItemStockEntry itemStockEntry = result.get(action.getItemStockEntryID());
 
 			if (!action.getIsAdded()) {
-				if (action.getAdjustedQuantity() > itemStockEntry.getQuantityInHand()) {
+				if (null != itemStockEntry && action.getAdjustedQuantity() > itemStockEntry.getQuantityInHand()) {
 					throw new InventoryException(
 							"Adjustment Quantity for issue should be more than available quantity");
 				}

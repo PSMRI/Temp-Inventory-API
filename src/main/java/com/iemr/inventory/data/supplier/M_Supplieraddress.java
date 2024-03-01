@@ -40,7 +40,7 @@ public class M_Supplieraddress {
 	
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name="SupplierAddressID")
 	private Integer SupplierAddressID;

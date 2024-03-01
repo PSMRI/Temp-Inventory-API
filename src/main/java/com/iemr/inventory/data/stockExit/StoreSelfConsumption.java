@@ -43,7 +43,7 @@ import lombok.Data;
 public class StoreSelfConsumption {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name="ConsumptionID")
 	private Long consumptionID;

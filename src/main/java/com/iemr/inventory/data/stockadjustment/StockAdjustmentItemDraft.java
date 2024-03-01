@@ -47,7 +47,7 @@ import lombok.Data;
 public class StockAdjustmentItemDraft {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "SADraftItemMapID")
 	private Long sADraftItemMapID;

@@ -46,7 +46,7 @@ import lombok.Data;
 public class StockAdjustmentDraft {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "StockAdjustmentDraftID")
 	private Long stockAdjustmentDraftID;

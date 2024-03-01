@@ -38,7 +38,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 @Table(name="m_supplier")
 public class M_Supplier {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name="SupplierID")
 	private Integer supplierID;

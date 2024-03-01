@@ -48,7 +48,7 @@ import lombok.Data;
 public class M_Manufacturer {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name = "ManufacturerID")
 	private Integer manufacturerID;

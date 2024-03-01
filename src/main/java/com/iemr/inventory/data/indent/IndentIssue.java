@@ -43,7 +43,7 @@ import lombok.Data;
 public class IndentIssue {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Expose
 	@Column(name="IndentIssueID")
 	private Long indentIssueID;

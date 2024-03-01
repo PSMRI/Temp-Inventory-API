@@ -55,8 +55,8 @@ import com.iemr.inventory.utils.exception.InventoryException;
 @Service
 public class StockEntryServiceImpl implements StockEntryService {
 
-	@Autowired(required=false)
-	PhysicalStockEntryRepo physicalStockEntryRepo;
+	@Autowired
+	private PhysicalStockEntryRepo physicalStockEntryRepo;
 
 	@Autowired(required=false)
 	ItemStockEntryRepo itemStockEntryRepo;

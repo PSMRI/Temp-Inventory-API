@@ -38,7 +38,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 @Table(name="m_drugtype")
 public class M_Drugtype {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name="DrugTypeID")
 	private Integer drugTypeID;

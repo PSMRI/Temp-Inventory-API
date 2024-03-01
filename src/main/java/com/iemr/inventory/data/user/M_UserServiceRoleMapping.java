@@ -38,7 +38,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 public class M_UserServiceRoleMapping {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer USRMappingID;
 	private Integer UserID;
 	private Integer RoleID;

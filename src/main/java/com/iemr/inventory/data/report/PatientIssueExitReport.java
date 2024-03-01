@@ -42,7 +42,7 @@ import lombok.Data;
 public class PatientIssueExitReport {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	@Column(name="Fact_PatientIssueExitID")
 	private Long factPatientIssueExitID;
