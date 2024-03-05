@@ -265,7 +265,7 @@ public class StockEntryServiceImpl implements StockEntryService {
 		ItemStockExit itemStockExitsingle = new ItemStockExit();
 		List<ItemStockEntry> itemStockEntryupList = new ArrayList<>();
 		for (ItemStockEntry itemStockEntry : stockInHand) {
-			itemStockExitsingle = result.get(itemStockEntry.getItemStockEntryID());
+			itemStockExitsingle = result.get(Long.valueOf(itemStockEntry.getItemStockEntryID()));
 			ItemStockEntry itemStockEntryup = new ItemStockEntry();
 			itemStockEntryup.setFacilityID(facilityToID);
 			itemStockEntryup.setQuantity(itemStockExitsingle.getQuantity());
