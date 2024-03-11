@@ -23,6 +23,9 @@ package com.iemr.inventory.data.locationmaster;
 
 import java.sql.Date;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,51 +35,47 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 @Entity
-@Table(name="m_ServiceMaster")
+@Table(name = "m_ServiceMaster")
 public class ServiceMaster {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
-	@Column(name="ServiceID")
+	@Column(name = "ServiceID")
 	private Integer serviceID;
 	@Expose
-	@Column(name="ServiceName")
-	private String serviceName; 
+	@Column(name = "ServiceName")
+	private String serviceName;
 	@Expose
-	@Column(name="ServiceDesc")
+	@Column(name = "ServiceDesc")
 	private String serviceDesc;
 	@Expose
-	@Column(name="Deleted", insertable = false, updatable = true)
+	@Column(name = "Deleted", insertable = false, updatable = true)
 	private Boolean deleted;
 	@Expose
-	@Column(name="CreatedBy")
+	@Column(name = "CreatedBy")
 	private String createdBy;
 	@Expose
-	@Column(name="CreatedDate", insertable = false, updatable = false)
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
 	@Expose
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
 	@Expose
-	@Column(name="LastModDate", insertable = false, updatable = false)
+	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Date lastModDate;
-	
+
 	@Expose
-	@Column(name="IsNational")
+	@Column(name = "IsNational")
 	private Boolean isNational;
-	
-	@OneToOne(mappedBy="serviceMaster")
+
+	@OneToOne(mappedBy = "serviceMaster")
 	private StateServiceMapping1 roleMapping;
-	
+
 	public ServiceMaster() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
+
 	public Integer getServiceID() {
 		return serviceID;
 	}
@@ -141,32 +140,21 @@ public class ServiceMaster {
 		this.lastModDate = lastModDate;
 	}
 
-
 	public StateServiceMapping1 getRoleMapping() {
 		return roleMapping;
 	}
 
-
 	public void setRoleMapping(StateServiceMapping1 roleMapping) {
 		this.roleMapping = roleMapping;
 	}
-	
-	
-	
-	
-	
+
 	public Boolean getIsNational() {
 		return isNational;
 	}
 
-
 	public void setIsNational(Boolean isNational) {
 		this.isNational = isNational;
 	}
-
-
-
-
 
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
@@ -175,11 +163,5 @@ public class ServiceMaster {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-	
-	
-
-	
-	
-	
 
 }

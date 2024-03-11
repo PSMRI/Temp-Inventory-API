@@ -23,11 +23,10 @@ package com.iemr.inventory.data.patientreturn;
 
 import java.sql.Timestamp;
 
-import jakarta.persistence.Transient;
-
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.utils.mapper.OutputMapper;
 
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data

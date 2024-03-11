@@ -21,6 +21,9 @@
 */
 package com.iemr.inventory.data.itemfacilitymapping;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,27 +32,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 @Entity
-@Table(name="v_fetchItemFacilityMap")
+@Table(name = "v_fetchItemFacilityMap")
 public class V_fetchItemFacilityMap {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "ItemFacilityMapID")
-	private Integer itemFacilityMapID; 
+	private Integer itemFacilityMapID;
 	@Expose
 	@Column(name = "ProviderServiceMapID")
 	private Integer providerServiceMapID;
 	@Expose
 	@Column(name = "Status")
-	private String status; 
+	private String status;
 	@Expose
 	@Column(name = "ItemFacilityMappingDeleted")
-	private Boolean itemFacilityMappingDeleted; 
+	private Boolean itemFacilityMappingDeleted;
 	@Expose
 	@Column(name = "FacilityID")
 	private Integer facilityID;
@@ -58,10 +58,10 @@ public class V_fetchItemFacilityMap {
 	private String facilityName;
 	@Expose
 	@Column(name = "FacilityDesc")
-	private String facilityDesc; 
+	private String facilityDesc;
 	@Expose
 	@Column(name = "FacilityCode")
-	private String facilityCode; 
+	private String facilityCode;
 	@Expose
 	@Column(name = "FacilityTypeID")
 	private Integer facilityTypeID;
@@ -73,7 +73,7 @@ public class V_fetchItemFacilityMap {
 	private String facilityTypeDesc;
 	@Expose
 	@Column(name = "FacilityTypeCode")
-	private String facilityTypeCode; 
+	private String facilityTypeCode;
 	@Expose
 	@Column(name = "Location")
 	private String location;
@@ -149,19 +149,11 @@ public class V_fetchItemFacilityMap {
 	@Expose
 	@Column(name = "RouteID")
 	private Integer routeID;
-	
+
 	public V_fetchItemFacilityMap() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	public Integer getItemFacilityMapID() {
 		return itemFacilityMapID;
 	}
@@ -450,14 +442,6 @@ public class V_fetchItemFacilityMap {
 		this.routeID = routeID;
 	}
 
-
-
-
-
-
-
-
-
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
@@ -465,6 +449,5 @@ public class V_fetchItemFacilityMap {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
 
 }

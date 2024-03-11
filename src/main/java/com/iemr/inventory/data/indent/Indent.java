@@ -25,6 +25,10 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.store.M_Facility;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,114 +40,108 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.store.M_Facility;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name="t_indent")
+@Table(name = "t_indent")
 public class Indent implements Serializable {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
-	@Column(name="IndentID")
+	@Column(name = "IndentID")
 	private Long indentID;
-	
+
 	@Expose
-	@Column(name="FromFacilityID")
+	@Column(name = "FromFacilityID")
 	private Integer fromFacilityID;
-	
+
 	@Expose
-	@Column(name="SyncFacilityID")
+	@Column(name = "SyncFacilityID")
 	private Integer syncFacilityID;
-	
+
 	@Expose
-	@Column(name="FromFacilityName")
+	@Column(name = "FromFacilityName")
 	private String fromFacilityName;
-	
+
 	@Expose
-	@Column(name="ToFacilityID")
+	@Column(name = "ToFacilityID")
 	private Integer toFacilityID;
-	
+
 	@Expose
-	@Column(name="RefNo")
+	@Column(name = "RefNo")
 	private String refNo;
-	
+
 	@Expose
-	@Column(name="OrderDate")
+	@Column(name = "OrderDate")
 	private Timestamp orderDate;
-	
+
 	@Expose
-	@Column(name="Reason")
+	@Column(name = "Reason")
 	private String reason;
-	
+
 	@Expose
-	@Column(name="UserID")
+	@Column(name = "UserID")
 	private Integer userID;
-	
+
 	@Expose
-	@Column(name="ProviderServiceMapID")
+	@Column(name = "ProviderServiceMapID")
 	private Integer providerServiceMapID;
-	
+
 	@Expose
-	@Column(name="Status")
+	@Column(name = "Status")
 	private String status;
-	
-	
+
 	@Expose
-	@Column(name="StatusReason")
+	@Column(name = "StatusReason")
 	private String statusReason;
-	
+
 	@Expose
-	@Column(name="Deleted", updatable = true, insertable = false)
+	@Column(name = "Deleted", updatable = true, insertable = false)
 	private Boolean deleted;
-	
+
 	@Expose
-	@Column(name="Processed")
+	@Column(name = "Processed")
 	private String processed;
-	
+
 	@Expose
-	@Column(name="CreatedBy")
+	@Column(name = "CreatedBy")
 	private String createdBy;
-	
+
 	@Expose
-	@Column(name="CreatedDate")
+	@Column(name = "CreatedDate")
 	private Timestamp createdDate;
-	
+
 	@Expose
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
-	
+
 	@Expose
-	@Column(name="LastModDate", updatable = false, insertable = false)
+	@Column(name = "LastModDate", updatable = false, insertable = false)
 	private Timestamp lastModDate;
-	
+
 	@Expose
-	@Column(name="VanID")
+	@Column(name = "VanID")
 	private Long vanID;
-	
+
 	@Expose
-	@Column(name="ParkingPlaceID")
+	@Column(name = "ParkingPlaceID")
 	private Long parkingPlaceID;
-	
+
 	@Expose
-	@Column(name="VanSerialNo", updatable = true, insertable = false)
+	@Column(name = "VanSerialNo", updatable = true, insertable = false)
 	private Long vanSerialNo;
-	
+
 	@Expose
 	@Transient
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "indent")
 	private List<IndentOrder> indentOrder;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "fromFacilityID", referencedColumnName = "facilityID")
 	private M_Facility m_Facility;
-	
+
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
@@ -152,6 +150,4 @@ public class Indent implements Serializable {
 		return outputMapper.gson().toJson(this);
 	}
 
-	
-	
 }

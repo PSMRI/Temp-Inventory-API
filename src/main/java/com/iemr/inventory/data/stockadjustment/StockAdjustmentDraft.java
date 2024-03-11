@@ -24,6 +24,9 @@ package com.iemr.inventory.data.stockadjustment;
 import java.util.Date;
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -34,10 +37,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Entity
@@ -124,44 +123,6 @@ public class StockAdjustmentDraft {
 	@Override
 	public String toString() {
 		return outputMapper.gson().toJson(this);
-	}
-
-	public Long getStockAdjustmentDraftID() {
-		
-		return null;
-	}
-
-
-	public String getCreatedBy1() {
-		
-		return null;
-	}
-
-	public String getCreatedBy() {
-		
-		return null;
-	}
-
-	public String getRefNo() {
-		
-		return null;
-	}
-
-
-	public List<StockAdjustmentItemDraft> getStockAdjustmentItemDraft() {
-		
-		return null;
-	}
-
-
-	public String getDraftName() {
-		
-		return null;
-	}
-
-	public String getDraftDesc() {
-		
-		return null;
 	}
 
 }

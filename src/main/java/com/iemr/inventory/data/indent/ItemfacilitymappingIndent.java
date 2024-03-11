@@ -23,7 +23,11 @@ package com.iemr.inventory.data.indent;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.sql.Timestamp;
+
+import com.google.gson.annotations.Expose;
+//import com.iemr.inventory.data.rolemaster.M_Role;
+import com.iemr.inventory.data.store.M_Facility;
+import com.iemr.inventory.utils.mapper.OutputMapper;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,12 +39,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-//import com.iemr.inventory.data.rolemaster.M_Role;
-import com.iemr.inventory.data.store.M_Facility;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Entity
@@ -154,11 +152,6 @@ public class ItemfacilitymappingIndent {
 	@Override
 	public String toString() {
 		return outputMapper.gson().toJson(this);
-	}
-
-	public Object getIndentOrderID() {
-
-		return null;
 	}
 
 }

@@ -24,6 +24,9 @@ package com.iemr.inventory.data.stockExit;
 import java.util.Date;
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,10 +34,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Entity
@@ -113,40 +112,4 @@ public class StoreSelfConsumption {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
-	public List<ItemStockExit> getItemStockExit() {
-		
-		return null;
-	}
-
-	public String getCreatedBy() {
-		
-		return null;
-	}
-
-	public Integer getFacilityID() {
-		
-		return null;
-	}
-
-	public Long getVanID() {
-		
-		return null;
-	}
-
-	public Long getParkingPlaceID() {
-		
-		return null;
-	}
-
-	public void setSyncFacilityID(Integer facilityID2) {
-		
-		
-	}
-
-	public Long getConsumptionID() {
-		
-		return null;
-	}
-
 }
