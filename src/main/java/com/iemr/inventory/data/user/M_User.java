@@ -46,7 +46,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 public class M_User {
 	
 	@Id
-	   @GeneratedValue(strategy = GenerationType.IDENTITY)
+	   @GeneratedValue(strategy = GenerationType.AUTO)
 	   @Expose
 	   @Column(name="UserID")
 	private int userID;

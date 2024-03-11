@@ -42,7 +42,7 @@ import lombok.Data;
 public class M_FacilityWithMap {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="FacilityID")
 	private Integer facilityID;

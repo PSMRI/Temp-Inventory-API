@@ -42,7 +42,7 @@ import lombok.Data;
 public class M_Route {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "RouteID")
 	private Integer routeID;

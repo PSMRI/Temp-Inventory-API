@@ -23,8 +23,6 @@ package com.iemr.inventory.controller.visit;
 
 import java.util.List;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +38,10 @@ import com.iemr.inventory.data.visit.BeneficiaryModel;
 import com.iemr.inventory.service.visit.VisitService;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.servlet.http.HttpServletRequest;
+
+
 
 @Controller
 @RestController
@@ -52,7 +53,7 @@ public class VisitController {
 	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get visit details from beneficary id", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Get visit details from beneficary id")
 	@RequestMapping(value = "/getVisitFromBenID", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getVisitFromBenRegID(@RequestBody BenVisitDetail benVisitDetail, HttpServletRequest httpRequest) {
@@ -79,7 +80,7 @@ public class VisitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get visit details from advance search", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Get visit details from advance search")
 	@RequestMapping(value = "/getVisitFromAdvanceSearch", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getVisitFromAdvanceSearch(@RequestBody String model, HttpServletRequest httpRequest) {

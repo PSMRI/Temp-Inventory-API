@@ -42,7 +42,7 @@ import lombok.Data;
 public class M_ItemForm {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="ItemFormID")
 	private Integer itemFormID;

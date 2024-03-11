@@ -49,7 +49,7 @@ import lombok.Data;
 public class ItemfacilitymappingIndent {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "ItemFacilityMapID")
 	private Integer itemFacilityMapID;
@@ -160,5 +160,68 @@ public class ItemfacilitymappingIndent {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public void setSyncFacilityID(Object syncFacilityID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setIndentID(Object indentID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setVanID(Object vanID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCreatedDate(Timestamp timestamp) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setParkingPlaceID(Object parkingPlaceID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setProcessed(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setFromFacilityID(Integer fromFacilityID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object getIndentOrderID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setStatus(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setProviderServiceMapID(Object providerServiceMapID2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCreatedBy(Object createdBy2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

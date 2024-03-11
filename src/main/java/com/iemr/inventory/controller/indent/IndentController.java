@@ -26,6 +26,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,8 +43,10 @@ import com.iemr.inventory.service.indent.IndentService;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
+import io.swagger.v3.oas.annotations.Operation;
+
+
+
 
 @Controller
 @RequestMapping("/indentController")
@@ -56,11 +59,11 @@ public class IndentController {
 	IndentService IndentService;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Partial search indent items", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Partial search indent items")
 	@RequestMapping(value = "/partialsearchindentitems", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String createStore(
-			@ApiParam("{\"itemName\":\"String\", \"facilityID\":\"Integer\"}") @RequestBody ItemIndent item) {
+			@Param("{\"itemName\":\"String\", \"facilityID\":\"Integer\"}") @RequestBody ItemIndent item) {
 		logger.info("partialsearchindentitems request " + item.toString());
 		OutputResponse response = new OutputResponse();
 		try {
@@ -84,7 +87,7 @@ public class IndentController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Create indent request", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Create indent request")
 	@RequestMapping(value = "/createIndentRequest", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String createIndentRequest(@RequestBody String request) {
@@ -107,10 +110,10 @@ public class IndentController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get indent history", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Get indent history")
 	@RequestMapping(value = "/getIndentHistory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getIndentHistory(@ApiParam("{\"facilityID\":\"Integer\"}") @RequestBody String request) {
+	public String getIndentHistory(@Param("{\"facilityID\":\"Integer\"}") @RequestBody String request) {
 		logger.info("getIndentHistory request " + request);
 		OutputResponse response = new OutputResponse();
 		try {
@@ -130,10 +133,10 @@ public class IndentController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get order by indent id", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Get order by indent id")
 	@RequestMapping(value = "/getOrdersByIndentID", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getOrdersByIndentID(@ApiParam("{\"indentID\":\"Integer\"}") @RequestBody String request) {
+	public String getOrdersByIndentID(@Param("{\"indentID\":\"Integer\"}") @RequestBody String request) {
 		logger.info("getOrdersByIndentID request " + request);
 		OutputResponse response = new OutputResponse();
 		try {
@@ -153,10 +156,10 @@ public class IndentController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get indent worklist", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Get indent worklist")
 	@RequestMapping(value = "/getIndentWorklist", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String getIndentWorklist(@ApiParam("{\"facilityID\":\"Integer\"}") @RequestBody String request) {
+	public String getIndentWorklist(@Param("{\"facilityID\":\"Integer\"}") @RequestBody String request) {
 		logger.info("getIndentWorklist request " + request);
 		OutputResponse response = new OutputResponse();
 		try {
@@ -176,11 +179,11 @@ public class IndentController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get indent order worklist", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Get indent order worklist")
 	@RequestMapping(value = "/getIndentOrderWorklist", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getIndentOrderWorklist(
-			@ApiParam("{\"indentID\":\"Integer\",\"vanID\":\"Integer\" }") @RequestBody String request) {
+			@Param("{\"indentID\":\"Integer\",\"vanID\":\"Integer\" }") @RequestBody String request) {
 		logger.info("getIndentOrderWorklist request " + request);
 		OutputResponse response = new OutputResponse();
 		try {
@@ -200,10 +203,10 @@ public class IndentController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Issue indent", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/issueIndent", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Issue indent")
+	@RequestMapping(value = "/issueIndent", headers = "Authorization", produces = {
 			"application/json" })
-	public String issueIndent(@ApiParam("{\"facilityID\":\"Integer\"}") @RequestBody String request) {
+	public String issueIndent(@Param("{\"facilityID\":\"Integer\"}") @RequestBody String request) {
 		logger.info("issueIndent request " + request);
 		OutputResponse response = new OutputResponse();
 		try {
@@ -223,10 +226,10 @@ public class IndentController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Cancel indent order", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Cancel indent order")
 	@RequestMapping(value = "/cancelIndentOrder", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
-	public String cancelIndentOrder(@ApiParam("{\"indentID\":\"Integer\"}") @RequestBody String request) {
+	public String cancelIndentOrder(@Param("{\"indentID\":\"Integer\"}") @RequestBody String request) {
 		logger.info("cancelIndentOrder request " + request);
 		OutputResponse response = new OutputResponse();
 		try {
@@ -246,8 +249,8 @@ public class IndentController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Receive indent", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/receiveIndent", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Receive indent")
+	@RequestMapping(value = "/receiveIndent", headers = "Authorization", produces = {
 			"application/json" })
 	public String receiveIndent(@RequestBody String request) {
 		logger.info("receiveIndent request " + request);
@@ -269,7 +272,7 @@ public class IndentController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Update indent order", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Update indent order")
 	@RequestMapping(value = "/updateIndentOrder", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String updateIndentOrder(@RequestBody String request) {

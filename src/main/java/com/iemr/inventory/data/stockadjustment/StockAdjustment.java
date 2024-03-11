@@ -48,7 +48,7 @@ import lombok.Data;
 public class StockAdjustment {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "StockAdjustmentID")
 	private Long stockAdjustmentID;
@@ -131,5 +131,16 @@ public class StockAdjustment {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public void setStockAdjustmentItem(List<StockAdjustmentItem> sd) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	public List<StockAdjustmentItem> getStockAdjustmentItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+	
 }

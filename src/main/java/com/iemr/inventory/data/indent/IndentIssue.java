@@ -43,7 +43,7 @@ import lombok.Data;
 public class IndentIssue {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Expose
 	@Column(name="IndentIssueID")
 	private Long indentIssueID;
@@ -166,4 +166,18 @@ public class IndentIssue {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public Long getIndentID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getRejectedReason() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getAction() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

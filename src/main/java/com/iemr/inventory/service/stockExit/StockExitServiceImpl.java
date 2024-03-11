@@ -173,19 +173,17 @@ public class StockExitServiceImpl implements StockExitService {
 		List<ItemStockExit> itemissueListUpdated = new ArrayList<ItemStockExit>();
 
 		for (Object[] action : stockInHand) {
-			ItemStockExit itemIssueUpdating = result.get(Long.valueOf(action[1].toString()));
-			if (null != itemIssueUpdating) {
-				itemIssueUpdating.setItemStockEntryID(((Long) action[4]));
-				itemIssueUpdating.setQuantityInHand(((Integer) action[3]));
-				itemIssueUpdating.setCreatedBy(createdBy);
-				itemIssueUpdating.setVanID(vanID);
-				itemIssueUpdating.setParkingPlaceID(ppID);
-				itemIssueUpdating.setParkingPlaceID(ppID);
-				itemIssueUpdating.setFacilityID(facilityID);
-				itemIssueUpdating.setSyncFacilityID(facilityID);
-				if (itemIssueUpdating.getQuantity() <= itemIssueUpdating.getQuantityInHand()) {
-					itemissueListUpdated.add(itemIssueUpdating);
-				}
+			ItemStockExit itemIssueUpdating = result.get(action[1]);
+			itemIssueUpdating.setItemStockEntryID(((Long) action[4]));
+			itemIssueUpdating.setQuantityInHand(((Integer) action[3]));
+			itemIssueUpdating.setCreatedBy(createdBy);
+			itemIssueUpdating.setVanID(vanID);
+			itemIssueUpdating.setParkingPlaceID(ppID);
+			itemIssueUpdating.setParkingPlaceID(ppID);
+			itemIssueUpdating.setFacilityID(facilityID);
+			itemIssueUpdating.setSyncFacilityID(facilityID);
+			if (itemIssueUpdating.getQuantity() <= itemIssueUpdating.getQuantityInHand()) {
+				itemissueListUpdated.add(itemIssueUpdating);
 			}
 		}
 		logger.info("out getItemStockAndValidate method");

@@ -57,6 +57,12 @@ public class CRMReportServiceImpl implements CRMReportService {
 	@Autowired(required=false)
 	InventoryReportMapper mapper;
 
+	@Autowired
+	public CRMReportServiceImpl(ItemStockReportRepo itemStockReportRepo) {
+		// TODO Auto-generated constructor stub
+		this.itemStockReportRepo=itemStockReportRepo;
+	}
+
 	@Override
 	public String getInwardStockReport(ItemStockEntryReport entryReport) {
 

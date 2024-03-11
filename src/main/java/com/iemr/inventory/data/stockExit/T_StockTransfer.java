@@ -48,7 +48,7 @@ public class T_StockTransfer {
 
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="StockTransferID")
 	private Long stockTransferID;

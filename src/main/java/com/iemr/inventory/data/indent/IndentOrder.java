@@ -48,7 +48,7 @@ import lombok.Data;
 public class IndentOrder {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="IndentOrderID")
 	private Long indentOrderID;

@@ -39,7 +39,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 @Table(name="m_ServiceMaster")
 public class ServiceMaster {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="ServiceID")
 	private Integer serviceID;
@@ -150,7 +150,11 @@ public class ServiceMaster {
 	public void setRoleMapping(StateServiceMapping1 roleMapping) {
 		this.roleMapping = roleMapping;
 	}
-
+	
+	
+	
+	
+	
 	public Boolean getIsNational() {
 		return isNational;
 	}
@@ -160,6 +164,10 @@ public class ServiceMaster {
 		this.isNational = isNational;
 	}
 
+
+
+
+
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
@@ -167,5 +175,11 @@ public class ServiceMaster {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
+	
+	
+
+	
+	
+	
 
 }

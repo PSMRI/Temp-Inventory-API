@@ -39,7 +39,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 public class M_Uom {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="UOMID")
 	private Integer uomID;

@@ -39,7 +39,9 @@ import com.iemr.inventory.service.pharmacologicalcategory.Pharmacologicalcategor
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class PharmacologicalCategoryController {
@@ -50,7 +52,7 @@ public class PharmacologicalCategoryController {
 	private PharmacologicalcategoryInter pharmacologicalcategoryInter;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Create pharmacological category", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Create pharmacological category")
 	@RequestMapping(value = "/createPharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String createPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
@@ -77,7 +79,7 @@ public class PharmacologicalCategoryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get pharmacological category", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Get pharmacological category")
 	@RequestMapping(value = "/getPharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String getPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
@@ -103,7 +105,7 @@ public class PharmacologicalCategoryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Edit pharmacological category", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Edit pharmacological category")
 	@RequestMapping(value = "/editPharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String editPharmacologicalcategory(@RequestBody String editPharmacologicalcategory) {
@@ -134,7 +136,7 @@ public class PharmacologicalCategoryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Delete pharmacological category", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Delete pharmacological category")
 	@RequestMapping(value = "/deletePharmacologicalcategory", headers = "Authorization", method = {
 			RequestMethod.POST }, produces = { "application/json" })
 	public String deletePharmacologicalcategory(@RequestBody String deletePharmacologicalcategory) {

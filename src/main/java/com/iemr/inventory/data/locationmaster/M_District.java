@@ -38,7 +38,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 @Table(name="m_District")
 public class M_District {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="DistrictID")
 	private Integer districtID;

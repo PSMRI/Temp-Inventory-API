@@ -46,7 +46,7 @@ import lombok.Data;
 public class StockAdjustmentDraft {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "StockAdjustmentDraftID")
 	private Long stockAdjustmentDraftID;
@@ -126,4 +126,54 @@ public class StockAdjustmentDraft {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public Long getStockAdjustmentDraftID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public String getCreatedBy1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getCreatedBy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getRefNo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setIsCompleted(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public List<StockAdjustmentItemDraft> getStockAdjustmentItemDraft() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setStockAdjustmentItemDraft(Object object) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public String getDraftName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getDraftDesc() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setStockAdjustmentItemDraftEdit() {
+		// TODO Auto-generated method stub
+		
+	}
 }

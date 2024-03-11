@@ -43,7 +43,7 @@ import lombok.Data;
 public class M_Pharmacologicalcategory {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "PharmCategoryID")
 	private Integer pharmacologyCategoryID; 

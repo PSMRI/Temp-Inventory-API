@@ -35,7 +35,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class VersionController {
@@ -43,7 +45,7 @@ public class VersionController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get version details", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Get version details")
 	@RequestMapping(value = "/version", method = { RequestMethod.GET })
 	public String versionInformation() {
 		OutputResponse output = new OutputResponse();
@@ -58,14 +60,14 @@ public class VersionController {
 		return output.toString();
 	}
 
-	private String readGitProperties() throws Exception {
+	public String readGitProperties() throws Exception {
 		ClassLoader classLoader = getClass().getClassLoader();
 		InputStream inputStream = classLoader.getResourceAsStream("git.properties");
 
 		return readFromInputStream(inputStream);
 	}
 
-	private String readFromInputStream(InputStream inputStream) throws IOException {
+	String readFromInputStream(InputStream inputStream) throws IOException {
 		StringBuilder resultStringBuilder = new StringBuilder();
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
 			String line;

@@ -49,7 +49,7 @@ import lombok.Data;
 public class M_itemfacilitymapping {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "ItemFacilityMapID")
 	private Integer itemFacilityMapID;
@@ -114,7 +114,12 @@ public class M_itemfacilitymapping {
 	public M_itemfacilitymapping() {
 		// TODO Auto-generated constructor stut
 	}
+	
+	
+	
+	
 
+	
 	public M_itemfacilitymapping(Integer itemID,String itemName) {
 		this.itemID=itemID;
 		this.itemName=itemName;
@@ -127,103 +132,163 @@ public class M_itemfacilitymapping {
 		this.itemCategoryID=categoryID;
 	}
 	
+	
+
+	
+	
+	
 
 	public ItemMasterforFacilityMapping getItemMasterforFacilityMapping() {
 		return itemMasterforFacilityMapping;
 	}
 
+
+
+
+
+
 	public void setItemMasterforFacilityMapping(ItemMasterforFacilityMapping itemMasterforFacilityMapping) {
 		this.itemMasterforFacilityMapping = itemMasterforFacilityMapping;
 	}
+
+
+
+
+
 
 	public Integer getItemStoreMapID() {
 		return itemFacilityMapID;
 	}
 
+
+
 	public void setItemStoreMapID(Integer itemStoreMapID) {
 		this.itemFacilityMapID = itemStoreMapID;
 	}
+
+
 
 	public Integer getFacilityID() {
 		return facilityID;
 	}
 
+
+
 	public void setFacilityID(Integer facilityID) {
 		this.facilityID = facilityID;
 	}
+
+
 
 	public Integer getItemID() {
 		return itemID;
 	}
 
+
+
 	public void setItemID(Integer itemID) {
 		this.itemID = itemID;
 	}
-	
+
+
+
 	public String getMappingType() {
 		return mappingType;
 	}
+
+
 
 	public void setMappingType(String mappingType) {
 		this.mappingType = mappingType;
 	}
 
+
+
 	public String getStatus() {
 		return status;
 	}
+
+
 
 	public void setStatus(String status) {
 		this.status = status;
 	}
 
+
+
 	public Integer getProviderServiceMapID() {
 		return providerServiceMapID;
 	}
+
+
 
 	public void setProviderServiceMapID(Integer providerServiceMapID) {
 		this.providerServiceMapID = providerServiceMapID;
 	}
 
+
+
 	public Boolean getDeleted() {
 		return deleted;
 	}
+
+
 
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
 
+
+
 	public String getCreatedBy() {
 		return createdBy;
 	}
+
+
 
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 
+
+
 	public Date getCreatedDate() {
 		return createdDate;
 	}
+
+
 
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
+
+
 	public String getModifiedBy() {
 		return modifiedBy;
 	}
+
+
 
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 
+
+
 	public Date getLastModDate() {
 		return lastModDate;
 	}
 
+
+
 	public void setLastModDate(Date lastModDate) {
 		this.lastModDate = lastModDate;
 	}
-
+	
+	
+	
+	
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
@@ -231,5 +296,14 @@ public class M_itemfacilitymapping {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
+
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

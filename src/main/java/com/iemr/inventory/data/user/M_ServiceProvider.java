@@ -37,7 +37,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 @Table(name="m_ServiceProvider")
 public class M_ServiceProvider {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	 private int ServiceProviderId; 
 	 private String ServiceProviderName;
 	 private Date JoiningDate;

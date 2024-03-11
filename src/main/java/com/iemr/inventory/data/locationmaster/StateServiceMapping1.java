@@ -43,7 +43,7 @@ public class StateServiceMapping1 {
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="ProviderServiceMapID")
 	private Integer providerServiceMapID;
@@ -107,6 +107,9 @@ public class StateServiceMapping1 {
 	private State stateMaster;
 	
 	
+	
+	
+	
 	@Transient
 	@Expose
 	private String stateName;
@@ -143,113 +146,170 @@ public class StateServiceMapping1 {
 		this.providerServiceMapID=providerServiceMapID;
 	}
 
+
+
 	public Integer getProviderServiceMapID() {
 		return this.providerServiceMapID;
 	}
+
+
 
 	public void setProviderServiceMapID(Integer providerServiceMapID) {
 		this.providerServiceMapID = providerServiceMapID;
 	}
 
+
+
 	public Integer getServiceProviderID() {
 		return serviceProviderID;
 	}
+
+
 
 	public void setServiceProviderID(Integer serviceProviderID) {
 		this.serviceProviderID = serviceProviderID;
 	}
 
+
+
 	public Integer getServiceID() {
 		return serviceID;
 	}
+
+
 
 	public void setServiceID(Integer serviceID) {
 		this.serviceID = serviceID;
 	}
 
+
+
 	public Integer getCountryID() {
 		return countryID;
 	}
+
+
 
 	public void setCountryID(Integer countryID) {
 		this.countryID = countryID;
 	}
 
+
+
 	public Integer getStateID() {
 		return stateID;
 	}
+
+
 
 	public void setStateID(Integer stateID) {
 		this.stateID = stateID;
 	}
 
+
+
 	public Integer getDistrictID() {
 		return districtID;
 	}
+
+
 
 	public void setDistrictID(Integer districtID) {
 		this.districtID = districtID;
 	}
 
+
+
 	public Integer getCityID() {
 		return cityID;
 	}
+
+
 
 	public void setCityID(Integer cityID) {
 		this.cityID = cityID;
 	}
 
+
+
 	public Integer getDistrictBlockID() {
 		return districtBlockID;
 	}
+
+
 
 	public void setDistrictBlockID(Integer districtBlockID) {
 		this.districtBlockID = districtBlockID;
 	}
 
+
+
 	public String getAddress() {
 		return address;
 	}
+
+
 
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
+
+
 	public Integer getStatusID() {
 		return statusID;
 	}
+
+
 
 	public void setStatusID(Integer statusID) {
 		this.statusID = statusID;
 	}
 
+
+
 	public Date getValidFrom() {
 		return validFrom;
 	}
+
+
 
 	public void setValidFrom(Date validFrom) {
 		this.validFrom = validFrom;
 	}
 
+
+
 	public Date getValidTill() {
 		return validTill;
 	}
+
+
 
 	public void setValidTill(Date validTill) {
 		this.validTill = validTill;
 	}
 
+
+
 	public Boolean getDeleted() {
 		return deleted;
 	}
+
+
 
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
 
+
+
 	public String getCreatedBy() {
 		return createdBy;
 	}
+
+
+
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
@@ -289,7 +349,14 @@ public class StateServiceMapping1 {
 	public void setLastModDate(Date lastModDate) {
 		this.lastModDate = lastModDate;
 	}
-
+	
+	
+	
+	
+	
+	
+	
+	
 	public ServiceMaster getServiceMaster() {
 		return serviceMaster;
 	}
@@ -309,6 +376,12 @@ public class StateServiceMapping1 {
 		this.stateMaster = stateMaster;
 	}
 
+
+
+
+
+
+
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
@@ -316,5 +389,8 @@ public class StateServiceMapping1 {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
+	
+	
+	
+	
 }

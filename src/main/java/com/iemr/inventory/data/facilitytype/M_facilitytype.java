@@ -39,7 +39,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 public class M_facilitytype {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "FacilityTypeID")
 	@Expose
 	private Integer facilityTypeID;

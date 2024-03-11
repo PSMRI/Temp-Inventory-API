@@ -78,4 +78,28 @@ public class StockAdjustmentItemDraftEdit {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public void setSADraftItemMapID(Object saDraftItemMapID2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCreatedBy(Object createdBy2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setItemStockEntryID(Object itemStockEntryID2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setAdjustedQuantity(Object adjustedQuantity2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setProviderServiceMapID(Object providerServiceMapID2) {
+		// TODO Auto-generated method stub
+		
+	}
 }

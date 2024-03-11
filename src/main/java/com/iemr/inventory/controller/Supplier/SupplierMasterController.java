@@ -31,7 +31,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.supplier.M_Supplier;
@@ -40,7 +39,9 @@ import com.iemr.inventory.service.supplier.SupplierInter;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class SupplierMasterController {
@@ -51,8 +52,8 @@ public class SupplierMasterController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Create supplier", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/createSupplier", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Create supplier")
+	@RequestMapping(value = "/createSupplier", headers = "Authorization", produces = {
 			"application/json" })
 	public String createSupplier(@RequestBody String createSupplier) {
 
@@ -101,8 +102,8 @@ public class SupplierMasterController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get supplier", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getSupplier", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get supplier")
+	@RequestMapping(value = "/getSupplier", headers = "Authorization", produces = {
 			"application/json" })
 	public String getSupplier(@RequestBody String getSupplier) {
 
@@ -126,8 +127,8 @@ public class SupplierMasterController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Edit supplier", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/editSupplier", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Edit supplier")
+	@RequestMapping(value = "/editSupplier", headers = "Authorization", produces = {
 			"application/json" })
 	public String editSupplier(@RequestBody String editSupplier) {
 
@@ -164,8 +165,8 @@ public class SupplierMasterController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Delete supplier", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/deleteSupplier", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Delete supplier")
+	@RequestMapping(value = "/deleteSupplier", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteSupplier(@RequestBody String deleteSupplier) {
 

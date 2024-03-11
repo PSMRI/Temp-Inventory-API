@@ -47,7 +47,7 @@ import lombok.Data;
 public class StockAdjustmentItemDraft {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "SADraftItemMapID")
 	private Long sADraftItemMapID;
@@ -128,4 +128,68 @@ public class StockAdjustmentItemDraft {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public Long getSADraftItemMapID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setDeleted(boolean b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object getCreatedBy() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setModifiedBy(Object createdBy2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object getCreatedDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setCreatedDate(Object createdDate2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object getProcessed() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setProcessed(Object processed2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setStockAdjustmentDraftID(Long stockdraftid) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object getItemStockEntryID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ItemStockEntry getItemStockEntry() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getAdjustedQuantity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Object getProviderServiceMapID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -43,7 +43,7 @@ import lombok.Data;
 @Data
 public class PhysicalStockEntry {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="PhyEntryID")
 	private Long phyEntryID;

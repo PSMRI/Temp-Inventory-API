@@ -35,7 +35,7 @@ import com.iemr.inventory.data.stockadjustment.StockAdjustmentItem;
 import com.iemr.inventory.data.stockadjustment.StockAdjustmentItemDraft;
 
 @Repository
-public interface StockAdjustmentItemRepo extends CrudRepository<StockAdjustmentItem, Integer> {
+public interface StockAdjustmentItemRepo extends CrudRepository<StockAdjustmentItem, Long> {
 
 	@Transactional
 	@Modifying

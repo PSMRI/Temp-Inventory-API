@@ -34,7 +34,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.iemr.inventory.service.dispenseagainst_rx.DispenseAgainstRXimpl;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @Service
 @RestController
@@ -46,7 +48,7 @@ public class DispenseAgainstRX {
 	private DispenseAgainstRXimpl dispenseAgainstRXimpl;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get prescribed medicines", consumes = "application/json", produces = "application/json")
+	@Operation(summary = "Get prescribed medicines")
 	@RequestMapping(value = "getPrescribedMedicines", method = RequestMethod.POST)
 	public String getPrescribedMedicinesToDispense(@RequestBody String requestOBJ) {
 		OutputResponse response = new OutputResponse();

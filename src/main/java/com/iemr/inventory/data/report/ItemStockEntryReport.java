@@ -42,7 +42,7 @@ import lombok.Data;
 public class ItemStockEntryReport {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="Fact_ItemStockEntryID")
 	private Long factItemStockEntryID;

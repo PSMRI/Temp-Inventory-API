@@ -173,4 +173,21 @@ public class BenVisitDetail {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public Object getBeneficiaryID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setBeneficiaryID(Object beneficiaryID2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Integer getProviderServiceMapID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
 }

@@ -31,7 +31,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.drugtype.M_Drugtype;
@@ -39,7 +38,9 @@ import com.iemr.inventory.service.drugtype.DrugtypeInter;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class DrugtypeController {
@@ -49,8 +50,8 @@ public class DrugtypeController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Create drug type", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/createDrugtype", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Create drug type")
+	@RequestMapping(value = "/createDrugtype", headers = "Authorization", produces = {
 			"application/json" })
 	public String createManufacturer(@RequestBody String createDrugtype) {
 
@@ -74,8 +75,8 @@ public class DrugtypeController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get drug type", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getDrugtype", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get drug type")
+	@RequestMapping(value = "/getDrugtype", headers = "Authorization", produces = {
 			"application/json" })
 	public String getManufacturer(@RequestBody String getDrugtype) {
 
@@ -99,8 +100,8 @@ public class DrugtypeController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Edit drug type", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/editDrugtype", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Edit drug type")
+	@RequestMapping(value = "/editDrugtype", headers = "Authorization", produces = {
 			"application/json" })
 	public String editManufacturer(@RequestBody String editDrugtype) {
 
@@ -132,8 +133,8 @@ public class DrugtypeController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Delete drug type", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/deleteDrugtype", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Delete drug type")
+	@RequestMapping(value = "/deleteDrugtype", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteManufacturer(@RequestBody String deleteDrugtype) {
 

@@ -39,7 +39,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 public class Showofficedetails {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="PSAddMapID")
 	private Integer pSAddMapID;
@@ -288,6 +288,12 @@ public class Showofficedetails {
 		this.lastModDate = lastModDate;
 	}
 
+
+
+
+
+
+
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
@@ -295,5 +301,10 @@ public class Showofficedetails {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
+	
+	
+	
+	
+	
 
 }

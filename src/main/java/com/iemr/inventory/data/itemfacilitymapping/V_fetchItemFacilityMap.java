@@ -37,7 +37,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 public class V_fetchItemFacilityMap {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "ItemFacilityMapID")
 	private Integer itemFacilityMapID; 
@@ -449,6 +449,13 @@ public class V_fetchItemFacilityMap {
 	public void setRouteID(Integer routeID) {
 		this.routeID = routeID;
 	}
+
+
+
+
+
+
+
 
 
 	@Transient

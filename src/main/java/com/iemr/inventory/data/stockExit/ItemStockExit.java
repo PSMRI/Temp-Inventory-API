@@ -46,7 +46,7 @@ import lombok.Data;
 public class ItemStockExit {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "ItemStockExitID")
 	private Long itemStockExitID;
@@ -141,4 +141,13 @@ public class ItemStockExit {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public Integer getFacilityID() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setExitTypeID(Object indentID) {
+		// TODO Auto-generated method stub
+		
+	}
 }

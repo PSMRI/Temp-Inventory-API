@@ -40,7 +40,7 @@ import com.iemr.inventory.utils.mapper.OutputMapper;
 public class State {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="StateID")
 	private Integer stateID; 

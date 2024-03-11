@@ -47,10 +47,10 @@ import lombok.Data;
 public class ItemStockEntry implements Serializable{
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "ItemStockEntryID")
-	private int itemStockEntryID;
+	private Long itemStockEntryID;
 
 	@Expose
 	@Column(name="VanSerialNo")
@@ -152,5 +152,25 @@ public class ItemStockEntry implements Serializable{
 		return outputMapper.gson().toJson(this);
 	}
 
+	public void setSyncFacilityID(Object facilityID2) {
+		// TODO Auto-generated method stub
+		
+	}
 
+	public void setEntryTypeID(Object indentID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setEntryType(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCreatedBy(Object createdBy2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 }
