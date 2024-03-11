@@ -21,14 +21,19 @@
 */
 package com.iemr.inventory.utils;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 import com.iemr.inventory.utils.config.ConfigProperties;
 import com.iemr.inventory.utils.gateway.email.EmailService;
 import com.iemr.inventory.utils.gateway.email.GenericEmailServiceImpl;
+import com.iemr.inventory.utils.redis.RedisStorage;
+import com.iemr.inventory.utils.sessionobject.SessionObject;
+
 
 @Configuration
 public class IEMRApplBeans {
@@ -49,5 +54,24 @@ public class IEMRApplBeans {
 		return new ConfigProperties();
 	}
 
+	@Bean
+	public SessionObject sessionObject() {
+		return new SessionObject();
+	}
+
+	@Bean
+	public RedisStorage redisStorage() {
+		return new RedisStorage();
+	}
+
+	private @Value("${spring.data.redis.host}") String redisHost;
+	private @Value("${spring.data.redis.port}") int redisPort;
+
+	@Bean
+	LettuceConnectionFactory lettuceConnectionFactory() {
+		System.out.print("Connecting to Redis " + redisHost + ":" + redisPort);
+
+		return new LettuceConnectionFactory(redisHost, redisPort);
+	}
 
 }

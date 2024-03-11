@@ -21,12 +21,11 @@
 */
 package com.iemr.inventory.data.stockExit;
 
-import jakarta.persistence.Transient;
-
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.data.store.M_Facility;
 import com.iemr.inventory.utils.mapper.OutputMapper;
 
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data
@@ -54,4 +53,18 @@ public class StockTransferItem {
 		return outputMapper.gson().toJson(this);
 	}
 
+	public String getItemName() {
+		
+		return null;
+	}
+
+	public Integer getTransferFromFacilityID() {
+		
+		return null;
+	}
+
+	public Integer getTransferToFacilityID() {
+		
+		return null;
+	}
 }

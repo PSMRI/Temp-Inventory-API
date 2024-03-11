@@ -70,7 +70,7 @@ public interface ItemService {
 
 	List<ItemMaster> getItemMasters(Integer providerServiceMapID, Integer itemCategoryID);
 	
-	List<ItemMaster> getActiveItemMaster(ItemMaster itemMaster);
+	List<ItemMaster> getActiveItemMaster(ItemMaster providerServicemapID);
 	
 	
 

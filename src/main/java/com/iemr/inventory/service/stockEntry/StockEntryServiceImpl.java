@@ -55,8 +55,8 @@ import com.iemr.inventory.utils.exception.InventoryException;
 @Service
 public class StockEntryServiceImpl implements StockEntryService {
 
-	@Autowired
-	private PhysicalStockEntryRepo physicalStockEntryRepo;
+	@Autowired(required=false)
+	PhysicalStockEntryRepo physicalStockEntryRepo;
 
 	@Autowired(required=false)
 	ItemStockEntryRepo itemStockEntryRepo;
@@ -265,7 +265,7 @@ public class StockEntryServiceImpl implements StockEntryService {
 		ItemStockExit itemStockExitsingle = new ItemStockExit();
 		List<ItemStockEntry> itemStockEntryupList = new ArrayList<>();
 		for (ItemStockEntry itemStockEntry : stockInHand) {
-			itemStockExitsingle = result.get(Long.valueOf(itemStockEntry.getItemStockEntryID()));
+			itemStockExitsingle = result.get(itemStockEntry.getItemStockEntryID());
 			ItemStockEntry itemStockEntryup = new ItemStockEntry();
 			itemStockEntryup.setFacilityID(facilityToID);
 			itemStockEntryup.setQuantity(itemStockExitsingle.getQuantity());

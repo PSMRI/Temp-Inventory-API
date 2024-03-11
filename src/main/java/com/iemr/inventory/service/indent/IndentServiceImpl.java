@@ -25,17 +25,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.JoinType;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -56,36 +46,45 @@ import com.iemr.inventory.repo.indent.ItemfacilitymappingIndentRepo;
 import com.iemr.inventory.repo.stockEntry.ItemStockEntryRepo;
 import com.iemr.inventory.repo.stockExit.ItemStockExitRepo;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+
 @Service
-public class IndentServiceImpl implements IndentService{
+public class IndentServiceImpl implements IndentService {
 
 	private static final Logger logger = LoggerFactory.getLogger(IndentServiceImpl.class);
-	
+
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	@Autowired(required=false)
+
+	@Autowired(required = false)
 	ItemfacilitymappingIndentRepo itemfacilitymappingIndentRepo;
-	
-	@Autowired(required=false)
+
+	@Autowired(required = false)
 	IndentOrderRepo indentOrderRepo;
-	
-	@Autowired(required=false)
+
+	@Autowired(required = false)
 	IndentRepo indentRepo;
-	
-	@Autowired(required=false)
+
+	@Autowired(required = false)
 	IndentIssueRepo indentIssueRepo;
-	
-	@Autowired(required=false)
+
+	@Autowired(required = false)
 	ItemStockExitRepo itemStockExitRepo;
-	
-	@Autowired(required=false)
+
+	@Autowired(required = false)
 	ItemStockEntryRepo itemStockEntryRepo;
-	
-	private static ItemfacilitymappingIndent getItemfacilitymappingIndentclass(Object[] obj){
-		
-		ItemfacilitymappingIndent item=new ItemfacilitymappingIndent();
-		
+
+	private static ItemfacilitymappingIndent getItemfacilitymappingIndentclass(Object[] obj) {
+
+		ItemfacilitymappingIndent item = new ItemfacilitymappingIndent();
+
 		item.setItemID((Integer) obj[0]);
 		item.setItemCode((String) obj[1]);
 		item.setItemName((String) obj[2]);
@@ -94,25 +93,24 @@ public class IndentServiceImpl implements IndentService{
 		item.setUomName((String) obj[5]);
 		item.setItemCategory((String) obj[6]);
 		item.setItemForm((String) obj[7]);
-		item.setPharmacologicalCategoryName((String)obj[8]);
-		item.setComposition((String)obj[9]);
-		item.setFacilityID((Integer)obj[10]);
-		item.setQoh(obj[11]==null?new BigDecimal(0):(BigDecimal)obj[11]);
-		
+		item.setPharmacologicalCategoryName((String) obj[8]);
+		item.setComposition((String) obj[9]);
+		item.setFacilityID((Integer) obj[10]);
+		item.setQoh(obj[11] == null ? new BigDecimal(0) : (BigDecimal) obj[11]);
+
 		return item;
-		
+
 	}
-	
+
 	public List<ItemfacilitymappingIndent> findItemIndent(Integer facilityID, String itemName) {
-		List<Object[]> a=itemfacilitymappingIndentRepo.findindentitem(facilityID,itemName);
-		
-		List<ItemfacilitymappingIndent> itemfacilitymappingIndent=new ArrayList<ItemfacilitymappingIndent>();
-		
-		a.stream().forEach(action->{
-			
-				itemfacilitymappingIndent.add( getItemfacilitymappingIndentclass(action));
-			
-			
+		List<Object[]> a = itemfacilitymappingIndentRepo.findindentitem(facilityID, itemName);
+
+		List<ItemfacilitymappingIndent> itemfacilitymappingIndent = new ArrayList<ItemfacilitymappingIndent>();
+
+		a.stream().forEach(action -> {
+
+			itemfacilitymappingIndent.add(getItemfacilitymappingIndentclass(action));
+
 		});
 		return itemfacilitymappingIndent;
 	}
@@ -120,7 +118,7 @@ public class IndentServiceImpl implements IndentService{
 	@Override
 	public String createIndentRequest(Indent indent) {
 		logger.info("Creating Indent - Start");
-		
+
 		indent.setSyncFacilityID(indent.getFromFacilityID());
 		indent.setOrderDate(new Timestamp(System.currentTimeMillis()));
 		indent.setCreatedDate(new Timestamp(System.currentTimeMillis()));
@@ -128,7 +126,7 @@ public class IndentServiceImpl implements IndentService{
 		indent.setProcessed("N");
 		Indent indentCreated = indentRepo.save(indent);
 		indentRepo.updateVanSerialNo(indentCreated.getIndentID(), indentCreated.getFromFacilityID());
-		indent.getIndentOrder().parallelStream().forEach(indentOrder -> {		   	
+		indent.getIndentOrder().parallelStream().forEach(indentOrder -> {
 			indentOrder.setSyncFacilityID(indent.getSyncFacilityID());
 			indentOrder.setIndentID(indentCreated.getIndentID());
 			indentOrder.setVanID(indentCreated.getVanID());
@@ -140,111 +138,109 @@ public class IndentServiceImpl implements IndentService{
 			indentOrder.setProcessed("N");
 			indentOrder.setFromFacilityID(indentCreated.getFromFacilityID());
 		});
-		
+
 		indentCreated.setIndentOrder((List<IndentOrder>) indentOrderRepo.saveAll(indent.getIndentOrder()));
-		
+
 		indentOrderRepo.updateVanSerialNo();
-		
-		
+
 		logger.info("Creating Indent - End");
 		return indentCreated.toString();
 	}
-	
-	
 
 	@Override
 	public String getIndentHistory(Indent indent) {
 		logger.info("getIndentHistory- Start");
-		
+
 		List<Indent> list = indentOrderRepo.getIndentHistory(indent.getFromFacilityID());
-		
+
 		logger.info("getIndentHistory- End");
 		return list.toString();
 	}
-	
+
 	@Override
 	public String getOrdersByIndentID(IndentOrder indentOrder) {
 		logger.info("getOrdersByIndentID- Start");
-		
-		Indent indent=indentRepo.findByIndentID(indentOrder.getIndentID());
-		
-		System.out.println();
-		List<IndentOrder> list = indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(), indent.getSyncFacilityID());
-		
+
+		Indent indent = indentRepo.findByIndentID(indentOrder.getIndentID());
+
+		List<IndentOrder> list = indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(),
+				indent.getSyncFacilityID());
+
 		logger.info("getOrdersByIndentID- End");
 		return list.toString();
 	}
-	
+
 	@Override
 	public String getIndentWorklist(IndentOrder indentOrder) {
 		logger.info("getIndentWorklist- Start");
-		
+
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Indent> criteriaQuery = criteriaBuilder.createQuery(Indent.class);
 		Root<Indent> root = criteriaQuery.from(Indent.class);
 		List<Predicate> predicates = new ArrayList<Predicate>();
 
 		Join<Indent, M_Facility> facilityRoot = root.join("m_Facility", JoinType.INNER);
-		
+
 		predicates.add(criteriaBuilder.equal(root.get("status"), "Pending"));
-		predicates.add(criteriaBuilder.equal(facilityRoot.get("mainFacilityID"),indentOrder.getFacilityID()));
-		
-		if ((indentOrder.getStartDateTime() != null && indentOrder.getEndDateTime() != null) || indentOrder.getIndentFromID() != null )
-		{
-			if (indentOrder.getStartDateTime() != null && indentOrder.getEndDateTime() != null)
-			{
-				predicates.add(criteriaBuilder.between(root.get("createdDate"), indentOrder.getStartDateTime(), indentOrder.getEndDateTime()));
+		predicates.add(criteriaBuilder.equal(facilityRoot.get("mainFacilityID"), indentOrder.getFacilityID()));
+
+		if ((indentOrder.getStartDateTime() != null && indentOrder.getEndDateTime() != null)
+				|| indentOrder.getIndentFromID() != null) {
+			if (indentOrder.getStartDateTime() != null && indentOrder.getEndDateTime() != null) {
+				predicates.add(criteriaBuilder.between(root.get("createdDate"), indentOrder.getStartDateTime(),
+						indentOrder.getEndDateTime()));
 			}
-			
-			if (indentOrder.getIndentFromID() != null)
-			{
+
+			if (indentOrder.getIndentFromID() != null) {
 				predicates.add(criteriaBuilder.isNotNull(root.get("fromFacilityID")));
 				predicates.add(criteriaBuilder.equal(root.get("fromFacilityID"), indentOrder.getIndentFromID()));
 			}
 		}
-		criteriaQuery.select(root).where(predicates.toArray(new Predicate[] {})).orderBy(criteriaBuilder.desc(root.get("createdDate")));
+		criteriaQuery.select(root).where(predicates.toArray(new Predicate[] {}))
+				.orderBy(criteriaBuilder.desc(root.get("createdDate")));
 		List<Indent> results = entityManager.createQuery(criteriaQuery).getResultList();
-		
+
 		logger.info("getIndentWorklist- End");
 		return results.toString();
 	}
 
+	
+
 	@Override
 	public String getIndentOrderWorklist(IndentOrder indentOrder) {
 		logger.info("getIndentOrderWorklist- Start");
+
+		Indent indent = indentRepo.findByIndentID(indentOrder.getIndentID());
 		
-		Indent indent=indentRepo.findByIndentID(indentOrder.getIndentID());
-		
-		//List<IndentOrder> list = indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(), indent.getSyncFacilityID());
-		List<IndentOrder> list = (List<IndentOrder>) indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(), indent.getSyncFacilityID());
+		List<IndentOrder> list = (List<IndentOrder>) indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(),
+				indent.getSyncFacilityID());
 
 		logger.info("getIndentOrderWorklist- End");
 		return list.toString();
 	}
-	
+
 	@Override
 	public String issueIndent(IndentIssue[] array) {
 		logger.info("issueIndent - Start");
-		List<IndentIssue> list= Arrays.asList(array);
+		List<IndentIssue> list = Arrays.asList(array);
 
-		Indent indent=indentRepo.findByIndentID(list.get(0).getIndentID());
-		indentOrderRepo.issueIndent(list.get(0).getAction(), indent.getVanSerialNo(), indent.getSyncFacilityID(),list.get(0).getRejectedReason());
+		Indent indent = indentRepo.findByIndentID(list.get(0).getIndentID());
+		indentOrderRepo.issueIndent(list.get(0).getAction(), indent.getVanSerialNo(), indent.getSyncFacilityID(),
+				list.get(0).getRejectedReason());
 		indentOrderRepo.issueIndentOrder(list.get(0).getAction(), indent.getVanSerialNo(), indent.getSyncFacilityID());
-		
-		for(IndentIssue indentIssue :list)
-		{
-			if(indentIssue.getAction().equalsIgnoreCase("Issued"))
-			{
+
+		for (IndentIssue indentIssue : list) {
+			if (indentIssue.getAction().equalsIgnoreCase("Issued")) {
 				indentOrderRepo.updateQuantityInStock(indentIssue.getIssuedQty(), indentIssue.getItemStockEntryID(),
 						indentIssue.getFromFacilityID());
-				
+
 				indentIssue.setCreatedDate(new Timestamp(System.currentTimeMillis()));
 				indentIssue.setIssueDate(new Timestamp(System.currentTimeMillis()));
 				indentIssue.setProcessed("N");
 				indentIssue.setSyncFacilityID(indentIssue.getFromFacilityID());
 				indentIssueRepo.save(indentIssue);
-				
-				ItemStockExit itemStockExit=new ItemStockExit();
+
+				ItemStockExit itemStockExit = new ItemStockExit();
 				itemStockExit.setItemStockEntryID(indentIssue.getItemStockEntryID());
 				itemStockExit.setSyncFacilityID(indentIssue.getFromFacilityID());
 				itemStockExit.setQuantity(indentIssue.getIssuedQty());
@@ -255,46 +251,43 @@ public class IndentServiceImpl implements IndentService{
 				itemStockExit.setVanID(indentIssue.getVanID());
 				itemStockExit.setParkingPlaceID(indentIssue.getParkingPlaceID());
 				itemStockExitRepo.save(itemStockExit);
-				
+
 			}
 		}
 		indentIssueRepo.updateVanSerialNo();
 		itemStockExitRepo.updateVanSerialNo();
 		logger.info("issueIndent - End");
-		if(list.get(0).getAction().equalsIgnoreCase("Issued"))
-		{
+		if (list.get(0).getAction().equalsIgnoreCase("Issued")) {
 			return "Dispensed successfully";
 		}
 		return "Rejected successfully";
 	}
-	
+
 	@Override
 	public String cancelIndentOrder(Indent indent1) {
 		logger.info("cancelIndentOrder - Start");
-		
-		Indent indent=indentRepo.findByIndentID(indent1.getIndentID());
-		
+
+		Indent indent = indentRepo.findByIndentID(indent1.getIndentID());
+
 		indentOrderRepo.cancelIndent(indent.getIndentID());
 		indentOrderRepo.cancelIndentOrder(indent.getVanSerialNo(), indent.getSyncFacilityID());
 		logger.info("cancelIndentOrder - End");
 		return "Cancelled successfully";
 	}
-	
+
 	@Override
 	public String receiveIndent(Indent indent) {
 		logger.info("receiveIndent - Start");
-		
-		Indent idn=indentRepo.findByIndentID(indent.getIndentID());
-		
+
+		Indent idn = indentRepo.findByIndentID(indent.getIndentID());
+
 		indentOrderRepo.acceptIndent(indent.getIndentID(), indent.getFromFacilityID());
 		indentOrderRepo.acceptIndentOrder(idn.getVanSerialNo(), idn.getSyncFacilityID());
-		
-		List<IndentIssue> issuedList= indentOrderRepo.getIndentIssued(idn.getVanSerialNo(), idn.getToFacilityID());
-		List<ItemStockEntry> itemStockList= new ArrayList<ItemStockEntry>();
-		for(IndentIssue indentIssue : issuedList)
-		{
-			if(indentIssue.getIssuedQty()>0)
-			{
+
+		List<IndentIssue> issuedList = indentOrderRepo.getIndentIssued(idn.getVanSerialNo(), idn.getToFacilityID());
+		List<ItemStockEntry> itemStockList = new ArrayList<ItemStockEntry>();
+		for (IndentIssue indentIssue : issuedList) {
+			if (indentIssue.getIssuedQty() > 0) {
 				ItemStockEntry stockEntry = new ItemStockEntry();
 				stockEntry.setFacilityID(indent.getFromFacilityID());
 				stockEntry.setItemID(indentIssue.getItemID());
@@ -316,18 +309,17 @@ public class IndentServiceImpl implements IndentService{
 		logger.info("receiveIndent - End");
 		return "Received successfully";
 	}
-	
+
 	@Override
 	public String updateIndentOrder(Indent indent) {
 		logger.info("Updating Indent - Start");
-		
+
 		indent.setSyncFacilityID(indent.getFromFacilityID());
 		Indent indentCreated = indentRepo.save(indent);
-		//indentRepo.updateVanSerialNo();
+		// indentRepo.updateVanSerialNo();
 		indent.getIndentOrder().parallelStream().forEach(indentOrder -> {
-			
-			if(indentOrder.getIndentOrderID()==null)
-			{
+
+			if (indentOrder.getIndentOrderID() == null) {
 				indentOrder.setIndentID(indentCreated.getIndentID());
 				indentOrder.setVanID(indentCreated.getVanID());
 				indentOrder.setProviderServiceMapID(indentCreated.getProviderServiceMapID());
@@ -338,16 +330,14 @@ public class IndentServiceImpl implements IndentService{
 				indentOrder.setProcessed("N");
 				indentOrder.setFromFacilityID(indentCreated.getFromFacilityID());
 				indentOrder.setSyncFacilityID(indentCreated.getSyncFacilityID());
-			}
-			else
-			{
-				if(indentOrder !=null && indentCreated !=null && indentCreated.getSyncFacilityID() !=null )
+			} else {
+				if (indentOrder != null && indentCreated != null && indentCreated.getSyncFacilityID() != null)
 					indentOrder.setSyncFacilityID(indentCreated.getSyncFacilityID());
 			}
 		});
-		
+
 		indentCreated.setIndentOrder((List<IndentOrder>) indentOrderRepo.saveAll(indent.getIndentOrder()));
-		
+
 		logger.info("Updating Indent - End");
 		return "Updated successfully";
 	}

@@ -29,9 +29,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.pharmacologicalcategory.M_Pharmacologicalcategory;
@@ -39,7 +38,9 @@ import com.iemr.inventory.service.pharmacologicalcategory.Pharmacologicalcategor
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class PharmacologicalCategoryController {
@@ -50,9 +51,8 @@ public class PharmacologicalCategoryController {
 	private PharmacologicalcategoryInter pharmacologicalcategoryInter;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Create pharmacological category", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/createPharmacologicalcategory", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Create pharmacological category")
+	@PostMapping(value = "/createPharmacologicalcategory", headers = "Authorization", produces = { "application/json" })
 	public String createPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
 
 		OutputResponse response = new OutputResponse();
@@ -77,9 +77,8 @@ public class PharmacologicalCategoryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get pharmacological category", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getPharmacologicalcategory", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get pharmacological category")
+	@PostMapping(value = "/getPharmacologicalcategory", headers = "Authorization", produces = { "application/json" })
 	public String getPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
 
 		OutputResponse response = new OutputResponse();
@@ -103,9 +102,8 @@ public class PharmacologicalCategoryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Edit pharmacological category", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/editPharmacologicalcategory", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Edit pharmacological category")
+	@PostMapping(value = "/editPharmacologicalcategory", headers = "Authorization", produces = { "application/json" })
 	public String editPharmacologicalcategory(@RequestBody String editPharmacologicalcategory) {
 
 		OutputResponse response = new OutputResponse();
@@ -134,9 +132,8 @@ public class PharmacologicalCategoryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Delete pharmacological category", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/deletePharmacologicalcategory", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Delete pharmacological category")
+	@PostMapping(value = "/deletePharmacologicalcategory", headers = "Authorization", produces = { "application/json" })
 	public String deletePharmacologicalcategory(@RequestBody String deletePharmacologicalcategory) {
 
 		OutputResponse response = new OutputResponse();

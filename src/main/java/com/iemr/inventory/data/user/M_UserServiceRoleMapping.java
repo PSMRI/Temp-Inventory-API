@@ -23,6 +23,8 @@ package com.iemr.inventory.data.user;
 
 import java.sql.Timestamp;
 
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,14 +33,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 @Entity
 @Table(name = "m_UserServiceRoleMapping")
 public class M_UserServiceRoleMapping {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer USRMappingID;
 	private Integer UserID;
 	private Integer RoleID;

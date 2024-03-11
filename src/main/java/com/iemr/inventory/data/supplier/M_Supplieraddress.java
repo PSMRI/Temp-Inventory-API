@@ -23,6 +23,9 @@ package com.iemr.inventory.data.supplier;
 
 import java.sql.Date;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,70 +34,59 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 @Entity
-@Table(name="m_supplieraddress")
+@Table(name = "m_supplieraddress")
 public class M_Supplieraddress {
-	
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
-	@Column(name="SupplierAddressID")
+	@Column(name = "SupplierAddressID")
 	private Integer SupplierAddressID;
 	@Expose
-	@Column(name="SupplierID")
-	private Integer supplierID; 
+	@Column(name = "SupplierID")
+	private Integer supplierID;
 	@Expose
-	@Column(name="AddressLine1")
+	@Column(name = "AddressLine1")
 	private String addressLine1;
 	@Expose
-	@Column(name="AddressLine2")
+	@Column(name = "AddressLine2")
 	private String addressLine2;
 	@Expose
-	@Column(name="District")
+	@Column(name = "District")
 	private String district;
 	@Expose
-	@Column(name="State")
+	@Column(name = "State")
 	private String state;
 	@Expose
-	@Column(name="Country")
+	@Column(name = "Country")
 	private String country;
 	@Expose
-	@Column(name="PinCode")
+	@Column(name = "PinCode")
 	private String pinCode;
 	@Expose
-	@Column(name="ProviderServiceMapID")
+	@Column(name = "ProviderServiceMapID")
 	private Integer providerServiceMapID;
 	@Expose
-	@Column(name="Deleted", insertable = false, updatable = true)
+	@Column(name = "Deleted", insertable = false, updatable = true)
 	private Boolean deleted;
 	@Expose
-	@Column(name="CreatedBy")
+	@Column(name = "CreatedBy")
 	private String createdBy;
 	@Expose
-	@Column(name="CreatedDate", insertable = false, updatable = true)
+	@Column(name = "CreatedDate", insertable = false, updatable = true)
 	private Date createdDate;
 	@Expose
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
 	@Expose
-	@Column(name="LastModDate", insertable = false, updatable = true)
+	@Column(name = "LastModDate", insertable = false, updatable = true)
 	private Date lastModDate;
-	
-	
+
 	public M_Supplieraddress() {
 		// TODO Auto-generated constructor stub
-	}  
-	
-	
-	
-	
-	
-	
-	
+	}
+
 	public Integer getSupplierAddressID() {
 		return SupplierAddressID;
 	}
@@ -214,12 +206,6 @@ public class M_Supplieraddress {
 	public void setOutputMapper(OutputMapper outputMapper) {
 		this.outputMapper = outputMapper;
 	}
-
-
-
-
-
-
 
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();

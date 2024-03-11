@@ -28,9 +28,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.items.ItemMaster;
@@ -43,7 +42,9 @@ import com.iemr.inventory.data.stockentry.PhysicalStockEntry;
 import com.iemr.inventory.service.stockEntry.StockEntryServiceImpl;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class StockEntryController {
@@ -54,8 +55,8 @@ public class StockEntryController {
 	private StockEntryServiceImpl stockEntryService;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Physical stock entry", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/physicalStockEntry", headers = "Authorization", method = { RequestMethod.POST })
+	@Operation(summary = "Physical stock entry")
+	@PostMapping(value = "/physicalStockEntry", headers = "Authorization")
 	public String physicalStockEntry(@RequestBody PhysicalStockEntry physicalStockEntry) {
 
 		OutputResponse output = new OutputResponse();
@@ -72,9 +73,8 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get item batch for store id", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getItemBatchForStoreID", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get item batch for store id")
+	@PostMapping(value = "/getItemBatchForStoreID", headers = "Authorization", produces = { "application/json" })
 	public String getItemBatchForStoreID(@RequestBody ItemStockEntry itemStockEntry) {
 
 		OutputResponse response = new OutputResponse();
@@ -94,9 +94,8 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Allocate stock from item id", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/allocateStockFromItemID/{facilityID}", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Allocate stock from item id")
+	@PostMapping(value = "/allocateStockFromItemID/{facilityID}", headers = "Authorization", produces = { "application/json" })
 	public String allocateStockFromItemID(@PathVariable("facilityID") Integer facilityID,
 			@RequestBody List<ItemStockExit> itemStockExitList) {
 
@@ -117,9 +116,8 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get physical stock entry", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getPhysicalStockEntry", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get physical stock entry")
+	@PostMapping(value = "/getPhysicalStockEntry", headers = "Authorization", produces = { "application/json" })
 	public String getPhysicalStockEntry(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
@@ -139,9 +137,8 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Item batch partial search", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/itemBatchPartialSearch", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Item batch partial search")
+	@PostMapping(value = "/itemBatchPartialSearch", headers = "Authorization", produces = { "application/json" })
 	public String itemPartialSearch(@RequestBody ItemMaster getItem) {
 
 		OutputResponse response = new OutputResponse();
@@ -162,9 +159,8 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Item batch with zero partial search", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/itemBatchWithZeroPartialSearch", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Item batch with zero partial search")
+	@PostMapping(value = "/itemBatchWithZeroPartialSearch", headers = "Authorization", produces = { "application/json" })
 	public String itemBatchWithZeroPartialSearch(@RequestBody ItemMaster getItem) {
 
 		OutputResponse response = new OutputResponse();
@@ -185,9 +181,8 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get physical stock entry items", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getPhysicalStockEntryItems", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get physical stock entry items")
+	@PostMapping(value = "/getPhysicalStockEntryItems", headers = "Authorization", produces = { "application/json" })
 	public String getPhysicalStockEntryItems(@RequestBody ItemStockEntryinput getItem) {
 
 		OutputResponse response = new OutputResponse();
@@ -207,9 +202,8 @@ public class StockEntryController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get item with quantity partial search", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getItemwithQuantityPartialSearch", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get item with quantity partial search")
+	@PostMapping(value = "/getItemwithQuantityPartialSearch", headers = "Authorization", produces = { "application/json" })
 	public String getItemwithQuantityPartialSearch(@RequestBody ItemMaster getItem) {
 
 		OutputResponse response = new OutputResponse();

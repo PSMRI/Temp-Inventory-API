@@ -23,6 +23,11 @@ package com.iemr.inventory.data.itemfacilitymapping;
 
 import java.sql.Date;
 
+import com.google.gson.annotations.Expose;
+//import com.iemr.inventory.data.rolemaster.M_Role;
+import com.iemr.inventory.data.store.M_Facility;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,23 +38,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.items.ItemMaster;
-import com.iemr.inventory.data.locationmaster.DistrictBranchMapping;
-//import com.iemr.inventory.data.rolemaster.M_Role;
-import com.iemr.inventory.data.store.M_Facility;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Entity
-@Table(name="m_itemfacilitymapping")
+@Table(name = "m_itemfacilitymapping")
 @Data
 public class M_itemfacilitymapping {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "ItemFacilityMapID")
 	private Integer itemFacilityMapID;
@@ -59,19 +56,19 @@ public class M_itemfacilitymapping {
 	@Expose
 	@Column(name = "ItemID")
 	private Integer itemID;
-	
+
 	@Expose
 	@Transient
 	private Integer itemCategoryID;
-	
+
 	@Expose
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "FacilityID")
 	private M_Facility facility;
-	
+
 	@Expose
 	@Column(name = "MappingType")
-	private String mappingType; 
+	private String mappingType;
 	@Expose
 	@Column(name = "Status")
 	private String status;
@@ -93,40 +90,35 @@ public class M_itemfacilitymapping {
 	@Expose
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Date lastModDate;
-	
-	
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ItemID", insertable = false, updatable = false)
 	@Expose
 	private ItemMasterforFacilityMapping itemMasterforFacilityMapping;
-	
-	
+
 	@Transient
 	@Expose
 	private String itemName;
-	
+
 	@Transient
 	@Expose
 	private Boolean discontinued;
-	
-	
+
 	public M_itemfacilitymapping() {
 		// TODO Auto-generated constructor stut
 	}
 
-	public M_itemfacilitymapping(Integer itemID,String itemName) {
-		this.itemID=itemID;
-		this.itemName=itemName;
+	public M_itemfacilitymapping(Integer itemID, String itemName) {
+		this.itemID = itemID;
+		this.itemName = itemName;
 	}
-	 
-	public M_itemfacilitymapping(Integer itemID,String itemName,Boolean discontinued,Integer categoryID) {
-		this.itemID=itemID;
-		this.itemName=itemName;
-		this.discontinued=discontinued;
-		this.itemCategoryID=categoryID;
+
+	public M_itemfacilitymapping(Integer itemID, String itemName, Boolean discontinued, Integer categoryID) {
+		this.itemID = itemID;
+		this.itemName = itemName;
+		this.discontinued = discontinued;
+		this.itemCategoryID = categoryID;
 	}
-	
 
 	public ItemMasterforFacilityMapping getItemMasterforFacilityMapping() {
 		return itemMasterforFacilityMapping;
@@ -159,7 +151,7 @@ public class M_itemfacilitymapping {
 	public void setItemID(Integer itemID) {
 		this.itemID = itemID;
 	}
-	
+
 	public String getMappingType() {
 		return mappingType;
 	}

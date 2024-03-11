@@ -26,6 +26,6 @@ import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.stockExit.ItemReturnEntry;
 @Repository
-public interface ItemReturnEntryRepo extends CrudRepository<ItemReturnEntry, Integer>{ 
+public interface ItemReturnEntryRepo extends CrudRepository<ItemReturnEntry, Long>{ 
 
 }

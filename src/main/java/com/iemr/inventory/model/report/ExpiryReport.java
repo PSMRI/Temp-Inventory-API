@@ -22,7 +22,6 @@
 package com.iemr.inventory.model.report;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.LongSerializationPolicy;

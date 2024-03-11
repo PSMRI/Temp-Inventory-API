@@ -21,6 +21,8 @@
 */
 package com.iemr.inventory.service.report;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -45,8 +47,6 @@ import com.iemr.inventory.model.report.MonthlyReport;
 import com.iemr.inventory.model.report.TransitReport;
 import com.iemr.inventory.model.report.YearlyReport;
 import com.iemr.inventory.repo.report.ItemStockReportRepo;
-import java.math.BigInteger;
-import java.math.BigDecimal;
 
 @Service
 public class CRMReportServiceImpl implements CRMReportService {
@@ -56,6 +56,11 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 	@Autowired(required=false)
 	InventoryReportMapper mapper;
+
+	@Autowired
+	public CRMReportServiceImpl(ItemStockReportRepo itemStockReportRepo) {
+		this.itemStockReportRepo=itemStockReportRepo;
+	}
 
 	@Override
 	public String getInwardStockReport(ItemStockEntryReport entryReport) {

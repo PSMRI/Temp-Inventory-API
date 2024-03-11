@@ -23,6 +23,9 @@ package com.iemr.inventory.data.facilitytype;
 
 import java.sql.Date;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,15 +34,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 @Entity
 @Table(name="m_facilitytype")
 public class M_facilitytype {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "FacilityTypeID")
 	@Expose
 	private Integer facilityTypeID;
@@ -87,14 +87,9 @@ public class M_facilitytype {
 	
 	
 	public M_facilitytype() {
-		// TODO Auto-generated constructor stub
 	}
 	
-	
-	
-	
-	
-	
+
 	
 	public Integer getFacilityTypeID() {
 		return facilityTypeID;

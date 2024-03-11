@@ -27,9 +27,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.stockExit.ItemStockExitMap;
@@ -41,7 +40,9 @@ import com.iemr.inventory.service.stockExit.StockExitServiceImpl;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class StockExitController {
@@ -52,8 +53,8 @@ public class StockExitController {
 	StockExitServiceImpl stockExitService;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Patient issue", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/patientIssue", headers = "Authorization", method = { RequestMethod.POST })
+	@Operation(summary = "Patient issue")
+	@PostMapping(value = "/patientIssue", headers = "Authorization")
 	public String patientIssue(@RequestBody T_PatientIssue patientIssue) {
 
 		OutputResponse output = new OutputResponse();
@@ -74,8 +75,8 @@ public class StockExitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Store self consumption", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/storeSelfConsumption", headers = "Authorization", method = { RequestMethod.POST })
+	@Operation(summary = "Store self consumption")
+	@PostMapping(value = "/storeSelfConsumption", headers = "Authorization")
 	public String storeSelfConsumption(@RequestBody StoreSelfConsumption storeSelfConsumption) {
 
 		OutputResponse output = new OutputResponse();
@@ -96,8 +97,8 @@ public class StockExitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Store transfer", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/storeTransfer", headers = "Authorization", method = { RequestMethod.POST })
+	@Operation(summary = "Store transfer")
+	@PostMapping(value = "/storeTransfer", headers = "Authorization")
 	public String storeTransfer(@RequestBody T_StockTransfer stockTransfer) {
 
 		OutputResponse output = new OutputResponse();
@@ -119,8 +120,8 @@ public class StockExitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get patient issue", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getPatientissue", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get patient issue")
+	@PostMapping(value = "/getPatientissue", headers = "Authorization", produces = {
 			"application/json" })
 	public String getPatientissue(@RequestBody ItemStockEntryinput itemStockinput) {
 
@@ -140,9 +141,8 @@ public class StockExitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get self consumption", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getSelfConsumption", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get self consumption")
+	@PostMapping(value = "/getSelfConsumption", headers = "Authorization", produces = { "application/json" })
 	public String getSelfConsumption(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
@@ -162,9 +162,8 @@ public class StockExitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get store transfer", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getStoreTransfer", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get store transfer")
+	@PostMapping(value = "/getStoreTransfer", headers = "Authorization", produces = { "application/json" })
 	public String getStoreTransfer(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
@@ -183,9 +182,8 @@ public class StockExitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get patient issue all detail", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getPatientissueAllDetail", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get patient issue all detail")
+	@PostMapping(value = "/getPatientissueAllDetail", headers = "Authorization", produces = { "application/json" })
 	public String getPatientissueAllDetail(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
@@ -205,9 +203,8 @@ public class StockExitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get patient issue item entry", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getPatientissueItemEntry", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get patient issue item entry")
+	@PostMapping(value = "/getPatientissueItemEntry", headers = "Authorization", produces = { "application/json" })
 	public String getPatientissueItemEntry(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();
@@ -227,9 +224,8 @@ public class StockExitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get self consumption item entry", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getSelfConsumptionItemEntry", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get self consumption item entry")
+	@PostMapping(value = "/getSelfConsumptionItemEntry", headers = "Authorization", produces = { "application/json" })
 	public String getSelfConsumptionItemEntry(@RequestBody String input) {
 
 		OutputResponse response = new OutputResponse();
@@ -250,9 +246,8 @@ public class StockExitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get store transfer item entry", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getStoreTransferItemEntry", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get store transfer item entry")
+	@PostMapping(value = "/getStoreTransferItemEntry", headers = "Authorization", produces = { "application/json" })
 	public String getStoreTransferItemEntry(@RequestBody ItemStockEntryinput itemStockinput) {
 
 		OutputResponse response = new OutputResponse();

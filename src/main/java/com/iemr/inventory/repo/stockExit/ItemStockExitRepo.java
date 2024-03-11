@@ -23,14 +23,14 @@ package com.iemr.inventory.repo.stockExit;
 
 import java.util.List;
 
-import jakarta.transaction.Transactional;
-
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.stockExit.ItemStockExit;
+
+import jakarta.transaction.Transactional;
 
 @Repository
 public interface ItemStockExitRepo extends CrudRepository<ItemStockExit,Long> {

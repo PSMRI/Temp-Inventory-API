@@ -24,6 +24,8 @@ package com.iemr.inventory.data.report;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import com.google.gson.annotations.Expose;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,9 +33,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-
 import lombok.Data;
 
 @Data
@@ -42,7 +41,7 @@ import lombok.Data;
 public class ItemStockEntryReport {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="Fact_ItemStockEntryID")
 	private Long factItemStockEntryID;

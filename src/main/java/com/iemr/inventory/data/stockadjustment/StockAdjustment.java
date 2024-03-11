@@ -24,22 +24,16 @@ package com.iemr.inventory.data.stockadjustment;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.utils.mapper.OutputMapper;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Entity
@@ -48,7 +42,7 @@ import lombok.Data;
 public class StockAdjustment {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "StockAdjustmentID")
 	private Long stockAdjustmentID;
@@ -58,9 +52,9 @@ public class StockAdjustment {
 	private Long stockAdjustmentDraftID;
 
 	@Expose
-	@Column(name="VanSerialNo")
+	@Column(name = "VanSerialNo")
 	private Long vanSerialNo;
-	
+
 	@Expose
 	@Column(name = "FacilityID")
 	private Integer facilityID;
@@ -130,6 +124,5 @@ public class StockAdjustment {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
 
 }

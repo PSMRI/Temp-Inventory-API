@@ -23,16 +23,13 @@ package com.iemr.inventory.controller.visit;
 
 import java.util.List;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.visit.BenVisitDetail;
@@ -40,7 +37,10 @@ import com.iemr.inventory.data.visit.BeneficiaryModel;
 import com.iemr.inventory.service.visit.VisitService;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+import jakarta.servlet.http.HttpServletRequest;
+
+
 
 @Controller
 @RestController
@@ -52,9 +52,8 @@ public class VisitController {
 	Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get visit details from beneficary id", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getVisitFromBenID", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get visit details from beneficary id")
+	@PostMapping(value = "/getVisitFromBenID", headers = "Authorization", produces = { "application/json" })
 	public String getVisitFromBenRegID(@RequestBody BenVisitDetail benVisitDetail, HttpServletRequest httpRequest) {
 
 		OutputResponse response = new OutputResponse();
@@ -79,9 +78,8 @@ public class VisitController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get visit details from advance search", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getVisitFromAdvanceSearch", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get visit details from advance search")
+	@PostMapping(value = "/getVisitFromAdvanceSearch", headers = "Authorization", produces = { "application/json" })
 	public String getVisitFromAdvanceSearch(@RequestBody String model, HttpServletRequest httpRequest) {
 
 		OutputResponse response = new OutputResponse();

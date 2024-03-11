@@ -21,8 +21,6 @@
 */
 package com.iemr.inventory.repo.indent;
 
-import jakarta.transaction.Transactional;
-
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -30,6 +28,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.indent.Indent;
+
+import jakarta.transaction.Transactional;
 @Repository
 public interface IndentRepo extends CrudRepository<Indent, Long>{
 

@@ -25,9 +25,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.report.ItemStockEntryReport;
@@ -37,7 +37,9 @@ import com.iemr.inventory.service.report.CRMReportService;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RequestMapping("/crmReportController")
 @RestController
@@ -49,9 +51,8 @@ public class CRMReportController {
 	CRMReportService crmReportService;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get inward stock report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getInwardStockReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get inward stock report")
+	@PostMapping(value = "/getInwardStockReport", headers = "Authorization", produces = { "application/json" })
 	public String getInwardStockReport(@RequestBody String request) {
 		logger.info("getInwardStockReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
@@ -69,8 +70,8 @@ public class CRMReportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get expiry report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getExpiryReport", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get expiry report")
+	@PostMapping(value = "/getExpiryReport", headers = "Authorization", produces = {
 			"application/json" })
 	public String getExpiryReport(@RequestBody String request) {
 		logger.info("getExpiryReport request " + request.toString());
@@ -89,9 +90,8 @@ public class CRMReportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get consumption report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getConsumptionReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get consumption report")
+	@PostMapping(value = "/getConsumptionReport", headers = "Authorization", produces = { "application/json" })
 	public String getConsumptionReport(@RequestBody String request) {
 		logger.info("getConsumptionReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
@@ -109,9 +109,8 @@ public class CRMReportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get benificiary drug issue report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getBenDrugIssueReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get benificiary drug issue report")
+	@PostMapping(value = "/getBenDrugIssueReport", headers = "Authorization", produces = { "application/json" })
 	public String getBenDrugIssueReport(@RequestBody String request) {
 		logger.info("getBenDrugIssueReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
@@ -129,9 +128,8 @@ public class CRMReportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get daily stock detail report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getDailyStockDetailReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get daily stock detail report")
+	@PostMapping(value = "/getDailyStockDetailReport", headers = "Authorization", produces = { "application/json" })
 	public String getDailyStockDetailReport(@RequestBody String request) {
 		logger.info("getDailyStockDetailReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
@@ -149,9 +147,8 @@ public class CRMReportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get daily stock summary report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getDailyStockSummaryReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get daily stock summary report")
+	@PostMapping(value = "/getDailyStockSummaryReport", headers = "Authorization", produces = { "application/json" })
 	public String getDailyStockSummaryReport(@RequestBody String request) {
 		logger.info("getDailyStockSummaryReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
@@ -169,9 +166,8 @@ public class CRMReportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get monthly report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getMonthlyReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get monthly report")
+	@PostMapping(value = "/getMonthlyReport", headers = "Authorization", produces = { "application/json" })
 	public String getMonthlyReport(@RequestBody String request) {
 		logger.info("getMonthlyReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
@@ -189,8 +185,8 @@ public class CRMReportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get yearly report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getYearlyReport", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get yearly report")
+	@PostMapping(value = "/getYearlyReport", headers = "Authorization", produces = {
 			"application/json" })
 	public String getYearlyReport(@RequestBody String request) {
 		logger.info("getYearlyReport request " + request.toString());
@@ -209,9 +205,8 @@ public class CRMReportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get short expiry report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getShortExpiryReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get short expiry report")
+	@PostMapping(value = "/getShortExpiryReport", headers = "Authorization", produces = { "application/json" })
 	public String getShortExpiryReport(@RequestBody String request) {
 		logger.info("getShortExpiryReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
@@ -229,9 +224,8 @@ public class CRMReportController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get transit report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getTransitReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Get transit report")
+	@PostMapping(value = "/getTransitReport", headers = "Authorization", produces = { "application/json" })
 	public String getTransitReport(@RequestBody String request) {
 		logger.info("getTransitReport request " + request.toString());
 		OutputResponse response = new OutputResponse();

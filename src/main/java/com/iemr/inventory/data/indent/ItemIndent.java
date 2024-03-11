@@ -23,17 +23,6 @@ package com.iemr.inventory.data.indent;
 
 import java.sql.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.data.items.M_ItemCategory;
 import com.iemr.inventory.data.items.M_ItemForm;
@@ -44,151 +33,159 @@ import com.iemr.inventory.data.uom.M_Uom;
 import com.iemr.inventory.to.provider.ProviderServiceMappingTO;
 import com.iemr.inventory.utils.mapper.OutputMapper;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Entity
-@Table(name="m_item")
+@Table(name = "m_item")
 @Data
 public class ItemIndent {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
-	@Column(name="ItemID")
+	@Column(name = "ItemID")
 	private Integer itemID;
-	
+
 	@Expose
-	@Column(name="ItemName")
+	@Column(name = "ItemName")
 	private String itemName;
-	
+
 	@Expose
-	@Column(name="ItemDesc")
-	private String itemDesc; 
-	
+	@Column(name = "ItemDesc")
+	private String itemDesc;
+
 	@Expose
-	@Column(name="ItemCode")
-	private String itemCode; 
-	
+	@Column(name = "ItemCode")
+	private String itemCode;
+
 	@Expose
-	@Column(name="ItemCategoryID")
-	private Integer itemCategoryID; 
-	
+	@Column(name = "ItemCategoryID")
+	private Integer itemCategoryID;
+
 	@Expose
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "itemCategoryID")
 	private M_ItemCategory itemCategory;
-	
 
 	@Expose
-	@Column(name="IsMedical")
+	@Column(name = "IsMedical")
 	private Boolean isMedical;
-		
+
 	@Expose
-	@Column(name="ItemFormID")
-	private Integer itemFormID; 
-	
+	@Column(name = "ItemFormID")
+	private Integer itemFormID;
+
 	@Expose
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "ItemFormID")
 	private M_ItemForm itemForm;
-	
+
 	@Expose
-	@Column(name="PharmacologyCategoryID")
+	@Column(name = "PharmacologyCategoryID")
 	private Integer pharmacologyCategoryID;
-	
+
 	@Expose
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "PharmacologyCategoryID")
 	private M_Pharmacologicalcategory pharmacologyCategory;
-	
+
 	@Expose
-	@Column(name="ManufacturerID")
+	@Column(name = "ManufacturerID")
 	private Integer manufacturerID;
-	
+
 	@Expose
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "ManufacturerID")
 	private M_Manufacturer manufacturer;
-	
+
 	@Expose
-	@Column(name="Strength")
+	@Column(name = "Strength")
 	private String strength;
-	
+
 	@Expose
-	@Column(name="UOMID")
+	@Column(name = "UOMID")
 	private Integer uomID;
-	
+
 	@Expose
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "uomID")
 	private M_Uom uom;
-	
+
 	@Expose
-	@Column(name="IsScheduledDrug")
+	@Column(name = "IsScheduledDrug")
 	private Boolean isScheduledDrug;
-	
+
 	@Expose
-	@Column(name="Composition")
+	@Column(name = "Composition")
 	private String composition;
 
 	@Expose
-	@Column(name="RouteID")
+	@Column(name = "RouteID")
 	private Integer routeID;
-	
+
 	@Expose
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "RouteID")
 	private M_Route route;
-	
+
 	@Expose
-	@Column(name="ProviderServiceMapID")
+	@Column(name = "ProviderServiceMapID")
 	private Integer providerServiceMapID;
-	
+
 	@Expose
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "ProviderServiceMapID")
 	private ProviderServiceMappingTO providerServiceMap;
-	
+
 	@Expose
-	@Column(name="Status")
+	@Column(name = "Status")
 	private String status;
-	
+
 	@Expose
-	@Column(name="Discontinued",insertable = false, updatable = true)
+	@Column(name = "Discontinued", insertable = false, updatable = true)
 	private Boolean discontinued;
-	
+
 	@Expose
-	@Column(name="Deleted",insertable = false, updatable = true)
-	private Boolean deleted; 
-	
+	@Column(name = "Deleted", insertable = false, updatable = true)
+	private Boolean deleted;
+
 	@Expose
-	@Column(name="Processed",insertable = false, updatable = true)
-	private Character processed; 
-	
+	@Column(name = "Processed", insertable = false, updatable = true)
+	private Character processed;
+
 	@Expose
-	@Column(name="CreatedBy")
-	private String createdBy; 
-	
+	@Column(name = "CreatedBy")
+	private String createdBy;
+
 	@Expose
-	@Column(name="CreatedDate",insertable = false, updatable = false)
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
-	
+
 	@Expose
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
-	
+
 	@Expose
-	@Column(name="LastModDate",insertable = false, updatable = false)
+	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Date lastModDate;
-	
+
 	@Expose
 	@Transient
 	private Integer quantity;
-	
-	
+
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
-	
+
 	@Transient
 	private Integer facilityID;
 

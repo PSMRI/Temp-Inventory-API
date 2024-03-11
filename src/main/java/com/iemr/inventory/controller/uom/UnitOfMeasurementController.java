@@ -29,9 +29,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.uom.M_Uom;
@@ -39,7 +40,9 @@ import com.iemr.inventory.service.uom.UomInter;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class UnitOfMeasurementController {
@@ -50,8 +53,8 @@ public class UnitOfMeasurementController {
 	private UomInter uomInter;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Create unit of measurement", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/createUom", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Create unit of measurement")
+	@PostMapping(value = "/createUom", headers = "Authorization", produces = {
 			"application/json" })
 	public String createUom(@RequestBody String createUom) {
 
@@ -75,8 +78,8 @@ public class UnitOfMeasurementController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get unit of measurement", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getUom", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get unit of measurement")
+	@GetMapping(value = "/getUom", headers = "Authorization", produces = {
 			"application/json" })
 	public String getUom(@RequestBody String getUom) {
 
@@ -100,8 +103,8 @@ public class UnitOfMeasurementController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Edit unit of measurement", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/editUom", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Edit unit of measurement")
+	@PostMapping(value = "/editUom", headers = "Authorization", produces = {
 			"application/json" })
 	public String editUom(@RequestBody String editUom) {
 
@@ -132,8 +135,8 @@ public class UnitOfMeasurementController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Delete unit of measurement", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/deleteUom", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Delete unit of measurement")
+	@DeleteMapping(value = "/deleteUom", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteUom(@RequestBody String editUom) {
 

@@ -127,7 +127,7 @@ public class DispenseAgainstRXimpl implements DispenseAgainstRX {
 
 	}
 
-	private Long calculateExpiryDateInDays(Timestamp expDate) {
+	public Long calculateExpiryDateInDays(Timestamp expDate) {
 		if (expDate != null) {
 			Timestamp currentDate = new Timestamp(System.currentTimeMillis());
 			Long diff = (expDate.getTime() - currentDate.getTime()) / 86400000;

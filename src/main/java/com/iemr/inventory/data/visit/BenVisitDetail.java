@@ -23,16 +23,15 @@ package com.iemr.inventory.data.visit;
 
 import java.sql.Timestamp;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Data
@@ -73,7 +72,7 @@ public class BenVisitDetail {
 	@Expose
 	@Column(name = "VisitCode")
 	private String visitCode;
-	
+
 	@Expose
 	@Column(name = "VisitNo")
 	private Short visitNo;
@@ -136,35 +135,35 @@ public class BenVisitDetail {
 	@Expose
 	@Column(name = "VisitFlowStatusFlag", insertable = false)
 	private String visitFlowStatusFlag;
-	
+
 	@Expose
 	@Column(name = "VanSerialNo")
 	private Long vanSerialNo;
-	
+
 	@Expose
 	@Column(name = "VehicalNo")
 	private String vehicalNo;
-	
+
 	@Expose
 	@Column(name = "ParkingPlaceID")
 	private Integer parkingPlaceID;
-	
+
 	@Expose
 	@Column(name = "SyncedBy")
 	private String syncedBy;
-	
+
 	@Expose
 	@Column(name = "SyncedDate")
 	private Timestamp syncedDate;
-	
+
 	@Expose
 	@Column(name = "ReservedForChange")
 	private String reservedForChange;
-	
+
 	@Expose
 	@Transient
 	private String beneficiaryID;
-	
+
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 

@@ -23,6 +23,8 @@ package com.iemr.inventory.data.user;
 
 import java.sql.Date;
 
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,14 +32,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 
 @Entity
 @Table(name="m_ServiceProvider")
 public class M_ServiceProvider {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	 private int ServiceProviderId; 
 	 private String ServiceProviderName;
 	 private Date JoiningDate;

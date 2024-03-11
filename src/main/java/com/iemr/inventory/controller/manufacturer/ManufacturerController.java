@@ -29,9 +29,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.manufacturer.M_Manufacturer;
@@ -39,7 +38,9 @@ import com.iemr.inventory.service.manufacturer.ManufacturerInter;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class ManufacturerController {
@@ -49,9 +50,8 @@ public class ManufacturerController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Create manufacturer", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/createManufacturer", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Create manufacturer")
+	@PostMapping(value = "/createManufacturer", headers = "Authorization", produces = { "application/json" })
 	public String createManufacturer(@RequestBody String createManufacturer) {
 
 		OutputResponse response = new OutputResponse();
@@ -74,8 +74,8 @@ public class ManufacturerController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get manufacturer", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getManufacturer", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get manufacturer")
+	@PostMapping(value = "/getManufacturer", headers = "Authorization", produces = {
 			"application/json" })
 	public String getManufacturer(@RequestBody String getManufacturer) {
 
@@ -100,9 +100,8 @@ public class ManufacturerController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Edit manufacturer", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/editManufacturer", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Edit manufacturer")
+	@PostMapping(value = "/editManufacturer", headers = "Authorization", produces = { "application/json" })
 	public String editManufacturer(@RequestBody String editManufacturer) {
 
 		OutputResponse response = new OutputResponse();
@@ -135,9 +134,8 @@ public class ManufacturerController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Delete manufacturer", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/deleteManufacturer", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@Operation(summary = "Delete manufacturer")
+	@PostMapping(value = "/deleteManufacturer", headers = "Authorization", produces = { "application/json" })
 	public String deleteManufacturer(@RequestBody String deleteManufacturer) {
 
 		OutputResponse response = new OutputResponse();

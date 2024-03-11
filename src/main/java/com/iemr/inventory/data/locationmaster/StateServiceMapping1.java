@@ -23,6 +23,9 @@ package com.iemr.inventory.data.locationmaster;
 
 import java.sql.Date;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -34,68 +37,64 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 @Entity
-@Table(name="m_ProviderServiceMapping")
+@Table(name = "m_ProviderServiceMapping")
 public class StateServiceMapping1 {
 
-	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
-	@Column(name="ProviderServiceMapID")
+	@Column(name = "ProviderServiceMapID")
 	private Integer providerServiceMapID;
 	@Expose
-	@Column(name="ServiceProviderID")
-	private Integer serviceProviderID; 
+	@Column(name = "ServiceProviderID")
+	private Integer serviceProviderID;
 	@Expose
-	@Column(name="ServiceID")
+	@Column(name = "ServiceID")
 	private Integer serviceID;
 	@Expose
-	@Column(name="CountryID")
+	@Column(name = "CountryID")
 	private Integer countryID;
 	@Expose
-	@Column(name="StateID")
+	@Column(name = "StateID")
 	private Integer stateID;
 	@Expose
-	@Column(name="DistrictID")
+	@Column(name = "DistrictID")
 	private Integer districtID;
 	@Expose
-	@Column(name="CityID")
-	private Integer cityID; 
+	@Column(name = "CityID")
+	private Integer cityID;
 	@Expose
-	@Column(name="DistrictBlockID")
+	@Column(name = "DistrictBlockID")
 	private Integer districtBlockID;
 	@Expose
-	@Column(name="Address")
-	private String address; 
+	@Column(name = "Address")
+	private String address;
 	@Expose
-	@Column(name="StatusID")
-	private Integer statusID; 
+	@Column(name = "StatusID")
+	private Integer statusID;
 	@Expose
-	@Column(name="ValidFrom")
-	private Date validFrom; 
+	@Column(name = "ValidFrom")
+	private Date validFrom;
 	@Expose
-	@Column(name="ValidTill")
+	@Column(name = "ValidTill")
 	private Date validTill;
 	@Expose
-	@Column(name="Deleted", insertable = false, updatable = true)
+	@Column(name = "Deleted", insertable = false, updatable = true)
 	private Boolean deleted;
 	@Expose
-	@Column(name="CreatedBy")
+	@Column(name = "CreatedBy")
 	private String createdBy;
 	@Expose
-	@Column(name="CreatedDate", insertable = false, updatable = false)
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
 	private Date createdDate;
 	@Expose
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
 	@Expose
-	@Column(name="LastModDate", insertable = false, updatable = false)
-	private Date  lastModDate;
-	
+	@Column(name = "LastModDate", insertable = false, updatable = false)
+	private Date lastModDate;
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ServiceID", insertable = false, updatable = false)
 	@Expose
@@ -105,42 +104,40 @@ public class StateServiceMapping1 {
 	@JoinColumn(name = "StateID", insertable = false, updatable = false)
 	@Expose
 	private State stateMaster;
-	
-	
+
 	@Transient
 	@Expose
 	private String stateName;
-	
+
 	@Transient
 	@Expose
 	private String serviceName;
-	
+
 	public StateServiceMapping1() {
-	
+
 	}
 
-
-	public StateServiceMapping1(Integer stateID, String stateName,Integer statusID,Integer providerServiceMapID) {
+	public StateServiceMapping1(Integer stateID, String stateName, Integer statusID, Integer providerServiceMapID) {
 		this.stateID = stateID;
 		this.stateName = stateName;
-		this.statusID=statusID;
-		this.providerServiceMapID=providerServiceMapID;
+		this.statusID = statusID;
+		this.providerServiceMapID = providerServiceMapID;
 	}
-	
+
 	public StateServiceMapping1(Integer stateID, String stateName, Integer providerServiceMapID) {
 		this.stateID = stateID;
 		this.providerServiceMapID = providerServiceMapID;
 		this.stateName = stateName;
 	}
-	
-	public StateServiceMapping1(Integer serviceID, Integer providerServiceMapID,String serviceName) {
+
+	public StateServiceMapping1(Integer serviceID, Integer providerServiceMapID, String serviceName) {
 		this.serviceID = serviceID;
-		this.providerServiceMapID=providerServiceMapID;
+		this.providerServiceMapID = providerServiceMapID;
 		this.serviceName = serviceName;
 	}
-	
-	public StateServiceMapping1(Integer providerServiceMapID){
-		this.providerServiceMapID=providerServiceMapID;
+
+	public StateServiceMapping1(Integer providerServiceMapID) {
+		this.providerServiceMapID = providerServiceMapID;
 	}
 
 	public Integer getProviderServiceMapID() {
@@ -250,41 +247,30 @@ public class StateServiceMapping1 {
 	public String getCreatedBy() {
 		return createdBy;
 	}
+
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
-
-
 
 	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-
-
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
-
-
 
 	public String getModifiedBy() {
 		return modifiedBy;
 	}
 
-
-
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 
-
-
 	public Date getLastModDate() {
 		return lastModDate;
 	}
-
-
 
 	public void setLastModDate(Date lastModDate) {
 		this.lastModDate = lastModDate;
@@ -294,16 +280,13 @@ public class StateServiceMapping1 {
 		return serviceMaster;
 	}
 
-
 	public void setServiceMaster(ServiceMaster serviceMaster) {
 		this.serviceMaster = serviceMaster;
 	}
 
-
 	public State getStateMaster() {
 		return stateMaster;
 	}
-
 
 	public void setStateMaster(State stateMaster) {
 		this.stateMaster = stateMaster;

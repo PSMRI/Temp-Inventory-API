@@ -23,29 +23,17 @@ package com.iemr.inventory.data.itemfacilitymapping;
 
 import java.sql.Date;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.manufacturer.M_Manufacturer;
-import com.iemr.inventory.data.pharmacologicalcategory.M_Pharmacologicalcategory;
-//import com.iemr.inventory.data.provideronboard.M_ProviderServiceMapping;
-//import com.iemr.inventory.data.rolemaster.M_Role;
-import com.iemr.inventory.to.provider.ProviderServiceMappingTO;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-import com.iemr.inventory.data.items.M_ItemCategory;
-import com.iemr.inventory.data.items.M_ItemForm;
-import com.iemr.inventory.data.items.M_Route;
-
-import lombok.*;
+import lombok.Data;
 
 
 @Entity
@@ -54,7 +42,7 @@ import lombok.*;
 public class ItemMasterforFacilityMapping {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name="ItemID")
 	private Integer itemID;

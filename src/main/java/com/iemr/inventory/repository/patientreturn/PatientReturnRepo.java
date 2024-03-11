@@ -23,24 +23,22 @@ package com.iemr.inventory.repository.patientreturn;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Objects;
-
-import jakarta.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import com.iemr.inventory.data.stockExit.ItemReturnEntry;
-import com.iemr.inventory.data.stockExit.T_PatientIssue;
 import org.springframework.stereotype.Service;
+
+import com.iemr.inventory.data.stockExit.T_PatientIssue;
+
+import jakarta.transaction.Transactional;
 
 
 @Service
 @Repository
-public interface PatientReturnRepo extends CrudRepository<T_PatientIssue, Integer>{ 
+public interface PatientReturnRepo extends CrudRepository<T_PatientIssue, Long>{ 
 
 	@Query(value ="SELECT patientIssue.BeneficiaryRegID, patientIssue.FacilityID, item.ItemID, item.ItemName "
 			+ "FROM t_patientissue patientIssue "
@@ -50,7 +48,7 @@ public interface PatientReturnRepo extends CrudRepository<T_PatientIssue, Intege
 			+ "join m_itemfacilitymapping facmapping on facmapping.ItemID=item.ItemID AND facmapping.FacilityID=patientIssue.FacilityID AND facmapping.deleted=0 "
 			+ "WHERE patientIssue.BeneficiaryRegID=:benRegID AND patientIssue.FacilityID=:facilityID AND patientIssue.deleted=0 "
 			+ "AND patientIssue.createdDate>= :createdDate group by item.ItemID", nativeQuery=true)
-	List<Objects[]> getItemNameByRegID(@Param("benRegID")Long benRegID,@Param("facilityID") Integer facilityID,@Param("createdDate") Timestamp createdDate);
+	List<Object[]> getItemNameByRegID(@Param("benRegID")Long benRegID,@Param("facilityID") Integer facilityID,@Param("createdDate") Timestamp createdDate);
 	
 	
 	@Query(value ="SELECT item.ItemID, item.ItemName, itemstockentry.BatchNo, itemstockexit.Quantity, itemstockexit.CreatedDate, item.Discontinued, item.Deleted, "
@@ -63,7 +61,7 @@ public interface PatientReturnRepo extends CrudRepository<T_PatientIssue, Intege
 			+ "join m_itemfacilitymapping facmapping on facmapping.ItemID=item.ItemID AND facmapping.FacilityID=patientIssue.FacilityID AND facmapping.deleted=0 "
 			+ "WHERE patientIssue.BeneficiaryRegID=:benRegID AND item.ItemID=:itemID AND patientIssue.FacilityID=:facilityID "
 			+ "AND patientIssue.deleted=0 order by itemstockexit.CreatedDate", nativeQuery=true)
-	List<Objects[]> getItemDetailByBen(@Param("benRegID")Long benRegID,@Param("itemID") Integer itemID,@Param("facilityID") Integer facilityID);
+	List<Object[]> getItemDetailByBen(@Param("benRegID")Long benRegID,@Param("itemID") Integer itemID,@Param("facilityID") Integer facilityID);
 	
 	@Transactional
 	@Modifying
@@ -84,6 +82,6 @@ public interface PatientReturnRepo extends CrudRepository<T_PatientIssue, Intege
 			+ "inner join m_item item on itemstockentry.ItemID = item.ItemID "
 			+ "WHERE patientreturn.FacilityID=:facilityID AND patientreturn.createdDate >=:fromDate AND patientreturn.createdDate <=:toDate "
 			+ "AND patientIssue.deleted=0 order by patientreturn.CreatedDate desc", nativeQuery=true)
-	List<Objects[]> getBenReturnHistory(@Param("facilityID") Integer facilityID,@Param("fromDate") Timestamp fromDate,@Param("toDate") Timestamp toDate);
+	List<Object[]> getBenReturnHistory(@Param("facilityID") Integer facilityID,@Param("fromDate") Timestamp fromDate,@Param("toDate") Timestamp toDate);
 	
 }

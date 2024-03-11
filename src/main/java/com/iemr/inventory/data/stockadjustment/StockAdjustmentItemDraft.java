@@ -23,6 +23,10 @@ package com.iemr.inventory.data.stockadjustment;
 
 import java.util.Date;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.stockentry.ItemStockEntry;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,11 +38,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.stockentry.ItemStockEntry;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Entity
@@ -47,7 +46,7 @@ import lombok.Data;
 public class StockAdjustmentItemDraft {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
 	@Column(name = "SADraftItemMapID")
 	private Long sADraftItemMapID;
@@ -127,5 +126,4 @@ public class StockAdjustmentItemDraft {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
 }

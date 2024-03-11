@@ -29,9 +29,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.facilitytype.M_facilitytype;
@@ -39,7 +40,9 @@ import com.iemr.inventory.service.facilitytype.M_facilitytypeInter;
 import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class FacilitytypeController {
@@ -50,8 +53,8 @@ public class FacilitytypeController {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get facility", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getFacility", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Get facility")
+	@GetMapping(value = "/getFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String getFacility(@RequestBody String getFacility) {
 
@@ -75,8 +78,8 @@ public class FacilitytypeController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Add facility", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/addFacility", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Add facility")
+	@PostMapping(value = "/addFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String addFacility(@RequestBody String addFacility) {
 
@@ -100,8 +103,8 @@ public class FacilitytypeController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Edit facility", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/editFacility", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Edit facility")
+	@PostMapping(value = "/editFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String editFacility(@RequestBody String editFacility) {
 
@@ -132,8 +135,8 @@ public class FacilitytypeController {
 	}
 
 	@CrossOrigin()
-	@ApiOperation(value = "Delete facility", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/deleteFacility", headers = "Authorization", method = { RequestMethod.POST }, produces = {
+	@Operation(summary = "Delete facility")
+	@DeleteMapping(value = "/deleteFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteFacility(@RequestBody String deleteFacility) {
 

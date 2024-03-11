@@ -23,11 +23,10 @@ package com.iemr.inventory.data.stockadjustment;
 
 import java.util.Date;
 
-import jakarta.persistence.Transient;
-
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.utils.mapper.OutputMapper;
 
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 
@@ -77,5 +76,4 @@ public class StockAdjustmentItemDraftEdit {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
 }

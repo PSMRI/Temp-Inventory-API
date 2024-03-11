@@ -23,6 +23,9 @@ package com.iemr.inventory.data.locationmaster;
 
 import java.sql.Date;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,48 +35,44 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 @Entity
-@Table(name="m_state")
+@Table(name = "m_state")
 public class State {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
-	@Column(name="StateID")
-	private Integer stateID; 
+	@Column(name = "StateID")
+	private Integer stateID;
 	@Expose
-	@Column(name="StateName")
+	@Column(name = "StateName")
 	private String stateName;
 
 	@Expose
-	@Column(name="StateCode")
+	@Column(name = "StateCode")
 	private char stateCode;
 	@Expose
-	@Column(name="CountryID")
+	@Column(name = "CountryID")
 	private Integer countryID;
 	@Expose
-	@Column(name="Deleted" , insertable = false, updatable = true)
-	private Boolean deleted; 
+	@Column(name = "Deleted", insertable = false, updatable = true)
+	private Boolean deleted;
 	@Expose
-	@Column(name="CreatedBy")
-	private String createdBy; 
+	@Column(name = "CreatedBy")
+	private String createdBy;
 	@Expose
-	@Column(name="CreatedDate", insertable = false, updatable = false)
-	private Date createdDate; 
+	@Column(name = "CreatedDate", insertable = false, updatable = false)
+	private Date createdDate;
 	@Expose
-	@Column(name="ModifiedBy")
+	@Column(name = "ModifiedBy")
 	private String modifiedBy;
 	@Expose
-	@Column(name="LastModDate", insertable = false, updatable = false)
+	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Date lastModDate;
-	
-	@OneToOne(mappedBy="stateMaster")
+
+	@OneToOne(mappedBy = "stateMaster")
 	private StateServiceMapping1 roleMapping;
-	
-	
+
 	public State() {
 		// TODO Auto-generated constructor stub
 	}
@@ -85,7 +84,6 @@ public class State {
 	public void setStateID(Integer stateID) {
 		this.stateID = stateID;
 	}
-
 
 	public char getStateCode() {
 		return stateCode;
@@ -143,7 +141,6 @@ public class State {
 		this.lastModDate = lastModDate;
 	}
 
-	
 	public String getStateName() {
 		return stateName;
 	}
@@ -160,8 +157,6 @@ public class State {
 		this.roleMapping = roleMapping;
 	}
 
-	
-	
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
@@ -169,10 +164,5 @@ public class State {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-	
-
-	
-	
-
 
 }

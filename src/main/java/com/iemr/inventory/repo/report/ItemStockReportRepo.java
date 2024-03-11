@@ -32,7 +32,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.report.ItemStockEntryReport;
-import com.iemr.inventory.data.report.ItemStockExitReport;
 import com.iemr.inventory.data.report.PatientIssueExitReport;
 
 @Repository

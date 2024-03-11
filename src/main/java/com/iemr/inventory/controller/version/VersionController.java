@@ -29,13 +29,14 @@ import java.io.InputStreamReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.utils.response.OutputResponse;
 
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
+
 
 @RestController
 public class VersionController {
@@ -43,8 +44,8 @@ public class VersionController {
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get version details", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/version", method = { RequestMethod.GET })
+	@Operation(summary = "Get version details")
+	@GetMapping(value = "/version")
 	public String versionInformation() {
 		OutputResponse output = new OutputResponse();
 		try {
@@ -58,14 +59,14 @@ public class VersionController {
 		return output.toString();
 	}
 
-	private String readGitProperties() throws Exception {
+	public String readGitProperties() throws IOException {
 		ClassLoader classLoader = getClass().getClassLoader();
 		InputStream inputStream = classLoader.getResourceAsStream("git.properties");
 
 		return readFromInputStream(inputStream);
 	}
 
-	private String readFromInputStream(InputStream inputStream) throws IOException {
+	String readFromInputStream(InputStream inputStream) throws IOException {
 		StringBuilder resultStringBuilder = new StringBuilder();
 		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
 			String line;
