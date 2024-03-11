@@ -23,17 +23,6 @@ package com.iemr.inventory.data.indent;
 
 import java.sql.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
-
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.data.items.M_ItemCategory;
 import com.iemr.inventory.data.items.M_ItemForm;
@@ -44,6 +33,16 @@ import com.iemr.inventory.data.uom.M_Uom;
 import com.iemr.inventory.to.provider.ProviderServiceMappingTO;
 import com.iemr.inventory.utils.mapper.OutputMapper;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Entity
@@ -196,16 +195,5 @@ public class ItemIndent {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
-	public String getItemName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getFacilityID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	
 }

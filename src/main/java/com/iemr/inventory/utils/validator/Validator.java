@@ -21,12 +21,9 @@
  */
 package com.iemr.inventory.utils.validator;
 
-//import org.json.JSONException;
-//import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 
@@ -38,43 +35,43 @@ import com.iemr.inventory.utils.sessionobject.SessionObject;
 @Service
 public class Validator {
 
-    private SessionObject session;
+	private SessionObject session;
 
-    @Autowired(required = true)
-    public void setSessionObject(SessionObject sessionObject) {
-        this.session = sessionObject;
-    }
+	@Autowired(required = true)
+	public void setSessionObject(SessionObject sessionObject) {
+		this.session = sessionObject;
+	}
 
-    private static Boolean enableIPValidation = false;
+	private static Boolean enableIPValidation = false;
 
-    public Validator() {
-        if (!enableIPValidation) {
-            enableIPValidation = ConfigProperties.getBoolean("enableIPValidation");
-        }
-    }
+	public Validator() {
+		if (!enableIPValidation) {
+			enableIPValidation = ConfigProperties.getBoolean("enableIPValidation");
+		}
+	}
 
-    private Logger logger = LoggerFactory.getLogger(Validator.class);
+	private Logger logger = LoggerFactory.getLogger(Validator.class);
 
-    public JSONObject updateCacheObj(JSONObject responseObj, String key, String ipKey) throws RedisSessionException {
-        return responseObj;
-    }
+	public JSONObject updateCacheObj(JSONObject responseObj){
+		return responseObj;
+	}
 
-    public String getSessionObject(String key) throws RedisSessionException {
-        return session.getSessionObject(key);
-    }
+	public String getSessionObject(String key) throws RedisSessionException {
+		return session.getSessionObject(key);
+	}
 
-    public void checkKeyExists(String loginKey, String ipAddress) throws IEMRException {
-        try {
-            // (Rest of the method remains unchanged)
-        } catch (Exception e) {
-            throw new IEMRException("Invalid login key or session is expired");
-        }
-    }
+	public void checkKeyExists() throws IEMRException {
+		try {
+			// (Rest of the method remains unchanged)
+		} catch (Exception e) {
+			throw new IEMRException("Invalid login key or session is expired");
+		}
+	}
 
-    // New static method
-    public static boolean getBoolean(String someString) {
-        // Implement the logic to convert a string to a boolean
-        // For example, you can use Boolean.parseBoolean or customize as needed
-        return Boolean.parseBoolean(someString);
-    }
+	// New static method
+	public static boolean getBoolean(String someString) {
+		// Implement the logic to convert a string to a boolean
+		// For example, you can use Boolean.parseBoolean or customize as needed
+		return Boolean.parseBoolean(someString);
+	}
 }

@@ -26,7 +26,6 @@ import java.sql.Timestamp;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.LongSerializationPolicy;
-import com.google.gson.annotations.Expose;
 
 import lombok.Data;
 

@@ -23,6 +23,10 @@ package com.iemr.inventory.data.stockadjustment;
 
 import java.util.Date;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.stockentry.ItemStockEntry;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,11 +38,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.stockentry.ItemStockEntry;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Entity
@@ -129,67 +128,67 @@ public class StockAdjustmentItemDraft {
 	}
 
 	public Long getSADraftItemMapID() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public void setDeleted(boolean b) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	public Object getCreatedBy() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public void setModifiedBy(Object createdBy2) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	public Object getCreatedDate() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public void setCreatedDate(Object createdDate2) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	public Object getProcessed() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public void setProcessed(Object processed2) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	public void setStockAdjustmentDraftID(Long stockdraftid) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	public Object getItemStockEntryID() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public ItemStockEntry getItemStockEntry() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public Object getAdjustedQuantity() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public Object getProviderServiceMapID() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 }

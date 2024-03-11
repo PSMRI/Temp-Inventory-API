@@ -1,6 +1,5 @@
 package com.iemr.inventory.controller.itemfacilitymapping;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;

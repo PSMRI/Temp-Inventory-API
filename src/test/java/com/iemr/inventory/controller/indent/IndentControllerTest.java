@@ -381,7 +381,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	public void testIssueIndent() {
+	void testIssueIndent() {
 
 		OutputResponse resp = new OutputResponse();
 		// Prepare the input JSON and the expected result

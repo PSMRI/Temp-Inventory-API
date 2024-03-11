@@ -24,6 +24,9 @@ package com.iemr.inventory.data.stockadjustment;
 import java.util.Date;
 import java.util.List;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -34,10 +37,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Entity
@@ -127,53 +126,7 @@ public class StockAdjustmentDraft {
 	}
 
 	public Long getStockAdjustmentDraftID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public String getCreatedBy1() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getCreatedBy() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getRefNo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setIsCompleted(boolean b) {
-		// TODO Auto-generated method stub
 		
-	}
-
-	public List<StockAdjustmentItemDraft> getStockAdjustmentItemDraft() {
-		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public void setStockAdjustmentItemDraft(Object object) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public String getDraftName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getDraftDesc() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setStockAdjustmentItemDraftEdit() {
-		// TODO Auto-generated method stub
-		
 	}
 }

@@ -21,6 +21,9 @@
  */
 package com.iemr.inventory.utils.http;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +38,6 @@ import com.iemr.inventory.utils.validator.Validator;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.core.MediaType;
-import java.io.OutputStream;
-import java.io.PrintStream;
 
 @Component
 public class HTTPRequestInterceptor implements HandlerInterceptor {
@@ -66,17 +67,6 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
                 String requestAPI = requestURIParts[requestURIParts.length - 1];
 
                 switch (requestAPI) {
-                    case "userAuthenticate":
-                    case "userAuthenticateNew":
-                    case "userAuthenticateV1":
-                    case "forgetPassword":
-                    case "setForgetPassword":
-                    case "changePassword":
-                    case "saveUserSecurityQuesAns":
-                    case "swagger-ui.html":
-                    case "ui":
-                    case "swagger-resources":
-                    case "version":
                     case "api-docs":
                         break;
                     case "error":
@@ -87,7 +77,7 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
                         if (remoteAddress == null || remoteAddress.trim().length() == 0) {
                             remoteAddress = request.getRemoteAddr();
                         }
-                        validator.checkKeyExists(authorization, remoteAddress);
+                        validator.checkKeyExists();
                         break;
                 }
 
@@ -126,6 +116,7 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
         }
     }
 
+    @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object object, Exception arg3) throws Exception {
         logger.debug("In afterCompletion Request Completed");
     }

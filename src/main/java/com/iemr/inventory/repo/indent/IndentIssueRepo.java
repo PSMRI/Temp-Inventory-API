@@ -21,14 +21,14 @@
 */
 package com.iemr.inventory.repo.indent;
 
-import jakarta.transaction.Transactional;
-
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.indent.IndentIssue;
+
+import jakarta.transaction.Transactional;
 
 @Repository
 public interface IndentIssueRepo extends CrudRepository<IndentIssue, Long>{

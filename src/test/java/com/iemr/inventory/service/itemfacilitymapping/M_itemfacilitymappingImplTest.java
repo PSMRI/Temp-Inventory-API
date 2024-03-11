@@ -29,7 +29,7 @@ import com.iemr.inventory.repository.itemfacilitymapping.M_itemfacilitymappingRe
 import com.iemr.inventory.repository.itemfacilitymapping.V_fetchItemFacilityMapRepo;
 
 @ExtendWith(MockitoExtension.class)
-public class M_itemfacilitymappingImplTest {
+class M_itemfacilitymappingImplTest {
 
 	@InjectMocks
 	M_itemfacilitymappingImpl m_itemfacilitymappingImpl;

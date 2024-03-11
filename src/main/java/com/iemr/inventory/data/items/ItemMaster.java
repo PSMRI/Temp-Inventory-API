@@ -23,6 +23,13 @@ package com.iemr.inventory.data.items;
 
 import java.sql.Date;
 
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.manufacturer.M_Manufacturer;
+import com.iemr.inventory.data.pharmacologicalcategory.M_Pharmacologicalcategory;
+import com.iemr.inventory.data.uom.M_Uom;
+import com.iemr.inventory.to.provider.ProviderServiceMappingTO;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,14 +40,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.manufacturer.M_Manufacturer;
-import com.iemr.inventory.data.pharmacologicalcategory.M_Pharmacologicalcategory;
-import com.iemr.inventory.data.uom.M_Uom;
-import com.iemr.inventory.to.provider.ProviderServiceMappingTO;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 
@@ -202,41 +201,5 @@ public class ItemMaster {
 		// TODO Auto-generated constructor stub
 		this.itemID=itemID;
 		this.itemName=ItemName;
-	}
-
-	public Integer getItemID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getItemDesc() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getModifiedBy() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public Integer getProviderServiceMapID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getItemCategoryID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public String getItemName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Integer getFacilityID() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

@@ -5,7 +5,6 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,12 +12,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.iemr.inventory.data.drugtype.M_Drugtype;
 import com.iemr.inventory.service.drugtype.DrugtypeInter;
-import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
 import jakarta.ws.rs.NotFoundException;

@@ -13,10 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.iemr.inventory.data.report.ItemStockEntryReport;
-import com.iemr.inventory.data.report.ItemStockExitReport;
-import com.iemr.inventory.data.report.PatientIssueExitReport;
 import com.iemr.inventory.service.report.CRMReportService;
-import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
 @ExtendWith(MockitoExtension.class)

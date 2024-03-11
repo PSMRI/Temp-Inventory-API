@@ -23,19 +23,17 @@ package com.iemr.inventory.repository.patientreturn;
 
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Objects;
-
-import jakarta.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import com.iemr.inventory.data.stockExit.ItemReturnEntry;
-import com.iemr.inventory.data.stockExit.T_PatientIssue;
 import org.springframework.stereotype.Service;
+
+import com.iemr.inventory.data.stockExit.T_PatientIssue;
+
+import jakarta.transaction.Transactional;
 
 
 @Service

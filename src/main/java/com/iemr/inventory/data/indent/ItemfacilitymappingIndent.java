@@ -25,6 +25,11 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
 
+import com.google.gson.annotations.Expose;
+//import com.iemr.inventory.data.rolemaster.M_Role;
+import com.iemr.inventory.data.store.M_Facility;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -35,12 +40,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-//import com.iemr.inventory.data.rolemaster.M_Role;
-import com.iemr.inventory.data.store.M_Facility;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Entity
@@ -159,69 +158,5 @@ public class ItemfacilitymappingIndent {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
-	public void setSyncFacilityID(Object syncFacilityID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setIndentID(Object indentID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setVanID(Object vanID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setCreatedDate(Timestamp timestamp) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setParkingPlaceID(Object parkingPlaceID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setProcessed(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setFromFacilityID(Integer fromFacilityID) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public Object getIndentOrderID() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public void setStatus(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setProviderServiceMapID(Object providerServiceMapID2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setCreatedBy(Object createdBy2) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

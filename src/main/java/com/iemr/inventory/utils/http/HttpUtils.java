@@ -26,8 +26,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 
-import jakarta.ws.rs.core.MediaType;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
@@ -41,6 +39,8 @@ import org.springframework.web.client.RestTemplate;
 
 import com.sun.jersey.multipart.FormDataBodyPart;
 import com.sun.jersey.multipart.FormDataMultiPart;
+
+import jakarta.ws.rs.core.MediaType;
 
 @Component
 public class HttpUtils {

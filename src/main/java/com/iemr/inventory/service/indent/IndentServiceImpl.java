@@ -25,17 +25,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.JoinType;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,6 +45,15 @@ import com.iemr.inventory.repo.indent.IndentRepo;
 import com.iemr.inventory.repo.indent.ItemfacilitymappingIndentRepo;
 import com.iemr.inventory.repo.stockEntry.ItemStockEntryRepo;
 import com.iemr.inventory.repo.stockExit.ItemStockExitRepo;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 @Service
 public class IndentServiceImpl implements IndentService {
@@ -212,10 +211,7 @@ public class IndentServiceImpl implements IndentService {
 		logger.info("getIndentOrderWorklist- Start");
 
 		Indent indent = indentRepo.findByIndentID(indentOrder.getIndentID());
-
-		// List<IndentOrder> list =
-		// indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(),
-		// indent.getSyncFacilityID());
+		
 		List<IndentOrder> list = (List<IndentOrder>) indentOrderRepo.getOrdersByIndentID(indent.getVanSerialNo(),
 				indent.getSyncFacilityID());
 

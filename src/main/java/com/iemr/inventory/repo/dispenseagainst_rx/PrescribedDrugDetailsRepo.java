@@ -22,13 +22,15 @@
 package com.iemr.inventory.repo.dispenseagainst_rx;
 
 import java.util.ArrayList;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
 import com.iemr.inventory.data.dispenseagainst_rx.PrescribedDrugDetails;
 
 @Service

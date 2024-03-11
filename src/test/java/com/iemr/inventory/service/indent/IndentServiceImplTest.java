@@ -400,8 +400,6 @@ class IndentServiceImplTest {
 
 		when(indentRepo.findByIndentID(list.get(0).getIndentID())).thenReturn(indent);
 
-		when(list.get(0).getAction().equalsIgnoreCase("Issued")).thenReturn(true);
-
 		Assertions.assertEquals("Dispensed successfully", indentServiceImpl.issueIndent(array));
 
 	}
@@ -463,8 +461,6 @@ class IndentServiceImplTest {
 		indent.toString();
 
 		when(indentRepo.findByIndentID(list.get(0).getIndentID())).thenReturn(indent);
-
-		when(list.get(0).getAction().equalsIgnoreCase("Rejected")).thenReturn(true);
 
 		Assertions.assertEquals("Rejected successfully", indentServiceImpl.issueIndent(array));
 		;
@@ -557,6 +553,9 @@ class IndentServiceImplTest {
 		List<IndentIssue> issuedList = new ArrayList<IndentIssue>();
 
 		issuedList.add(indentIssue);
+		
+		when(indentOrderRepo.acceptIndent(indent.getIndentID(), indent.getFromFacilityID())).thenReturn(5);
+		when(indentOrderRepo.acceptIndentOrder(idn.getVanSerialNo(), idn.getSyncFacilityID())).thenReturn(5);
 
 		when(indentOrderRepo.getIndentIssued(idn.getVanSerialNo(), idn.getToFacilityID())).thenReturn(issuedList);
 
@@ -578,8 +577,10 @@ class IndentServiceImplTest {
 
 		List<ItemStockEntry> itemStockList = new ArrayList<ItemStockEntry>();
 		itemStockList.add(stockEntry);
+		
+		when(itemStockEntryRepo.saveAll(itemStockList)).thenReturn(itemStockList);
 
-		itemStockEntryRepo.updateItemStockEntryVanSerialNo();
+		when(itemStockEntryRepo.updateItemStockEntryVanSerialNo()).thenReturn(5);
 
 		Assertions.assertEquals("Received successfully", indentServiceImpl.receiveIndent(indent));
 

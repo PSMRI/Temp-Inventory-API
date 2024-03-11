@@ -60,7 +60,7 @@ public class VersionController {
 		return output.toString();
 	}
 
-	public String readGitProperties() throws Exception {
+	public String readGitProperties() throws IOException {
 		ClassLoader classLoader = getClass().getClassLoader();
 		InputStream inputStream = classLoader.getResourceAsStream("git.properties");
 

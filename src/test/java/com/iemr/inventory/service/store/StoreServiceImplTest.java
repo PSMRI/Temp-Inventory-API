@@ -1,6 +1,7 @@
 package com.iemr.inventory.service.store;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
@@ -68,7 +69,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	public void testGetMainStore() {
+	void testGetMainStore() {
 
 		Integer mainStoreID = Integer.valueOf(1);
 
@@ -338,8 +339,8 @@ class StoreServiceImplTest {
 		Assertions.assertNotNull(stores);
 		Assertions.assertNotNull(facility.getDeleted());
 		Assertions.assertNotNull(stores.getMainFacilityID());
-		assertTrue(parentStore != null);
-		assertTrue(stores.getMainFacilityID() != null);
+		assertNotNull(parentStore);
+		assertNotNull(stores.getMainFacilityID());
 		assertEquals(stores, storeServiceImpl.deleteStore(facility));
 
 	}
@@ -366,7 +367,7 @@ class StoreServiceImplTest {
 
 		// Assertions
 		Assertions.assertNotNull(stores);
-		assertTrue(childStore.size() == 0);
+		assertEquals(0,childStore.size());
 		assertEquals(stores, storeServiceImpl.deleteStore(facility));
 
 	}

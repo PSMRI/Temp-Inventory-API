@@ -7,7 +7,6 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.*;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -587,8 +586,6 @@ class StockEntryServiceImplTest {
 		itemStockEntryup.toString();
 
 		itemStockEntryupList.add(itemStockEntryup);
-
-		when(itemStockEntryRepo.saveAll(itemStockEntryupList)).thenReturn(itemStockEntryupList);
 		
 		when(itemStockEntryRepo.updateItemStockEntryVanSerialNo()).thenReturn(facilityToID);
 

@@ -146,7 +146,7 @@ class VisitServiceImplTest {
 	}
 
 	@Test
-	public void testGetBeneficiaryListByIDs() throws Exception {
+	void testGetBeneficiaryListByIDs() throws Exception {
 		// Given
 		String benrID = "123";
 		String auth = "token";
@@ -171,7 +171,7 @@ class VisitServiceImplTest {
 	}
 
 	@Test
-	public void testGetBeneficiaryListBySearch() throws Exception {
+	void testGetBeneficiaryListBySearch() throws Exception {
 		// Given
 		String benrID = "123";
 		String auth = "token";
@@ -194,7 +194,7 @@ class VisitServiceImplTest {
 	}
 
 	@Test
-	public void testGetVisitFromAdvanceSearch() throws Exception {
+	void testGetVisitFromAdvanceSearch() throws Exception {
 		// Given
 		String benrID = "123";
 		String auth = "token";

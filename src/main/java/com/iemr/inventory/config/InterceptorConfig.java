@@ -23,12 +23,11 @@ package com.iemr.inventory.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import com.iemr.inventory.utils.http.HTTPRequestInterceptor;
 
 //@Repository
@@ -37,8 +36,13 @@ import com.iemr.inventory.utils.http.HTTPRequestInterceptor;
 @EnableAutoConfiguration
 public class InterceptorConfig implements WebMvcConfigurer {
 
-    @Autowired(required = false)
-    private HTTPRequestInterceptor requestInterceptor;
+    
+    public InterceptorConfig(HTTPRequestInterceptor requestInterceptor) {
+		super();
+		this.requestInterceptor = requestInterceptor;
+	}
+
+	private HTTPRequestInterceptor requestInterceptor;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -50,17 +54,3 @@ public class InterceptorConfig implements WebMvcConfigurer {
         }
     }
 }
-
-/* 
-
-@Configuration
-public class InterceptorConfig implements WebMvcConfigurer {
-    @Autowired(required=false)
-    HTTPRequestInterceptor requestInterceptor;
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new BlockingMethodInterceptor())
-                .addPathPatterns("/**");
-    }
-} */

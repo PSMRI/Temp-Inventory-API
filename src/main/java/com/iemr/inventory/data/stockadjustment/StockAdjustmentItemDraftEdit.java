@@ -23,11 +23,10 @@ package com.iemr.inventory.data.stockadjustment;
 
 import java.util.Date;
 
-import jakarta.persistence.Transient;
-
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.utils.mapper.OutputMapper;
 
+import jakarta.persistence.Transient;
 import lombok.Data;
 
 
@@ -79,27 +78,27 @@ public class StockAdjustmentItemDraftEdit {
 	}
 
 	public void setSADraftItemMapID(Object saDraftItemMapID2) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	public void setCreatedBy(Object createdBy2) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	public void setItemStockEntryID(Object itemStockEntryID2) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	public void setAdjustedQuantity(Object adjustedQuantity2) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	public void setProviderServiceMapID(Object providerServiceMapID2) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

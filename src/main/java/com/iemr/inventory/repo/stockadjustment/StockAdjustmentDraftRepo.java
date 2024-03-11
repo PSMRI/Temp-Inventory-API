@@ -24,7 +24,6 @@ package com.iemr.inventory.repo.stockadjustment;
 import java.sql.Timestamp;
 import java.util.List;
 
-import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -32,6 +31,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.iemr.inventory.data.stockadjustment.StockAdjustmentDraft;
+
+import jakarta.transaction.Transactional;
 
 @Repository
 public interface StockAdjustmentDraftRepo extends CrudRepository<StockAdjustmentDraft, Long> {

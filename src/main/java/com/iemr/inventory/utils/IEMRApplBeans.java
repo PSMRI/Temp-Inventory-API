@@ -33,7 +33,6 @@ import com.iemr.inventory.utils.gateway.email.EmailService;
 import com.iemr.inventory.utils.gateway.email.GenericEmailServiceImpl;
 import com.iemr.inventory.utils.redis.RedisStorage;
 import com.iemr.inventory.utils.sessionobject.SessionObject;
-import com.iemr.inventory.utils.validator.Validator;
 
 @Configuration
 public class IEMRApplBeans {

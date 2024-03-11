@@ -27,10 +27,8 @@ import org.mapstruct.Mappings;
 import org.mapstruct.factory.Mappers;
 
 import com.iemr.inventory.data.report.ItemStockEntryReport;
-import com.iemr.inventory.data.report.ItemStockExitReport;
 import com.iemr.inventory.data.report.PatientIssueExitReport;
 import com.iemr.inventory.model.report.BenDrugIssueReport;
-import com.iemr.inventory.model.report.ConsumptionReport;
 import com.iemr.inventory.model.report.ExpiryReport;
 import com.iemr.inventory.model.report.InwardStockReport;
 

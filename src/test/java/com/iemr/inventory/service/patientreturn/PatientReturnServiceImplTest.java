@@ -2,13 +2,15 @@ package com.iemr.inventory.service.patientreturn;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -32,15 +34,15 @@ class PatientReturnServiceImplTest {
 	@Mock
 	private PatientReturnServiceImpl patientReturnService;
 
-	@Before
-	public void setUp() {
+	@BeforeEach
+	void setUp() {
 		patientReturnRepo = mock(PatientReturnRepo.class);
 		itemReturnEntryRepo = mock(ItemReturnEntryRepo.class);
 		patientReturnService = new PatientReturnServiceImpl();
 	}
 
 	@Test
-	public void testGetItemNameByRegID() {
+	void testGetItemNameByRegID() {
 		// Mocking data
 		List<Object[]> results = new ArrayList<>();
 		Object[] object1 = { 1L, 2, 3, "Item1" };
@@ -48,14 +50,26 @@ class PatientReturnServiceImplTest {
 		// Test
 		T_PatientIssue patientIssue = new T_PatientIssue();
 		patientIssue.toString();
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.DATE, -90);
+		cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.MINUTE, 0);
+		cal.set(Calendar.SECOND, 0);
+		cal.set(Calendar.MILLISECOND, 0);   
+		Timestamp criteriaDate = new Timestamp(cal.getTimeInMillis());
 
 		List<PatientReturnModel> list = patientReturnService.getItemNameByRegID(patientIssue);
+		
+		when(patientReturnRepo.getItemNameByRegID(patientIssue.getBenRegID(), patientIssue.getFacilityID(), criteriaDate)).thenReturn(results);
+		
 		assertEquals(0, list.size());
+		assertEquals(results, patientReturnService.getItemNameByRegID(patientIssue));
 
 	}
 
 	@Test
-	public void testGetItemDetailByBen() {
+	void testGetItemDetailByBen() {
 		// Mocking data
 		List<Object[]> results = new ArrayList<>();
 		Object[] object1 = { 1, "Name", "Description", 2, new Timestamp(System.currentTimeMillis()), true, true, 3L, 4L,
@@ -72,7 +86,7 @@ class PatientReturnServiceImplTest {
 	}
 
 	@Test
-	public void testUpdateQuantityReturned() {
+	void testUpdateQuantityReturned() {
 		// Mocking data
 		ItemDetailModel[] itemDetailModels = { new ItemDetailModel(null, null, null, null, null, null, null, null, null,
 				null, null, null, null, null) };
@@ -85,7 +99,7 @@ class PatientReturnServiceImplTest {
 	}
 
 	@Test
-	public void testGetBenReturnHistory() {
+	void testGetBenReturnHistory() {
 		// Mocking data
 		List<Object[]> results = new ArrayList<>();
 		Object[] object1 = { "Name", "Description", 2, new Timestamp(System.currentTimeMillis()), 3L, 4L, "Visit", 5,

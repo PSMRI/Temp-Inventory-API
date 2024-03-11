@@ -22,7 +22,10 @@
 package com.iemr.inventory.data.indent;
 
 import java.sql.Timestamp;
-import java.util.List;
+
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.items.ItemMaster;
+import com.iemr.inventory.utils.mapper.OutputMapper;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -35,11 +38,6 @@ import jakarta.persistence.JoinColumns;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
-
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.items.ItemMaster;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import lombok.Data;
 
 @Data
@@ -204,7 +202,7 @@ public class IndentOrder {
 	}
 
 	/*public Object getIndentID() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}*/
 

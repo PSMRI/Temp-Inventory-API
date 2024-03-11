@@ -29,7 +29,6 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import com.iemr.inventory.utils.IEMRApplBeans;
 import com.iemr.inventory.utils.config.ConfigProperties;
