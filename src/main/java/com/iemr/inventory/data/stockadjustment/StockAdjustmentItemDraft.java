@@ -92,11 +92,11 @@ public class StockAdjustmentItemDraft {
 
 	@Expose
 	@Column(name = "Processed", insertable = false, updatable = true)
-	private Character processed;
+	private Object processed;
 
 	@Expose
 	@Column(name = "CreatedBy")
-	private String createdBy;
+	private Object createdBy;
 
 	@Expose
 	@Column(name = "CreatedDate", insertable = false, updatable = false)
@@ -158,17 +158,25 @@ public class StockAdjustmentItemDraft {
 		return null;
 	}
 
-	public Long getsADraftItemMapID() {
+	public Long getsADraftItemMapID2() {
 		return sADraftItemMapID;
 	}
 
-	public void setsADraftItemMapID(Long sADraftItemMapID) {
+	public void setsADraftItemMapID2(Long sADraftItemMapID) {
 		this.sADraftItemMapID = sADraftItemMapID;
 	}
 
 	public void setCreatedDate(Object createdDate2) {
 		this.createdDate=createdDate2;
 		
+	}
+
+	public void setModifiedBy(Object createdBy2) {
+		this.createdBy = createdBy2;
+	}
+
+	public void setProcessed(Object processed2) {
+		this.processed = processed2;
 	}
 	
 }	

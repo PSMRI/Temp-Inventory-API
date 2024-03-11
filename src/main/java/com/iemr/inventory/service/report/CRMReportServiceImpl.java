@@ -59,7 +59,6 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 	@Autowired
 	public CRMReportServiceImpl(ItemStockReportRepo itemStockReportRepo) {
-		// TODO Auto-generated constructor stub
 		this.itemStockReportRepo=itemStockReportRepo;
 	}
 
