@@ -144,9 +144,4 @@ public class ItemStockExit {
 		
 		return null;
 	}
-
-	public void setExitTypeID(Object indentID) {
-		
-		
-	}
 }

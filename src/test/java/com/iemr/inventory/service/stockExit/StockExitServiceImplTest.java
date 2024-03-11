@@ -198,7 +198,6 @@ class StockExitServiceImplTest {
 		itemStockExitO.setItemStockEntryID(5L);
 		itemStockExitO.setQuantity(100);
 		itemStockExitO.setExitType("Normal");
-		itemStockExitO.setExitTypeID(1);
 
 		itemStockExitO.toString();
 
@@ -235,7 +234,6 @@ class StockExitServiceImplTest {
 		itemStockExitO.setItemStockEntryID(5L);
 		itemStockExitO.setQuantity(100);
 		itemStockExitO.setExitType("Normal");
-		itemStockExitO.setExitTypeID(1);
 		itemStockExitO.setQuantityInHand(100);
 
 		itemStockExitO.toString();

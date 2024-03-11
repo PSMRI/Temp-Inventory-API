@@ -103,12 +103,8 @@ public class StockAdjustmentDraft {
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Date lastModDate;
 
-	// @OneToMany(mappedBy = "stockAdjustmentDraft")
-	// @OneToMany(fetch =
-	// FetchType.EAGER,mappedBy="stockAdjustmentDraft",cascade =
-	// CascadeType.ALL)
+	
 	@Expose
-//	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "stockAdjustmentDraftID", insertable = false, updatable = false)
 	private List<StockAdjustmentItemDraft> stockAdjustmentItemDraft;

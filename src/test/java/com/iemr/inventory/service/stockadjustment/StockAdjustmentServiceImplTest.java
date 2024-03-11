@@ -68,7 +68,6 @@ class StockAdjustmentServiceImplTest {
 
 		StockAdjustmentItemDraft stockAdjustmentItemDraft = new StockAdjustmentItemDraft();
 
-		stockAdjustmentItemDraft.setSADraftItemMapID(1L);
 		stockAdjustmentItemDraft.setItemStockEntryID(2L);
 		stockAdjustmentItemDraft.setIsAdded(true);
 		stockAdjustmentItemDraft.setAdjustedQuantity(100);
@@ -183,8 +182,7 @@ class StockAdjustmentServiceImplTest {
 		Long stockAdjustmentDraftID = 12L;
 
 		StockAdjustmentItemDraft stockAdjustmentItemDraft = new StockAdjustmentItemDraft();
-
-		stockAdjustmentItemDraft.setSADraftItemMapID(1L);
+		
 		stockAdjustmentItemDraft.setItemStockEntryID(2L);
 		stockAdjustmentItemDraft.setIsAdded(true);
 		stockAdjustmentItemDraft.setAdjustedQuantity(100);

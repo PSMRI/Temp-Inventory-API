@@ -47,10 +47,7 @@ public class BenVisitDetail {
 	@Expose
 	@Column(name = "BeneficiaryRegID")
 	private Long beneficiaryRegID;
-//	@Expose
-//	@OneToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(updatable = false, insertable = false, name = "BeneficiaryRegID")
-//	private BeneficiaryData beneficiaryData;
+
 
 	@Expose
 	@Column(name = "ProviderServiceMapID")
@@ -60,10 +57,7 @@ public class BenVisitDetail {
 	@Transient
 	private String serviceProviderName;
 
-//	@Expose
-//	@OneToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(updatable = false, insertable = false, name = "providerServiceMapID")
-//	private ProviderServiceMapping providerServiceMapping;
+
 
 	@Expose
 	@Column(name = "VisitDateTime")
@@ -162,7 +156,7 @@ public class BenVisitDetail {
 	
 	@Expose
 	@Transient
-	private String beneficiaryID;
+	private Object beneficiaryID;
 	
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
@@ -177,14 +171,14 @@ public class BenVisitDetail {
 		return null;
 	}
 
-	public void setBeneficiaryID(Object beneficiaryID2) {
-		
-		
-	}
-
 	public Integer getProviderServiceMapID() {
 		
 		return null;
+	}
+
+	public void setBeneficiaryID(Object beneficiaryID2) {
+		this.beneficiaryID=beneficiaryID2;
+		
 	}
 
 	

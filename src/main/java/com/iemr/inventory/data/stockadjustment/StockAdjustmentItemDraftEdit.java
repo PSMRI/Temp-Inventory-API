@@ -76,29 +76,4 @@ public class StockAdjustmentItemDraftEdit {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
-
-	public void setSADraftItemMapID(Object saDraftItemMapID2) {
-		
-		
-	}
-
-	public void setCreatedBy(Object createdBy2) {
-		
-		
-	}
-
-	public void setItemStockEntryID(Object itemStockEntryID2) {
-		
-		
-	}
-
-	public void setAdjustedQuantity(Object adjustedQuantity2) {
-		
-		
-	}
-
-	public void setProviderServiceMapID(Object providerServiceMapID2) {
-		
-		
-	}
 }

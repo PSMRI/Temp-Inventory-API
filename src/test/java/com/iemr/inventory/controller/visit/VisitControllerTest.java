@@ -119,11 +119,8 @@ class VisitControllerTest {
 		benVisitDetail.setSyncedBy("Sudama");
 		benVisitDetail.setSyncedDate(Timestamp.valueOf("2001-09-09 09:01:16"));
 		benVisitDetail.setReservedForChange("No");
-		benVisitDetail.setBeneficiaryID(beneficiaryModel);
 		
 		BenVisitDetail newbenVisitDetail = benVisitDetail;
-
-		newbenVisitDetail.setBeneficiaryID(benVisitDetail.getBeneficiaryID());
 		
 		BeneficiaryModel saveData=beneficiaryModel;
 

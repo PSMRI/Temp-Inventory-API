@@ -15,16 +15,19 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.google.gson.Gson;
 import com.iemr.inventory.data.commonutility.CommonUtilityClass;
 import com.iemr.inventory.data.dispenseagainst_rx.PrescribedDrugDetails;
 import com.iemr.inventory.repo.dispenseagainst_rx.PrescribedDrugDetailsRepo;
 
-public class DispenseAgainstRXimplTest {
+@ExtendWith(MockitoExtension.class)
+class DispenseAgainstRXimplTest {
 
 	@Mock
 	private PrescribedDrugDetailsRepo prescribedDrugDetailsRepo;

@@ -51,12 +51,8 @@ public class StockAdjustmentItemDraft {
 	@Column(name = "SADraftItemMapID")
 	private Long sADraftItemMapID;
 
-//	@Expose
-//	@Column(name = "StockAdjustmentDraftID")
-//	private Integer stockAdjustmentDraftID;
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	@JoinColumn(name = "ItemStockEntryID", insertable = false, updatable = false)
 	@JoinColumn(name = "ItemStockEntryID", insertable = false, updatable = false)
 	@Expose
 	private ItemStockEntry itemStockEntry;
@@ -89,11 +85,6 @@ public class StockAdjustmentItemDraft {
 	@Column(name = "StockAdjustmentDraftID")
 	private Long stockAdjustmentDraftID;
 
-//	@JoinColumn(name = "stockAdjustmentDraftID", insertable = false, updatable = false)
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "StockAdjustmentDraftID",insertable = false, updatable = false)
-//	private StockAdjustmentDraft stockAdjustmentDraft;
 
 	@Expose
 	@Column(name = "Deleted", insertable = false, updatable = true)
@@ -109,7 +100,7 @@ public class StockAdjustmentItemDraft {
 
 	@Expose
 	@Column(name = "CreatedDate", insertable = false, updatable = false)
-	private Date createdDate;
+	private Object createdDate;
 
 	@Expose
 	@Column(name = "ModifiedBy")
@@ -132,19 +123,9 @@ public class StockAdjustmentItemDraft {
 		return null;
 	}
 
-	public void setDeleted(boolean b) {
-		
-		
-	}
-
 	public Object getCreatedBy() {
 		
 		return null;
-	}
-
-	public void setModifiedBy(Object createdBy2) {
-		
-		
 	}
 
 	public Object getCreatedDate() {
@@ -152,24 +133,9 @@ public class StockAdjustmentItemDraft {
 		return null;
 	}
 
-	public void setCreatedDate(Object createdDate2) {
-		
-		
-	}
-
 	public Object getProcessed() {
 		
 		return null;
-	}
-
-	public void setProcessed(Object processed2) {
-		
-		
-	}
-
-	public void setStockAdjustmentDraftID(Long stockdraftid) {
-		
-		
 	}
 
 	public Object getItemStockEntryID() {
@@ -191,4 +157,18 @@ public class StockAdjustmentItemDraft {
 		
 		return null;
 	}
-}
+
+	public Long getsADraftItemMapID() {
+		return sADraftItemMapID;
+	}
+
+	public void setsADraftItemMapID(Long sADraftItemMapID) {
+		this.sADraftItemMapID = sADraftItemMapID;
+	}
+
+	public void setCreatedDate(Object createdDate2) {
+		this.createdDate=createdDate2;
+		
+	}
+	
+}	
