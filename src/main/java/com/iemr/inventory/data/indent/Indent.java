@@ -25,10 +25,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.store.M_Facility;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,6 +36,11 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.store.M_Facility;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Entity

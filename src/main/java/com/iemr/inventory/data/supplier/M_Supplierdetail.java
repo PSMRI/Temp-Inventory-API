@@ -21,6 +21,12 @@
 */
 package com.iemr.inventory.data.supplier;
 
+import java.sql.Date;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+
 /*@Entity
 @Table(name="m_supplierdetail")
 public class M_Supplierdetail {

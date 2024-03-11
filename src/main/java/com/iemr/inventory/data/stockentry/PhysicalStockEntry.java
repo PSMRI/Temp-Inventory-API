@@ -24,9 +24,6 @@ package com.iemr.inventory.data.stockentry;
 import java.util.Date;
 import java.util.List;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -35,6 +32,10 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Entity

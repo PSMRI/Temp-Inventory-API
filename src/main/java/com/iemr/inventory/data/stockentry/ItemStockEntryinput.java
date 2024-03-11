@@ -23,9 +23,10 @@ package com.iemr.inventory.data.stockentry;
 
 import java.sql.Timestamp;
 
+import jakarta.persistence.Transient;
+
 import com.iemr.inventory.utils.mapper.OutputMapper;
 
-import jakarta.persistence.Transient;
 import lombok.Data;
 
 @Data

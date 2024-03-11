@@ -23,11 +23,6 @@ package com.iemr.inventory.data.itemfacilitymapping;
 
 import java.sql.Date;
 
-import com.google.gson.annotations.Expose;
-//import com.iemr.inventory.data.rolemaster.M_Role;
-import com.iemr.inventory.data.store.M_Facility;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -38,6 +33,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.items.ItemMaster;
+import com.iemr.inventory.data.locationmaster.DistrictBranchMapping;
+//import com.iemr.inventory.data.rolemaster.M_Role;
+import com.iemr.inventory.data.store.M_Facility;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Entity

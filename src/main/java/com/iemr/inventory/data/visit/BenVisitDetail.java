@@ -23,15 +23,16 @@ package com.iemr.inventory.data.visit;
 
 import java.sql.Timestamp;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Data
@@ -47,7 +48,10 @@ public class BenVisitDetail {
 	@Expose
 	@Column(name = "BeneficiaryRegID")
 	private Long beneficiaryRegID;
-
+//	@Expose
+//	@OneToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(updatable = false, insertable = false, name = "BeneficiaryRegID")
+//	private BeneficiaryData beneficiaryData;
 
 	@Expose
 	@Column(name = "ProviderServiceMapID")
@@ -57,7 +61,10 @@ public class BenVisitDetail {
 	@Transient
 	private String serviceProviderName;
 
-
+//	@Expose
+//	@OneToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(updatable = false, insertable = false, name = "providerServiceMapID")
+//	private ProviderServiceMapping providerServiceMapping;
 
 	@Expose
 	@Column(name = "VisitDateTime")
@@ -156,7 +163,7 @@ public class BenVisitDetail {
 	
 	@Expose
 	@Transient
-	private Object beneficiaryID;
+	private String beneficiaryID;
 	
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
@@ -174,11 +181,6 @@ public class BenVisitDetail {
 	public Integer getProviderServiceMapID() {
 		
 		return null;
-	}
-
-	public void setBeneficiaryID(Object beneficiaryID2) {
-		this.beneficiaryID=beneficiaryID2;
-		
 	}
 
 	

@@ -23,10 +23,11 @@ package com.iemr.inventory.data.stockadjustment;
 
 import java.util.Date;
 
+import jakarta.persistence.Transient;
+
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.utils.mapper.OutputMapper;
 
-import jakarta.persistence.Transient;
 import lombok.Data;
 
 
@@ -41,7 +42,7 @@ public class StockAdjustmentItemDraftEdit {
 	private Long sAItemMapID;
 	
 	@Expose
-	private Object itemStockEntryID;
+	private Long itemStockEntryID;
 	@Expose
 	private String itemName;
 	@Expose
@@ -75,25 +76,5 @@ public class StockAdjustmentItemDraftEdit {
 	@Override
 	public String toString() {
 		return outputMapper.gson().toJson(this);
-	}
-
-	public void setItemStockEntryID(Object itemStockEntryID2) {
-		this.itemStockEntryID=itemStockEntryID2;
-		
-	}
-
-	public void setAdjustedQuantity(Object adjustedQuantity2) {
-		this.itemStockEntryID=adjustedQuantity2;
-		
-	}
-
-	public void setCreatedBy(Object createdBy2) {
-		this.itemStockEntryID=createdBy2;
-		
-	}
-
-	public void setProviderServiceMapID(Object providerServiceMapID2) {
-		this.itemStockEntryID=providerServiceMapID2;
-		
 	}
 }

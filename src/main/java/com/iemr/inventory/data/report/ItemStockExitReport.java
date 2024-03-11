@@ -24,8 +24,6 @@ package com.iemr.inventory.data.report;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import com.google.gson.annotations.Expose;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,6 +31,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+
 import lombok.Data;
 
 @Data

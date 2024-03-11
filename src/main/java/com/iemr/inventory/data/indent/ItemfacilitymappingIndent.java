@@ -25,11 +25,6 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-import com.google.gson.annotations.Expose;
-//import com.iemr.inventory.data.rolemaster.M_Role;
-import com.iemr.inventory.data.store.M_Facility;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,13 +35,19 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+//import com.iemr.inventory.data.rolemaster.M_Role;
+import com.iemr.inventory.data.store.M_Facility;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Entity
-@Table(name="m_itemfacilitymapping")
+@Table(name = "m_itemfacilitymapping")
 @Data
 public class ItemfacilitymappingIndent {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Expose
@@ -58,35 +59,35 @@ public class ItemfacilitymappingIndent {
 	@Expose
 	@Column(name = "ItemID")
 	private Integer itemID;
-	
+
 	@Expose
 	@Transient
 	private BigDecimal qoh;
-	
+
 	@Expose
 	@Transient
 	private String itemName;
-	
+
 	@Expose
 	@Transient
 	private String itemCode;
-	
+
 	@Expose
 	@Transient
 	private Integer itemCategoryID;
-	
+
 	@Transient
 	@Expose
 	private String itemCategory;
-	
+
 	@Expose
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(updatable = false, insertable = false, name = "FacilityID")
 	private M_Facility facility;
-	
+
 	@Expose
 	@Column(name = "MappingType")
-	private String mappingType; 
+	private String mappingType;
 	@Expose
 	@Column(name = "Status")
 	private String status;
@@ -108,55 +109,56 @@ public class ItemfacilitymappingIndent {
 	@Expose
 	@Column(name = "LastModDate", insertable = false, updatable = false)
 	private Date lastModDate;
-	
-	
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ItemID", insertable = false, updatable = false)
 	@Expose
 	private ItemIndent itemIndent;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ItemID", insertable = false, updatable = false)
 	@Expose
 	private ItemStockEntryIndent itemStockEntryIndent;
-	
 
 	@Transient
 	@Expose
 	private Boolean discontinued;
-	
+
 	@Transient
 	@Expose
 	private String itemForm;
-	
+
 	@Transient
 	@Expose
 	private String pharmacologicalCategoryName;
-	
+
 	@Transient
 	@Expose
 	private String strength;
-	
+
 	@Transient
 	@Expose
 	private String uomName;
-	
+
 	@Transient
 	@Expose
 	private String composition;
-	
+
 	@Transient
 	@Expose
 	private Boolean isMedical;
-	
-	
+
 	@Transient
 	private OutputMapper outputMapper = new OutputMapper();
 
 	@Override
 	public String toString() {
 		return outputMapper.gson().toJson(this);
+	}
+
+	public Object getIndentOrderID() {
+
+		return null;
 	}
 
 }

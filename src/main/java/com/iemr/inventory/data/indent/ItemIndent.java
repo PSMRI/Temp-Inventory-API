@@ -23,16 +23,6 @@ package com.iemr.inventory.data.indent;
 
 import java.sql.Date;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.items.M_ItemCategory;
-import com.iemr.inventory.data.items.M_ItemForm;
-import com.iemr.inventory.data.items.M_Route;
-import com.iemr.inventory.data.manufacturer.M_Manufacturer;
-import com.iemr.inventory.data.pharmacologicalcategory.M_Pharmacologicalcategory;
-import com.iemr.inventory.data.uom.M_Uom;
-import com.iemr.inventory.to.provider.ProviderServiceMappingTO;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -43,6 +33,17 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.items.M_ItemCategory;
+import com.iemr.inventory.data.items.M_ItemForm;
+import com.iemr.inventory.data.items.M_Route;
+import com.iemr.inventory.data.manufacturer.M_Manufacturer;
+import com.iemr.inventory.data.pharmacologicalcategory.M_Pharmacologicalcategory;
+import com.iemr.inventory.data.uom.M_Uom;
+import com.iemr.inventory.to.provider.ProviderServiceMappingTO;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Entity
@@ -195,5 +196,16 @@ public class ItemIndent {
 	public String toString() {
 		return outputMapper.gson().toJson(this);
 	}
+
+	public String getItemName() {
+		
+		return null;
+	}
+
+	public Integer getFacilityID() {
+		
+		return null;
+	}
+	
 	
 }

@@ -24,10 +24,6 @@ package com.iemr.inventory.data.stockentry;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.items.ItemMaster;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -38,6 +34,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.items.ItemMaster;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Entity

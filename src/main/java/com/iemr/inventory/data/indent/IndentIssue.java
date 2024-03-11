@@ -24,9 +24,6 @@ package com.iemr.inventory.data.indent;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +31,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Entity
@@ -163,5 +164,20 @@ public class IndentIssue {
 	@Override
 	public String toString() {
 		return outputMapper.gson().toJson(this);
+	}
+
+	public Long getIndentID() {
+		
+		return null;
+	}
+
+	public String getRejectedReason() {
+		
+		return null;
+	}
+
+	public String getAction() {
+		
+		return null;
 	}
 }

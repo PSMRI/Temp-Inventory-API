@@ -23,10 +23,6 @@ package com.iemr.inventory.data.stockadjustment;
 
 import java.util.Date;
 
-import com.google.gson.annotations.Expose;
-import com.iemr.inventory.data.stockentry.ItemStockEntry;
-import com.iemr.inventory.utils.mapper.OutputMapper;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,6 +34,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+
+import com.google.gson.annotations.Expose;
+import com.iemr.inventory.data.stockentry.ItemStockEntry;
+import com.iemr.inventory.utils.mapper.OutputMapper;
+
 import lombok.Data;
 
 @Entity
@@ -51,8 +52,12 @@ public class StockAdjustmentItemDraft {
 	@Column(name = "SADraftItemMapID")
 	private Long sADraftItemMapID;
 
+//	@Expose
+//	@Column(name = "StockAdjustmentDraftID")
+//	private Integer stockAdjustmentDraftID;
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@JoinColumn(name = "ItemStockEntryID", insertable = false, updatable = false)
 	@JoinColumn(name = "ItemStockEntryID", insertable = false, updatable = false)
 	@Expose
 	private ItemStockEntry itemStockEntry;
@@ -85,6 +90,11 @@ public class StockAdjustmentItemDraft {
 	@Column(name = "StockAdjustmentDraftID")
 	private Long stockAdjustmentDraftID;
 
+//	@JoinColumn(name = "stockAdjustmentDraftID", insertable = false, updatable = false)
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "StockAdjustmentDraftID",insertable = false, updatable = false)
+//	private StockAdjustmentDraft stockAdjustmentDraft;
 
 	@Expose
 	@Column(name = "Deleted", insertable = false, updatable = true)
@@ -92,15 +102,15 @@ public class StockAdjustmentItemDraft {
 
 	@Expose
 	@Column(name = "Processed", insertable = false, updatable = true)
-	private Object processed;
+	private Character processed;
 
 	@Expose
 	@Column(name = "CreatedBy")
-	private Object createdBy;
+	private String createdBy;
 
 	@Expose
 	@Column(name = "CreatedDate", insertable = false, updatable = false)
-	private Object createdDate;
+	private Date createdDate;
 
 	@Expose
 	@Column(name = "ModifiedBy")
@@ -123,9 +133,19 @@ public class StockAdjustmentItemDraft {
 		return null;
 	}
 
+	public void setDeleted(boolean b) {
+		
+		
+	}
+
 	public Object getCreatedBy() {
 		
 		return null;
+	}
+
+	public void setModifiedBy(Object createdBy2) {
+		
+		
 	}
 
 	public Object getCreatedDate() {
@@ -133,9 +153,24 @@ public class StockAdjustmentItemDraft {
 		return null;
 	}
 
+	public void setCreatedDate(Object createdDate2) {
+		
+		
+	}
+
 	public Object getProcessed() {
 		
 		return null;
+	}
+
+	public void setProcessed(Object processed2) {
+		
+		
+	}
+
+	public void setStockAdjustmentDraftID(Long stockdraftid) {
+		
+		
 	}
 
 	public Object getItemStockEntryID() {
@@ -157,26 +192,4 @@ public class StockAdjustmentItemDraft {
 		
 		return null;
 	}
-
-	public Long getsADraftItemMapID2() {
-		return sADraftItemMapID;
-	}
-
-	public void setsADraftItemMapID2(Long sADraftItemMapID) {
-		this.sADraftItemMapID = sADraftItemMapID;
-	}
-
-	public void setCreatedDate(Object createdDate2) {
-		this.createdDate=createdDate2;
-		
-	}
-
-	public void setModifiedBy(Object createdBy2) {
-		this.createdBy = createdBy2;
-	}
-
-	public void setProcessed(Object processed2) {
-		this.processed = processed2;
-	}
-	
-}	
+}
