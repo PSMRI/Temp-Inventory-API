@@ -29,8 +29,7 @@ import java.io.InputStreamReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.utils.response.OutputResponse;
@@ -46,7 +45,7 @@ public class VersionController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get version details")
-	@RequestMapping(value = "/version", method = { RequestMethod.GET })
+	@GetMapping(value = "/version")
 	public String versionInformation() {
 		OutputResponse output = new OutputResponse();
 		try {

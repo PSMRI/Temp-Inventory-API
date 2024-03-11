@@ -28,9 +28,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.patientreturn.ItemDetailModel;
@@ -58,8 +58,7 @@ public class PatientReturnController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get list of item issued to patient ")
-	@RequestMapping(value = "/getItemNameByRegID", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getItemNameByRegID", headers = "Authorization", produces = { "application/json" })
 	public String getItemNameByRegID(
 			@Param("{\"benRegID\":\"Integer\", \"facilityID\":\"Integer\"}") @RequestBody String input) {
 
@@ -82,8 +81,7 @@ public class PatientReturnController {
 
 	@CrossOrigin()
 	@Operation(summary = "Item details by beneficiary")
-	@RequestMapping(value = "/getItemDetailByBen", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getItemDetailByBen", headers = "Authorization", produces = { "application/json" })
 	public String getItemDetailByBen(
 			@Param("{\"benRegID\":\"Integer\", \"facilityID\":\"Integer\", \"itemID\":\"Integer\"}") @RequestBody String input) {
 
@@ -105,7 +103,7 @@ public class PatientReturnController {
 
 	@CrossOrigin
 	@Operation(summary = "Update item details returned by patient")
-	@RequestMapping(value = "/updateQuantityReturned", headers = "Authorization", method = RequestMethod.POST, produces = "application/json")
+	@PostMapping(value = "/updateQuantityReturned", headers = "Authorization", produces = "application/json")
 	public String updateQuantityReturned(@RequestBody String request) {
 		OutputResponse response = new OutputResponse();
 		logger.info("updateQuantityReturned request " + request);
@@ -125,8 +123,7 @@ public class PatientReturnController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get beneficiary return history")
-	@RequestMapping(value = "/getBenReturnHistory", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getBenReturnHistory", headers = "Authorization", produces = { "application/json" })
 	public String getBenReturnHistory(
 			@Param("{\"benRegID\":\"Integer\", \"facilityID\":\"Integer\"}") @RequestBody String input) {
 

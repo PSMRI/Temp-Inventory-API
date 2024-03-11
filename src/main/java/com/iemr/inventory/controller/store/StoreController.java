@@ -30,9 +30,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.store.M_Facility;
@@ -55,7 +54,7 @@ public class StoreController {
 
 	@CrossOrigin()
 	@Operation(summary = "Create store")
-	@RequestMapping(value = "/createStore", headers = "Authorization", produces = {
+	@PostMapping(value = "/createStore", headers = "Authorization", produces = {
 			"application/json" })
 	public String createStore(@RequestBody String store) {
 
@@ -81,7 +80,7 @@ public class StoreController {
 
 	@CrossOrigin()
 	@Operation(summary = "Edit store")
-	@RequestMapping(value = "/editStore", headers = "Authorization", produces = {
+	@PostMapping(value = "/editStore", headers = "Authorization", produces = {
 			"application/json" })
 	public String editStore(@RequestBody String store) {
 
@@ -111,8 +110,7 @@ public class StoreController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get all store")
-	@RequestMapping(value = "/getAllStore/{providerServiceMapID}", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getAllStore/{providerServiceMapID}", headers = "Authorization", produces = { "application/json" })
 	public String getAllStore(@PathVariable("providerServiceMapID") Integer providerServiceMapID) {
 
 		OutputResponse response = new OutputResponse();
@@ -131,8 +129,7 @@ public class StoreController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get all active store")
-	@RequestMapping(value = "/getAllActiveStore", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getAllActiveStore", headers = "Authorization", produces = { "application/json" })
 	public String getAllActiveStore(@RequestBody M_Facility providerServiceMapID) {
 
 		OutputResponse response = new OutputResponse();
@@ -151,7 +148,7 @@ public class StoreController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get main facility")
-	@RequestMapping(value = "/getMainFacility", headers = "Authorization", produces = {
+	@PostMapping(value = "/getMainFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String getMainFacility(@RequestBody String getMainFacility) {
 
@@ -174,7 +171,7 @@ public class StoreController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get sub facility")
-	@RequestMapping(value = "/getsubFacility", headers = "Authorization", produces = {
+	@PostMapping(value = "/getsubFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String getsubFacility(@RequestBody String getMainFacility) {
 
@@ -197,7 +194,7 @@ public class StoreController {
 
 	@CrossOrigin()
 	@Operation(summary = "Delete store")
-	@RequestMapping(value = "/deleteStore", headers = "Authorization", produces = {
+	@PostMapping(value = "/deleteStore", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteStore(@RequestBody M_Facility facility) {
 
@@ -218,7 +215,7 @@ public class StoreController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get store by id")
-	@RequestMapping(value = "/getStoreByID", headers = "Authorization", produces = {
+	@PostMapping(value = "/getStoreByID", headers = "Authorization", produces = {
 			"application/json" })
 	public String getStoreByID(@RequestBody M_Facility facility) {
 
@@ -239,8 +236,7 @@ public class StoreController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get van by store id")
-	@RequestMapping(value = "/getVanByStoreID/{storeID}", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getVanByStoreID/{storeID}", headers = "Authorization", produces = { "application/json" })
 	public String getVanByStoreID(@PathVariable("storeID") Integer storeID) {
 
 		OutputResponse response = new OutputResponse();

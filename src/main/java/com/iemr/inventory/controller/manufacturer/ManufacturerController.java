@@ -29,9 +29,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.manufacturer.M_Manufacturer;
@@ -52,8 +51,7 @@ public class ManufacturerController {
 
 	@CrossOrigin()
 	@Operation(summary = "Create manufacturer")
-	@RequestMapping(value = "/createManufacturer", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/createManufacturer", headers = "Authorization", produces = { "application/json" })
 	public String createManufacturer(@RequestBody String createManufacturer) {
 
 		OutputResponse response = new OutputResponse();
@@ -77,7 +75,7 @@ public class ManufacturerController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get manufacturer")
-	@RequestMapping(value = "/getManufacturer", headers = "Authorization", produces = {
+	@PostMapping(value = "/getManufacturer", headers = "Authorization", produces = {
 			"application/json" })
 	public String getManufacturer(@RequestBody String getManufacturer) {
 
@@ -103,8 +101,7 @@ public class ManufacturerController {
 
 	@CrossOrigin()
 	@Operation(summary = "Edit manufacturer")
-	@RequestMapping(value = "/editManufacturer", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/editManufacturer", headers = "Authorization", produces = { "application/json" })
 	public String editManufacturer(@RequestBody String editManufacturer) {
 
 		OutputResponse response = new OutputResponse();
@@ -138,8 +135,7 @@ public class ManufacturerController {
 
 	@CrossOrigin()
 	@Operation(summary = "Delete manufacturer")
-	@RequestMapping(value = "/deleteManufacturer", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/deleteManufacturer", headers = "Authorization", produces = { "application/json" })
 	public String deleteManufacturer(@RequestBody String deleteManufacturer) {
 
 		OutputResponse response = new OutputResponse();

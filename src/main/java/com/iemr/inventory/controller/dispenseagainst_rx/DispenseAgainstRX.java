@@ -26,9 +26,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.service.dispenseagainst_rx.DispenseAgainstRXimpl;
@@ -49,7 +49,7 @@ public class DispenseAgainstRX {
 
 	@CrossOrigin()
 	@Operation(summary = "Get prescribed medicines")
-	@RequestMapping(value = "getPrescribedMedicines", method = RequestMethod.POST)
+	@PostMapping(value = "getPrescribedMedicines")
 	public String getPrescribedMedicinesToDispense(@RequestBody String requestOBJ) {
 		OutputResponse response = new OutputResponse();
 		try {

@@ -29,10 +29,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.items.ItemMaster;
@@ -58,8 +58,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get item form id")
-	@RequestMapping(value = "/getItemForm/{providerservicemapID}", headers = "Authorization", method = {
-			RequestMethod.GET }, produces = { "application/json" })
+	@GetMapping(value = "/getItemForm/{providerservicemapID}", headers = "Authorization", produces = { "application/json" })
 	public String getItemForm(@PathVariable("providerservicemapID") Integer providerservicemapID) {
 
 		OutputResponse response = new OutputResponse();
@@ -79,8 +78,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get item route")
-	@RequestMapping(value = "/getItemRoute/{providerservicemapID}", headers = "Authorization", method = {
-			RequestMethod.GET }, produces = { "application/json" })
+	@GetMapping(value = "/getItemRoute/{providerservicemapID}", headers = "Authorization", produces = { "application/json" })
 	public String getItemRoute(@PathVariable("providerservicemapID") Integer providerservicemapID) {
 
 		OutputResponse response = new OutputResponse();
@@ -100,8 +98,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get item category")
-	@RequestMapping(value = "/getItemCategory/{providerservicemapID}/{bool}", headers = "Authorization", method = {
-			RequestMethod.GET }, produces = { "application/json" })
+	@GetMapping(value = "/getItemCategory/{providerservicemapID}/{bool}", headers = "Authorization", produces = { "application/json" })
 	public String getItemCategory(@PathVariable("providerservicemapID") Integer providerServicemapID,
 			@PathVariable("bool") Integer bool) {
 
@@ -127,8 +124,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Create item master")
-	@RequestMapping(value = "/createItemMaster", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/createItemMaster", headers = "Authorization", produces = { "application/json" })
 	public String createItemMaster(@RequestBody ItemMaster[] item) {
 
 		OutputResponse response = new OutputResponse();
@@ -149,8 +145,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get item master")
-	@RequestMapping(value = "/getItemMaster/{providerservicemapID}", headers = "Authorization", method = {
-			RequestMethod.GET }, produces = { "application/json" })
+	@GetMapping(value = "/getItemMaster/{providerservicemapID}", headers = "Authorization", produces = { "application/json" })
 	public String getItemMaster(@PathVariable("providerservicemapID") Integer providerServicemapID) {
 
 		OutputResponse response = new OutputResponse();
@@ -170,8 +165,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get active item master")
-	@RequestMapping(value = "/getActiveItemMaster", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getActiveItemMaster", headers = "Authorization", produces = { "application/json" })
 	public String getActiveItemMaster(@RequestBody ItemMaster providerServicemapID) {
 
 		OutputResponse response = new OutputResponse();
@@ -191,8 +185,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Block item master")
-	@RequestMapping(value = "/blockItemMaster/{itemmasterid}/{deleteflag}", headers = "Authorization", method = {
-			RequestMethod.GET }, produces = { "application/json" })
+	@GetMapping(value = "/blockItemMaster/{itemmasterid}/{deleteflag}", headers = "Authorization", produces = { "application/json" })
 	public String blockItemMaster(@PathVariable("itemmasterid") Integer itemmasterID,
 			@PathVariable("deleteflag") Boolean delete) {
 
@@ -213,8 +206,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Discontinue item master")
-	@RequestMapping(value = "/discontinueItemMaster/{itemmasterid}/{deleteflag}", headers = "Authorization", method = {
-			RequestMethod.GET }, produces = { "application/json" })
+	@GetMapping(value = "/discontinueItemMaster/{itemmasterid}/{deleteflag}", headers = "Authorization", produces = { "application/json" })
 	public String discontinueItemMaster(@PathVariable("itemmasterid") Integer itemmasterID,
 			@PathVariable("deleteflag") Boolean delete) {
 
@@ -235,7 +227,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Edit item master")
-	@RequestMapping(value = "/editItemMaster", headers = "Authorization", produces = {
+	@PostMapping(value = "/editItemMaster", headers = "Authorization", produces = {
 			"application/json" })
 	public String editItemMaster(@RequestBody ItemMaster item) {
 
@@ -258,7 +250,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Configure item issue")
-	@RequestMapping(value = "/configItemIssue", headers = "Authorization", produces = {
+	@PostMapping(value = "/configItemIssue", headers = "Authorization", produces = {
 			"application/json" })
 	public String configItemIssue(@RequestBody M_ItemCategory[] itemIssue) {
 
@@ -280,7 +272,7 @@ public class ItemController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get item")
-	@RequestMapping(value = "/getItem", headers = "Authorization", produces = {
+	@PostMapping(value = "/getItem", headers = "Authorization", produces = {
 			"application/json" })
 	public String getItem(@RequestBody String getItem) {
 

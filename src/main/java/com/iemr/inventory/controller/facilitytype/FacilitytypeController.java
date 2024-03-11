@@ -29,8 +29,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.facilitytype.M_facilitytype;
@@ -52,7 +54,7 @@ public class FacilitytypeController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get facility")
-	@RequestMapping(value = "/getFacility", headers = "Authorization", produces = {
+	@GetMapping(value = "/getFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String getFacility(@RequestBody String getFacility) {
 
@@ -77,7 +79,7 @@ public class FacilitytypeController {
 
 	@CrossOrigin()
 	@Operation(summary = "Add facility")
-	@RequestMapping(value = "/addFacility", headers = "Authorization", produces = {
+	@PostMapping(value = "/addFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String addFacility(@RequestBody String addFacility) {
 
@@ -102,7 +104,7 @@ public class FacilitytypeController {
 
 	@CrossOrigin()
 	@Operation(summary = "Edit facility")
-	@RequestMapping(value = "/editFacility", headers = "Authorization", produces = {
+	@PostMapping(value = "/editFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String editFacility(@RequestBody String editFacility) {
 
@@ -134,7 +136,7 @@ public class FacilitytypeController {
 
 	@CrossOrigin()
 	@Operation(summary = "Delete facility")
-	@RequestMapping(value = "/deleteFacility", headers = "Authorization", produces = {
+	@DeleteMapping(value = "/deleteFacility", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteFacility(@RequestBody String deleteFacility) {
 

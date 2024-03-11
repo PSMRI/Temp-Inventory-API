@@ -29,8 +29,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.drugtype.M_Drugtype;
@@ -51,7 +53,7 @@ public class DrugtypeController {
 
 	@CrossOrigin()
 	@Operation(summary = "Create drug type")
-	@RequestMapping(value = "/createDrugtype", headers = "Authorization", produces = {
+	@PostMapping(value = "/createDrugtype", headers = "Authorization", produces = {
 			"application/json" })
 	public String createManufacturer(@RequestBody String createDrugtype) {
 
@@ -76,7 +78,7 @@ public class DrugtypeController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get drug type")
-	@RequestMapping(value = "/getDrugtype", headers = "Authorization", produces = {
+	@GetMapping(value = "/getDrugtype", headers = "Authorization", produces = {
 			"application/json" })
 	public String getManufacturer(@RequestBody String getDrugtype) {
 
@@ -101,7 +103,7 @@ public class DrugtypeController {
 
 	@CrossOrigin()
 	@Operation(summary = "Edit drug type")
-	@RequestMapping(value = "/editDrugtype", headers = "Authorization", produces = {
+	@PostMapping(value = "/editDrugtype", headers = "Authorization", produces = {
 			"application/json" })
 	public String editManufacturer(@RequestBody String editDrugtype) {
 
@@ -134,7 +136,7 @@ public class DrugtypeController {
 
 	@CrossOrigin()
 	@Operation(summary = "Delete drug type")
-	@RequestMapping(value = "/deleteDrugtype", headers = "Authorization", produces = {
+	@DeleteMapping(value = "/deleteDrugtype", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteManufacturer(@RequestBody String deleteDrugtype) {
 

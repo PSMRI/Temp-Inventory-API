@@ -28,9 +28,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.visit.BenVisitDetail;
@@ -54,8 +53,7 @@ public class VisitController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get visit details from beneficary id")
-	@RequestMapping(value = "/getVisitFromBenID", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getVisitFromBenID", headers = "Authorization", produces = { "application/json" })
 	public String getVisitFromBenRegID(@RequestBody BenVisitDetail benVisitDetail, HttpServletRequest httpRequest) {
 
 		OutputResponse response = new OutputResponse();
@@ -81,8 +79,7 @@ public class VisitController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get visit details from advance search")
-	@RequestMapping(value = "/getVisitFromAdvanceSearch", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getVisitFromAdvanceSearch", headers = "Authorization", produces = { "application/json" })
 	public String getVisitFromAdvanceSearch(@RequestBody String model, HttpServletRequest httpRequest) {
 
 		OutputResponse response = new OutputResponse();

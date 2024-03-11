@@ -29,8 +29,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.uom.M_Uom;
@@ -52,7 +54,7 @@ public class UnitOfMeasurementController {
 
 	@CrossOrigin()
 	@Operation(summary = "Create unit of measurement")
-	@RequestMapping(value = "/createUom", headers = "Authorization", produces = {
+	@PostMapping(value = "/createUom", headers = "Authorization", produces = {
 			"application/json" })
 	public String createUom(@RequestBody String createUom) {
 
@@ -77,7 +79,7 @@ public class UnitOfMeasurementController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get unit of measurement")
-	@RequestMapping(value = "/getUom", headers = "Authorization", produces = {
+	@GetMapping(value = "/getUom", headers = "Authorization", produces = {
 			"application/json" })
 	public String getUom(@RequestBody String getUom) {
 
@@ -102,7 +104,7 @@ public class UnitOfMeasurementController {
 
 	@CrossOrigin()
 	@Operation(summary = "Edit unit of measurement")
-	@RequestMapping(value = "/editUom", headers = "Authorization", produces = {
+	@PostMapping(value = "/editUom", headers = "Authorization", produces = {
 			"application/json" })
 	public String editUom(@RequestBody String editUom) {
 
@@ -134,7 +136,7 @@ public class UnitOfMeasurementController {
 
 	@CrossOrigin()
 	@Operation(summary = "Delete unit of measurement")
-	@RequestMapping(value = "/deleteUom", headers = "Authorization", produces = {
+	@DeleteMapping(value = "/deleteUom", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteUom(@RequestBody String editUom) {
 

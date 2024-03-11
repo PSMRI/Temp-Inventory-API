@@ -30,9 +30,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.itemfacilitymapping.M_itemfacilitymapping;
@@ -60,7 +59,7 @@ public class ItemfacilitymappingController {
 
 	@CrossOrigin()
 	@Operation(summary = "Map item to store")
-	@RequestMapping(value = "/mapItemtoStrore", headers = "Authorization", produces = {
+	@PostMapping(value = "/mapItemtoStrore", headers = "Authorization", produces = {
 			"application/json" })
 	public String mapItemtoStrore(@RequestBody String mapItemtoStrore) {
 		OutputResponse response = new OutputResponse();
@@ -115,8 +114,7 @@ public class ItemfacilitymappingController {
 
 	@CrossOrigin()
 	@Operation(summary = "Edit item to store")
-	@RequestMapping(value = "/editItemtoStrore", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/editItemtoStrore", headers = "Authorization", produces = { "application/json" })
 	public String editItemtoStrore(@RequestBody String editItemtoStrore) {
 		OutputResponse response = new OutputResponse();
 
@@ -148,8 +146,7 @@ public class ItemfacilitymappingController {
 
 	@CrossOrigin()
 	@Operation(summary = "Delete item to store")
-	@RequestMapping(value = "/deleteItemtoStrore", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/deleteItemtoStrore", headers = "Authorization", produces = { "application/json" })
 	public String deleteItemtoStrore(@RequestBody String deleteItemtoStrore) {
 		OutputResponse response = new OutputResponse();
 
@@ -177,7 +174,7 @@ public class ItemfacilitymappingController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get sub store item")
-	@RequestMapping(value = "/getSubStoreitem", headers = "Authorization", produces = {
+	@PostMapping(value = "/getSubStoreitem", headers = "Authorization", produces = {
 			"application/json" })
 	public String getSubStroreitem(@RequestBody String deleteItemtoStrore) {
 		OutputResponse response = new OutputResponse();
@@ -203,8 +200,7 @@ public class ItemfacilitymappingController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get all facility mapped data")
-	@RequestMapping(value = "/getAllFacilityMappedData", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getAllFacilityMappedData", headers = "Authorization", produces = { "application/json" })
 	public String getAllFacilityMappedData(@RequestBody String getAllFacilityMappedData) {
 		OutputResponse response = new OutputResponse();
 
@@ -229,8 +225,7 @@ public class ItemfacilitymappingController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get item from store id")
-	@RequestMapping(value = "/getItemFromStoreID/{storeID}", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getItemFromStoreID/{storeID}", headers = "Authorization", produces = { "application/json" })
 	public String getItemFromStoreID(@PathVariable("storeID") Integer storeID) {
 
 		OutputResponse response = new OutputResponse();
@@ -251,8 +246,7 @@ public class ItemfacilitymappingController {
 
 	@CrossOrigin()
 	@Operation(summary = "Item partial search")
-	@RequestMapping(value = "/itemPartialSearch", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/itemPartialSearch", headers = "Authorization", produces = { "application/json" })
 	public String itemPartialSearch(@RequestBody ItemMaster getItem) {
 
 		OutputResponse response = new OutputResponse();
@@ -274,8 +268,7 @@ public class ItemfacilitymappingController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get item batch for store transfer")
-	@RequestMapping(value = "/getItemBatchForStoreTransfer", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getItemBatchForStoreTransfer", headers = "Authorization", produces = { "application/json" })
 	public String getItemBatchForStoreTransfer(@RequestBody StockTransferItem stores) {
 
 		OutputResponse response = new OutputResponse();

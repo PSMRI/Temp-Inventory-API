@@ -29,9 +29,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.pharmacologicalcategory.M_Pharmacologicalcategory;
@@ -53,8 +52,7 @@ public class PharmacologicalCategoryController {
 
 	@CrossOrigin()
 	@Operation(summary = "Create pharmacological category")
-	@RequestMapping(value = "/createPharmacologicalcategory", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/createPharmacologicalcategory", headers = "Authorization", produces = { "application/json" })
 	public String createPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
 
 		OutputResponse response = new OutputResponse();
@@ -80,8 +78,7 @@ public class PharmacologicalCategoryController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get pharmacological category")
-	@RequestMapping(value = "/getPharmacologicalcategory", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/getPharmacologicalcategory", headers = "Authorization", produces = { "application/json" })
 	public String getPharmacologicalcategory(@RequestBody String createPharmacologicalcategory) {
 
 		OutputResponse response = new OutputResponse();
@@ -106,8 +103,7 @@ public class PharmacologicalCategoryController {
 
 	@CrossOrigin()
 	@Operation(summary = "Edit pharmacological category")
-	@RequestMapping(value = "/editPharmacologicalcategory", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/editPharmacologicalcategory", headers = "Authorization", produces = { "application/json" })
 	public String editPharmacologicalcategory(@RequestBody String editPharmacologicalcategory) {
 
 		OutputResponse response = new OutputResponse();
@@ -137,8 +133,7 @@ public class PharmacologicalCategoryController {
 
 	@CrossOrigin()
 	@Operation(summary = "Delete pharmacological category")
-	@RequestMapping(value = "/deletePharmacologicalcategory", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@PostMapping(value = "/deletePharmacologicalcategory", headers = "Authorization", produces = { "application/json" })
 	public String deletePharmacologicalcategory(@RequestBody String deletePharmacologicalcategory) {
 
 		OutputResponse response = new OutputResponse();

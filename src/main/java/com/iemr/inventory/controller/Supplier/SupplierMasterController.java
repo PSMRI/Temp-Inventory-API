@@ -29,8 +29,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.iemr.inventory.data.supplier.M_Supplier;
@@ -53,7 +55,7 @@ public class SupplierMasterController {
 
 	@CrossOrigin()
 	@Operation(summary = "Create supplier")
-	@RequestMapping(value = "/createSupplier", headers = "Authorization", produces = {
+	@PostMapping(value = "/createSupplier", headers = "Authorization", produces = {
 			"application/json" })
 	public String createSupplier(@RequestBody String createSupplier) {
 
@@ -103,7 +105,7 @@ public class SupplierMasterController {
 
 	@CrossOrigin()
 	@Operation(summary = "Get supplier")
-	@RequestMapping(value = "/getSupplier", headers = "Authorization", produces = {
+	@GetMapping(value = "/getSupplier", headers = "Authorization", produces = {
 			"application/json" })
 	public String getSupplier(@RequestBody String getSupplier) {
 
@@ -128,7 +130,7 @@ public class SupplierMasterController {
 
 	@CrossOrigin()
 	@Operation(summary = "Edit supplier")
-	@RequestMapping(value = "/editSupplier", headers = "Authorization", produces = {
+	@PostMapping(value = "/editSupplier", headers = "Authorization", produces = {
 			"application/json" })
 	public String editSupplier(@RequestBody String editSupplier) {
 
@@ -166,7 +168,7 @@ public class SupplierMasterController {
 
 	@CrossOrigin()
 	@Operation(summary = "Delete supplier")
-	@RequestMapping(value = "/deleteSupplier", headers = "Authorization", produces = {
+	@DeleteMapping(value = "/deleteSupplier", headers = "Authorization", produces = {
 			"application/json" })
 	public String deleteSupplier(@RequestBody String deleteSupplier) {
 
