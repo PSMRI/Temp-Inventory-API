@@ -133,47 +133,23 @@ public class StockAdjustmentItemDraft {
 		return null;
 	}
 
-	public void setDeleted(boolean b) {
-		
-		
-	}
 
-	public Object getCreatedBy() {
+	public String getCreatedBy() {
 		
 		return null;
 	}
 
-	public void setModifiedBy(Object createdBy2) {
-		
-		
-	}
-
-	public Object getCreatedDate() {
+	public Date getCreatedDate() {
 		
 		return null;
 	}
 
-	public void setCreatedDate(Object createdDate2) {
-		
-		
-	}
-
-	public Object getProcessed() {
+	public Character getProcessed() {
 		
 		return null;
 	}
 
-	public void setProcessed(Object processed2) {
-		
-		
-	}
-
-	public void setStockAdjustmentDraftID(Long stockdraftid) {
-		
-		
-	}
-
-	public Object getItemStockEntryID() {
+	public Long getItemStockEntryID() {
 		
 		return null;
 	}
@@ -183,12 +159,12 @@ public class StockAdjustmentItemDraft {
 		return null;
 	}
 
-	public Object getAdjustedQuantity() {
+	public Integer getAdjustedQuantity() {
 		
 		return null;
 	}
 
-	public Object getProviderServiceMapID() {
+	public Integer getProviderServiceMapID() {
 		
 		return null;
 	}

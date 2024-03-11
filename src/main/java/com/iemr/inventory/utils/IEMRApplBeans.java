@@ -21,6 +21,7 @@
 */
 package com.iemr.inventory.utils;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,6 +34,7 @@ import com.iemr.inventory.utils.gateway.email.EmailService;
 import com.iemr.inventory.utils.gateway.email.GenericEmailServiceImpl;
 import com.iemr.inventory.utils.redis.RedisStorage;
 import com.iemr.inventory.utils.sessionobject.SessionObject;
+
 
 @Configuration
 public class IEMRApplBeans {
@@ -67,7 +69,7 @@ public class IEMRApplBeans {
 	private @Value("${spring.data.redis.port}") int redisPort;
 
 	@Bean
-	public LettuceConnectionFactory connectionFactory() {
+	LettuceConnectionFactory lettuceConnectionFactory() {
 		System.out.print("Connecting to Redis " + redisHost + ":" + redisPort);
 
 		return new LettuceConnectionFactory(redisHost, redisPort);

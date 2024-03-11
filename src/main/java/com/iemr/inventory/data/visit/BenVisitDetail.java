@@ -173,7 +173,7 @@ public class BenVisitDetail {
 		return outputMapper.gson().toJson(this);
 	}
 
-	public Object getBeneficiaryID() {
+	public String getBeneficiaryID() {
 		
 		return null;
 	}

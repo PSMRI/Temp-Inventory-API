@@ -147,10 +147,6 @@ public class StockAdjustmentDraft {
 		return null;
 	}
 
-	public void setIsCompleted(boolean b) {
-		
-		
-	}
 
 	public List<StockAdjustmentItemDraft> getStockAdjustmentItemDraft() {
 		
