@@ -198,7 +198,7 @@ public class IndentController {
 
 	@CrossOrigin()
 	@Operation(summary = "Issue indent")
-	@RequestMapping(value = "/issueIndent", headers = "Authorization", produces = {
+	@PostMapping(value = "/issueIndent", headers = "Authorization", produces = {
 			"application/json" })
 	public String issueIndent(@Param("{\"facilityID\":\"Integer\"}") @RequestBody String request) {
 		logger.info("issueIndent request " + request);
@@ -243,7 +243,7 @@ public class IndentController {
 
 	@CrossOrigin()
 	@Operation(summary = "Receive indent")
-	@RequestMapping(value = "/receiveIndent", headers = "Authorization", produces = {
+	@PostMapping(value = "/receiveIndent", headers = "Authorization", produces = {
 			"application/json" })
 	public String receiveIndent(@RequestBody String request) {
 		logger.info("receiveIndent request " + request);
