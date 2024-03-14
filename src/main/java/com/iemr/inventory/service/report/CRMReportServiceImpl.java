@@ -1,26 +1,28 @@
 /*
-* AMRIT – Accessible Medical Records via Integrated Technology 
-* Integrated EHR (Electronic Health Records) Solution 
-*
-* Copyright (C) "Piramal Swasthya Management and Research Institute" 
-*
-* This file is part of AMRIT.
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see https://www.gnu.org/licenses/.
-*/
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
+ *
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
+ *
+ * This file is part of AMRIT.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
 package com.iemr.inventory.service.report;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -45,17 +47,20 @@ import com.iemr.inventory.model.report.MonthlyReport;
 import com.iemr.inventory.model.report.TransitReport;
 import com.iemr.inventory.model.report.YearlyReport;
 import com.iemr.inventory.repo.report.ItemStockReportRepo;
-import java.math.BigInteger;
-import java.math.BigDecimal;
 
 @Service
 public class CRMReportServiceImpl implements CRMReportService {
 
-	@Autowired(required=false)
+	@Autowired(required = false)
 	ItemStockReportRepo itemStockReportRepo;
 
-	@Autowired(required=false)
+	@Autowired(required = false)
 	InventoryReportMapper mapper;
+
+	@Autowired
+	public CRMReportServiceImpl(ItemStockReportRepo itemStockReportRepo) {
+		this.itemStockReportRepo = itemStockReportRepo;
+	}
 
 	@Override
 	public String getInwardStockReport(ItemStockEntryReport entryReport) {
@@ -219,23 +224,13 @@ public class CRMReportServiceImpl implements CRMReportService {
 				if (objects[19] != null) {
 					ClosingStock = ((Number) objects[19]).longValue();
 				}
-				
 
-//				Long actualOpening = openingStock + adjustedQuantity_FromDate;
 				Long actualOpening = openingStock;
-				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
+				Long actualDispensed = quantityDispanced;
 				Long actualClosing = ClosingStock;
-//				if (actualOpening == 0 || actualOpening == null) {
-//					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
-//				}
-//
-//				else {
-//					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
-//					totalQuantityReceived = 0L;
-//				}
 
 				Timestamp itemEnteredDate = null;
-				if(objects[9]!=null) {
+				if (objects[9] != null) {
 					itemEnteredDate = (Timestamp) objects[9];
 
 				}
@@ -310,21 +305,15 @@ public class CRMReportServiceImpl implements CRMReportService {
 				if (objects[11] != null) {
 					adjustedQuantity_ToDate_Issue = ((Number) objects[11]).longValue();
 				}
-				
+
 				Long ClosingStock = 0L;
 				if (objects[12] != null) {
 					ClosingStock = ((Number) objects[12]).longValue();
 				}
-//				Long actualOpening = openingStock + adjustedQuantity_FromDate;
+
 				Long actualOpening = openingStock;
-				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
+				Long actualDispensed = quantityDispanced;
 				Long actualClosing = ClosingStock;
-//				if (actualOpening == 0 || actualOpening == null) {
-//					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
-//				} else {
-//					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
-//					totalQuantityReceived = 0L;
-//				}
 
 				DailyStockSummary stockDetail = new DailyStockSummary();
 				stockDetail.setSlNo(slNo++);
@@ -417,20 +406,13 @@ public class CRMReportServiceImpl implements CRMReportService {
 				if (objects[19] != null) {
 					ClosingStock = ((Number) objects[19]).longValue();
 				}
-//				Long actualOpening = openingStock + adjustedQuantity_FromDate;
+
 				Long actualOpening = openingStock;
-				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
+				Long actualDispensed = quantityDispanced;
 				Long actualClosing = ClosingStock;
-//				Long actualClosing = 0L;
-//				if (actualOpening == 0 || actualOpening == null) {
-//					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
-//				} else {
-//					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
-//					totalQuantityReceived = 0L;
-//				}
 
 				Timestamp itemEnteredDate = null;
-				if(objects[9]!=null) {
+				if (objects[9] != null) {
 					itemEnteredDate = (Timestamp) objects[9];
 
 				}
@@ -531,16 +513,10 @@ public class CRMReportServiceImpl implements CRMReportService {
 				if (objects[19] != null) {
 					ClosingStock = ((Number) objects[19]).longValue();
 				}
-//				Long actualOpening = openingStock + adjustedQuantity_FromDate;
+
 				Long actualOpening = openingStock;
-				Long actualDispensed = quantityDispanced;// - adjustedQuantity_ToDate;
+				Long actualDispensed = quantityDispanced;
 				Long actualClosing = ClosingStock;
-//				if (actualOpening == 0 || actualOpening == null) {
-//					actualClosing = totalQuantityReceived - actualDispensed + adjustedQuantity_ToDate;
-//				} else {
-//					actualClosing = actualOpening - actualDispensed + adjustedQuantity_ToDate;
-//					totalQuantityReceived = 0L;
-//				}
 
 				YearlyReport stockDetail = new YearlyReport();
 				stockDetail.setSlNo(slNo++);
