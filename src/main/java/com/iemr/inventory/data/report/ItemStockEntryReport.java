@@ -30,7 +30,7 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
-@Table(name = "db_reporting.fact_itemstockentry", schema = "db_reporting")
+@Table(name = "fact_itemstockentry", schema = "db_reporting")
 public class ItemStockEntryReport {
 
     @Id

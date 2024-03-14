@@ -103,7 +103,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 						object[1] != null ? object[1].toString() : null,
 						object[2] != null ? object[2].toString() : null,
 						object[3] != null ? object[3].toString() : null,
-						object[4] != null ? ((Double) object[4]).doubleValue() : null,
+						object[4] != null ? Double.valueOf(object[3].toString()) : null,
 						(Date) (object[5] != null ? object[5] : null),
 						(Integer) (object[6] != null ? object[6] : null));
 
@@ -174,7 +174,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 		List<DailyStockDetails> list = new ArrayList<DailyStockDetails>();
 
-		List<Objects[]> reports = null;
+		List<Object[]> reports = null;
 
 		reports = itemStockReportRepo.getDailyStockDetailReportByFacilityID(todaysDate, todaysDate,
 				entryReport.getFacilityID());
@@ -266,7 +266,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 		List<DailyStockSummary> list = new ArrayList<DailyStockSummary>();
 
-		List<Objects[]> reports = null;
+		List<Object[]> reports = null;
 
 		reports = itemStockReportRepo.getDailyStockSummaryReportByFacilityID(todaysDate, todaysDate,
 				entryReport.getFacilityID());
@@ -357,7 +357,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 		List<MonthlyReport> list = new ArrayList<MonthlyReport>();
 
-		List<Objects[]> reports = null;
+		List<Object[]> reports = null;
 		reports = itemStockReportRepo.getDailyStockDetailReportByFacilityID(startDate, endDate,
 				entryReport.getFacilityID());
 
@@ -464,7 +464,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 		List<YearlyReport> list = new ArrayList<YearlyReport>();
 
-		List<Objects[]> reports = null;
+		List<Object[]> reports = null;
 
 		reports = itemStockReportRepo.getDailyStockDetailReportByFacilityID(startDate, endDate,
 				entryReport.getFacilityID());
@@ -590,7 +590,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 
 		List<TransitReport> list = new ArrayList<TransitReport>();
 
-		List<Objects[]> reports = null;
+		List<Object[]> reports = null;
 
 		if (entryReport.getFacilityID() != null) {
 			reports = itemStockReportRepo.getTransitReportByFacilityID(entryReport.getStartDate(),

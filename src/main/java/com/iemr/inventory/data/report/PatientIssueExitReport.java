@@ -21,6 +21,19 @@
  */
 package com.iemr.inventory.data.report;
 
+
+import java.sql.Date;
+import java.sql.Timestamp;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -30,7 +43,7 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
-@Table(name = "db_reporting.fact_patientissueexit", schema = "db_reporting")
+@Table(name = "fact_patientissueexit", schema = "db_reporting")
 public class PatientIssueExitReport {
 
     @Id

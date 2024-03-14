@@ -34,7 +34,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long> {
+public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Integer> {
 
     @Query("SELECT ise.facilityID,ise.itemID,itm.itemName,sum(ise.quantityInHand) "
             + "from ItemStockEntry ise join ise.item itm where ise.itemID in (:itemID) and ise.facilityID=:storeID "
