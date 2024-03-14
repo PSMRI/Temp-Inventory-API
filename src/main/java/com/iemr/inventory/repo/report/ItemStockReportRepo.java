@@ -35,6 +35,8 @@ import java.util.Objects;
 
 @Repository
 public interface ItemStockReportRepo extends CrudRepository<ItemStockEntryReport, Long> {
+	
+	//Queries
 
     @Query("Select entryReport from ItemStockEntryReport entryReport "
             + "where entryReport.createdDate >= :startDate and entryReport.createdDate <= :endDate")
