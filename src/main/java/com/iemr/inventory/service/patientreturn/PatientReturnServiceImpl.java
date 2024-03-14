@@ -55,7 +55,7 @@ public class PatientReturnServiceImpl implements PatientReturnService{
 	@Override
 	public List<PatientReturnModel> getItemNameByRegID(T_PatientIssue patientIssue) {
 		logger.info("getItemNameByRegID - Start");
-		List<Objects[]> results=null;
+		List<Object[]> results=null;
 		
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.DATE, -90);
@@ -84,7 +84,7 @@ public class PatientReturnServiceImpl implements PatientReturnService{
 	@Override
 	public List<ItemDetailModel> getItemDetailByBen(ItemDetailModel itemDetailModel) {
 		logger.info("getItemDetailByBen - Start");
-		List<Objects[]> results=null;
+		List<Object[]> results=null;
 		results = patientReturnRepo.getItemDetailByBen(itemDetailModel.getBenRegID(), itemDetailModel.getItemID(), itemDetailModel.getFacilityID());
 		
 		List<ItemDetailModel> list = new ArrayList<ItemDetailModel>();
@@ -136,7 +136,7 @@ public class PatientReturnServiceImpl implements PatientReturnService{
 		logger.info("getBenReturnHistory - Start");
 		
 		List<ReturnHistoryModel> returnList =new ArrayList<ReturnHistoryModel>();
-		List<Objects[]> results=null;
+		List<Object[]> results=null;
 		results = patientReturnRepo.getBenReturnHistory(itemReturnEntry.getFacilityID(), itemReturnEntry.getFromDate(), itemReturnEntry.getToDate());
 		
 		for (Object[] objects : results)

@@ -38,7 +38,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "db_reporting.fact_itemstockentry", schema = "db_reporting")
+@Table(name = "fact_itemstockentry", schema = "db_reporting")
 public class ItemStockEntryReport {
 	
 	@Id

@@ -38,7 +38,7 @@ import com.iemr.inventory.data.stockentry.ItemStockEntry;
 import jakarta.transaction.Transactional;
 
 @Repository
-public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Long> {
+public interface ItemStockEntryRepo extends CrudRepository<ItemStockEntry, Integer> {
 
 	@Query("SELECT ise.facilityID,ise.itemID,itm.itemName,sum(ise.quantityInHand) "
 			+ "from ItemStockEntry ise join ise.item itm where ise.itemID in (:itemID) and ise.facilityID=:storeID "

@@ -32,13 +32,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.gson.annotations.Expose;
 
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "db_reporting.fact_patientissueexit", schema = "db_reporting")
+@Table(name = "fact_patientissueexit", schema = "db_reporting")
 public class PatientIssueExitReport {
 
 	@Id

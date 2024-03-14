@@ -38,22 +38,22 @@ import com.iemr.inventory.data.report.PatientIssueExitReport;
 @Repository
 public interface ItemStockReportRepo extends CrudRepository<ItemStockEntryReport, Long> {
 
-	@Query("Select entryReport from ItemStockEntryReport entryReport "
-			+ "where entryReport.createdDate >= :startDate and entryReport.createdDate <= :endDate")
+	@Query(value = "Select * from db_reporting.fact_itemstockentry "
+			+ "where CreatedDate >= :startDate and CreatedDate <= :endDate",nativeQuery = true)
 	List<ItemStockEntryReport> getItemStockEntryReport(@Param("startDate") Timestamp startDate,
 			@Param("endDate") Timestamp endDate);
 
-	@Query("Select entryReport from ItemStockEntryReport entryReport "
-			+ "where entryReport.createdDate >= :startDate and entryReport.createdDate <= :endDate and entryReport.facilityID = :facilityID")
+	@Query(value = "Select * from db_reporting.fact_itemstockentry "
+			+ "where CreatedDate >= :startDate and CreatedDate <= :endDate and FacilityID = :facilityID",nativeQuery = true)
 	List<ItemStockEntryReport> getItemStockEntryReportByFacilityID(@Param("startDate") Timestamp startDate,
 			@Param("endDate") Timestamp endDate, @Param("facilityID") Integer facilityID);
 
-	@Query("Select distinct entryReport.facilityName, entryReport.itemName, entryReport.itemCategoryName, entryReport.batchNo, entryReport.unitCostPrice, entryReport.expiryDate, entryReport.quantityInHand  from ItemStockEntryReport entryReport "
-			+ "where entryReport.expiryDate >= :startDate and entryReport.expiryDate <= :endDate order by entryReport.expiryDate asc")
+	@Query(value = "Select distinct FacilityName, ItemName, ItemCategoryName, BatchNo, UnitCostPrice, ExpiryDate, QuantityInHand  from db_reporting.fact_itemstockentry "
+			+ "where ExpiryDate >= :startDate and ExpiryDate <= :endDate order by ExpiryDate asc",nativeQuery = true)
 	List<Object[]> getExpiryReport(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
-	@Query("Select distinct entryReport.facilityName, entryReport.itemName, entryReport.itemCategoryName, entryReport.batchNo, entryReport.unitCostPrice, entryReport.expiryDate, entryReport.quantityInHand from ItemStockEntryReport entryReport "
-			+ "where entryReport.expiryDate >= :startDate and entryReport.expiryDate <= :endDate and entryReport.facilityID = :facilityID order by entryReport.expiryDate asc")
+	@Query(value = "Select distinct FacilityName, ItemName, ItemCategoryName, BatchNo, UnitCostPrice, ExpiryDate, QuantityInHand from db_reporting.fact_itemstockentry "
+			+ "where ExpiryDate >= :startDate and ExpiryDate <= :endDate and FacilityID = :facilityID order by ExpiryDate asc",nativeQuery = true)
 	List<Object[]> getExpiryReportByFacilityID(@Param("startDate") Date startDate,
 			@Param("endDate") Date endDate, @Param("facilityID") Integer facilityID);
 
@@ -75,28 +75,28 @@ public interface ItemStockReportRepo extends CrudRepository<ItemStockEntryReport
     List<Object[]> getItemStockExitReportByFacilityID(@Param("startDate") Timestamp startDate,
             @Param("endDate") Timestamp endDate, @Param("facilityID") Integer facilityID);
 
-	@Query("Select exitReport from PatientIssueExitReport exitReport "
-			+ "where exitReport.createdDate >= :startDate and exitReport.createdDate <= :endDate")
+	@Query(value = "Select * from db_reporting.fact_patientissueexit "
+			+ "where CreatedDate >= :startDate and CreatedDate <= :endDate",nativeQuery = true)
 	List<PatientIssueExitReport> getPatientIssueExitReport(@Param("startDate") Timestamp startDate,
 			@Param("endDate") Timestamp endDate);
 
-	@Query("Select exitReport from PatientIssueExitReport exitReport "
-			+ "where exitReport.createdDate >= :startDate and exitReport.createdDate <= :endDate and exitReport.facilityID = :facilityID")
+	@Query(value = "Select * from db_reporting.fact_patientissueexit fact"
+			+ "where CreatedDate >= :startDate and CreatedDate <= :endDate and FacilityID = :facilityID",nativeQuery = true)
 	List<PatientIssueExitReport> getPatientIssueExitReportByFacilityID(@Param("startDate") Timestamp startDate,
 			@Param("endDate") Timestamp endDate, @Param("facilityID") Integer facilityID);
 
 	@Query(value = "call PR_StockDetail(:startDate, :endDate)", nativeQuery = true)
-	List<Objects[]> getDailyStockDetailReport(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+	List<Object[]> getDailyStockDetailReport(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
 	@Query(value = "call PR_StockDetail(:startDate, :endDate, :facilityID)", nativeQuery = true)
-	List<Objects[]> getDailyStockDetailReportByFacilityID(@Param("startDate") Date startDate,
+	List<Object[]> getDailyStockDetailReportByFacilityID(@Param("startDate") Date startDate,
 			@Param("endDate") Date endDate, @Param("facilityID") Integer facilityID);
 
 	@Query(value = "call PR_StockSummary(:startDate, :endDate)", nativeQuery = true)
-	List<Objects[]> getDailyStockSummaryReport(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
+	List<Object[]> getDailyStockSummaryReport(@Param("startDate") Date startDate, @Param("endDate") Date endDate);
 
 	@Query(value = "call PR_StockSummary(:startDate, :endDate, :facilityID)", nativeQuery = true)
-	List<Objects[]> getDailyStockSummaryReportByFacilityID(@Param("startDate") Date startDate,
+	List<Object[]> getDailyStockSummaryReportByFacilityID(@Param("startDate") Date startDate,
 			@Param("endDate") Date endDate, @Param("facilityID") Integer facilityID);
 
 	@Query(value="Select distinct entryReport.facilityName, entryReport.itemName, entryReport.itemCategoryName, entryReport.batchNo, entryReport.unitCostPrice, entryReport.expiryDate, entryReport.quantityInHand from ItemStockEntryReport entryReport "
@@ -115,7 +115,7 @@ public interface ItemStockReportRepo extends CrudRepository<ItemStockEntryReport
 			+ "inner join m_facility facility on facility.FacilityID=indentissue.FromFacilityID "
 			+ "where indentissue.CreatedDate >= :startDate and indentissue.CreatedDate <= :endDate and "
 			+ "indent.Status='Issued' " + "order by indentissue.CreatedDate desc")
-	List<Objects[]> getTransitReport(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
+	List<Object[]> getTransitReport(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
 
 	@Query(nativeQuery = true, value = "Select indentissue.ItemName, indentissue.BatchNo, indentissue.UnitCostPrice, indentissue.ExpiryDate,"
 			+ "facility.FacilityName, indent.FromFacilityName, indent.OrderDate, indentissue.IssueDate "
@@ -124,7 +124,7 @@ public interface ItemStockReportRepo extends CrudRepository<ItemStockEntryReport
 			+ "inner join m_facility facility on facility.FacilityID=indentissue.FromFacilityID "
 			+ "where indentissue.CreatedDate >= :startDate and indentissue.CreatedDate <= :endDate and indentissue.ToFacilityID=:facilityID and "
 			+ "indent.Status='Issued' " + "order by indentissue.CreatedDate desc")
-	List<Objects[]> getTransitReportByFacilityID(@Param("startDate") Timestamp startDate,
+	List<Object[]> getTransitReportByFacilityID(@Param("startDate") Timestamp startDate,
 			@Param("endDate") Timestamp endDate, @Param("facilityID") Integer facilityID);
 
 }
