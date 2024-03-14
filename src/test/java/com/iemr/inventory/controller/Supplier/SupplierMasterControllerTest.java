@@ -1,25 +1,36 @@
 package com.iemr.inventory.controller.Supplier;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.catalina.realm.UserDatabaseRealm;
+import org.apache.catalina.users.MemoryUserDatabase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iemr.inventory.data.supplier.M_Supplier;
 import com.iemr.inventory.data.supplier.M_Supplieraddress;
 import com.iemr.inventory.service.supplier.SupplierInter;
 import com.iemr.inventory.utils.response.OutputResponse;
 
 import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.core.MediaType;
 
 @ExtendWith(MockitoExtension.class)
 class SupplierMasterControllerTest {
@@ -31,7 +42,7 @@ class SupplierMasterControllerTest {
 	SupplierInter supplierInter;
 
 	@Test
-	void createSupplierTest() {
+	public void createSupplierTest() {
 
 		M_Supplier m_suppiler = new M_Supplier();
 
@@ -108,7 +119,7 @@ class SupplierMasterControllerTest {
 	}
 
 	@Test
-	void createSupplierTestException() {
+	public void createSupplierTestException() {
 
 		String createSupplier = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -118,7 +129,7 @@ class SupplierMasterControllerTest {
 	}
 
 	@Test
-	void getSupplierTest() {
+	public void getSupplierTest() {
 
 		OutputResponse response = new OutputResponse();
 
@@ -142,7 +153,7 @@ class SupplierMasterControllerTest {
 	}
 	
 	@Test
-	void getSupplierTestException() {
+	public void getSupplierTestException() {
 
 		String getSupplier = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 		
@@ -155,7 +166,7 @@ class SupplierMasterControllerTest {
 	
 
 	@Test
-	void editSupplierTest() {
+	public void editSupplierTest() {
 
 		M_Supplier Supplier = new M_Supplier();
 
@@ -203,7 +214,7 @@ class SupplierMasterControllerTest {
 	}
 
 	@Test
-	void editSupplierTestException() {
+	public void editSupplierTestException() {
 
 		String editSupplier = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -213,7 +224,7 @@ class SupplierMasterControllerTest {
 	}
 
 	@Test
-	void deleteSupplierTest() {
+	public void deleteSupplierTest() {
 
 		M_Supplier Supplier = new M_Supplier();
 
@@ -254,7 +265,7 @@ class SupplierMasterControllerTest {
 	}
 
 	@Test
-	void deleteSupplierTestException() {
+	public void deleteSupplierTestException() {
 
 		String deleteSupplier = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -264,4 +275,79 @@ class SupplierMasterControllerTest {
 
 		Assertions.assertEquals(resp, supplierMasterController.deleteSupplier(deleteSupplier));
 	}
+	
+	@Test
+    void testCreateSupplier() throws Exception {
+        // Arrange
+        MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.post("/createSupplier")
+                .contentType(MediaType.APPLICATION_JSON);
+        MockHttpServletRequestBuilder requestBuilder = contentTypeResult
+                .content((new ObjectMapper()).writeValueAsString("foo"));
+
+        // Act
+        ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(supplierMasterController)
+                .build()
+                .perform(requestBuilder);
+
+        // Assert
+        actualPerformResult.andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    /**
+     * Method under test: {@link SupplierMasterController#deleteSupplier(String)}
+     */
+    @Test
+    void testDeleteSupplier() throws Exception {
+        // Arrange
+        MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.delete("/deleteSupplier")
+                .contentType(MediaType.APPLICATION_JSON);
+        MockHttpServletRequestBuilder requestBuilder = contentTypeResult
+                .content((new ObjectMapper()).writeValueAsString("foo"));
+
+        // Act
+        ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(supplierMasterController)
+                .build()
+                .perform(requestBuilder);
+
+        // Assert
+        actualPerformResult.andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+   
+    @Test
+    void testEditSupplier() throws Exception {
+        // Arrange
+        MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.post("/editSupplier")
+                .contentType(MediaType.APPLICATION_JSON);
+        MockHttpServletRequestBuilder requestBuilder = contentTypeResult
+                .content((new ObjectMapper()).writeValueAsString("foo"));
+
+        // Act
+        ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(supplierMasterController)
+                .build()
+                .perform(requestBuilder);
+
+        // Assert
+        actualPerformResult.andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
+
+    /**
+     * Method under test: {@link SupplierMasterController#getSupplier(String)}
+     */
+    @Test
+    void testGetSupplier() throws Exception {
+        // Arrange
+        MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.get("/getSupplier")
+                .contentType(MediaType.APPLICATION_JSON);
+        MockHttpServletRequestBuilder requestBuilder = contentTypeResult
+                .content((new ObjectMapper()).writeValueAsString("foo"));
+
+        // Act
+        ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(supplierMasterController)
+                .build()
+                .perform(requestBuilder);
+
+        // Assert
+        actualPerformResult.andExpect(MockMvcResultMatchers.status().isNotFound());
+    }
 }

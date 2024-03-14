@@ -31,7 +31,7 @@ class DispenseAgainstRXTest {
 	private DispenseAgainstRX dispenseAgainstRXController;
 
 	@Test
-	void getPrescribedMedicines() {
+	public void getPrescribedMedicines() {
 		OutputResponse response = new OutputResponse();
 
 		CommonUtilityClass commonUtilityClass = new CommonUtilityClass();
@@ -128,7 +128,7 @@ class DispenseAgainstRXTest {
 	}
 
 	@Test
-	void getPrescribedMedicinesAsNull() {
+	public void getPrescribedMedicinesAsNull() {
 
 		OutputResponse response = new OutputResponse();
 
@@ -142,7 +142,7 @@ class DispenseAgainstRXTest {
 	}
 
 	@Test
-	void getPrescribedMedicinesException() {
+	public void getPrescribedMedicinesException() {
 		
 		String requestOBJ="{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 		

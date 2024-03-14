@@ -25,7 +25,7 @@ class ManufacturerServiceImplTest {
 	private ManufacturerRepo manufacturerRepo;
 
 	@Test
-	void createManufacturerListNotNullTest() {
+	public void createManufacturerListNotNullTest() {
 
 		M_Manufacturer m_Manufacturer = new M_Manufacturer();
 
@@ -59,7 +59,7 @@ class ManufacturerServiceImplTest {
 	}
 
 	@Test
-	void createManufacturerListAsNullTest() {
+	public void createManufacturerListAsNullTest() {
 
 		M_Manufacturer m_Manufacturer = new M_Manufacturer();
 
@@ -76,7 +76,7 @@ class ManufacturerServiceImplTest {
 	}
 
 	@Test
-	void createManufacturerDataNotNullTest() {
+	public void createManufacturerDataNotNullTest() {
 
 		Integer providerServiceMapID = Integer.valueOf(3);
 
@@ -99,7 +99,7 @@ class ManufacturerServiceImplTest {
 	}
 
 	@Test
-	void createManufacturerDataAsNullTest() {
+	public void createManufacturerDataAsNullTest() {
 
 		Integer providerServiceMapID = Integer.valueOf(3);
 
@@ -116,7 +116,7 @@ class ManufacturerServiceImplTest {
 	}
 
 	@Test
-	void editManufacturerTest() {
+	public void editManufacturerTest() {
 
 		Integer manufacturerID = Integer.valueOf(6);
 
@@ -134,7 +134,7 @@ class ManufacturerServiceImplTest {
 	}
 
 	@Test
-	void saveEditedDataTest() {
+	public void saveEditedDataTest() {
 
 		M_Manufacturer editData = new M_Manufacturer();
 

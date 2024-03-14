@@ -12,6 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.iemr.inventory.data.stockExit.ItemStockExit;
 import com.iemr.inventory.data.stockExit.ItemStockExitMap;
@@ -36,7 +38,7 @@ class StockExitControllerTest {
 	StockExitServiceImpl stockExitService;
 
 	@Test
-	void patientIssueTest() throws InventoryException {
+	public void patientIssueTest() throws InventoryException {
 
 		OutputResponse output = new OutputResponse();
 
@@ -58,7 +60,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void patientIssueTestException() throws InventoryException {
+	public void patientIssueTestException() throws InventoryException {
 
 		T_PatientIssue patientIssue = new T_PatientIssue();
 
@@ -72,7 +74,7 @@ class StockExitControllerTest {
 	
 
 	@Test
-	void patientIssueTest_Exception() throws InventoryException {
+	public void patientIssueTest_Exception() throws InventoryException {
 
 		OutputResponse output = new OutputResponse();
 
@@ -98,7 +100,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void storeSelfConsumptionTest() {
+	public void storeSelfConsumptionTest() {
 
 		ItemStockExit itemStockExitO = new ItemStockExit();
 
@@ -137,7 +139,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void storeSelfConsumptionTestException() {
+	public void storeSelfConsumptionTestException() {
 
 		StoreSelfConsumption storeSelfConsumption = new StoreSelfConsumption();
 
@@ -150,7 +152,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void storeSelfConsumptionTest_Exception() {
+	public void storeSelfConsumptionTest_Exception() {
 
 		ItemStockExit itemStockExitO = new ItemStockExit();
 
@@ -193,7 +195,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void storeTransferTest() {
+	public void storeTransferTest() {
 
 		ItemStockExit itemStockExitO = new ItemStockExit();
 
@@ -257,7 +259,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void storeTransferTestException() {
+	public void storeTransferTestException() {
 
 		T_StockTransfer stockTransfer = new T_StockTransfer();
 
@@ -270,7 +272,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void storeTransferTest_Exception() {
+	public void storeTransferTest_Exception() {
 
 		ItemStockExit itemStockExitO = new ItemStockExit();
 
@@ -337,7 +339,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getPatientissueAllDetailTest() {
+	public void getPatientissueAllDetailTest() {
 
 		OutputResponse exp = new OutputResponse();
 
@@ -368,7 +370,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getPatientissueAllDetailTestException() {
+	public void getPatientissueAllDetailTestException() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -382,7 +384,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getPatientissueTest() {
+	public void getPatientissueTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -424,7 +426,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getPatientissueTestException() {
+	public void getPatientissueTestException() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -437,7 +439,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getSelfConsumptionTest() {
+	public void getSelfConsumptionTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -475,7 +477,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getSelfConsumptionTestException() {
+	public void getSelfConsumptionTestException() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -488,7 +490,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getStoreTransferTest() {
+	public void getStoreTransferTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -531,7 +533,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getStoreTransferTestException() {
+	public void getStoreTransferTestException() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -544,7 +546,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getPatientissueItemEntryTest() {
+	public void getPatientissueItemEntryTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -582,7 +584,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getPatientissueItemEntryTestException() {
+	public void getPatientissueItemEntryTestException() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -595,7 +597,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getSelfConsumptionItemEntryTest() {
+	public void getSelfConsumptionItemEntryTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -633,7 +635,7 @@ class StockExitControllerTest {
 	
 	
 	@Test
-	void getSelfConsumptionItemEntryTestException() {
+	public void getSelfConsumptionItemEntryTestException() {
 		
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 		
@@ -647,7 +649,7 @@ class StockExitControllerTest {
 	}
 
 	@Test
-	void getStoreTransferItemEntryTest() {
+	public void getStoreTransferItemEntryTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -684,7 +686,7 @@ class StockExitControllerTest {
 	}
 	
 	@Test
-	void getStoreTransferItemEntryTestException() {
+	public void getStoreTransferItemEntryTestException() {
 		
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 		

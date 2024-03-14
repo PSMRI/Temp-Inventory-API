@@ -15,19 +15,16 @@ import java.util.Map;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.google.gson.Gson;
 import com.iemr.inventory.data.commonutility.CommonUtilityClass;
 import com.iemr.inventory.data.dispenseagainst_rx.PrescribedDrugDetails;
 import com.iemr.inventory.repo.dispenseagainst_rx.PrescribedDrugDetailsRepo;
 
-@ExtendWith(MockitoExtension.class)
-class DispenseAgainstRXimplTest {
+public class DispenseAgainstRXimplTest {
 
 	@Mock
 	private PrescribedDrugDetailsRepo prescribedDrugDetailsRepo;
@@ -36,12 +33,12 @@ class DispenseAgainstRXimplTest {
 	private DispenseAgainstRXimpl dispenseAgainstRXimpl;
 
 	@BeforeEach
-	void setUp() {
+	public void setUp() {
 		MockitoAnnotations.initMocks(this);
 	}
 
 	@Test
-	void testGetPrescribedMedicines() {
+	public void testGetPrescribedMedicines() {
 
 		CommonUtilityClass commonUtilityClass = new CommonUtilityClass();
 
@@ -160,7 +157,7 @@ class DispenseAgainstRXimplTest {
 	}
 
 	@Test
-	void testGetPrescribedMedicines_NullInput() {
+	public void testGetPrescribedMedicines_NullInput() {
 		// Test method invocation with null input
 		String result = dispenseAgainstRXimpl.getPrescribedMedicines(null);
 
@@ -169,7 +166,7 @@ class DispenseAgainstRXimplTest {
 	}
 
 	@Test
-	void testCalculateExpiryDateInDays() {
+	public void testCalculateExpiryDateInDays() {
 
 		Timestamp expDate = new Timestamp(System.currentTimeMillis());
 
@@ -182,7 +179,7 @@ class DispenseAgainstRXimplTest {
 	}
 
 	@Test
-	void testCalculateExpiryDateInDays_NullInput() {
+	public void testCalculateExpiryDateInDays_NullInput() {
 		// Test method invocation with null input
 		Long expiresIn = dispenseAgainstRXimpl.calculateExpiryDateInDays(null);
 

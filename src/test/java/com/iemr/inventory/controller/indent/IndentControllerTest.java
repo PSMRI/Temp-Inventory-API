@@ -49,7 +49,7 @@ class IndentControllerTest {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Test
-	void createStoreTest() {
+	public void createStoreTest() {
 
 		OutputResponse expectedResponse = new OutputResponse();
 
@@ -78,7 +78,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void createIndentRequestTest() throws JsonProcessingException {
+	public void createIndentRequestTest() throws JsonProcessingException {
 
 		OutputResponse expectedResponse = new OutputResponse();
 
@@ -157,7 +157,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void createIndentRequestTestException() {
+	public void createIndentRequestTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -170,7 +170,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void getIndentHistoryTest() {
+	public void getIndentHistoryTest() {
 
 		OutputResponse resp = new OutputResponse();
 
@@ -245,7 +245,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void getIndentHistoryTestException() {
+	public void getIndentHistoryTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -258,7 +258,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void getOrdersByIndentID() {
+	public void getOrdersByIndentID() {
 
 		OutputResponse resp = new OutputResponse();
 
@@ -286,7 +286,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void getOrdersByIndentIDTestException() {
+	public void getOrdersByIndentIDTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -298,7 +298,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void getIndentWorklistTest() {
+	public void getIndentWorklistTest() {
 
 		OutputResponse resp = new OutputResponse();
 
@@ -328,7 +328,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void getIndentWorklistTestException() {
+	public void getIndentWorklistTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -340,7 +340,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void getIndentOrderWorklistTest() {
+	public void getIndentOrderWorklistTest() {
 
 		OutputResponse resp = new OutputResponse();
 
@@ -369,7 +369,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void getIndentOrderWorklistTestException() {
+	public void getIndentOrderWorklistTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -381,7 +381,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void testIssueIndent() {
+	public void testIssueIndent() {
 
 		OutputResponse resp = new OutputResponse();
 		// Prepare the input JSON and the expected result
@@ -408,7 +408,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void testIssueIndentEXception() {
+	public void testIssueIndentEXception() {
 
 		when(IndentService.issueIndent(any(IndentIssue[].class))).thenThrow(NotFoundException.class);
 
@@ -419,7 +419,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void cancelIndentOrderTest() {
+	public void cancelIndentOrderTest() {
 
 		OutputResponse resp = new OutputResponse();
 
@@ -498,7 +498,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void cancelIndentOrderTestException() {
+	public void cancelIndentOrderTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -510,7 +510,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void receiveIndentTest() {
+	public void receiveIndentTest() {
 
 		OutputResponse resp = new OutputResponse();
 
@@ -589,7 +589,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void receiveIndentTestException() {
+	public void receiveIndentTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -601,7 +601,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void updateIndentOrderTest() {
+	public void updateIndentOrderTest() {
 
 		OutputResponse resp = new OutputResponse();
 
@@ -679,7 +679,7 @@ class IndentControllerTest {
 	}
 
 	@Test
-	void updateIndentOrderTestException() {
+	public void updateIndentOrderTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 

@@ -39,7 +39,7 @@ class FacilitytypeControllerTest {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Test
-	void testGetFacility() {
+	public void testGetFacility() {
 
 		OutputResponse response = new OutputResponse();
 		// Arrange
@@ -66,7 +66,7 @@ class FacilitytypeControllerTest {
 	}
 
 	@Test
-	void testGetFacilityException() {
+	public void testGetFacilityException() {
 
 		String validRequestBody = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 		String invalidRequestBody = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
@@ -81,7 +81,7 @@ class FacilitytypeControllerTest {
 	}
 
 	@Test
-	void testAddFacility() {
+	public void testAddFacility() {
 
 		OutputResponse response = new OutputResponse();
 		// Arrange
@@ -111,7 +111,7 @@ class FacilitytypeControllerTest {
 	}
 
 	@Test
-	void testAddFacilityException() {
+	public void testAddFacilityException() {
 
 		String validRequestBody = "[{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}]";
 		String invalidRequestBody = "[{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}]";
@@ -129,7 +129,7 @@ class FacilitytypeControllerTest {
 	}
 
 	@Test
-	void testEditFacility() {
+	public void testEditFacility() {
 
 		OutputResponse response = new OutputResponse();
 		// Arrange for valid scenario
@@ -165,7 +165,7 @@ class FacilitytypeControllerTest {
 	}
 
 	@Test
-	void testEditFacilityException() {
+	public void testEditFacilityException() {
 
 		String requestBody = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -189,7 +189,7 @@ class FacilitytypeControllerTest {
 	}
 
 	@Test
-	void testDeleteFacility() {
+	public void testDeleteFacility() {
 		OutputResponse response = new OutputResponse();
 		// Arrange for valid scenario
 		String requestBody = "{\"facilityTypeID\": 1, \"deleted\": true}";
@@ -227,7 +227,7 @@ class FacilitytypeControllerTest {
 	}
 
 	@Test
-	void testDeleteFacilityException() {
+	public void testDeleteFacilityException() {
 
 		String requestBody = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 

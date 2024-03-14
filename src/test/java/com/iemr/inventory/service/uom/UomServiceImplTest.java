@@ -26,7 +26,7 @@ class UomServiceImplTest {
 	private UomRepo uomRepo;
 
 	@Test
-	void createDrugtypeDataTest() {
+	public void createDrugtypeDataTest() {
 
 		M_Uom m_Uom = new M_Uom();
 
@@ -59,7 +59,7 @@ class UomServiceImplTest {
 	}
 
 	@Test
-	void createDrugtypeDataTestAsNull() {
+	public void createDrugtypeDataTestAsNull() {
 
 		List<M_Uom> saveUomData = new ArrayList<M_Uom>();
 
@@ -68,7 +68,7 @@ class UomServiceImplTest {
 	}
 
 	@Test
-	void createDrugtypeDataTest2() {
+	public void createDrugtypeDataTest2() {
 
 		Integer providerServiceMapID = Integer.valueOf(3);
 
@@ -100,7 +100,7 @@ class UomServiceImplTest {
 	}
 
 	@Test
-	void createDrugtypeDataTestAsNull2() {
+	public void createDrugtypeDataTestAsNull2() {
 
 		Integer providerServiceMapID = null;
 		// Assertions
@@ -108,7 +108,7 @@ class UomServiceImplTest {
 	}
 
 	@Test
-	void editDrugtypeDataTest() {
+	public void editDrugtypeDataTest() {
 
 		Integer uOMID = Integer.valueOf(13);
 
@@ -139,7 +139,7 @@ class UomServiceImplTest {
 	}
 
 	@Test
-	void saveeditedData() {
+	public void saveeditedData() {
 
 		M_Uom m_Uom = new M_Uom();
 

@@ -1,8 +1,8 @@
 /*
- * AMRIT – Accessible Medical Records via Integrated Technology 
- * Integrated EHR (Electronic Health Records) Solution 
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
  *
- * Copyright (C) "Piramal Swasthya Management and Research Institute" 
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
  *
  * This file is part of AMRIT.
  *
@@ -42,7 +42,7 @@ import jakarta.ws.rs.core.MediaType;
 @Component
 public class HTTPRequestInterceptor implements HandlerInterceptor {
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
-    
+
     @Autowired
     private Validator validator;
 

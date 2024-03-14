@@ -5,6 +5,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,9 +13,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.iemr.inventory.data.drugtype.M_Drugtype;
 import com.iemr.inventory.service.drugtype.DrugtypeInter;
+import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
 import jakarta.ws.rs.NotFoundException;
@@ -29,7 +33,7 @@ class DrugtypeControllerTest {
 	private DrugtypeController drugtypeController;
 
 	@Test
-	void testCreateManufacturer() {
+	public void testCreateManufacturer() {
 
 		OutputResponse expectedResponse = new OutputResponse();
 		// Mocking the Input
@@ -58,7 +62,7 @@ class DrugtypeControllerTest {
 	}
 	
 	@Test
-	void testCreateManufacturerException() {
+	public void testCreateManufacturerException() {
 		
 		String createDrugtype="[{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}]";
 		
@@ -72,7 +76,7 @@ class DrugtypeControllerTest {
 
 
 	@Test
-	void testGetManufacturer() {
+	public void testGetManufacturer() {
 
 		// Mocking the OutputResponse
 		OutputResponse expectedResponse = new OutputResponse();
@@ -102,7 +106,7 @@ class DrugtypeControllerTest {
 	
 	
 	@Test
-	void testGetManufacturerException() {
+	public void testGetManufacturerException() {
 		
 		String getDrugtype="{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 		
@@ -115,7 +119,7 @@ class DrugtypeControllerTest {
 	}
 
 	@Test
-	void testEditManufacturer() {
+	public void testEditManufacturer() {
 
 		// Mocking the OutputResponse
 		OutputResponse expectedResponse = new OutputResponse();
@@ -141,7 +145,7 @@ class DrugtypeControllerTest {
 	}
 	
 	@Test
-	void testEditManufacturerException() {
+	public void testEditManufacturerException() {
 		
 		String editDrugtype="{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 		
@@ -154,7 +158,7 @@ class DrugtypeControllerTest {
 	}
 
 	@Test
-	void testDeleteManufacturer() {
+	public void testDeleteManufacturer() {
 
 		// Mocking the OutputResponse
 		OutputResponse expectedResponse = new OutputResponse();
@@ -178,7 +182,7 @@ class DrugtypeControllerTest {
 	
 	
 	@Test
-	void testDeleteManufacturerException() {
+	public void testDeleteManufacturerException() {
 		
 		String deleteDrugtype="{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 		

@@ -26,7 +26,7 @@ class PharmacologicalcategoryServiceImplTest {
 	PharmacologicalcategoryRepo pharmacologicalcategoryRepo;
 
 	@Test
-	void createPharmacologicalcategoryTest() {
+	public void createPharmacologicalcategoryTest() {
 
 		M_Pharmacologicalcategory m_Pharmacologicalcategory = new M_Pharmacologicalcategory();
 
@@ -63,7 +63,7 @@ class PharmacologicalcategoryServiceImplTest {
 	}
 
 	@Test
-	void createPharmacologicalcategoryNotNullTest() {
+	public void createPharmacologicalcategoryNotNullTest() {
 
 		List<M_Pharmacologicalcategory> createPharmacologicaldata = new ArrayList<M_Pharmacologicalcategory>();
 
@@ -78,7 +78,7 @@ class PharmacologicalcategoryServiceImplTest {
 	}
 
 	@Test
-	void getPharmacologicalcategoryTest() {
+	public void getPharmacologicalcategoryTest() {
 
 		Integer providerServiceMapID = Integer.valueOf(3);
 
@@ -102,7 +102,7 @@ class PharmacologicalcategoryServiceImplTest {
 	}
 
 	@Test
-	void editPharmacologicalcategoryTest() {
+	public void editPharmacologicalcategoryTest() {
 
 		Integer pharmCategoryID = Integer.valueOf(6);
 
@@ -120,7 +120,7 @@ class PharmacologicalcategoryServiceImplTest {
 	}
 
 	@Test
-	void saveEditedPharDataTest() {
+	public void saveEditedPharDataTest() {
 
 		M_Pharmacologicalcategory saveDataphar = new M_Pharmacologicalcategory();
 

@@ -13,7 +13,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.iemr.inventory.data.report.ItemStockEntryReport;
+import com.iemr.inventory.data.report.ItemStockExitReport;
+import com.iemr.inventory.data.report.PatientIssueExitReport;
 import com.iemr.inventory.service.report.CRMReportService;
+import com.iemr.inventory.utils.mapper.InputMapper;
 import com.iemr.inventory.utils.response.OutputResponse;
 
 @ExtendWith(MockitoExtension.class)
@@ -28,7 +31,7 @@ class CRMReportControllerTest {
 	private CRMReportController crmReportController;
 
 	@Test
-	void testGetInwardStockReport() {
+	public void testGetInwardStockReport() {
 
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
@@ -75,7 +78,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetInwardStockReport_Exception() {
+	public void testGetInwardStockReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -85,7 +88,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetExpiryReport() {
+	public void testGetExpiryReport() {
 
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
@@ -131,7 +134,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetExpiryReport_Exception() {
+	public void testGetExpiryReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -141,7 +144,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetConsumptionReport() {
+	public void testGetConsumptionReport() {
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
 		report.setItemStockEntryID(4L);
@@ -186,7 +189,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetConsumptionReport_Exception() {
+	public void testGetConsumptionReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -196,7 +199,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetBenDrugIssueReport() {
+	public void testGetBenDrugIssueReport() {
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
 		report.setItemStockEntryID(4L);
@@ -240,7 +243,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetBenDrugIssueReport_Exception() {
+	public void testGetBenDrugIssueReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -250,7 +253,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetDailyStockDetailReport() {
+	public void testGetDailyStockDetailReport() {
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
 		report.setItemStockEntryID(4L);
@@ -295,7 +298,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetDailyStockDetailReport_Exception() {
+	public void testGetDailyStockDetailReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -305,7 +308,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetDailyStockSummaryReport() {
+	public void testGetDailyStockSummaryReport() {
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
 		report.setItemStockEntryID(4L);
@@ -350,7 +353,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetDailyStockSummaryReport_Exception() {
+	public void testGetDailyStockSummaryReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -360,7 +363,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetMonthlyReport() {
+	public void testGetMonthlyReport() {
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
 		report.setItemStockEntryID(4L);
@@ -406,7 +409,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetMonthlyReport_Exception() {
+	public void testGetMonthlyReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -416,7 +419,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetYearlyReport() {
+	public void testGetYearlyReport() {
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
 		report.setItemStockEntryID(4L);
@@ -462,7 +465,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetYearlyReport_Exception() {
+	public void testGetYearlyReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -472,7 +475,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetShortExpiryReport() {
+	public void testGetShortExpiryReport() {
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
 		report.setItemStockEntryID(4L);
@@ -518,7 +521,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetShortExpiryReport_Exception() {
+	public void testGetShortExpiryReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -528,7 +531,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetTransitReport() {
+	public void testGetTransitReport() {
 		ItemStockEntryReport report = new ItemStockEntryReport();
 		report.setFactItemStockEntryID(3L);
 		report.setItemStockEntryID(4L);
@@ -573,7 +576,7 @@ class CRMReportControllerTest {
 	}
 
 	@Test
-	void testGetTransitReport_Exception() {
+	public void testGetTransitReport_Exception() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 

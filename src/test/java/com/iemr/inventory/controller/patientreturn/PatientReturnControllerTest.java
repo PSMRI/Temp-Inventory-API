@@ -35,7 +35,7 @@ class PatientReturnControllerTest {
 	PatientReturnService patientReturnService;
 
 	@Test
-	void getItemNameByRegIDTest() {
+	public void getItemNameByRegIDTest() {
 
 		T_PatientIssue patientIssue = new T_PatientIssue();
 
@@ -74,7 +74,7 @@ class PatientReturnControllerTest {
 	}
 
 	@Test
-	void getItemNameByRegIDTestException() {
+	public void getItemNameByRegIDTestException() {
 
 		String input = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -87,7 +87,7 @@ class PatientReturnControllerTest {
 	}
 
 	@Test
-	void getItemDetailByBenTest() {
+	public void getItemDetailByBenTest() {
 
 		ItemDetailModel itemDetailModel = new ItemDetailModel(3, "itemName", "batchNo", 10,
 				Timestamp.valueOf("2018-09-01 09:01:16"), false, false, 1L, 2L, 3L, 30L, 4L, 7, 9);
@@ -114,7 +114,7 @@ class PatientReturnControllerTest {
 	}
 
 	@Test
-	void getItemDetailByBenTestException() {
+	public void getItemDetailByBenTestException() {
 
 		String input = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -127,7 +127,7 @@ class PatientReturnControllerTest {
 	}
 
 	@Test
-	void updateQuantityReturnedTest() {
+	public void updateQuantityReturnedTest() {
 
 		String inputJson = "[{\"itemID\": 123, \"providerServiceMapID\": 12, \"facilityID\": 23, \"issuedQuantity\": 789}]";
 
@@ -147,7 +147,7 @@ class PatientReturnControllerTest {
 	}
 
 	@Test
-	void updateQuantityReturnedTestException() {
+	public void updateQuantityReturnedTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 		
@@ -158,7 +158,7 @@ class PatientReturnControllerTest {
 	}
 
 	@Test
-	void getBenReturnHistoryTest() {
+	public void getBenReturnHistoryTest() {
 
 		ItemReturnEntry itemReturnEntry = new ItemReturnEntry();
 
@@ -203,7 +203,7 @@ class PatientReturnControllerTest {
 	}
 	
 	@Test
-	void getBenReturnHistoryTestException() {
+	public void getBenReturnHistoryTestException() {
 
 		String input = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 

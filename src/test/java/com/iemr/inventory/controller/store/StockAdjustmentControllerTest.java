@@ -1,5 +1,6 @@
 package com.iemr.inventory.controller.store;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.sql.Timestamp;
@@ -37,7 +38,7 @@ class StockAdjustmentControllerTest {
 	StockAdjustmentServiceImpl stockAdjustmentServiceImpl;
 
 	@Test
-	void stockadjustmentdraftTest() {
+	public void stockadjustmentdraftTest() {
 
 		String store = "Medicine store";
 
@@ -71,7 +72,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void stockadjustmentdraftTestException() {
+	public void stockadjustmentdraftTestException() {
 
 		String store = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -81,7 +82,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void getstockadjustmentdraftTransactionTest() {
+	public void getstockadjustmentdraftTransactionTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -126,7 +127,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void getstockadjustmentdraftTransactionTestException() {
+	public void getstockadjustmentdraftTransactionTestException() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -139,7 +140,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void getforEditsSockAdjustmentdraftTransactionTest() {
+	public void getforEditsSockAdjustmentdraftTransactionTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -177,7 +178,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void stockadjustmentTest() throws InventoryException {
+	public void stockadjustmentTest() throws InventoryException {
 
 		Date date = new Date();
 
@@ -209,7 +210,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void stockadjustmentTestException() throws InventoryException {
+	public void stockadjustmentTestException() throws InventoryException {
 
 		StockAdjustment StockAdjustment = new StockAdjustment();
 
@@ -221,7 +222,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void getforeditStockAdjustmentTransactionTest() {
+	public void getforeditStockAdjustmentTransactionTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -264,7 +265,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void getforeditStockAdjustmentTransactionTestException() throws InventoryException {
+	public void getforeditStockAdjustmentTransactionTestException() throws InventoryException {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -277,7 +278,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void getforEditsStockAdjustmentTransactionTest() {
+	public void getforEditsStockAdjustmentTransactionTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -318,7 +319,7 @@ class StockAdjustmentControllerTest {
 	}
 
 	@Test
-	void getforEditsStockAdjustmentTransactionTestException() {
+	public void getforEditsStockAdjustmentTransactionTestException() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 

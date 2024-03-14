@@ -1,190 +1,179 @@
 /*
-* AMRIT – Accessible Medical Records via Integrated Technology 
-* Integrated EHR (Electronic Health Records) Solution 
-*
-* Copyright (C) "Piramal Swasthya Management and Research Institute" 
-*
-* This file is part of AMRIT.
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see https://www.gnu.org/licenses/.
-*/
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
+ *
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
+ *
+ * This file is part of AMRIT.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
 package com.iemr.inventory.data.facilitytype;
-
-import java.sql.Date;
 
 import com.google.gson.annotations.Expose;
 import com.iemr.inventory.utils.mapper.OutputMapper;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+import java.sql.Date;
 
 @Entity
-@Table(name="m_facilitytype")
+@Table(name = "m_facilitytype")
 public class M_facilitytype {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "FacilityTypeID")
-	@Expose
-	private Integer facilityTypeID;
-	
-	@Column(name = "FacilityTypeName")
-	@Expose
-	private String facilityTypeName;
-	
-	@Column(name = "FacilityTypeDesc")
-	@Expose
-	private String facilityTypeDesc;
-	
-	@Column(name = "FacilityTypeCode")
-	@Expose
-	private String facilityTypeCode;
-	
-	@Column(name = "Status")
-	@Expose
-	private String status;
-	
-	@Column(name = "ProviderServiceMapID")
-	@Expose
-	private Integer providerServiceMapID;
-	
-	@Column(name = "Deleted", insertable = false, updatable = true)
-	@Expose
-	private Boolean deleted;
-	
-	@Column(name = "CreatedBy")
-	@Expose
-	private String createdBy;
-	
-	@Column(name = "CreatedDate", insertable = false, updatable = false)
-	@Expose
-	private Date createdDate;
-	
-	@Column(name = "ModifiedBy")
-	@Expose
-	private String modifiedBy;
-	
-	@Column(name = "LastModDate", insertable = false, updatable = false)
-	@Expose
-	private Date lastModDate;
-	
-	
-	
-	public M_facilitytype() {
-	}
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "FacilityTypeID")
+    @Expose
+    private Integer facilityTypeID;
 
-	
-	public Integer getFacilityTypeID() {
-		return facilityTypeID;
-	}
+    @Column(name = "FacilityTypeName")
+    @Expose
+    private String facilityTypeName;
 
-	public void setFacilityTypeID(Integer facilityTypeID) {
-		this.facilityTypeID = facilityTypeID;
-	}
+    @Column(name = "FacilityTypeDesc")
+    @Expose
+    private String facilityTypeDesc;
 
-	public String getFacilityTypeName() {
-		return facilityTypeName;
-	}
+    @Column(name = "FacilityTypeCode")
+    @Expose
+    private String facilityTypeCode;
 
-	public void setFacilityTypeName(String facilityTypeName) {
-		this.facilityTypeName = facilityTypeName;
-	}
+    @Column(name = "Status")
+    @Expose
+    private String status;
 
-	public String getFacilityTypeDesc() {
-		return facilityTypeDesc;
-	}
+    @Column(name = "ProviderServiceMapID")
+    @Expose
+    private Integer providerServiceMapID;
 
-	public void setFacilityTypeDesc(String facilityTypeDesc) {
-		this.facilityTypeDesc = facilityTypeDesc;
-	}
+    @Column(name = "Deleted", insertable = false, updatable = true)
+    @Expose
+    private Boolean deleted;
 
-	public String getFacilityTypeCode() {
-		return facilityTypeCode;
-	}
+    @Column(name = "CreatedBy")
+    @Expose
+    private String createdBy;
 
-	public void setFacilityTypeCode(String facilityTypeCode) {
-		this.facilityTypeCode = facilityTypeCode;
-	}
+    @Column(name = "CreatedDate", insertable = false, updatable = false)
+    @Expose
+    private Date createdDate;
 
-	public String getStatus() {
-		return status;
-	}
+    @Column(name = "ModifiedBy")
+    @Expose
+    private String modifiedBy;
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+    @Column(name = "LastModDate", insertable = false, updatable = false)
+    @Expose
+    private Date lastModDate;
+    @Transient
+    private OutputMapper outputMapper = new OutputMapper();
 
-	public Integer getProviderServiceMapID() {
-		return providerServiceMapID;
-	}
 
-	public void setProviderServiceMapID(Integer providerServiceMapID) {
-		this.providerServiceMapID = providerServiceMapID;
-	}
+    public M_facilitytype() {
+    }
 
-	public Boolean getDeleted() {
-		return deleted;
-	}
+    public Integer getFacilityTypeID() {
+        return facilityTypeID;
+    }
 
-	public void setDeleted(Boolean deleted) {
-		this.deleted = deleted;
-	}
+    public void setFacilityTypeID(Integer facilityTypeID) {
+        this.facilityTypeID = facilityTypeID;
+    }
 
-	public String getCreatedBy() {
-		return createdBy;
-	}
+    public String getFacilityTypeName() {
+        return facilityTypeName;
+    }
 
-	public void setCreatedBy(String createdBy) {
-		this.createdBy = createdBy;
-	}
+    public void setFacilityTypeName(String facilityTypeName) {
+        this.facilityTypeName = facilityTypeName;
+    }
 
-	public Date getCreatedDate() {
-		return createdDate;
-	}
+    public String getFacilityTypeDesc() {
+        return facilityTypeDesc;
+    }
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
+    public void setFacilityTypeDesc(String facilityTypeDesc) {
+        this.facilityTypeDesc = facilityTypeDesc;
+    }
 
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
+    public String getFacilityTypeCode() {
+        return facilityTypeCode;
+    }
 
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
+    public void setFacilityTypeCode(String facilityTypeCode) {
+        this.facilityTypeCode = facilityTypeCode;
+    }
 
-	public Date getLastModDate() {
-		return lastModDate;
-	}
+    public String getStatus() {
+        return status;
+    }
 
-	public void setLastModDate(Date lastModDate) {
-		this.lastModDate = lastModDate;
-	}
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
-	@Transient
-	private OutputMapper outputMapper = new OutputMapper();
+    public Integer getProviderServiceMapID() {
+        return providerServiceMapID;
+    }
 
-	@Override
-	public String toString() {
-		return outputMapper.gson().toJson(this);
-	}
+    public void setProviderServiceMapID(Integer providerServiceMapID) {
+        this.providerServiceMapID = providerServiceMapID;
+    }
+
+    public Boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
+    public Date getLastModDate() {
+        return lastModDate;
+    }
+
+    public void setLastModDate(Date lastModDate) {
+        this.lastModDate = lastModDate;
+    }
+
+    @Override
+    public String toString() {
+        return outputMapper.gson().toJson(this);
+    }
 
 }

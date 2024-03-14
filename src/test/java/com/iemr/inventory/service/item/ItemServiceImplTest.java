@@ -46,7 +46,7 @@ class ItemServiceImplTest {
 	M_itemfacilitymappingRepo itemfacilitymappingRepo;
 
 	@Test
-	void createItemMasterTest() {
+	public void createItemMasterTest() {
 
 		ItemMaster itemMaster = new ItemMaster();
 
@@ -86,7 +86,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemCategoryAllTest() {
+	public void getItemCategoryAllTest() {
 
 		Boolean all = true;
 		Integer providerServiceMapID = Integer.valueOf(7);
@@ -124,7 +124,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemCategoryNotAllTest() {
+	public void getItemCategoryNotAllTest() {
 
 		Boolean all = false;
 		Integer providerServiceMapID = Integer.valueOf(7);
@@ -163,7 +163,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemRouteAllTest() {
+	public void getItemRouteAllTest() {
 
 		Boolean all = true;
 
@@ -195,7 +195,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemRouteNotAllTest() {
+	public void getItemRouteNotAllTest() {
 
 		Boolean all = false;
 
@@ -227,7 +227,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemFormAllTest() {
+	public void getItemFormAllTest() {
 
 		Boolean all = true;
 
@@ -259,7 +259,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemFormNotAllTest() {
+	public void getItemFormNotAllTest() {
 
 		Boolean all = false;
 
@@ -291,7 +291,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemMasterTest() {
+	public void getItemMasterTest() {
 
 		Integer providerServiceMapID = Integer.valueOf(8);
 
@@ -337,7 +337,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void blockItemMasterTest() {
+	public void blockItemMasterTest() {
 
 		Integer itemmasterID = Integer.valueOf(1);
 		Boolean deleteflag = false;
@@ -349,7 +349,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void discontinueItemMasterTest() {
+	public void discontinueItemMasterTest() {
 
 		Integer itemmasterID = Integer.valueOf(2);
 		Boolean continueflag = false;
@@ -361,7 +361,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void addAllItemMasterTest() {
+	public void addAllItemMasterTest() {
 
 		ItemMaster itemMaster2 = new ItemMaster();
 
@@ -402,7 +402,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemMasterByIDTest() {
+	public void getItemMasterByIDTest() {
 
 		Integer itemMasterID = Integer.valueOf(1);
 
@@ -444,7 +444,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemMasterCatByIDTest() {
+	public void getItemMasterCatByIDTest() {
 
 		Integer itemMasterID = Integer.valueOf(1);
 
@@ -486,7 +486,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void updateItemIssueConfigTest() {
+	public void updateItemIssueConfigTest() {
 
 		M_ItemCategory m_ItemCategory = new M_ItemCategory();
 
@@ -526,7 +526,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemRouteProviderServiceMapIDTest() {
+	public void getItemRouteProviderServiceMapIDTest() {
 
 		Integer providerServiceMapID = Integer.valueOf(8);
 
@@ -557,7 +557,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemFormProviderServiceMapIDTest() {
+	public void getItemFormProviderServiceMapIDTest() {
 
 		Integer providerServiceMapID = Integer.valueOf(8);
 
@@ -588,7 +588,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemMastersTest() {
+	public void getItemMastersTest() {
 
 		Integer providerServiceMapID = Integer.valueOf(8);
 		Integer itemCategoryID = Integer.valueOf(12);
@@ -636,7 +636,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getItemCategoryTest2() {
+	public void getItemCategoryTest2() {
 
 		Integer catID = Integer.valueOf(6);
 
@@ -667,7 +667,7 @@ class ItemServiceImplTest {
 	}
 
 	@Test
-	void getActiveItemMaster() {
+	public void getActiveItemMaster() {
 
 		ItemMaster itemMaster = new ItemMaster();
 

@@ -36,7 +36,7 @@ class StoreControllerTest {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Test
-	void testCreateStore() {
+	public void testCreateStore() {
 
 		OutputResponse response = new OutputResponse();
 
@@ -73,7 +73,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testCreateStoreException() {
+	public void testCreateStoreException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -83,7 +83,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testEditStore() {
+	public void testEditStore() {
 
 		M_Facility mainStore = new M_Facility();
 
@@ -120,7 +120,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testEditStoreException() {
+	public void testEditStoreException() {
 
 		String store = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -132,7 +132,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetAllStore() {
+	public void testGetAllStore() {
 		OutputResponse expectedResponse = new OutputResponse();
 
 		M_Facility m_Facility = new M_Facility();
@@ -164,7 +164,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetAllStoreException() {
+	public void testGetAllStoreException() {
 
 		when(storeService.getAllMainStore(any())).thenThrow(NotFoundException.class);
 
@@ -174,7 +174,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetAllActiveStore() {
+	public void testGetAllActiveStore() {
 
 		OutputResponse expectedResponse = new OutputResponse();
 
@@ -208,7 +208,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetAllActiveStoreException() {
+	public void testGetAllActiveStoreException() {
 
 		when(storeService.getAllActiveStore(any())).thenThrow(NotFoundException.class);
 
@@ -218,7 +218,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetMainFacility() {
+	public void testGetMainFacility() {
 
 		M_Facility m_Facility = new M_Facility();
 
@@ -249,7 +249,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetMainFacilityException() {
+	public void testGetMainFacilityException() {
 
 		String getMainFacility = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -259,7 +259,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetsubFacility() {
+	public void testGetsubFacility() {
 		String getSubFacility = "test";
 
 		M_Facility m_Facility = new M_Facility();
@@ -294,7 +294,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetsubFacilityException() {
+	public void testGetsubFacilityException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -304,7 +304,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testDeleteStore() throws IEMRException {
+	public void testDeleteStore() throws IEMRException {
 		OutputResponse expectedResponse = new OutputResponse();
 
 		M_Facility facility = new M_Facility();
@@ -319,7 +319,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testDeleteStoreException() throws IEMRException {
+	public void testDeleteStoreException() throws IEMRException {
 
 		String facility = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -329,7 +329,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetStoreByID() {
+	public void testGetStoreByID() {
 		OutputResponse expectedResponse = new OutputResponse();
 
 		M_Facility facility = new M_Facility();
@@ -345,7 +345,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetStoreByIDException() {
+	public void testGetStoreByIDException() {
 
 		M_Facility facility = new M_Facility();
 
@@ -357,7 +357,7 @@ class StoreControllerTest {
 	}
 
 	@Test
-	void testGetVanByStoreID() {
+	public void testGetVanByStoreID() {
 
 		OutputResponse expectedResponse = new OutputResponse();
 
@@ -373,7 +373,7 @@ class StoreControllerTest {
 	}
 	
 	@Test
-	void testGetVanByStoreIDAsNULL() {
+	public void testGetVanByStoreIDAsNULL() {
 
 		OutputResponse expectedResponse = new OutputResponse();
 
@@ -393,7 +393,7 @@ class StoreControllerTest {
 	
 	
 	@Test
-	void testGetVanByStoreIDException() {
+	public void testGetVanByStoreIDException() {
 
 		Integer storeID = 1;
 

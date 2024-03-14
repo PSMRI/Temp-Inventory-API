@@ -25,7 +25,7 @@ class DrugtypeServiceImplTest {
 	DrugtypeRepo drugtypeRepo;
 
 	@Test
-	void createDrugtypeDataTest() {
+	public void createDrugtypeDataTest() {
 		M_Drugtype m_Drugtype = new M_Drugtype();
 		m_Drugtype.setDrugTypeID(3);
 		m_Drugtype.setDrugTypeName("Pregency");
@@ -54,7 +54,7 @@ class DrugtypeServiceImplTest {
 	}
 
 	@Test
-	void createDrugtypeDataTestAsNull() {
+	public void createDrugtypeDataTestAsNull() {
 
 		ArrayList<M_Drugtype> savedData = new ArrayList<M_Drugtype>();
 
@@ -66,7 +66,7 @@ class DrugtypeServiceImplTest {
 	}
 
 	@Test
-	void getDrugtypeDataTest() {
+	public void getDrugtypeDataTest() {
 		M_Drugtype m_Drugtype = new M_Drugtype();
 		m_Drugtype.setDrugTypeID(3);
 		m_Drugtype.setDrugTypeName("Pregency");
@@ -97,7 +97,7 @@ class DrugtypeServiceImplTest {
 	}
 
 	@Test
-	void getDrugtypeDataTestAsNull() {
+	public void getDrugtypeDataTestAsNull() {
 
 		Integer providerServiceMapID = Integer.valueOf(5);
 
@@ -111,7 +111,7 @@ class DrugtypeServiceImplTest {
 	}
 
 	@Test
-	void editDrugtypeDataTest() {
+	public void editDrugtypeDataTest() {
 
 		Integer drugTypeID = Integer.valueOf(6);
 
@@ -129,7 +129,7 @@ class DrugtypeServiceImplTest {
 	}
 
 	@Test
-	void saveeditDrugtypeTest() {
+	public void saveeditDrugtypeTest() {
 
 		Integer drugTypeID = Integer.valueOf(6);
 

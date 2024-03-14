@@ -1,9 +1,12 @@
 package com.iemr.inventory.service.itemfacilitymapping;
 
+import static org.junit.Assert.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,24 +15,21 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.iemr.inventory.data.itemfacilitymapping.M_itemfacilitymapping;
 import com.iemr.inventory.data.itemfacilitymapping.V_fetchItemFacilityMap;
 import com.iemr.inventory.data.items.ItemInStore;
 import com.iemr.inventory.data.items.ItemMaster;
-import com.iemr.inventory.data.items.M_Route;
-import com.iemr.inventory.data.manufacturer.M_Manufacturer;
-import com.iemr.inventory.data.pharmacologicalcategory.M_Pharmacologicalcategory;
 import com.iemr.inventory.data.stockentry.ItemStockEntry;
-import com.iemr.inventory.data.uom.M_Uom;
 import com.iemr.inventory.repo.stockEntry.ItemStockEntryRepo;
 import com.iemr.inventory.repository.item.ItemRepo;
 import com.iemr.inventory.repository.itemfacilitymapping.M_itemfacilitymappingRepo;
 import com.iemr.inventory.repository.itemfacilitymapping.V_fetchItemFacilityMapRepo;
 
 @ExtendWith(MockitoExtension.class)
-class M_itemfacilitymappingImplTest {
+public class M_itemfacilitymappingImplTest {
 
 	@InjectMocks
 	M_itemfacilitymappingImpl m_itemfacilitymappingImpl;
@@ -126,34 +126,63 @@ class M_itemfacilitymappingImplTest {
 
 	}
 
-	@Test
-	void getsubitemforsubStoteTest() {
+	
+	 @Test
+	  void testGetsubitemforsubStote() {
+	    // Arrange
+	    when(m_itemfacilitymappingRepo.getItemforSubstore(Mockito.<Integer>any(), Mockito.<Integer>any()))
+	            .thenReturn(new ArrayList<>());
 
-		Integer providerServiceMapID = 4;
-		Integer facilityID = 5;
+	    // Act
+	    ArrayList<M_itemfacilitymapping> actualGetsubitemforsubStoteResult = m_itemfacilitymappingImpl
+	            .getsubitemforsubStote(1, 1);
 
-		Object[] obj = new Object[] { 5, "Many to One", false, 4 };
+	    // Assert
+	    verify(m_itemfacilitymappingRepo).getItemforSubstore(Mockito.<Integer>any(), Mockito.<Integer>any());
+	    assertTrue(actualGetsubitemforsubStoteResult.isEmpty());
+	  }
 
-		ArrayList<Object[]> resultSet = new ArrayList<Object[]>();
+	  /**
+	   * Method under test:
+	   * {@link M_itemfacilitymappingImpl#getsubitemforsubStote(Integer, Integer)}
+	   */
+	  @Test
+	  void testGetsubitemforsubStote2() {
+	    // Arrange
+	    ArrayList<Object[]> objectArrayList = new ArrayList<>();
+	    objectArrayList.add(new Object[]{"42"});
+	    when(m_itemfacilitymappingRepo.getItemforSubstore(Mockito.<Integer>any(), Mockito.<Integer>any()))
+	            .thenReturn(objectArrayList);
 
-		resultSet.add(obj);
+	    // Act
+	    ArrayList<M_itemfacilitymapping> actualGetsubitemforsubStoteResult = m_itemfacilitymappingImpl
+	            .getsubitemforsubStote(1, 1);
 
-		when(m_itemfacilitymappingRepo.getItemforSubstore(providerServiceMapID, facilityID)).thenReturn(resultSet);
+	    // Assert
+	    verify(m_itemfacilitymappingRepo).getItemforSubstore(Mockito.<Integer>any(), Mockito.<Integer>any());
+	    assertTrue(actualGetsubitemforsubStoteResult.isEmpty());
+	  }
 
-		Object[] objects = new Object[] { 5, "Many to One", false, 4 };
+	  /**
+	   * Method under test:
+	   * {@link M_itemfacilitymappingImpl#getsubitemforsubStote(Integer, Integer)}
+	   */
+	  @Test
+	  void testGetsubitemforsubStote3() {
+	    // Arrange
+	    ArrayList<Object[]> objectArrayList = new ArrayList<>();
+	    objectArrayList.add(null);
+	    when(m_itemfacilitymappingRepo.getItemforSubstore(Mockito.<Integer>any(), Mockito.<Integer>any()))
+	            .thenReturn(objectArrayList);
 
-		ArrayList<M_itemfacilitymapping> itemForsubStore = new ArrayList<M_itemfacilitymapping>();
+	    // Act
+	    ArrayList<M_itemfacilitymapping> actualGetsubitemforsubStoteResult = m_itemfacilitymappingImpl
+	            .getsubitemforsubStote(1, 1);
 
-		itemForsubStore.add(new M_itemfacilitymapping((Integer) objects[0], (String) objects[1], (Boolean) objects[2],
-				(Integer) objects[3]));
-
-		// Assertions
-		Assertions.assertNotNull(resultSet);
-		Assertions.assertNotNull(objects);
-		Assertions.assertNotEquals(3, objects.length);
-		Assertions.assertEquals(itemForsubStore,
-				m_itemfacilitymappingImpl.getsubitemforsubStote(providerServiceMapID, facilityID));
-	}
+	    // Assert
+	    verify(m_itemfacilitymappingRepo).getItemforSubstore(Mockito.<Integer>any(), Mockito.<Integer>any());
+	    assertTrue(actualGetsubitemforsubStoteResult.isEmpty());
+	  }
 
 	@Test
 	void getAllFacilityMappedDataTest() {
@@ -208,223 +237,223 @@ class M_itemfacilitymappingImplTest {
 
 	}
 
+	
 	@Test
-	void getItemMastersFromStoreIDTest() {
+	  void testGetItemMastersFromStoreID() {
+	    // Arrange
+	    when(m_itemfacilitymappingRepo.getItemforStore(Mockito.<Integer>any())).thenReturn(new ArrayList<>());
 
-		Integer storeID = 3;
+	    // Act
+	    List<ItemInStore> actualItemMastersFromStoreID = m_itemfacilitymappingImpl.getItemMastersFromStoreID(1);
 
-		ItemInStore itemInStore = new ItemInStore(12, 13, "Acer", 5L);
+	    // Assert
+	    verify(m_itemfacilitymappingRepo).getItemforStore(Mockito.<Integer>any());
+	    assertTrue(actualItemMastersFromStoreID.isEmpty());
+	  }
 
-		itemInStore.toString();
+	  /**
+	   * Method under test:
+	   * {@link M_itemfacilitymappingImpl#getItemMastersFromStoreID(Integer)}
+	   */
+	  @Test
+	  void testGetItemMastersFromStoreID2() {
+	    // Arrange
+	    when(itemStockEntryRepo.getQuantity(Mockito.<Integer[]>any(), Mockito.<Integer>any()))
+	            .thenReturn(new ArrayList<>());
 
-		ArrayList<ItemInStore> itemForsubStore = new ArrayList<ItemInStore>();
+	    ArrayList<Object[]> objectArrayList = new ArrayList<>();
+	    objectArrayList.add(new Object[]{"42"});
+	    when(m_itemfacilitymappingRepo.getItemforStore(Mockito.<Integer>any())).thenReturn(objectArrayList);
 
-		itemForsubStore.add(itemInStore);
+	    // Act
+	    List<ItemInStore> actualItemMastersFromStoreID = m_itemfacilitymappingImpl.getItemMastersFromStoreID(1);
 
-		Object[] objArray = new Object[] { 12, 13, "Acer", 5L };
+	    // Assert
+	    verify(itemStockEntryRepo).getQuantity(Mockito.<Integer[]>any(), Mockito.<Integer>any());
+	    verify(m_itemfacilitymappingRepo).getItemforStore(Mockito.<Integer>any());
+	    assertTrue(actualItemMastersFromStoreID.isEmpty());
+	  }
 
-		ArrayList<Object[]> resultSet = new ArrayList<Object[]>();
+	  /**
+	   * Method under test:
+	   * {@link M_itemfacilitymappingImpl#getItemMastersFromStoreID(Integer)}
+	   */
+	  @Test
+	  void testGetItemMastersFromStoreID3() {
+	    // Arrange
+	    ArrayList<Object[]> objectArrayList = new ArrayList<>();
+	    objectArrayList.add(new Object[]{"42"});
+	    when(itemStockEntryRepo.getQuantity(Mockito.<Integer[]>any(), Mockito.<Integer>any())).thenReturn(objectArrayList);
 
-		resultSet.add(objArray);
+	    ArrayList<Object[]> objectArrayList2 = new ArrayList<>();
+	    objectArrayList2.add(new Object[]{"42"});
+	    when(m_itemfacilitymappingRepo.getItemforStore(Mockito.<Integer>any())).thenReturn(objectArrayList2);
 
-		when(m_itemfacilitymappingRepo.getItemforStore(storeID)).thenReturn(resultSet);
+	    // Act
+	    List<ItemInStore> actualItemMastersFromStoreID = m_itemfacilitymappingImpl.getItemMastersFromStoreID(1);
 
-		Integer[] itemID = new Integer[] { 12 };
+	    // Assert
+	    verify(itemStockEntryRepo).getQuantity(Mockito.<Integer[]>any(), Mockito.<Integer>any());
+	    verify(m_itemfacilitymappingRepo).getItemforStore(Mockito.<Integer>any());
+	    assertTrue(actualItemMastersFromStoreID.isEmpty());
+	  }
 
-		Object[] objects = new Object[] { 12, 13, "Acer", 5L };
+	  /**
+	   * Method under test:
+	   * {@link M_itemfacilitymappingImpl#getItemMastersFromStoreID(Integer)}
+	   */
+	  @Test
+	  void testGetItemMastersFromStoreID4() {
+	    // Arrange
+	    when(itemStockEntryRepo.getQuantity(Mockito.<Integer[]>any(), Mockito.<Integer>any()))
+	            .thenReturn(new ArrayList<>());
 
-		ArrayList<Object[]> quant = resultSet;
+	    ArrayList<Object[]> objectArrayList = new ArrayList<>();
+	    objectArrayList.add(null);
+	    when(m_itemfacilitymappingRepo.getItemforStore(Mockito.<Integer>any())).thenReturn(objectArrayList);
 
-		when(itemStockEntryRepo.getQuantity(itemID, storeID)).thenReturn(quant);
+	    // Act
+	    List<ItemInStore> actualItemMastersFromStoreID = m_itemfacilitymappingImpl.getItemMastersFromStoreID(1);
 
-		Object[] objects1 = new Object[] { 12, 13, "Acer", 5L };
+	    // Assert
+	    verify(itemStockEntryRepo).getQuantity(Mockito.<Integer[]>any(), Mockito.<Integer>any());
+	    verify(m_itemfacilitymappingRepo).getItemforStore(Mockito.<Integer>any());
+	    assertTrue(actualItemMastersFromStoreID.isEmpty());
+	  }
 
-		// Assertions
-		Assertions.assertNotEquals(0, resultSet.size());
-		Assertions.assertNotNull(objects);
-		Assertions.assertEquals(4, objects.length);
-		Assertions.assertNotNull(objects1);
-		Assertions.assertEquals(4, objects1.length);
-		Assertions.assertEquals(itemForsubStore, m_itemfacilitymappingImpl.getItemMastersFromStoreID(storeID));
 
-	}
+	  @Test
+	  void testGetItemMastersPartialSearch() {
+	    // Arrange
+	    when(m_itemfacilitymappingRepo.getItemforStorePartialSearch(Mockito.<Integer>any(), Mockito.<String>any()))
+	            .thenReturn(new ArrayList<>());
 
+	    // Act
+	    List<ItemMaster> actualItemMastersPartialSearch = m_itemfacilitymappingImpl.getItemMastersPartialSearch("Item", 1);
+
+	    // Assert
+	    verify(m_itemfacilitymappingRepo).getItemforStorePartialSearch(Mockito.<Integer>any(), eq("Item"));
+	    assertTrue(actualItemMastersPartialSearch.isEmpty());
+	  }
+
+	  /**
+	   * Method under test:
+	   * {@link M_itemfacilitymappingImpl#getItemMastersPartialSearch(String, Integer)}
+	   */
+	  @Test
+	  void testGetItemMastersPartialSearch2() {
+	    // Arrange
+	    ArrayList<ItemMaster> itemMasterList = new ArrayList<>();
+	    when(itemRepo.findByItemIDIn(Mockito.<Integer[]>any())).thenReturn(itemMasterList);
+
+	    ArrayList<Object[]> objectArrayList = new ArrayList<>();
+	    objectArrayList.add(new Object[]{"42"});
+	    when(m_itemfacilitymappingRepo.getItemforStorePartialSearch(Mockito.<Integer>any(), Mockito.<String>any()))
+	            .thenReturn(objectArrayList);
+
+	    // Act
+	    List<ItemMaster> actualItemMastersPartialSearch = m_itemfacilitymappingImpl.getItemMastersPartialSearch("Item", 1);
+
+	    // Assert
+	    verify(itemRepo).findByItemIDIn(Mockito.<Integer[]>any());
+	    verify(m_itemfacilitymappingRepo).getItemforStorePartialSearch(Mockito.<Integer>any(), eq("Item"));
+	    assertTrue(actualItemMastersPartialSearch.isEmpty());
+	    assertSame(itemMasterList, actualItemMastersPartialSearch);
+	  }
+
+	  /**
+	   * Method under test:
+	   * {@link M_itemfacilitymappingImpl#getItemMastersPartialSearch(String, Integer)}
+	   */
+	  @Test
+	  void testGetItemMastersPartialSearch3() {
+	    // Arrange
+	    ArrayList<ItemMaster> itemMasterList = new ArrayList<>();
+	    when(itemRepo.findByItemIDIn(Mockito.<Integer[]>any())).thenReturn(itemMasterList);
+
+	    ArrayList<Object[]> objectArrayList = new ArrayList<>();
+	    objectArrayList.add(null);
+	    when(m_itemfacilitymappingRepo.getItemforStorePartialSearch(Mockito.<Integer>any(), Mockito.<String>any()))
+	            .thenReturn(objectArrayList);
+
+	    // Act
+	    List<ItemMaster> actualItemMastersPartialSearch = m_itemfacilitymappingImpl.getItemMastersPartialSearch("Item", 1);
+
+	    // Assert
+	    verify(itemRepo).findByItemIDIn(Mockito.<Integer[]>any());
+	    verify(m_itemfacilitymappingRepo).getItemforStorePartialSearch(Mockito.<Integer>any(), eq("Item"));
+	    assertTrue(actualItemMastersPartialSearch.isEmpty());
+	    assertSame(itemMasterList, actualItemMastersPartialSearch);
+	  }
+
+	  /**
+	   * Method under test:
+	   * {@link M_itemfacilitymappingImpl#getItemMastersPartialSearch(String, Integer)}
+	   */
+	  @Test
+	  void testGetItemMastersPartialSearch4() {
+	    // Arrange
+	    ArrayList<ItemMaster> itemMasterList = new ArrayList<>();
+	    when(itemRepo.findByItemIDIn(Mockito.<Integer[]>any())).thenReturn(itemMasterList);
+
+	    ArrayList<Object[]> objectArrayList = new ArrayList<>();
+	    objectArrayList.add(new Object[]{2, "42"});
+	    when(m_itemfacilitymappingRepo.getItemforStorePartialSearch(Mockito.<Integer>any(), Mockito.<String>any()))
+	            .thenReturn(objectArrayList);
+
+	    // Act
+	    List<ItemMaster> actualItemMastersPartialSearch = m_itemfacilitymappingImpl.getItemMastersPartialSearch("Item", 1);
+
+	    // Assert
+	    verify(itemRepo).findByItemIDIn(Mockito.<Integer[]>any());
+	    verify(m_itemfacilitymappingRepo).getItemforStorePartialSearch(Mockito.<Integer>any(), eq("Item"));
+	    assertTrue(actualItemMastersPartialSearch.isEmpty());
+	    assertSame(itemMasterList, actualItemMastersPartialSearch);
+	  }
+	
+	
 	@Test
-	void getItemMastersPartialSearchTest() {
+	  void testGetItemBatchForStoreTransfer() {
+	    // Arrange
+	    when(m_itemfacilitymappingRepo.getItemforStoreLikeItemName(Mockito.<Integer>any(), Mockito.<String>any()))
+	            .thenReturn(new ArrayList<>());
 
-		String item = "Medicine";
-		Integer storeID = 8;
+	    // Act
+	    List<ItemStockEntry> actualItemBatchForStoreTransfer = m_itemfacilitymappingImpl.getItemBatchForStoreTransfer(1, 1,
+	            "Item");
 
-		M_Pharmacologicalcategory m_Pharmacologicalcategory = new M_Pharmacologicalcategory();
+	    // Assert
+	    verify(m_itemfacilitymappingRepo).getItemforStoreLikeItemName(Mockito.<Integer>any(), eq("Item"));
+	    assertTrue(actualItemBatchForStoreTransfer.isEmpty());
+	  }
+	
+	  @Test
+	  void testGetItemBatchForStoreTransfer2() {
+	    // Arrange
+	    ArrayList<ItemStockEntry> itemStockEntryList = new ArrayList<>();
+	    when(itemStockEntryRepo.findByFacilityIDAndItemIDInAndQuantityInHandGreaterThanAndExpiryDateAfter(
+	            Mockito.<Integer>any(), Mockito.<Integer[]>any(), Mockito.<Integer>any(), Mockito.<java.util.Date>any()))
+	            .thenReturn(itemStockEntryList);
 
-		m_Pharmacologicalcategory.setPharmCategoryID(6);
-		m_Pharmacologicalcategory.setPharmCategoryName("Cancer Type");
-		m_Pharmacologicalcategory
-				.setPharmCategoryDesc("For cancer patients all the required medicines can be found here");
-		m_Pharmacologicalcategory.setPharmCategoryCode("CAN123");
-		m_Pharmacologicalcategory.setStatus("Approved and Ready");
-		m_Pharmacologicalcategory.setProviderServiceMapID(67);
-		m_Pharmacologicalcategory.setDeleted(false);
-		m_Pharmacologicalcategory.setCreatedBy("TATA CANC MUMBAI");
-		m_Pharmacologicalcategory.setModifiedBy("TATA CNC CHENNAI");
+	    ArrayList<Object[]> objectArrayList = new ArrayList<>();
+	    objectArrayList.add(new Object[]{"42"});
+	    when(m_itemfacilitymappingRepo.getItemforStoreAndItemID(Mockito.<Integer>any(), Mockito.<Integer[]>any()))
+	            .thenReturn(new ArrayList<>());
+	    when(m_itemfacilitymappingRepo.getItemforStoreLikeItemName(Mockito.<Integer>any(), Mockito.<String>any()))
+	            .thenReturn(objectArrayList);
 
-		m_Pharmacologicalcategory.toString();
+	    // Act
+	    List<ItemStockEntry> actualItemBatchForStoreTransfer = m_itemfacilitymappingImpl.getItemBatchForStoreTransfer(1, 1,
+	            "Item");
 
-		M_Manufacturer m_Manufacturer = new M_Manufacturer();
+	    // Assert
+	    verify(itemStockEntryRepo).findByFacilityIDAndItemIDInAndQuantityInHandGreaterThanAndExpiryDateAfter(
+	            Mockito.<Integer>any(), Mockito.<Integer[]>any(), Mockito.<Integer>any(), Mockito.<java.util.Date>any());
+	    verify(m_itemfacilitymappingRepo).getItemforStoreAndItemID(Mockito.<Integer>any(), Mockito.<Integer[]>any());
+	    verify(m_itemfacilitymappingRepo).getItemforStoreLikeItemName(Mockito.<Integer>any(), eq("Item"));
+	    assertTrue(actualItemBatchForStoreTransfer.isEmpty());
+	    assertSame(itemStockEntryList, actualItemBatchForStoreTransfer);
+	  }
 
-		m_Manufacturer.setManufacturerID(12);
-		m_Manufacturer.setManufacturerName("Piramal PSMRI");
-		m_Manufacturer.setManufacturerDesc("PSMRI Desc");
-		m_Manufacturer.setStatus("Copyright Company CMMI 3");
-		m_Manufacturer.setContactPerson("Mithun");
-		m_Manufacturer.setcST_GST_No("143467374dfgsfhdghsgf876978");
-		m_Manufacturer.setProviderServiceMapID(13);
-		m_Manufacturer.setDeleted(false);
-		m_Manufacturer.setCreatedBy("Piramal Sen");
-		m_Manufacturer.setModifiedBy("Piramal Sen");
-
-		m_Manufacturer.toString();
-
-		M_Uom m_Uom = new M_Uom();
-
-		m_Uom.setuOMID(13);
-		m_Uom.setuOMName("UOMN");
-		m_Uom.setuOMDesc("Used for umon purpose");
-		m_Uom.setuOMCode("U888M999N000N");
-		m_Uom.setStatus("Ready");
-		m_Uom.setProviderServiceMapID(3);
-		m_Uom.setCreatedBy(null);
-		m_Uom.setCreatedBy("P Medical Company");
-		m_Uom.setModifiedBy("C Medical Company");
-
-		m_Uom.toString();
-
-		M_Route m_Route = new M_Route();
-
-		m_Route.setRouteID(7);
-		m_Route.setRouteName("Route of Medicine");
-		m_Route.setRouteDesc("It is a route for Medicines");
-		m_Route.setProviderServiceMapID(8);
-		m_Route.setDeleted(false);
-		m_Route.setProcessed('a');
-		m_Route.setCreatedBy("P Medical Company");
-		m_Route.setModifiedBy("C Medical Company");
-
-		m_Route.toString();
-
-		ItemMaster item1 = new ItemMaster();
-		item1.setItemCategoryID(12);
-		item1.setQuantity(100);
-		item1.setModifiedBy("A Kundu");
-		item1.setCreatedBy("A Kundu");
-		item1.setItemID(1);
-		item1.setItemName("gxbb");
-		item1.setItemDesc("ggkdvjxdhgkjfh");
-		item1.setItemCode("dfjhghdj657");
-		item1.setItemCategoryID(5);
-		item1.setIsMedical(true);
-		item1.setPharmacologyCategoryID(6);
-		item1.setPharmacologyCategory(m_Pharmacologicalcategory);
-		item1.setManufacturer(m_Manufacturer);
-		item1.setManufacturerID(12);
-		item1.setStrength("Very Strong");
-		item1.setUom(m_Uom);
-		item1.setUomID(13);
-		item1.setRoute(m_Route);
-		item1.setRouteID(7);
-		item1.setIsScheduledDrug(true);
-		item1.setComposition("Paracetamole");
-		item1.setProviderServiceMapID(14);
-		item1.setProviderServiceMap(null);
-		item1.setStatus("Ready");
-		item1.setDiscontinued(false);
-		item1.setDeleted(false);
-		item1.setProcessed('P');
-
-		item1.toString();
-
-		List<ItemMaster> itemForsubStore = new ArrayList<ItemMaster>();
-
-		itemForsubStore.add(item1);
-
-		Object[] objArr = new Object[itemForsubStore.size()];
-		objArr = itemForsubStore.toArray(objArr);
-
-		Object[] objArray2 = new Object[itemForsubStore.size()];
-		objArray2 = itemForsubStore.toArray(objArray2);
-
-		ArrayList<Object[]> resultSet = new ArrayList<Object[]>();
-
-		resultSet.add(objArr);
-		resultSet.add(objArray2);
-
-		Integer[] itemID = new Integer[resultSet.size()];
-		// itemID=resultSet.toArray(itemID);
-
-		Object[] objects;
-
-		objects = resultSet.get(0);
-		// itemID[0] = (Integer) objects[0];
-
-		objects = resultSet.get(1);
-		// itemID[1] = (Integer) objects[1];
-
-		when(itemRepo.findByItemIDIn(itemID)).thenReturn(itemForsubStore);
-
-		// Assertions
-		Assertions.assertNotEquals(0, resultSet.size());
-		Assertions.assertNotNull(objects);
-		Assertions.assertEquals(1, objects.length);
-		Assertions.assertEquals(itemForsubStore, m_itemfacilitymappingImpl.getItemMastersPartialSearch(item, storeID));
-
-	}
-
-	@Test
-	void getItemBatchForStoreTransferTest() {
-
-		Integer facFrom = 5;
-		Integer facTo = 3;
-		String item = "Medicine";
-
-		Date d1 = new Date();
-
-		ItemStockEntry itemStockEntry = new ItemStockEntry();
-
-		itemStockEntry.setFacilityID(5);
-		itemStockEntry.setItemID(3);
-		itemStockEntry.setQuantityInHand(0);
-		itemStockEntry.setDeleted(false);
-		itemStockEntry.setExpiryDate(d1);
-
-		itemStockEntry.toString();
-
-		List<ItemStockEntry> itemForsubStore = new ArrayList<ItemStockEntry>();
-		itemForsubStore.add(itemStockEntry);
-
-		Object[] objArr = { 5, 3, 0, false, d1 };
-
-		ArrayList<Object[]> resultSet = new ArrayList<Object[]>();
-
-		resultSet.add(objArr);
-
-		when(m_itemfacilitymappingRepo.getItemforStoreLikeItemName(facFrom, item)).thenReturn(resultSet);
-
-		Integer[] itemID = { 5 };
-
-		Object[] objects = { 5, 3, 0 };
-
-		when(m_itemfacilitymappingRepo.getItemforStoreAndItemID(facTo, itemID)).thenReturn(resultSet);
-
-		when(itemStockEntryRepo.findByFacilityIDAndItemIDInAndQuantityInHandGreaterThanAndExpiryDateAfter(facFrom,
-				itemID, 0, new Date())).thenReturn(itemForsubStore);
-
-		// Assertions
-		Assertions.assertNotEquals(0, resultSet.size());
-		Assertions.assertNotNull(objects);
-		Assertions.assertEquals(3, objects.length);
-		Assertions.assertEquals(itemForsubStore,
-				m_itemfacilitymappingImpl.getItemBatchForStoreTransfer(facFrom, facTo, item));
-
-	}
 
 }

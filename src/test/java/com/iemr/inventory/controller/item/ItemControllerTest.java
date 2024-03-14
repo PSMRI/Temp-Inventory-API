@@ -58,7 +58,7 @@ class ItemControllerTest {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Test
-	void getItemFormTest() {
+	public void getItemFormTest() {
 
 		Integer providerservicemapID = 8;
 
@@ -83,7 +83,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getItemFormTest_Exception() {
+	public void getItemFormTest_Exception() {
 
 		Integer providerservicemapID = null;
 
@@ -96,7 +96,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getItemRouteTest() {
+	public void getItemRouteTest() {
 
 		Integer providerservicemapID = 8;
 
@@ -118,7 +118,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getItemRouteTest_Exception() {
+	public void getItemRouteTest_Exception() {
 
 		Integer providerservicemapID = null;
 
@@ -131,7 +131,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getItemCategoryTestAsZero() {
+	public void getItemCategoryTestAsZero() {
 
 		Integer providerServicemapID = 8;
 
@@ -152,7 +152,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getItemCategoryTestNotAsZero() {
+	public void getItemCategoryTestNotAsZero() {
 
 		Integer providerServicemapID = 8;
 
@@ -174,7 +174,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void createItemMasterTest() {
+	public void createItemMasterTest() {
 
 		ItemMaster itemObj = new ItemMaster();
 		itemObj.setItemCategoryID(12);
@@ -221,7 +221,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void createItemMasterTest_Exception() {
+	public void createItemMasterTest_Exception() {
 
 		ItemMaster[] item = new ItemMaster[0];
 
@@ -236,7 +236,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getItemMasterTest() {
+	public void getItemMasterTest() {
 
 		Integer providerServicemapID = 8;
 
@@ -259,7 +259,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getItemMasterTest_Exception() {
+	public void getItemMasterTest_Exception() {
 
 		Integer providerServicemapID = null;
 
@@ -272,7 +272,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getActiveItemMasterTest() {
+	public void getActiveItemMasterTest() {
 
 		OutputResponse response = new OutputResponse();
 
@@ -293,7 +293,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getActiveItemMasterTest_Exception() {
+	public void getActiveItemMasterTest_Exception() {
 
 		ItemMaster providerServicemapID = new ItemMaster();
 
@@ -306,7 +306,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void blockItemMasterList() {
+	public void blockItemMasterList() {
 
 		Integer itemmasterID = 6;
 
@@ -325,7 +325,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void blockItemMasterList_Exception() {
+	public void blockItemMasterList_Exception() {
 
 		Integer itemmasterID = null;
 
@@ -340,7 +340,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void discontinueItemMasterTest() {
+	public void discontinueItemMasterTest() {
 
 		Integer itemmasterID = 6;
 
@@ -359,7 +359,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void discontinueItemMasterTest_Exception() {
+	public void discontinueItemMasterTest_Exception() {
 
 		Integer itemmasterID = null;
 
@@ -374,7 +374,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void editItemMasterTest() {
+	public void editItemMasterTest() {
 
 		ItemMaster item = new ItemMaster();
 		item.setItemCategoryID(12);
@@ -421,7 +421,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void editItemMasterTest_Exception() {
+	public void editItemMasterTest_Exception() {
 
 		ItemMaster item = new ItemMaster();
 
@@ -434,7 +434,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void configItemIssueTest() {
+	public void configItemIssueTest() {
 
 		M_ItemCategory m_ItemCategory = new M_ItemCategory();
 
@@ -474,7 +474,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void configItemIssueTest_Exception() {
+	public void configItemIssueTest_Exception() {
 
 		M_ItemCategory[] itemIssue = new M_ItemCategory[0];
 
@@ -489,7 +489,7 @@ class ItemControllerTest {
 	}
 
 	@Test
-	void getItemTest() {
+	public void getItemTest() {
 
 		String getItem = "Medicine";
 
@@ -536,7 +536,7 @@ class ItemControllerTest {
 	}
 	
 	@Test
-	void getItemTest_Exception() {
+	public void getItemTest_Exception() {
 
 		String getItem = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 

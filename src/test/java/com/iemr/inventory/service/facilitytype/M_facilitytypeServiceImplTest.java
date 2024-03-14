@@ -26,7 +26,7 @@ class M_facilitytypeServiceImplTest {
 	M_facilitytypeRepo m_facilitytypeRepo;
 
 	@Test
-	void getAllFicilityDataTest() {
+	public void getAllFicilityDataTest() {
 
 		M_facilitytype m_facilitytype = new M_facilitytype();
 
@@ -58,7 +58,7 @@ class M_facilitytypeServiceImplTest {
 	}
 
 	@Test
-	void addAllFicilityDataTest() {
+	public void addAllFicilityDataTest() {
 
 		List<M_facilitytype> addfacilityDetails = new ArrayList<M_facilitytype>();
 
@@ -92,7 +92,7 @@ class M_facilitytypeServiceImplTest {
 	}
 
 	@Test
-	void editAllFicilityDataTest() {
+	public void editAllFicilityDataTest() {
 
 		Integer facilityTypeID = Integer.valueOf(10);
 
@@ -110,7 +110,7 @@ class M_facilitytypeServiceImplTest {
 	}
 
 	@Test
-	void updateFacilityDataTest() {
+	public void updateFacilityDataTest() {
 
 		M_facilitytype allFacilityData = new M_facilitytype();
 

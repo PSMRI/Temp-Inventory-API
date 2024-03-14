@@ -41,7 +41,7 @@ class StockEntryControllerTest {
 	StockEntryServiceImpl stockEntryService;
 
 	@Test
-	void physicalStockEntryTest() throws Exception {
+	public void physicalStockEntryTest() throws Exception {
 
 		java.util.Date d1 = new java.util.Date();
 
@@ -87,7 +87,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void physicalStockEntryTest_Exception() throws Exception {
+	public void physicalStockEntryTest_Exception() throws Exception {
 
 		PhysicalStockEntry physicalStockEntry = new PhysicalStockEntry();
 
@@ -99,7 +99,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void getItemBatchForStoreIDTest() {
+	public void getItemBatchForStoreIDTest() {
 
 		ItemStockEntry itemStockEntry = new ItemStockEntry();
 
@@ -124,7 +124,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void getItemBatchForStoreIDTest_Exception() throws Exception {
+	public void getItemBatchForStoreIDTest_Exception() throws Exception {
 
 		ItemStockEntry itemStockEntry = new ItemStockEntry();
 
@@ -137,7 +137,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void allocateStockFromItemIDTest() throws InventoryException {
+	public void allocateStockFromItemIDTest() throws InventoryException {
 
 		Integer facilityID = 5;
 
@@ -172,7 +172,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void allocateStockFromItemIDTest_Exception() throws Exception {
+	public void allocateStockFromItemIDTest_Exception() throws Exception {
 
 		List<ItemStockExit> itemStockExitList = new ArrayList<ItemStockExit>();
 
@@ -188,7 +188,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void getPhysicalStockEntryTest() {
+	public void getPhysicalStockEntryTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -228,7 +228,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void getPhysicalStockEntryTest_Exception() throws Exception {
+	public void getPhysicalStockEntryTest_Exception() throws Exception {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -241,7 +241,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void itemPartialSearchTest() {
+	public void itemPartialSearchTest() {
 
 		ItemMaster getItem = new ItemMaster();
 		getItem.setItemCategoryID(12);
@@ -295,7 +295,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void itemPartialSearchTest_Exception() throws Exception {
+	public void itemPartialSearchTest_Exception() throws Exception {
 
 		ItemMaster getItem = new ItemMaster();
 
@@ -309,7 +309,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void itemBatchWithZeroPartialSearchTest() {
+	public void itemBatchWithZeroPartialSearchTest() {
 
 		ItemMaster getItem = new ItemMaster();
 		getItem.setItemCategoryID(12);
@@ -366,7 +366,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void itemBatchWithZeroPartialSearchTest_Exception() throws Exception {
+	public void itemBatchWithZeroPartialSearchTest_Exception() throws Exception {
 
 		ItemMaster getItem = new ItemMaster();
 
@@ -380,7 +380,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void getPhysicalStockEntryItemsTest() {
+	public void getPhysicalStockEntryItemsTest() {
 
 		ItemStockEntryinput getItem = new ItemStockEntryinput();
 
@@ -419,7 +419,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void getPhysicalStockEntryItemsTest_Exception() throws Exception {
+	public void getPhysicalStockEntryItemsTest_Exception() throws Exception {
 
 		ItemStockEntryinput getItem = new ItemStockEntryinput();
 
@@ -432,7 +432,7 @@ class StockEntryControllerTest {
 	}
 
 	@Test
-	void getItemwithQuantityPartialSearchTest() {
+	public void getItemwithQuantityPartialSearchTest() {
 
 		ItemMaster item = new ItemMaster();
 		item.setItemCategoryID(12);
@@ -486,7 +486,7 @@ class StockEntryControllerTest {
 	
 	
 	@Test
-	void getItemwithQuantityPartialSearchTest_Exception() throws Exception {
+	public void getItemwithQuantityPartialSearchTest_Exception() throws Exception {
 
 		ItemMaster item = new ItemMaster();
 

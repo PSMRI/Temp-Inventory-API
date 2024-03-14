@@ -35,7 +35,7 @@ class UnitOfMeasurementControllerTest {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
 	@Test
-	void testCreateUom() {
+	public void testCreateUom() {
 
 		M_Uom m_uom = new M_Uom();
 		m_uom.setuOMID(1);
@@ -79,7 +79,7 @@ class UnitOfMeasurementControllerTest {
 	}
 
 	@Test
-	void testCreateUomException() {
+	public void testCreateUomException() {
 
 		String createUom = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -89,7 +89,7 @@ class UnitOfMeasurementControllerTest {
 	}
 
 	@Test
-	void testGetUom() {
+	public void testGetUom() {
 
 		M_Uom m_uom = new M_Uom();
 		m_uom.setuOMID(1);
@@ -121,7 +121,7 @@ class UnitOfMeasurementControllerTest {
 	}
 
 	@Test
-	void testGetUomException() {
+	public void testGetUomException() {
 
 		String getUom = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -131,7 +131,7 @@ class UnitOfMeasurementControllerTest {
 	}
 
 	@Test
-	void testEditUom() {
+	public void testEditUom() {
 		OutputResponse expectedResponse = new OutputResponse();
 
 		M_Uom UomData = new M_Uom();
@@ -164,7 +164,7 @@ class UnitOfMeasurementControllerTest {
 	}
 	
 	@Test
-	void testEditUomException() {
+	public void testEditUomException() {
 
 		String editUom = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 		
@@ -178,7 +178,7 @@ class UnitOfMeasurementControllerTest {
 	}
 
 	@Test
-	void testDeleteUom() {
+	public void testDeleteUom() {
 
 		OutputResponse expectedResponse = new OutputResponse();
 
@@ -202,7 +202,7 @@ class UnitOfMeasurementControllerTest {
 	}
 
 	@Test
-	void testDeleteUomException() {
+	public void testDeleteUomException() {
 
 		String editUom = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 

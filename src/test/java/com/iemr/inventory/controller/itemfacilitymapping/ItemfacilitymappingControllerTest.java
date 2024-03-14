@@ -1,5 +1,6 @@
 package com.iemr.inventory.controller.itemfacilitymapping;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;
@@ -41,7 +42,7 @@ class ItemfacilitymappingControllerTest {
 	M_itemfacilitymappingInter M_itemfacilitymappingInter;
 
 	@Test
-	void mapItemtoStroreTest() {
+	public void mapItemtoStroreTest() {
 
 		M_itemfacilitymapping itemDetailsO = new M_itemfacilitymapping();
 
@@ -100,7 +101,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void mapItemtoStroreTest_Exception() {
+	public void mapItemtoStroreTest_Exception() {
 
 		String mapItemtoStrore = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -110,7 +111,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void editItemtoStroreTest() {
+	public void editItemtoStroreTest() {
 
 		M_itemfacilitymapping itemDetails = new M_itemfacilitymapping();
 
@@ -146,7 +147,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void editItemtoStroreTest_Exception() {
+	public void editItemtoStroreTest_Exception() {
 
 		String editItemtoStrore = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -156,7 +157,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void deleteItemtoStroreTest() {
+	public void deleteItemtoStroreTest() {
 
 		M_itemfacilitymapping itemDetails = new M_itemfacilitymapping();
 
@@ -189,7 +190,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void deleteItemtoStroreTest_Exception() {
+	public void deleteItemtoStroreTest_Exception() {
 
 		String deleteItemtoStrore = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -199,7 +200,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void getSubStroreitemTest() {
+	public void getSubStroreitemTest() {
 
 		M_itemfacilitymapping itemDetails = new M_itemfacilitymapping();
 
@@ -232,7 +233,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void getSubStroreitemTest_Exception() {
+	public void getSubStroreitemTest_Exception() {
 
 		String deleteItemtoStrore = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -242,7 +243,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void getAllFacilityMappedDataTest() {
+	public void getAllFacilityMappedDataTest() {
 
 		V_fetchItemFacilityMap itemDetails = new V_fetchItemFacilityMap();
 
@@ -293,7 +294,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void getAllFacilityMappedDataTest_Exception() {
+	public void getAllFacilityMappedDataTest_Exception() {
 
 		String getAllFacilityMappedData = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -304,7 +305,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void getItemFromStoreIDTest() {
+	public void getItemFromStoreIDTest() {
 
 		Integer storeID = 12;
 
@@ -327,7 +328,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void getItemFromStoreIDTest_Exception() {
+	public void getItemFromStoreIDTest_Exception() {
 
 		Integer storeID = null;
 
@@ -339,7 +340,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void itemPartialSearchTest() {
+	public void itemPartialSearchTest() {
 
 		M_Pharmacologicalcategory m_Pharmacologicalcategory = new M_Pharmacologicalcategory();
 
@@ -443,7 +444,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void itemPartialSearchTest_Exception() {
+	public void itemPartialSearchTest_Exception() {
 
 		ItemMaster getItem = new ItemMaster();
 
@@ -456,7 +457,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void getItemBatchForStoreTransfer() {
+	public void getItemBatchForStoreTransfer() {
 
 		M_Facility m_facilitytype = new M_Facility();
 
@@ -494,7 +495,7 @@ class ItemfacilitymappingControllerTest {
 	}
 
 	@Test
-	void getItemBatchForStoreTransfer_Exception() {
+	public void getItemBatchForStoreTransfer_Exception() {
 
 		StockTransferItem stores = new StockTransferItem();
 

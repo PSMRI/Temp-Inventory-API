@@ -19,6 +19,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
 
 import com.iemr.inventory.data.manufacturer.M_Manufacturer;
 import com.iemr.inventory.service.manufacturer.ManufacturerInter;
@@ -34,7 +35,7 @@ class ManufacturerControllerTest {
     
     
     @Test
-    void testCreateManufacturer_SuccessfulCreation() {
+    public void testCreateManufacturer_SuccessfulCreation() {
     	 // Given
         String createManufacturerRequest = "[{\"manufacturerID\": 1, \"manufacturerName\": \"Manufacturer1\"}, {\"manufacturerID\": 2, \"manufacturerName\": \"Manufacturer2\"}]";
         M_Manufacturer[] mockManufacturers = {
@@ -65,7 +66,7 @@ class ManufacturerControllerTest {
    
 
     @Test
-    void testCreateManufacturer_InvalidRequest() {
+    public void testCreateManufacturer_InvalidRequest() {
         // Given
         String invalidRequest = "{\"invalid\": \"request\"}";
 
@@ -79,7 +80,7 @@ class ManufacturerControllerTest {
     }
 
     @Test
-    void testCreateManufacturer_Exception() {
+    public void testCreateManufacturer_Exception() {
         // Given
         String createManufacturerRequest = "[{\"manufacturerID\": 1, \"manufacturerName\": \"Manufacturer1\"}]";
 
@@ -94,7 +95,7 @@ class ManufacturerControllerTest {
         verify(manufacturerInter, times(1)).createManufacturer(anyList());
     }
     @Test
-    void testGetManufacturer_SuccessfulGet() {
+    public void testGetManufacturer_SuccessfulGet() {
         // Given
         String getManufacturerRequest = "{\"providerServiceMapID\": 1}";
         M_Manufacturer mockManufacturer = new M_Manufacturer();
@@ -117,7 +118,7 @@ class ManufacturerControllerTest {
     }
     
     @Test
-    void testGetManufacturer_InvalidRequest() {
+    public void testGetManufacturer_InvalidRequest() {
         // Given
         String invalidRequest = "{\"invalid\": \"request\"}";
 
@@ -131,7 +132,7 @@ class ManufacturerControllerTest {
     }
     
     @Test
-    void testGetManufacturer_Exception() {
+    public void testGetManufacturer_Exception() {
         // Given
         String getManufacturerRequest = "{\"providerServiceMapID\": 1}";
 
@@ -148,7 +149,7 @@ class ManufacturerControllerTest {
 
     
     @Test
-    void testEditManufacturer_SuccessfulEdit() {
+    public void testEditManufacturer_SuccessfulEdit() {
         // Given
         String editManufacturerRequest = "{\"manufacturerID\": 1, \"manufacturerName\": \"UpdatedName\", \"manufacturerDesc\": \"UpdatedDesc\", \"manufacturerCode\": \"UpdatedCode\", \"status\": \"Active\", \"contactPerson\": \"UpdatedContactPerson\", \"cST_GST_No\": \"UpdatedGSTNo\", \"modifiedBy\": \"UpdatedUser\"}";
         M_Manufacturer mockManufacturer = new M_Manufacturer();
@@ -182,7 +183,7 @@ class ManufacturerControllerTest {
     }
     
     @Test
-    void testEditManufacturer_InvalidRequest() {
+    public void testEditManufacturer_InvalidRequest() {
         // Given
         String invalidRequest = "{\"invalid\": \"request\"}";
 
@@ -197,7 +198,7 @@ class ManufacturerControllerTest {
     }
 
     @Test
-    void testEditManufacturer_Exception() {
+    public void testEditManufacturer_Exception() {
         // Given
         String editManufacturerRequest = "{\"manufacturerID\": 1, \"manufacturerName\": \"UpdatedName\", \"manufacturerDesc\": \"UpdatedDesc\", \"manufacturerCode\": \"UpdatedCode\", \"status\": \"Active\", \"contactPerson\": \"UpdatedContactPerson\", \"cST_GST_No\": \"UpdatedGSTNo\", \"modifiedBy\": \"UpdatedUser\"}";
 
@@ -215,7 +216,7 @@ class ManufacturerControllerTest {
 
     
     @Test
-    void testDeleteManufacturer_SuccessfulDeletion() {
+    public void testDeleteManufacturer_SuccessfulDeletion() {
         // Given
         String deleteManufacturerRequest = "{\"manufacturerID\": 1, \"deleted\": true}";
         M_Manufacturer mockManufacturer = new M_Manufacturer();
@@ -237,7 +238,7 @@ class ManufacturerControllerTest {
     }
 
     @Test
-    void testDeleteManufacturer_InvalidRequest() {
+    public void testDeleteManufacturer_InvalidRequest() {
         // Given
         String invalidRequest = "{\"invalid\": \"request\"}";
 
@@ -252,7 +253,7 @@ class ManufacturerControllerTest {
     }
 
     @Test
-    void testDeleteManufacturer_Exception() {
+    public void testDeleteManufacturer_Exception() {
         // Given
         String deleteManufacturerRequest = "{\"manufacturerID\": 1, \"deleted\": true}";
 

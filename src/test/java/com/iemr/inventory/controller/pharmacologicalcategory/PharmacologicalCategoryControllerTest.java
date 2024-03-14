@@ -34,7 +34,7 @@ class PharmacologicalCategoryControllerTest {
 	PharmacologicalcategoryInter pharmacologicalcategoryInter;
 
 	@Test
-	void createPharmacologicalcategoryTest() {
+	public void createPharmacologicalcategoryTest() {
 
 		OutputResponse response = new OutputResponse();
 
@@ -75,7 +75,7 @@ class PharmacologicalCategoryControllerTest {
 	}
 
 	@Test
-	void createPharmacologicalcategoryTestException() {
+	public void createPharmacologicalcategoryTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -86,7 +86,7 @@ class PharmacologicalCategoryControllerTest {
 	}
 
 	@Test
-	void getPharmacologicalcategoryTest() {
+	public void getPharmacologicalcategoryTest() {
 
 		M_Pharmacologicalcategory Pharmacologicalcategory = new M_Pharmacologicalcategory();
 
@@ -119,7 +119,7 @@ class PharmacologicalCategoryControllerTest {
 	}
 
 	@Test
-	void getPharmacologicalcategoryTestException() {
+	public void getPharmacologicalcategoryTestException() {
 
 		String createPharmacologicalcategory = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -133,7 +133,7 @@ class PharmacologicalCategoryControllerTest {
 	}
 
 	@Test
-	void editPharmacologicalcategoryTest() {
+	public void editPharmacologicalcategoryTest() {
 
 		M_Pharmacologicalcategory m_Pharmacologicalcategory = new M_Pharmacologicalcategory();
 
@@ -167,7 +167,7 @@ class PharmacologicalCategoryControllerTest {
 	}
 
 	@Test
-	void editPharmacologicalcategoryTestException() {
+	public void editPharmacologicalcategoryTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 
@@ -177,7 +177,7 @@ class PharmacologicalCategoryControllerTest {
 	}
 
 	@Test
-	void deletePharmacologicalcategoryTest() {
+	public void deletePharmacologicalcategoryTest() {
 
 		M_Pharmacologicalcategory m_Pharmacologicalcategory = new M_Pharmacologicalcategory();
 
@@ -210,7 +210,7 @@ class PharmacologicalCategoryControllerTest {
 	}
 
 	@Test
-	void deletePharmacologicalcategoryTestException() {
+	public void deletePharmacologicalcategoryTestException() {
 
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 

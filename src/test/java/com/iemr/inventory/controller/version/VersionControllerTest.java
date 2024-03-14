@@ -1,18 +1,22 @@
 package com.iemr.inventory.controller.version;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.iemr.inventory.utils.response.OutputResponse;
 
@@ -23,7 +27,7 @@ class VersionControllerTest {
 	VersionController versionController;
 
 	@Test
-	void readFromInputStreamTest() throws IOException {
+	public void readFromInputStreamTest() throws IOException {
 
 		// Create a sample git.properties content
 		String gitPropertiesContent = "git.commit.id=abcdef\n" + "git.build.version=1.0.0\n";
@@ -41,7 +45,7 @@ class VersionControllerTest {
 	}
 
 	@Test
-	void readGitPropertiesTest() throws Exception {
+	public void readGitPropertiesTest() throws Exception {
 
 		String gitPropertiesContent = "git.commit.id=abcdef\n" + "git.build.version=1.0.0\n";
 
@@ -58,7 +62,7 @@ class VersionControllerTest {
 	}
 
 	@Test
-	void versionInformationTest() {
+	public void versionInformationTest() {
 
 		// Call the versionInformation method
 		String result = versionController.versionInformation();
@@ -74,7 +78,7 @@ class VersionControllerTest {
 	
 	
 	@Test
-	void versionInformationTest_Exception() {
+	public void versionInformationTest_Exception() {
 		
 		String request = "{\"statusCode\":5000,\"errorMessage\":\"Failed with generic error\",\"status\":\"FAILURE\"}";
 		

@@ -1,7 +1,7 @@
 package com.iemr.inventory.service.store;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.sql.Date;
@@ -35,7 +35,7 @@ class StoreServiceImplTest {
 	private VanMasterRepository vanMasterRepository;
 
 	@Test
-	void testCreateMainStore() {
+	public void testCreateMainStore() {
 
 		M_Facility mainStoreFacility = new M_Facility();
 
@@ -68,7 +68,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	void testGetMainStore() {
+	public void testGetMainStore() {
 
 		Integer mainStoreID = Integer.valueOf(1);
 
@@ -102,7 +102,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	void testGetAllMainStore() {
+	public void testGetAllMainStore() {
 		Integer providerServiceMapID = 1;
 
 		M_Facility mainStoreFacility = new M_Facility();
@@ -138,7 +138,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	void testaddAllMainStore() {
+	public void testaddAllMainStore() {
 
 		M_Facility mainStoreFacility = new M_Facility();
 
@@ -175,7 +175,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	void testgetMainFacility() {
+	public void testgetMainFacility() {
 
 		Integer providerServiceMapID = 12;
 		Boolean isMainFacility = true;
@@ -215,7 +215,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	void testgetMainFacility2() {
+	public void testgetMainFacility2() {
 
 		Integer providerServiceMapID = 12;
 		Boolean isMainFacility = true;
@@ -257,7 +257,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	void testGetChildFacility() {
+	public void testGetChildFacility() {
 
 		Integer providerServiceMapID = 12;
 		Integer mainFacilityID = 45;
@@ -297,7 +297,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	void testDeleteParentStore() throws IEMRException {
+	public void testDeleteParentStore() throws IEMRException {
 
 		M_Facility facility = new M_Facility();
 
@@ -338,15 +338,15 @@ class StoreServiceImplTest {
 		Assertions.assertNotNull(stores);
 		Assertions.assertNotNull(facility.getDeleted());
 		Assertions.assertNotNull(stores.getMainFacilityID());
-		assertNotNull(parentStore);
-		assertNotNull(stores.getMainFacilityID());
+		assertTrue(parentStore != null);
+		assertTrue(stores.getMainFacilityID() != null);
 		assertEquals(stores, storeServiceImpl.deleteStore(facility));
 
 	}
 	
 	
 	@Test
-	void testDeleteChildStore() throws IEMRException {
+	public void testDeleteChildStore() throws IEMRException {
 
 		M_Facility facility = new M_Facility();
 
@@ -366,14 +366,14 @@ class StoreServiceImplTest {
 
 		// Assertions
 		Assertions.assertNotNull(stores);
-		assertEquals(0,childStore.size());
+		assertTrue(childStore.size() == 0);
 		assertEquals(stores, storeServiceImpl.deleteStore(facility));
 
 	}
 	
 	
 	@Test
-	void testDeleteStore() throws IEMRException {
+	public void testDeleteStore() throws IEMRException {
 		
 		M_Facility facility = new M_Facility();
 
@@ -412,7 +412,7 @@ class StoreServiceImplTest {
 
 
 	@Test
-	void testGetAllActiveStore() {
+	public void testGetAllActiveStore() {
 		M_Facility facility = new M_Facility();
 
 		facility.setFacilityID(3);
@@ -449,7 +449,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	void testGetStoreByID() {
+	public void testGetStoreByID() {
 		Integer facility = 1;
 
 		M_Facility mainStoreFacility = new M_Facility();
@@ -483,7 +483,7 @@ class StoreServiceImplTest {
 	}
 
 	@Test
-	void testGetVanByStoreID() {
+	public void testGetVanByStoreID() {
 
 		Integer storeID = 1;
 

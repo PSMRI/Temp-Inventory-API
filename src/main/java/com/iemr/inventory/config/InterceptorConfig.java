@@ -35,13 +35,13 @@ import com.iemr.inventory.utils.http.HTTPRequestInterceptor;
 @EnableAutoConfiguration
 public class InterceptorConfig implements WebMvcConfigurer {
 
-    
-    public InterceptorConfig(HTTPRequestInterceptor requestInterceptor) {
-		super();
-		this.requestInterceptor = requestInterceptor;
-	}
 
-	private HTTPRequestInterceptor requestInterceptor;
+    private HTTPRequestInterceptor requestInterceptor;
+
+    public InterceptorConfig(HTTPRequestInterceptor requestInterceptor) {
+        super();
+        this.requestInterceptor = requestInterceptor;
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

@@ -69,7 +69,7 @@ class StockExitServiceImplTest {
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
 	@Test
-	void issuePatientDrugsAsZeroTest() throws InventoryException {
+	public void issuePatientDrugsAsZeroTest() throws InventoryException {
 
 		T_PatientIssue patientIssue = new T_PatientIssue();
 
@@ -85,7 +85,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void issuePatientDrugsAsNotZeroTest() throws InventoryException {
+	public void issuePatientDrugsAsNotZeroTest() throws InventoryException {
 
 		T_PatientIssue patientIssue = new T_PatientIssue();
 
@@ -122,7 +122,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void issuePatientDrugsAsTrueAndOneTest() throws InventoryException {
+	public void issuePatientDrugsAsTrueAndOneTest() throws InventoryException {
 
 		T_PatientIssue patientIssue = new T_PatientIssue();
 
@@ -174,7 +174,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void issuePatientDrugsAsTrueAndZeroTest() throws InventoryException {
+	public void issuePatientDrugsAsTrueAndZeroTest() throws InventoryException {
 
 		T_PatientIssue patientIssue = new T_PatientIssue();
 
@@ -189,7 +189,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void saveItemExitTest() {
+	public void saveItemExitTest() {
 
 		ItemStockExit itemStockExitO = new ItemStockExit();
 
@@ -225,7 +225,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void getItemStockAndValidateTest() {
+	public void getItemStockAndValidateTest() {
 
 		ItemStockExit itemStockExitO = new ItemStockExit();
 
@@ -299,7 +299,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void storeSelfConsumptionTest() {
+	public void storeSelfConsumptionTest() {
 
 		ItemStockExit itemStockExitO = new ItemStockExit();
 
@@ -344,7 +344,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void storeTransferTest() {
+	public void storeTransferTest() {
 
 		Long toVanID = 4L;
 
@@ -407,7 +407,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void getStoreTransferTest() {
+	public void getStoreTransferTest() {
 
 		ItemStockEntryinput itemStockEntryinput = new ItemStockEntryinput();
 
@@ -462,7 +462,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void getpatientIssueTest() {
+	public void getpatientIssueTest() {
 
 		ItemStockEntryinput itemStockEntryinput = new ItemStockEntryinput();
 
@@ -516,7 +516,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void getstoreSelfConsumptionTest() {
+	public void getstoreSelfConsumptionTest() {
 
 		ItemStockEntryinput itemStockEntryinput = new ItemStockEntryinput();
 
@@ -564,7 +564,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void getstoreSelfConsumptionItemListTest() {
+	public void getstoreSelfConsumptionItemListTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -621,7 +621,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void getpatientIssueItemLIstTest() {
+	public void getpatientIssueItemLIstTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -681,7 +681,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void getStoreTransferItemEntryTest() {
+	public void getStoreTransferItemEntryTest() {
 
 		ItemStockEntryinput itemStockinput = new ItemStockEntryinput();
 
@@ -755,7 +755,7 @@ class StockExitServiceImplTest {
 	}
 
 	@Test
-	void getPatientissueAllDetailTest() {
+	public void getPatientissueAllDetailTest() {
 
 		Long patientissueID = 3L;
 

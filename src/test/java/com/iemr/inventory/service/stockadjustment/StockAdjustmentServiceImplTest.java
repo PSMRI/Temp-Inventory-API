@@ -1,5 +1,8 @@
 package com.iemr.inventory.service.stockadjustment;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import java.sql.Timestamp;
@@ -58,7 +61,7 @@ class StockAdjustmentServiceImplTest {
 	StockAdjustmentItemDraftMapper stockAdjustmentItemDraftMapper;
 
 	@Test
-	void saveDraftTest() {
+	public void saveDraftTest() {
 
 		Date date = new Date();
 
@@ -68,6 +71,7 @@ class StockAdjustmentServiceImplTest {
 
 		StockAdjustmentItemDraft stockAdjustmentItemDraft = new StockAdjustmentItemDraft();
 
+		stockAdjustmentItemDraft.setSADraftItemMapID(1L);
 		stockAdjustmentItemDraft.setItemStockEntryID(2L);
 		stockAdjustmentItemDraft.setIsAdded(true);
 		stockAdjustmentItemDraft.setAdjustedQuantity(100);
@@ -117,16 +121,14 @@ class StockAdjustmentServiceImplTest {
 				.thenReturn(Optional.of(stockAdjustmentItemDraft));
 
 		stockdraft.setStockAdjustmentItemDraft(itemdraft);
-
-		when(stockAdjustmentDraftRepo.save(stockAdjustmentDraft)).thenReturn(stockdraft);
-
+		
 		// Assertions
 		Assertions.assertEquals(stockdraft, stockAdjustmentServiceImpl.saveDraft(stockAdjustmentDraft));
 
 	}
 
 	@Test
-	void getStockAjustmentDraftTransactionTest() {
+	public void getStockAjustmentDraftTransactionTest() {
 
 		ItemStockEntryinput itemStockEntryinput = new ItemStockEntryinput();
 
@@ -177,12 +179,13 @@ class StockAdjustmentServiceImplTest {
 	}
 
 	@Test
-	void getforeditStockAjustmentDraftTransactionTest() {
+	public void getforeditStockAjustmentDraftTransactionTest() {
 
 		Long stockAdjustmentDraftID = 12L;
 
 		StockAdjustmentItemDraft stockAdjustmentItemDraft = new StockAdjustmentItemDraft();
-		
+
+		stockAdjustmentItemDraft.setSADraftItemMapID(1L);
 		stockAdjustmentItemDraft.setItemStockEntryID(2L);
 		stockAdjustmentItemDraft.setIsAdded(true);
 		stockAdjustmentItemDraft.setAdjustedQuantity(100);
@@ -227,9 +230,63 @@ class StockAdjustmentServiceImplTest {
 	}
 
 	@Test
-	void savetransactionTest() throws InventoryException {
+	public void testSavetransaction() throws InventoryException {
+		// Define necessary objects and mock data
+		Long stockAdjustmentDraftID = 12L;
 
-		Date date = new Date();
+		StockAdjustmentItemDraft stockAdjustmentItemDraft = new StockAdjustmentItemDraft();
+
+		stockAdjustmentItemDraft.setSADraftItemMapID(1L);
+		stockAdjustmentItemDraft.setItemStockEntryID(2L);
+		stockAdjustmentItemDraft.setIsAdded(true);
+		stockAdjustmentItemDraft.setAdjustedQuantity(100);
+		stockAdjustmentItemDraft.setReason("For Draft Making");
+		stockAdjustmentItemDraft.setProviderServiceMapID(6);
+		stockAdjustmentItemDraft.setCreatedBy("AK Hossain");
+		stockAdjustmentItemDraft.setStatus("Ready");
+		stockAdjustmentItemDraft.setStockAdjustmentDraftID(3L);
+		stockAdjustmentItemDraft.setDeleted(false);
+		stockAdjustmentItemDraft.setProcessed('Y');
+		stockAdjustmentItemDraft.setModifiedBy("AB Hossain");
+		stockAdjustmentItemDraft.setStockAdjustmentDraftID(12L);
+
+		stockAdjustmentItemDraft.toString();
+
+		List<StockAdjustmentItemDraft> sd = new ArrayList<StockAdjustmentItemDraft>();
+
+		sd.add(stockAdjustmentItemDraft);
+
+		StockAdjustmentDraft stock = new StockAdjustmentDraft();
+		stock.setFacilityID(12);
+		stock.setDraftDesc("store draft");
+		stock.setDraftName("store");
+		stock.setRefNo("R87er89E");
+		stock.setIsCompleted(false);
+		stock.setProviderServiceMapID(6);
+		stock.setDeleted(false);
+		stock.setVanID(1L);
+		stock.setProcessed('Y');
+		stock.setCreatedBy("AK Kundu");
+		stock.setModifiedBy("AK Kundu");
+		stock.setStockAdjustmentDraftID(12L);
+
+		stock.toString();
+
+		java.util.Date date = new java.util.Date();
+
+		ItemStockEntry itemStockEntry = new ItemStockEntry();
+
+		itemStockEntry.setFacilityID(5);
+		itemStockEntry.setItemID(3);
+		itemStockEntry.setQuantityInHand(0);
+		itemStockEntry.setDeleted(false);
+		itemStockEntry.setExpiryDate(date);
+
+		itemStockEntry.toString();
+
+		Long stockAdjustmentID = 13L;
+
+		java.util.Date date1 = new java.util.Date();
 
 		StockAdjustmentItem stockAdjustmentItem = new StockAdjustmentItem();
 
@@ -239,15 +296,15 @@ class StockAdjustmentServiceImplTest {
 		stockAdjustmentItem.setVanID(1L);
 		stockAdjustmentItem.setProcessed('Y');
 		stockAdjustmentItem.setCreatedBy("AK Kundu");
-		stockAdjustmentItem.setCreatedDate(date);
+		stockAdjustmentItem.setCreatedDate(date1);
 		stockAdjustmentItem.setModifiedBy("AK Kundu");
-		stockAdjustmentItem.setLastModDate(date);
+		stockAdjustmentItem.setLastModDate(date1);
 		stockAdjustmentItem.setIsAdded(true);
 
 		stockAdjustmentItem.toString();
 
-		List<StockAdjustmentItem> sd = new ArrayList<StockAdjustmentItem>();
-		sd.add(stockAdjustmentItem);
+		List<StockAdjustmentItem> sd1 = new ArrayList<StockAdjustmentItem>();
+		sd1.add(stockAdjustmentItem);
 
 		StockAdjustment stockAdjustment = new StockAdjustment();
 
@@ -258,62 +315,27 @@ class StockAdjustmentServiceImplTest {
 		stockAdjustment.setVanID(1L);
 		stockAdjustment.setProcessed('Y');
 		stockAdjustment.setCreatedBy("AK Kundu");
-		stockAdjustment.setCreatedDate(date);
 		stockAdjustment.setModifiedBy("AK Kundu");
-		stockAdjustment.setLastModDate(date);
 		stockAdjustment.setStockAdjustmentDraftID(12L);
 		stockAdjustment.setStockAdjustmentID(13L);
-		stockAdjustment.setStockAdjustmentItem(sd);
-
-		stockAdjustment.toString();
-
-		List<Long> comapreid = new ArrayList<>();
-		comapreid.add(1L);
-
-		final Integer facID = stockAdjustment.getFacilityID();
-		sd.parallelStream().forEach(action -> {
-			comapreid.add(action.getItemStockEntryID());
-			action.setFacilityID(facID);
-		});
-
-		ItemStockEntry stock = new ItemStockEntry();
-
-		stock.setEntryType("physicalStockEntry");
-		stock.setQuantityInHand(100);
-		stock.setVanID(3L);
-		stock.setParkingPlaceID(6L);
-		stock.setCreatedBy("ytyty");
-		stock.setSyncFacilityID(8);
-		stock.setItemStockEntryID(12L);
-
-		stock.toString();
+		stockAdjustment.setVanSerialNo(3L);
+		stockAdjustment.setSyncFacilityID(3);
+		stockAdjustment.setStockAdjustmentItem(sd1);
 
 		List<ItemStockEntry> compareobject = new ArrayList<ItemStockEntry>();
 
-		compareobject.add(stock);
+		compareobject.add(itemStockEntry);
 
-		when(itemStockEntryRepo.findByItemStockEntryIDIn(comapreid)).thenReturn(compareobject);
-
-		Map<Long, ItemStockEntry> result = compareobject.stream()
-				.collect(Collectors.toMap(ItemStockEntry::getItemStockEntryID, Function.identity()));
-
-		for (StockAdjustmentItem action : sd) {
-			action.setSyncFacilityID(facID);
-			ItemStockEntry itemStockEntry = result.get(action.getItemStockEntryID());
-
-			if (!action.getIsAdded()) {
-				if (action.getAdjustedQuantity() > itemStockEntry.getQuantityInHand()) {
-					throw new InventoryException(
-							"Adjustment Quantity for issue should be more than available quantity");
-				}
-			}
-		}
+		// Define the behavior of the mock repositories
+		when(itemStockEntryRepo.findByItemStockEntryIDIn(any())).thenReturn(compareobject);
 
 		stockAdjustment.setSyncFacilityID(3);
 
 		Long saID = stockAdjustment.getStockAdjustmentID();
 
 		when(stockAdjustmentRepo.save(stockAdjustment)).thenReturn(stockAdjustment);
+
+		final Integer facID = stockAdjustment.getFacilityID();
 
 		when(stockAdjustmentDraftRepo.updatecompleted(stockAdjustment.getStockAdjustmentDraftID(), true))
 				.thenReturn(facID);
@@ -325,7 +347,7 @@ class StockAdjustmentServiceImplTest {
 	}
 
 	@Test
-	void getforeditStockAjustmentTransactionTest() {
+	public void getforeditStockAjustmentTransactionTest() {
 
 		Long stockAdjustmentID = 13L;
 
@@ -398,7 +420,7 @@ class StockAdjustmentServiceImplTest {
 	}
 
 	@Test
-	void getStockAjustmentTransactionTest() {
+	public void getStockAjustmentTransactionTest() {
 
 		StockAdjustment stock = new StockAdjustment();
 

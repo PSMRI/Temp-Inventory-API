@@ -1,9 +1,6 @@
 package com.iemr.inventory.service.supplier;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.times;
@@ -37,7 +34,7 @@ class SupplierServiceImplTest {
 	private SupplierServiceImpl supplierService;
 
 	@Test
-	void testCreateSupplier() {
+	public void testCreateSupplier() {
 		List<M_Supplier> suppliers = new ArrayList<>();
 		// Populate with test data as necessary
 
@@ -63,7 +60,7 @@ class SupplierServiceImplTest {
 	}
 
 	@Test
-	void testCreateSupplierAsNull() {
+	public void testCreateSupplierAsNull() {
 
 		List<M_Supplier> suppliers = new ArrayList<>();
 
@@ -71,7 +68,7 @@ class SupplierServiceImplTest {
 	}
 
 	@Test
-	void testGetSupplier() {
+	public void testGetSupplier() {
 		Integer providerServiceMapID = 123; // Example ID
 		ArrayList<M_Supplier> mockSuppliers = new ArrayList<>();
 
@@ -102,7 +99,7 @@ class SupplierServiceImplTest {
 	}
 
 	@Test
-	void testGetSupplierAsNull() {
+	public void testGetSupplierAsNull() {
 
 		Integer providerServiceMapID = null;
 
@@ -110,7 +107,7 @@ class SupplierServiceImplTest {
 	}
 
 	@Test
-	void testEditSupplier() {
+	public void testEditSupplier() {
 		Integer supplierID = 1; // Example supplier ID
 		M_Supplier mockSupplier = new M_Supplier(); // Create a mock M_Supplier object
 		// Populate mockSupplier with test data as necessary
@@ -136,7 +133,7 @@ class SupplierServiceImplTest {
 	}
 
 	@Test
-	void testSaveEditedData() {
+	public void testSaveEditedData() {
 		M_Supplier mockSupplier = new M_Supplier(); // Create a mock M_Supplier object
 		// Populate mockSupplier with test data as necessary
 		mockSupplier.setSupplierID(1);
@@ -160,7 +157,7 @@ class SupplierServiceImplTest {
 	}
 
 	@Test
-	void testCreateAddress() {
+	public void testCreateAddress() {
 		List<M_Supplieraddress> mockAddresses = new ArrayList<>();
 		mockAddresses.add(new M_Supplieraddress()); // Populate with test data as necessary
 

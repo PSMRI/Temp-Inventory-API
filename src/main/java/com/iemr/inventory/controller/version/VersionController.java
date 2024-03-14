@@ -1,24 +1,24 @@
 /*
-* AMRIT – Accessible Medical Records via Integrated Technology 
-* Integrated EHR (Electronic Health Records) Solution 
-*
-* Copyright (C) "Piramal Swasthya Management and Research Institute" 
-*
-* This file is part of AMRIT.
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see https://www.gnu.org/licenses/.
-*/
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
+ *
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
+ *
+ * This file is part of AMRIT.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
 package com.iemr.inventory.controller.version;
 
 import java.io.BufferedReader;
@@ -37,43 +37,42 @@ import com.iemr.inventory.utils.response.OutputResponse;
 import io.swagger.v3.oas.annotations.Operation;
 
 
-
 @RestController
 public class VersionController {
 
-	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
-	@CrossOrigin()
-	@Operation(summary = "Get version details")
-	@GetMapping(value = "/version")
-	public String versionInformation() {
-		OutputResponse output = new OutputResponse();
-		try {
-			logger.info("version Controller Start");
-			output.setResponse(readGitProperties());
-		} catch (Exception e) {
-			output.setError(e);
-		}
+    @CrossOrigin()
+    @Operation(summary = "Get version details")
+    @GetMapping(value = "/version")
+    public String versionInformation() {
+        OutputResponse output = new OutputResponse();
+        try {
+            logger.info("version Controller Start");
+            output.setResponse(readGitProperties());
+        } catch (Exception e) {
+            output.setError(e);
+        }
 
-		logger.info("version Controller End");
-		return output.toString();
-	}
+        logger.info("version Controller End");
+        return output.toString();
+    }
 
-	public String readGitProperties() throws IOException {
-		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("git.properties");
+    public String readGitProperties() throws IOException {
+        ClassLoader classLoader = getClass().getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("git.properties");
 
-		return readFromInputStream(inputStream);
-	}
+        return readFromInputStream(inputStream);
+    }
 
-	String readFromInputStream(InputStream inputStream) throws IOException {
-		StringBuilder resultStringBuilder = new StringBuilder();
-		try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
-			String line;
-			while ((line = br.readLine()) != null) {
-				resultStringBuilder.append(line).append("\n");
-			}
-		}
-		return resultStringBuilder.toString();
-	}
+    String readFromInputStream(InputStream inputStream) throws IOException {
+        StringBuilder resultStringBuilder = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                resultStringBuilder.append(line).append("\n");
+            }
+        }
+        return resultStringBuilder.toString();
+    }
 }

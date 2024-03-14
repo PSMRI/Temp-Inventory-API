@@ -14,6 +14,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.iemr.inventory.data.visit.BenVisitDetail;
 import com.iemr.inventory.data.visit.BeneficiaryModel;
@@ -23,6 +25,7 @@ import com.iemr.inventory.utils.exception.IEMRException;
 import com.iemr.inventory.utils.response.OutputResponse;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.ws.rs.NotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 class VisitControllerTest {
@@ -37,7 +40,7 @@ class VisitControllerTest {
 	VisitServiceImpl visitServiceImpl;
 
 	@Test
-	void getVisitFromBenRegIDTest() throws Exception {	
+	public void getVisitFromBenRegIDTest() throws Exception {	
 
 		HttpServletRequest httpRequest = mock(HttpServletRequest.class);
 
@@ -83,6 +86,8 @@ class VisitControllerTest {
 		beneficiaryModel.setCreatedDate(Timestamp.valueOf("2000-08-08 09:01:16"));
 		beneficiaryModel.setModifiedBy("C Medical Company");
 		beneficiaryModel.setLastModDate(Timestamp.valueOf("2001-09-09 09:01:16"));
+		
+		beneficiaryModel.toString();
 
 		List<BeneficiaryModel> benModel = new ArrayList<BeneficiaryModel>();
 
@@ -120,7 +125,11 @@ class VisitControllerTest {
 		benVisitDetail.setSyncedDate(Timestamp.valueOf("2001-09-09 09:01:16"));
 		benVisitDetail.setReservedForChange("No");
 		
+		benVisitDetail.toString();
+		
 		BenVisitDetail newbenVisitDetail = benVisitDetail;
+
+		newbenVisitDetail.setBeneficiaryID(benVisitDetail.getBeneficiaryID());
 		
 		BeneficiaryModel saveData=beneficiaryModel;
 
@@ -136,7 +145,7 @@ class VisitControllerTest {
 	}
 
 	@Test
-	void getVisitFromBenRegIDTestEXception() throws Exception {
+	public void getVisitFromBenRegIDTestEXception() throws Exception {
 
 		HttpServletRequest httpRequest = mock(HttpServletRequest.class);
 
@@ -149,7 +158,7 @@ class VisitControllerTest {
 	}
 
 	@Test
-	void getVisitFromAdvanceSearchTest() throws IEMRException {
+	public void getVisitFromAdvanceSearchTest() throws IEMRException {
 
 		HttpServletRequest httpRequest = mock(HttpServletRequest.class);
 
@@ -214,7 +223,7 @@ class VisitControllerTest {
 	}
 
 	@Test
-	void getVisitFromAdvanceSearchTestEXception() throws Exception {
+	public void getVisitFromAdvanceSearchTestEXception() throws Exception {
 
 		HttpServletRequest httpRequest = mock(HttpServletRequest.class);
 

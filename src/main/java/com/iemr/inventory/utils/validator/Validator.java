@@ -35,43 +35,41 @@ import com.iemr.inventory.utils.sessionobject.SessionObject;
 @Service
 public class Validator {
 
-	private SessionObject session;
+    private static Boolean enableIPValidation = false;
+    private SessionObject session;
+    private Logger logger = LoggerFactory.getLogger(Validator.class);
 
-	@Autowired(required = true)
-	public void setSessionObject(SessionObject sessionObject) {
-		this.session = sessionObject;
-	}
+    public Validator() {
+        if (!enableIPValidation) {
+            enableIPValidation = ConfigProperties.getBoolean("enableIPValidation");
+        }
+    }
 
-	private static Boolean enableIPValidation = false;
+    // New static method
+    public static boolean getBoolean(String someString) {
+        // Implement the logic to convert a string to a boolean
+        // For example, you can use Boolean.parseBoolean or customize as needed
+        return Boolean.parseBoolean(someString);
+    }
 
-	public Validator() {
-		if (!enableIPValidation) {
-			enableIPValidation = ConfigProperties.getBoolean("enableIPValidation");
-		}
-	}
+    @Autowired(required = true)
+    public void setSessionObject(SessionObject sessionObject) {
+        this.session = sessionObject;
+    }
 
-	private Logger logger = LoggerFactory.getLogger(Validator.class);
+    public JSONObject updateCacheObj(JSONObject responseObj) {
+        return responseObj;
+    }
 
-	public JSONObject updateCacheObj(JSONObject responseObj){
-		return responseObj;
-	}
+    public String getSessionObject(String key) throws RedisSessionException {
+        return session.getSessionObject(key);
+    }
 
-	public String getSessionObject(String key) throws RedisSessionException {
-		return session.getSessionObject(key);
-	}
-
-	public void checkKeyExists() throws IEMRException {
-		try {
-			// (Rest of the method remains unchanged)
-		} catch (Exception e) {
-			throw new IEMRException("Invalid login key or session is expired");
-		}
-	}
-
-	// New static method
-	public static boolean getBoolean(String someString) {
-		// Implement the logic to convert a string to a boolean
-		// For example, you can use Boolean.parseBoolean or customize as needed
-		return Boolean.parseBoolean(someString);
-	}
+    public void checkKeyExists() throws IEMRException {
+        try {
+            // (Rest of the method remains unchanged)
+        } catch (Exception e) {
+            throw new IEMRException("Invalid login key or session is expired");
+        }
+    }
 }
