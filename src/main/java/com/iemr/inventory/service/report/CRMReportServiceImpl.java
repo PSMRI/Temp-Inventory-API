@@ -98,7 +98,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 						object[1] != null ? object[1].toString() : null,
 						object[2] != null ? object[2].toString() : null,
 						object[3] != null ? object[3].toString() : null,
-						object[4] != null ? Double.valueOf(object[3].toString()) : null,
+						object[4] != null ? Double.valueOf(object[4].toString()) : null,
 						(Date) (object[5] != null ? object[5] : null),
 						(Integer) (object[6] != null ? object[6] : null));
 
@@ -144,7 +144,8 @@ public class CRMReportServiceImpl implements CRMReportService {
 	@Override
 	public String getBenDrugIssueReport(PatientIssueExitReport exitReport) {
 
-		List<PatientIssueExitReport> list = new ArrayList<PatientIssueExitReport>();
+		List<Object[]> list = new ArrayList<>();
+		List<PatientIssueExitReport> resp = new ArrayList<>();
 		List<BenDrugIssueReport> reportList = new ArrayList<BenDrugIssueReport>();
 		if (exitReport.getFacilityID() != null) {
 			list = itemStockReportRepo.getPatientIssueExitReportByFacilityID(exitReport.getStartDate(),
@@ -152,14 +153,43 @@ public class CRMReportServiceImpl implements CRMReportService {
 		} else {
 			list = itemStockReportRepo.getPatientIssueExitReport(exitReport.getStartDate(), exitReport.getEndDate());
 		}
-
+		resp = convertObjectArrayToPatientIssueExitReport(list);
 		Long slNo = 1L;
-		for (PatientIssueExitReport reportData : list) {
+		for (PatientIssueExitReport reportData : resp) {
 			BenDrugIssueReport report = mapper.mapBenDrugIssueReport(reportData);
 			report.setSlNo(slNo++);
 			reportList.add(report);
 		}
 		return reportList.toString();
+	}
+
+	private List<PatientIssueExitReport> convertObjectArrayToPatientIssueExitReport(List<Object[]> list) {
+		List<PatientIssueExitReport> resp = new ArrayList<>();
+		for (Object[] obj : list) {
+			if(obj != null && obj.length > 0) {
+			PatientIssueExitReport patientIssueExitReport = new PatientIssueExitReport();
+			patientIssueExitReport.setFactPatientIssueExitID(obj[0] != null ? Long.valueOf(obj[0].toString()) : null);
+			patientIssueExitReport.setItemStockExitID(obj[1] != null ? Long.valueOf(obj[1].toString()) : null);
+			patientIssueExitReport.setItemStockEntryID(obj[2] != null ? Long.valueOf(obj[2].toString()) : null);
+			patientIssueExitReport.setItemID(obj[3] != null ? (Integer)obj[3] : null);	
+			patientIssueExitReport.setItemName(String.valueOf(obj[4]));
+			patientIssueExitReport.setItemCategoryName(String.valueOf(obj[7]));
+			patientIssueExitReport.setBatchNo(String.valueOf(obj[9]));
+			patientIssueExitReport.setStrength(String.valueOf(obj[8]));
+			patientIssueExitReport.setQuantityGiven(obj[14] != null ? (Integer)obj[14] : null);	
+			patientIssueExitReport.setExpiryDate(obj[13] != null ? (Date)obj[13] : null);
+			patientIssueExitReport.setFacilityID(obj[22] != null ? (Integer)obj[22] : null);
+			patientIssueExitReport.setPatientName(String.valueOf(obj[23]));	
+			patientIssueExitReport.setAge(obj[24] != null ? (Integer)obj[24] : null);
+			patientIssueExitReport.setGender(String.valueOf(obj[25]));
+			patientIssueExitReport.setCreatedDate(Timestamp.valueOf(obj[35].toString()));
+			//patientIssueExitReport.setStartDate(null);
+			//patientIssueExitReport.setEndDate(null);
+			resp.add(patientIssueExitReport);
+			}
+			
+		}
+		return resp;
 	}
 
 	@Override

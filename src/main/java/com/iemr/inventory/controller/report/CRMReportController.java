@@ -25,6 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -39,7 +40,7 @@ import com.iemr.inventory.utils.response.OutputResponse;
 
 import io.swagger.annotations.ApiOperation;
 
-@RequestMapping("/crmReportController")
+@RequestMapping(value = "/crmReportController",headers = "Authorization",consumes = "application/json", produces = "application/json")
 @RestController
 public class CRMReportController {
 
@@ -49,9 +50,8 @@ public class CRMReportController {
 	CRMReportService crmReportService;
 
 	@CrossOrigin()
-	@ApiOperation(value = "Get inward stock report", consumes = "application/json", produces = "application/json")
-	@RequestMapping(value = "/getInwardStockReport", headers = "Authorization", method = {
-			RequestMethod.POST }, produces = { "application/json" })
+	@ApiOperation(value = "Get inward stock report")
+	@PostMapping(value = "/getInwardStockReport")
 	public String getInwardStockReport(@RequestBody String request) {
 		logger.info("getInwardStockReport request " + request.toString());
 		OutputResponse response = new OutputResponse();
