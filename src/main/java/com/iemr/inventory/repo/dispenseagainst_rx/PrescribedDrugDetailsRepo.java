@@ -36,12 +36,12 @@ import com.iemr.inventory.data.dispenseagainst_rx.PrescribedDrugDetails;
 @Configuration
 @ComponentScan
 public interface PrescribedDrugDetailsRepo extends CrudRepository<PrescribedDrugDetails, Long> {
-	@Query(" SELECT Distinct beneficiaryRegID, visitCode, prescriptionID, drugID, genericDrugName, drugForm,"
-			+ " drugStrength, dose, route, frequency, "
-			+ " duration, duartionUnit, relationToFood, specialInstruction, createdDate, createdBy, "
-			+ " itemStockEntryID, batchNo, quantityInHand, expiryDate, qtyPrescribed, isEDL  "
-			+ " FROM PrescribedDrugDetails  WHERE beneficiaryRegID =:benRegID "
-			+ " AND visitCode =:visitCode AND (facilityID =:facilityID or facilityID is null) ORDER BY drugID, createdDate DESC ")
+	@Query(" SELECT Distinct pd.beneficiaryRegID, pd.visitCode, pd.prescriptionID, pd.drugID, pd.genericDrugName, pd.drugForm,"
+			+ " pd.drugStrength, pd.dose, pd.route, pd.frequency, "
+			+ " pd.duration, pd.duartionUnit, pd.relationToFood, pd.specialInstruction, pd.createdDate, pd.createdBy, "
+			+ " pd.itemStockEntryID, pd.batchNo, pd.quantityInHand, pd.expiryDate, pd.qtyPrescribed, pd.isEDL  "
+			+ " FROM PrescribedDrugDetails pd  WHERE pd.beneficiaryRegID =:benRegID "
+			+ " AND pd.visitCode =:visitCode AND (pd.facilityID =:facilityID or facilityID is null) ORDER BY pd.drugID, pd.createdDate DESC ")
 	ArrayList<Object[]> getPrescribedMedicinesWithDetails(@Param("benRegID") Long benRegID,
 			@Param("visitCode") Long visitCode, @Param("facilityID") Integer facilityID);
 
