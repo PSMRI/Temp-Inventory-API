@@ -41,7 +41,7 @@ public interface PrescribedDrugDetailsRepo extends CrudRepository<PrescribedDrug
 			+ " pd.duration, pd.duartionUnit, pd.relationToFood, pd.specialInstruction, pd.createdDate, pd.createdBy, "
 			+ " pd.itemStockEntryID, pd.batchNo, pd.quantityInHand, pd.expiryDate, pd.qtyPrescribed, pd.isEDL  "
 			+ " FROM PrescribedDrugDetails pd  WHERE pd.beneficiaryRegID =:benRegID "
-			+ " AND pd.visitCode =:visitCode AND (pd.facilityID =:facilityID or facilityID is null) ORDER BY pd.drugID, pd.createdDate DESC ")
+			+ " AND pd.visitCode =:visitCode AND (pd.facilityID =:facilityID or pd.facilityID is null) ORDER BY pd.drugID, pd.createdDate DESC ")
 	ArrayList<Object[]> getPrescribedMedicinesWithDetails(@Param("benRegID") Long benRegID,
 			@Param("visitCode") Long visitCode, @Param("facilityID") Integer facilityID);
 
