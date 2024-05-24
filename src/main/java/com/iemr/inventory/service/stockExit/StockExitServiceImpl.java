@@ -55,27 +55,27 @@ import com.iemr.inventory.utils.exception.InventoryException;
 @Service
 public class StockExitServiceImpl implements StockExitService {
 
-	@Autowired(required=false)
+	@Autowired
 	StockEntryService stockEntryService;
 
-	@Autowired(required=false)
+	@Autowired
 	ItemStockExitRepo itemStockExitRepo;
 
-	@Autowired(required=false)
+	@Autowired
 	ItemStockEntryRepo itemStockEntryRepo;
 
-	@Autowired(required=false)
+	@Autowired
 	PatientIssueRepo patientIssueRepo;
 
-	@Autowired(required=false)
+	@Autowired
 	StoreSelfConsumptionRepo storeSelfConsumptionRepo;
-	@Autowired(required=false)
+	@Autowired
 	StockTransferRepo stockTransferRepo;
 
-	@Autowired(required=false)
+	@Autowired
 	ItemService itemService;
 
-	@Autowired(required=false)
+	@Autowired
 	ItemStockExitMapper itemStockExitMapper;
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
