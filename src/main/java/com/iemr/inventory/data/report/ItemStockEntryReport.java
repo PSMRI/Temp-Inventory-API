@@ -147,6 +147,10 @@ public class ItemStockEntryReport {
 	@Column(name="CreatedDate")
 	private Timestamp createdDate;
 	
+	@Expose
+	@Column(name = "Deleted", insertable = false, updatable = true)
+	private Boolean deleted;
+	
 	@Transient
 	private Timestamp startDate;
 	

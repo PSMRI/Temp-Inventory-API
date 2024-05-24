@@ -102,11 +102,11 @@ public interface ItemStockReportRepo extends CrudRepository<ItemStockEntryReport
 			@Param("endDate") Date endDate, @Param("facilityID") Integer facilityID);
 
 	@Query("Select distinct entryReport.facilityName, entryReport.itemName, entryReport.itemCategoryName, entryReport.batchNo, entryReport.unitCostPrice, entryReport.expiryDate, entryReport.quantityInHand from ItemStockEntryReport entryReport "
-			+ "where entryReport.expiryDate >= :startDate and entryReport.expiryDate <= adddate(:startDate,entryReport.alertBeforeDays) order by entryReport.expiryDate asc")
+			+ "where entryReport.expiryDate >= :startDate and entryReport.expiryDate <= adddate(:startDate,entryReport.alertBeforeDays) and entryReport.deleted is false order by entryReport.expiryDate asc")
 	List<Object[]> getShortExpiryReport(@Param("startDate") Date startDate);
 
 	@Query("Select distinct entryReport.facilityName, entryReport.itemName, entryReport.itemCategoryName, entryReport.batchNo, entryReport.unitCostPrice, entryReport.expiryDate, entryReport.quantityInHand from ItemStockEntryReport entryReport "
-			+ "where entryReport.expiryDate >= :startDate and entryReport.expiryDate <= adddate(:startDate,entryReport.alertBeforeDays) and entryReport.facilityID = :facilityID order by entryReport.expiryDate asc")
+			+ "where entryReport.expiryDate >= :startDate and entryReport.expiryDate <= adddate(:startDate,entryReport.alertBeforeDays) and entryReport.facilityID = :facilityID and entryReport.deleted is false order by entryReport.expiryDate asc")
 	List<Object[]> getShortExpiryReportByFacilityID(@Param("startDate") Date startDate,
 			@Param("facilityID") Integer facilityID);
 
