@@ -202,38 +202,24 @@ public class StockEntryServiceImpl implements StockEntryService {
 				if (totalQty >= itemStockExit.getQuantity()) {
 					stock.setQuantity(stock.getQuantityInHand() - totalQty + itemStockExit.getQuantity());
 					break;
-				} else if (totalQty < itemStockExit.getQuantity()) {
-					logger.info("Insufficent Qty for '" + item.getItemName() + "'. Available Qty is : " + totalQty);
-					break;			
+						
 				}
 
 			}
-//			if (totalQty < itemStockExit.getQuantity()) {
-//				throw new InventoryException(
-//						"Insufficent Qty for '" + item.getItemName() + "'. Available Qty is : " + totalQty);
-//
-//			}
+			if (totalQty < itemStockExit.getQuantity()) {
+				throw new InventoryException(
+						"Insufficent Qty for '" + item.getItemName() + "'. Available Qty is : " + totalQty);
+
+			}
 
 			List<ItemBatchList> stockBatch = itemBatchListMap.getItemStockExitMapList(itemStockList);
-//			if(stockBatch != null && stockBatch.size() > 0) {
 			for (ItemBatchList objList : stockBatch) {
 				if (objList.getExpiryDate() != null)
 					objList.setExpiresIn(calculateExpiryDateInDays(new Timestamp(objList.getExpiryDate().getTime())));
 			}
 			allocateItemMap.setItemBatchList(stockBatch);
 			allocateItemMapList.add(allocateItemMap);
-//			} else {
-//				ItemBatchList obj = new ItemBatchList();
-//				obj.setQuantity(0);
-//				obj.setQuantityInHand(0);
-//				obj.setItemID(itemID);
-//				obj.setFacilityID(facilityID);
-//				
-//				List<ItemBatchList> stockbatchList = new ArrayList<>();
-//				stockbatchList.add(obj);
-//				allocateItemMap.setItemBatchList(stockbatchList);
-//				allocateItemMapList.add(allocateItemMap);
-//			}
+
 
 		}
 
