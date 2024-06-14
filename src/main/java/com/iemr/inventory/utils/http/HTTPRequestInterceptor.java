@@ -52,7 +52,13 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 		if (request.getRequestURI().toLowerCase().contains("swagger-ui"))
 			return status;
 
-		String authorization = request.getHeader("Authorization");
+	//	String authorization = request.getHeader("Authorization");
+		String authorization = null;
+		String preAuth = request.getHeader("Authorization");
+		if(null != preAuth && preAuth.contains("Bearer "))
+			authorization=preAuth.replace("Bearer ", "");
+		else
+			authorization = preAuth;
 		if (!request.getMethod().equalsIgnoreCase("OPTIONS")) {
 			try {
 				String[] requestURIParts = request.getRequestURI().split("/");
@@ -109,7 +115,13 @@ public class HTTPRequestInterceptor implements HandlerInterceptor {
 		logger.info("http interceptor - post Handle");
 		try {
 
-			String authorization = request.getHeader("Authorization");
+			//String authorization = request.getHeader("Authorization");
+			String authorization = null;
+			String postAuth = request.getHeader("Authorization");
+			if(null != postAuth && postAuth.contains("Bearer "))
+				authorization=postAuth.replace("Bearer ", "");
+			else
+				authorization = postAuth;
 			logger.debug("RequestURI::" + request.getRequestURI() + " || Authorization ::" + authorization);
 			if (authorization != null) {
 				redisStorage.updateConcurrentSessionObject(redisStorage.getSessionObject(authorization));
