@@ -263,7 +263,7 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>Inventoryapi-v1.0</finalName>
+		<finalName>Inventoryapi-v3.0.0</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.owasp</groupId>
