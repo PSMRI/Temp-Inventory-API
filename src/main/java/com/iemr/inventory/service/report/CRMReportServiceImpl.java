@@ -627,7 +627,7 @@ public class CRMReportServiceImpl implements CRMReportService {
 						object[1] != null ? object[1].toString() : null,
 						object[2] != null ? object[2].toString() : null,
 						object[3] != null ? object[3].toString() : null,
-						object[4] != null ? ((Double) object[4]).doubleValue() : null,
+						object[4] != null ? ((BigDecimal) object[4]).doubleValue() : null,
 						(Date) (object[5] != null ? object[5] : null),
 						(Integer) (object[6] != null ? object[6] : null));
 
