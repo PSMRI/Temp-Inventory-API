@@ -72,10 +72,15 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<version>3.3.3</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.apache.tomcat.embed</groupId>
 					<artifactId>tomcat-embed-websocket</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-web</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -171,6 +176,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
+			<version>6.1.12</version>
 		</dependency>
 
 		<dependency>
@@ -227,11 +233,6 @@
 			<!-- <version>2.5.5</version> Use the latest stable version -->
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-spring-web</artifactId>
-			<version>3.0.0</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.plugin</groupId>
 			<artifactId>spring-plugin-core</artifactId>
 			<version>3.0.0</version>
@@ -256,11 +257,6 @@
 			<artifactId>jacoco-maven-plugin</artifactId>
 			<version>0.8.11</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>6.1.6</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<finalName>Inventoryapi-v3.0.0</finalName>
@@ -268,19 +264,11 @@
 			<plugin>
 				<groupId>org.owasp</groupId>
 				<artifactId>dependency-check-maven</artifactId>
-				<version>9.0.8</version>
+				<version>10.0.3</version>
 				<configuration>
 					<format>HTML</format>
 					<nvdApiServerId>nvd</nvdApiServerId>
-					<nvdApiKey>79597933-f3cc-4601-949b-12513434ade3</nvdApiKey>
 				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
