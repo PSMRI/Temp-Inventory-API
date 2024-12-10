@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import com.iemr.inventory.data.user.Users;
+import com.iemr.inventory.data.user.M_User;
 import com.iemr.inventory.repo.users.UserLoginRepo;
 import com.iemr.inventory.utils.exception.IEMRException;
 
@@ -20,9 +20,9 @@ import jakarta.servlet.http.HttpServletRequest;
 public class JwtAuthenticationUtil {
 
 	@Autowired
-	private final CookieUtil cookieUtil;
+	private CookieUtil cookieUtil;
 	@Autowired
-	private final JwtUtil jwtUtil;
+	private JwtUtil jwtUtil;
 	@Autowired
 	private UserLoginRepo userLoginRepo;
 	private final Logger logger = LoggerFactory.getLogger(this.getClass().getName());
@@ -72,7 +72,7 @@ public class JwtAuthenticationUtil {
 			String tokenUsername = jwtUtil.extractUsername(jwtToken);
 
 			// Fetch user based on userId from the database or cache
-			Users user = userLoginRepo.getUserByUserID(Long.parseLong(userId));
+			M_User user = userLoginRepo.getUserByUserID(Long.parseLong(userId));
 			if (user == null) {
 				throw new IEMRException("Invalid User ID.");
 			}
