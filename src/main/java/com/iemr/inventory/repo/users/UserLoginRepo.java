@@ -10,7 +10,7 @@ import com.iemr.inventory.data.user.M_User;
 @Repository
 public interface UserLoginRepo extends CrudRepository<M_User, Long> {
 
-	@Query(" SELECT u FROM M_User u WHERE u.userID = :userID AND u.deleted = false ")
+	@Query(" SELECT u FROM M_User u WHERE u.userID = :userID AND u.Deleted = false ")
 	public M_User getUserByUserID(@Param("userID") Long userID);
 
 }
